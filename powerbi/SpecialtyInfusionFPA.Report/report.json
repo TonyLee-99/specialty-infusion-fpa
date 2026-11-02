@@ -1,0 +1,63 @@
+{
+  "config": "{\"version\": \"5.43\"}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "page0",
+      "displayName": "Executive summary",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    },
+    {
+      "name": "page1",
+      "displayName": "Pricing & ASP lag",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    },
+    {
+      "name": "page2",
+      "displayName": "Margin per infusion",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    },
+    {
+      "name": "page3",
+      "displayName": "Forecast & 2027 scenarios",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    },
+    {
+      "name": "page4",
+      "displayName": "Provider benchmark",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    },
+    {
+      "name": "page5",
+      "displayName": "Market white space",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    },
+    {
+      "name": "page6",
+      "displayName": "RCM (SYNTHETIC)",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "visualContainers": []
+    }
+  ],
+  "note": "Page shells only. Visual layout is mirrored in docs/scorecard.html; build visuals in Desktop."
+}

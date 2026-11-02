@@ -1,0 +1,61 @@
+table dim_provider
+	lineageTag: d076d5ce-d84d-57e3-9ca1-897c07f0a1b6
+
+	column npi
+		dataType: string
+		summarizeBy: none
+		lineageTag: 2c8a0fcd-6fc1-5f09-acbe-76d1950fc197
+		sourceColumn: npi
+
+	column provider_type
+		dataType: string
+		summarizeBy: none
+		lineageTag: b30c50b2-6468-57ce-95ca-bf5e71815561
+		sourceColumn: provider_type
+
+	column state_abbr
+		dataType: string
+		summarizeBy: none
+		lineageTag: 8a33da23-151b-58dd-913e-1ad03ca8c4ef
+		sourceColumn: state_abbr
+
+	column county_fips
+		dataType: string
+		summarizeBy: none
+		lineageTag: e63971d5-5b73-5e66-80cd-e73985526788
+		sourceColumn: county_fips
+
+	column total_benes_2024
+		dataType: double
+		summarizeBy: sum
+		lineageTag: c77e680b-f1dd-5a01-8676-f1131e271332
+		sourceColumn: total_benes_2024
+
+	column total_allowed_2024
+		dataType: double
+		summarizeBy: sum
+		lineageTag: c6aba64a-95d2-53b9-8fc7-d3c2b0ddfa75
+		sourceColumn: total_allowed_2024
+
+	column drug_allowed_2024
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 6749710e-e7f6-5dbf-bb1e-d319a53ebe7f
+		sourceColumn: drug_allowed_2024
+
+	column avg_risk_score_2024
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 1026f066-7fa7-5fa4-a9a8-7944a46e85d4
+		sourceColumn: avg_risk_score_2024
+
+	partition dim_provider = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_provider.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"npi", type text}, {"provider_type", type text}, {"state_abbr", type text}, {"county_fips", type text}, {"total_benes_2024", type number}, {"total_allowed_2024", type number}, {"drug_allowed_2024", type number}, {"avg_risk_score_2024", type number}}, "en-US")
+				in
+				    Typed
+

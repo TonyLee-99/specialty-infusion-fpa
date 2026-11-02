@@ -1,0 +1,47 @@
+relationship 5151e5dd-11e4-5418-9d13-440404c9f131
+	fromColumn: fact_asp_quarter.hcpcs
+	toColumn: dim_drug.hcpcs
+
+relationship 1b091466-d302-5bbf-8977-db31c6d68f2c
+	fromColumn: fact_asp_quarter.quarter_start
+	toColumn: dim_date.date
+
+relationship 9e8d1cc9-cc47-5108-95c7-59c5826f8eb0
+	fromColumn: fact_national_drug_year.hcpcs
+	toColumn: dim_drug.hcpcs
+
+relationship 4072853a-ed00-545b-a9a5-efd1b104a5e2
+	fromColumn: fact_provider_drug_year.hcpcs
+	toColumn: dim_drug.hcpcs
+
+relationship a385ac69-c2d2-55c0-8e72-fe54b39562be
+	fromColumn: fact_provider_drug_year.npi
+	toColumn: dim_provider.npi
+
+relationship a97556c0-86a7-5550-ac00-d7eb624f314d
+	fromColumn: fact_provider_scorecard.npi
+	toColumn: dim_provider.npi
+
+relationship a57772e1-3672-59e9-a6f0-9a08c7d259bf
+	fromColumn: fact_provider_biosimilar.npi
+	toColumn: dim_provider.npi
+
+relationship 28f8ff6b-90f8-5c6d-86e8-0c1a618e81d8
+	fromColumn: fact_margin_per_admin.hcpcs
+	toColumn: dim_drug.hcpcs
+
+relationship 711a3314-4d23-5019-9320-3f86d99d2461
+	fromColumn: fact_forecast_quarterly_asp.hcpcs
+	toColumn: dim_drug.hcpcs
+
+relationship 4e2604d3-322f-5b31-9878-846b294e0ec5
+	fromColumn: dim_provider.county_fips
+	toColumn: dim_county_market.county_fips
+
+relationship 79b272e6-4348-5b50-a930-435a5a5a35f6
+	fromColumn: dim_county_market.market_id
+	toColumn: dim_market.market_id
+
+relationship 6ec8cf72-e99e-51b5-92f2-a16917c17263
+	fromColumn: fact_rcm_remits_SYNTHETIC.claim_id
+	toColumn: fact_rcm_claims_SYNTHETIC.claim_id

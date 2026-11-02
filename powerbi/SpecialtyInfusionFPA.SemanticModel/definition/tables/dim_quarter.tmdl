@@ -1,0 +1,37 @@
+table dim_quarter
+	lineageTag: 65329826-ded2-5509-adc7-478a5d679b06
+
+	column quarter_label
+		dataType: string
+		summarizeBy: none
+		lineageTag: 9d2c1396-3da4-50aa-aef8-4b267e29ca18
+		sourceColumn: quarter_label
+
+	column quarter_start
+		dataType: dateTime
+		summarizeBy: none
+		lineageTag: 125a1c1a-2d84-5052-b197-3180d11d194d
+		sourceColumn: quarter_start
+
+	column year
+		dataType: int64
+		summarizeBy: none
+		lineageTag: 6a0ab5e5-891c-5dbd-be34-7c44b0240426
+		sourceColumn: year
+
+	column quarter_of_year
+		dataType: int64
+		summarizeBy: none
+		lineageTag: 5a529265-bb68-58af-85c9-773881c761dc
+		sourceColumn: quarter_of_year
+
+	partition dim_quarter = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_quarter.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"quarter_label", type text}, {"quarter_start", type date}, {"year", Int64.Type}, {"quarter_of_year", Int64.Type}}, "en-US")
+				in
+				    Typed
+

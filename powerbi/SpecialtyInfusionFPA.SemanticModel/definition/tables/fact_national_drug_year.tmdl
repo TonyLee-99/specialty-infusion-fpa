@@ -1,0 +1,85 @@
+table fact_national_drug_year
+	lineageTag: 15b70643-1573-509b-a1a8-56217c215f8f
+
+	/// National Medicare FFS beneficiary-days with an in-office administration of a catalog drug (chair + injection), 2024.
+	measure 'In-Office Administrations 2024' = CALCULATE ( SUM ( fact_national_drug_year[bene_day_services] ), fact_national_drug_year[year] = 2024, fact_national_drug_year[place_of_service] = "O", dim_drug[admin_family] IN { "mab_infusion", "iv_infusion", "injection" } )
+		formatString: #,##0
+		displayFolder: Utilization
+		lineageTag: f31159cf-d6c1-59e4-b6ff-8abb9113512c
+
+	/// National Medicare FFS allowed dollars for catalog drugs billed in an office, 2024.
+	measure 'In-Office Drug Allowed 2024' = CALCULATE ( SUM ( fact_national_drug_year[allowed_amt] ), fact_national_drug_year[year] = 2024, fact_national_drug_year[place_of_service] = "O", NOT ISBLANK ( dim_drug[molecule] ) )
+		formatString: \$#,##0
+		displayFolder: Utilization
+		lineageTag: 72cfd877-f11e-5786-82e1-00f3629ca064
+
+	/// Biosimilar share of in-office infliximab administrations, national Medicare FFS 2024.
+	measure 'Infliximab Biosimilar Share 2024' = VAR t = CALCULATE ( SUM ( fact_national_drug_year[bene_day_services] ), fact_national_drug_year[year] = 2024, fact_national_drug_year[place_of_service] = "O", dim_drug[molecule] = "infliximab" ) RETURN DIVIDE ( CALCULATE ( SUM ( fact_national_drug_year[bene_day_services] ), fact_national_drug_year[year] = 2024, fact_national_drug_year[place_of_service] = "O", dim_drug[molecule] = "infliximab", dim_drug[is_biosimilar] = TRUE () ), t )
+		formatString: 0.0%
+		displayFolder: Utilization
+		lineageTag: 93445cb8-cc33-59b4-943c-314484b41f74
+
+	column year
+		dataType: int64
+		summarizeBy: none
+		lineageTag: 3cba4a15-cfac-5da1-ad2e-674f355d7d9f
+		sourceColumn: year
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: 7229de71-3ea9-52fe-8440-47d2a015f981
+		sourceColumn: hcpcs
+
+	column place_of_service
+		dataType: string
+		summarizeBy: none
+		lineageTag: b830ca8d-a428-5d9a-aae4-e1ade4b627ed
+		sourceColumn: place_of_service
+
+	column providers
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: df8d441c-d177-52ec-bcf1-667129f61094
+		sourceColumn: providers
+
+	column benes
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 822145ed-c2d2-5e79-b73b-7364839133c0
+		sourceColumn: benes
+
+	column services
+		dataType: double
+		summarizeBy: sum
+		lineageTag: d658d9ce-3267-558d-bac0-953f53157b14
+		sourceColumn: services
+
+	column bene_day_services
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: e04caace-05d7-5054-a30f-5f34ea482339
+		sourceColumn: bene_day_services
+
+	column allowed_amt
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 64c000b0-9712-5514-bc3e-f183000ec158
+		sourceColumn: allowed_amt
+
+	column payment_amt
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 95874342-efb8-5af0-a783-d2026c2e6e65
+		sourceColumn: payment_amt
+
+	partition fact_national_drug_year = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_national_drug_year.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"year", Int64.Type}, {"hcpcs", type text}, {"place_of_service", type text}, {"providers", Int64.Type}, {"benes", Int64.Type}, {"services", type number}, {"bene_day_services", Int64.Type}, {"allowed_amt", type number}, {"payment_amt", type number}}, "en-US")
+				in
+				    Typed
+

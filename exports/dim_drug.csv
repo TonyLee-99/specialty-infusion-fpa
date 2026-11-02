@@ -1,0 +1,59 @@
+hcpcs,molecule,brand,product_type,reference_hcpcs,therapeutic_area,admin_family,formulary_listed,ipay2028_selected,is_biosimilar,is_multisource,cms_short_desc,billing_unit
+J0129,abatacept,Orencia IV,single_source,,rheum,iv_infusion,False,True,False,False,Abatacept injection,10 MG
+J0202,alemtuzumab,Lemtrada,single_source,,neuro,mab_infusion,True,False,False,False,"Injection, alemtuzumab",1 MG
+J0490,belimumab,Benlysta,single_source,,rheum,mab_infusion,True,False,False,False,Belimumab injection,10 MG
+J0585,onabotulinumtoxinA,Botox,single_source,,neuro,procedure,False,True,False,False,"Injection,onabotulinumtoxina",1 UNIT
+J0717,certolizumab,Cimzia,single_source,,rheum_gi,injection,False,True,False,False,Certolizumab pegol inj 1mg,1 MG
+J0897,denosumab,Prolia / Xgeva,reference,,bone,injection,True,False,False,True,Denosumab injection,1 MG
+J1299,eculizumab,Soliris,reference,,neuro,mab_infusion,False,False,False,True,"Inj, eculizumab, 2 mg",2 MG
+J1300,eculizumab,Soliris (10 mg code; retired),reference,,neuro,mab_infusion,False,False,False,True,Eculizumab injection,10 MG
+J1303,ravulizumab,Ultomiris,single_source,,neuro,mab_infusion,False,False,False,False,"Inj., ravulizumab-cwvz 10 mg",10 MG
+J1459,immune_globulin,Privigen,single_source,,immunology,iv_infusion,False,False,False,False,Inj ivig privigen 500 mg,500 MG
+J1557,immune_globulin,Gammaplex,single_source,,immunology,iv_infusion,False,False,False,False,Gammaplex injection,500 MG
+J1561,immune_globulin,Gamunex-C / Gammaked,single_source,,immunology,iv_infusion,True,False,False,False,Gamunex-c/gammaked,500 MG
+J1566,immune_globulin,Gammagard S/D (powder),single_source,,immunology,iv_infusion,False,False,False,False,"Immune globulin, powder",500 MG
+J1568,immune_globulin,Octagam,single_source,,immunology,iv_infusion,True,False,False,False,Octagam injection,500 MG
+J1569,immune_globulin,Gammagard Liquid,single_source,,immunology,iv_infusion,True,False,False,False,Gammagard liquid/erc inj,500 MG
+J1602,golimumab,Simponi Aria,single_source,,rheum,mab_infusion,False,False,False,False,Golimumab for iv use 1mg,1 MG
+J1628,guselkumab,Tremfya IV,single_source,,gi,mab_infusion,False,False,False,False,"Inj., guselkumab, 1 mg",1 MG
+J1745,infliximab,Remicade / unbranded infliximab,reference,,rheum_gi,mab_infusion,True,False,False,True,Infliximab not biosimil 10mg,10 MG
+J1823,inebilizumab,Uplizna,single_source,,neuro,mab_infusion,False,False,False,False,"Inj. inebilizumab-cdon, 1 mg",1 MG
+J2267,mirikizumab,Omvoh IV,single_source,,gi,mab_infusion,False,False,False,False,"Inj, mirikizumab-mrkz, 1 mg",1 MG
+J2323,natalizumab,Tysabri,reference,,neuro_gi,mab_infusion,True,False,False,True,Natalizumab injection,1 MG
+J2327,risankizumab,Skyrizi IV,single_source,,gi,mab_infusion,False,False,False,False,Inj risankizumab-rzaa 1 mg,1 MG
+J2329,ublituximab,Briumvi,single_source,,neuro,mab_infusion,True,False,False,False,"Inj ublituximab-xiiy, 1 mg",1 MG
+J2350,ocrelizumab,Ocrevus,single_source,,neuro,mab_infusion,True,False,False,False,"Injection, ocrelizumab, 1 mg",1 MG
+J2351,ocrelizumab,Ocrevus Zunovo (subcutaneous),single_source,,neuro,injection,False,False,False,False,Inj ocrelizumab 1mg hya-ocsq,1 MG
+J2507,pegloticase,Krystexxa,single_source,,rheum,iv_infusion,False,False,False,False,Pegloticase injection,1 MG
+J3032,eptinezumab,Vyepti,single_source,,neuro,mab_infusion,True,False,False,False,Inj. eptinezumab-jjmr 1 mg,1 MG
+J3111,romosozumab,Evenity,single_source,,bone,injection,True,False,False,False,Inj. romosozumab-aqqg 1 mg,1 MG
+J3262,tocilizumab,Actemra IV,reference,,rheum,mab_infusion,False,False,False,True,Tocilizumab injection,1 MG
+J3358,ustekinumab,Stelara IV,reference,,gi,mab_infusion,False,False,False,True,"Ustekinumab, iv inject, 1 mg",1 MG
+J3380,vedolizumab,Entyvio IV,single_source,,gi,mab_infusion,False,True,False,False,Inj vedolizumab iv 1 mg,1 MG
+J9312,rituximab,Rituxan,reference,,rheum_neuro,mab_infusion,True,False,False,True,"Inj., rituximab, 10 mg",10 MG
+J9332,efgartigimod,Vyvgart IV,single_source,,neuro,iv_infusion,False,False,False,False,Inj efgartigimod 2mg,2 MG
+Q5098,ustekinumab,ustekinumab-srlf,biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,"Inj ustekinumab-srlf, 1 mg",1 MG
+Q5099,ustekinumab,ustekinumab-stba,biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,"Inj ustekinumab-stba, 1 mg",1 MG
+Q5100,ustekinumab,ustekinumab-kfce,biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,"Inj ustekinumab-kfce, 1 mg",1 MG
+Q5103,infliximab,Inflectra (infliximab-dyyb),biosimilar,J1745,rheum_gi,mab_infusion,True,False,True,True,"Injection, inflectra",10 MG
+Q5104,infliximab,Renflexis (infliximab-abda),biosimilar,J1745,rheum_gi,mab_infusion,False,False,True,True,"Injection, renflexis",10 MG
+Q5115,rituximab,Truxima (rituximab-abbs),biosimilar,J9312,rheum_neuro,mab_infusion,True,False,True,True,Inj truxima 10 mg,10 MG
+Q5119,rituximab,Ruxience (rituximab-pvvr),biosimilar,J9312,rheum_neuro,mab_infusion,False,False,True,True,"Inj ruxience, 10 mg",10 MG
+Q5121,infliximab,Avsola (infliximab-axxq),biosimilar,J1745,rheum_gi,mab_infusion,False,False,True,True,"Inj. avsola, 10 mg",10 MG
+Q5123,rituximab,Riabni (rituximab-arrx),biosimilar,J9312,rheum_neuro,mab_infusion,False,False,True,True,"Inj. riabni, 10 mg",10 MG
+Q5133,tocilizumab,Tofidence (tocilizumab-bavi),biosimilar,J3262,rheum,mab_infusion,False,False,True,True,"Inj, tofidence, 1 mg",1 MG
+Q5134,natalizumab,Tyruko (natalizumab-sztn),biosimilar,J2323,neuro_gi,mab_infusion,False,False,True,True,"Inj, tyruko, 1 mg",1 MG
+Q5135,tocilizumab,Tyenne (tocilizumab-aazg),biosimilar,J3262,rheum,mab_infusion,False,False,True,True,"Inj, tyenne, 1 mg",1 MG
+Q5136,denosumab,denosumab-bbdz,biosimilar,J0897,bone,injection,False,False,True,True,"Inj. denosumab-bbdz, 1 mg",1 MG
+Q5138,ustekinumab,Wezlana IV (ustekinumab-auub),biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,"Inj, wezlana, iv, 1 mg",1 MG
+Q5151,eculizumab,eculizumab-aagh,biosimilar,J1299,neuro,mab_infusion,False,False,True,True,"Inj, eculizumab-aagh, 2 mg",2 MG
+Q5152,eculizumab,eculizumab-aeeb,biosimilar,J1299,neuro,mab_infusion,False,False,True,True,"Inj, eculizumab-aeeb, 2 mg",2 MG
+Q5156,tocilizumab,Avtozma (tocilizumab-anoh),biosimilar,J3262,rheum,mab_infusion,False,False,True,True,"Inj, tocilizumab-anoh, 1 mg",1 MG
+Q5157,denosumab,denosumab-bmwo,biosimilar,J0897,bone,injection,False,False,True,True,"Inj, denosumab-bmwo, 1 mg",1 MG
+Q5158,denosumab,denosumab-bnht,biosimilar,J0897,bone,injection,False,False,True,True,"Inj, denosumab-bnht, 1 mg",1 MG
+Q5161,denosumab,denosumab-kyqq,biosimilar,J0897,bone,injection,False,False,True,True,"Inj, denosumab-kyqq, 1 mg",1 MG
+Q5162,denosumab,denosumab-nxxp,biosimilar,J0897,bone,injection,False,False,True,True,"Inj, denosumab-nxxp, 1 mg",1 MG
+Q5167,denosumab,denosumab-qbde,biosimilar,J0897,bone,injection,False,False,True,True,"Inj, denosumab-qbde, 1 mg",1 MG
+Q9997,ustekinumab,ustekinumab-ttwe,biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,Ustekinumab-ttwe iv inj 1 mg,1 MG
+Q9998,ustekinumab,ustekinumab-aekn,biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,"Inj ustekinumab-aekn, 1 mg",1 MG
+Q9999,ustekinumab,ustekinumab-aauz,biosimilar,AMBIGUOUS,gi,mab_infusion,False,False,True,True,Inj ustekinumab-aauz 1 mg,1 MG

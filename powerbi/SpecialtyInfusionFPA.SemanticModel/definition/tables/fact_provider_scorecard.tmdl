@@ -1,0 +1,175 @@
+table fact_provider_scorecard
+	lineageTag: 30ee0eee-f146-5d95-ac8f-f892e3dcbf4a
+
+	/// Region rheumatology / neurology / GI / allergy-immunology clinicians with >= 11 Medicare beneficiaries, 2024.
+	measure 'Providers Scored' = COUNTROWS ( fact_provider_scorecard )
+		formatString: #,##0
+		displayFolder: Benchmark
+		lineageTag: d19378c6-a982-55be-9539-14ee2ffbeead
+
+	/// Median Medicare allowed per beneficiary across scored providers (filter by specialty for peer view).
+	measure 'Median Allowed per Beneficiary' = MEDIAN ( fact_provider_scorecard[allowed_per_bene] )
+		formatString: \$#,##0
+		displayFolder: Benchmark
+		lineageTag: 8f982166-178c-5bd5-8a68-2233e9242f79
+
+	/// Providers whose 90% interval for shrunk biosimilar adoption sits above their specialty median.
+	measure 'Providers Above Peer on Biosimilars' = COUNTROWS ( FILTER ( fact_provider_scorecard, fact_provider_scorecard[biosimilar_vs_peer] = "above_peer" ) )
+		formatString: #,##0
+		displayFolder: Benchmark
+		lineageTag: 4bf3c4a1-f73d-59a6-a62e-c9eb5260f75e
+
+	column npi
+		dataType: string
+		summarizeBy: none
+		lineageTag: 2271f834-d365-5f3c-9b5b-c3f365cecd58
+		sourceColumn: npi
+
+	column provider_type
+		dataType: string
+		summarizeBy: none
+		lineageTag: 1b0322e5-600b-5dbc-ac81-5b39933c028a
+		sourceColumn: provider_type
+
+	column state_abbr
+		dataType: string
+		summarizeBy: none
+		lineageTag: 57bd8d23-dfc1-5b1e-a3df-8522847b405b
+		sourceColumn: state_abbr
+
+	column county_fips
+		dataType: string
+		summarizeBy: none
+		lineageTag: a12d3879-741a-5996-a9c9-b7f51339b292
+		sourceColumn: county_fips
+
+	column benes
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 92905080-f3d2-5327-853f-cca643d6db86
+		sourceColumn: benes
+
+	column allowed_per_bene
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 7b484c6c-110d-5c6f-9cab-1dd0d4be2d93
+		sourceColumn: allowed_per_bene
+
+	column allowed_per_bene_risk_adj
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 846f6de0-bee1-5c8f-9471-fca7419d752b
+		sourceColumn: allowed_per_bene_risk_adj
+
+	column services_per_bene
+		dataType: double
+		summarizeBy: sum
+		lineageTag: a8baf171-4778-57cf-bc9d-4335b792767e
+		sourceColumn: services_per_bene
+
+	column drug_share
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e711ecb7-40e5-5d30-afed-daaf7278f076
+		sourceColumn: drug_share
+
+	column infusion_share
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e6b1baf8-25f1-561b-8a65-68506d729039
+		sourceColumn: infusion_share
+
+	column bills_chair_infusions
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 2a13c9f3-1e12-5d96-abdd-34412c312028
+		sourceColumn: bills_chair_infusions
+
+	column allowed_per_bene_pctile
+		dataType: double
+		summarizeBy: none
+		lineageTag: bf7a8c86-1406-527f-9cfa-a4043402f548
+		sourceColumn: allowed_per_bene_pctile
+
+	column allowed_per_bene_risk_adj_pctile
+		dataType: double
+		summarizeBy: none
+		lineageTag: 8fd2d6f3-63f7-5aeb-9953-264021216501
+		sourceColumn: allowed_per_bene_risk_adj_pctile
+
+	column services_per_bene_pctile
+		dataType: double
+		summarizeBy: none
+		lineageTag: d84ee71b-dd0f-588b-9f2f-9c23de7332f0
+		sourceColumn: services_per_bene_pctile
+
+	column drug_share_pctile
+		dataType: double
+		summarizeBy: none
+		lineageTag: 54d0440c-176c-547c-9758-fc3f8873d399
+		sourceColumn: drug_share_pctile
+
+	column infusion_share_pctile
+		dataType: double
+		summarizeBy: none
+		lineageTag: a7883ad6-4d7d-5caa-b1a8-a3ff2e772454
+		sourceColumn: infusion_share_pctile
+
+	column biosimilar_rate_shrunk
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 838c53d0-1e22-5ac2-8ac7-8d090b204cc2
+		sourceColumn: biosimilar_rate_shrunk
+
+	column biosimilar_ci_lo
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 601b2c9b-500b-5aa3-abfa-fcd6bda1a234
+		sourceColumn: biosimilar_ci_lo
+
+	column biosimilar_ci_hi
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 4d1e2008-af20-58cf-b563-ffeae2a6b6db
+		sourceColumn: biosimilar_ci_hi
+
+	column biosimilar_censored
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 1dbacdeb-3347-5c0d-9a4b-d0fbfbba6fb9
+		sourceColumn: biosimilar_censored
+
+	column biosimilar_molecules
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 970be0f7-554b-50be-a508-fdf28a3c832c
+		sourceColumn: biosimilar_molecules
+
+	column biosimilar_rate_pctile
+		dataType: double
+		summarizeBy: none
+		lineageTag: 12407e13-2fbc-5d21-af62-9fafbe37af91
+		sourceColumn: biosimilar_rate_pctile
+
+	column biosimilar_vs_peer
+		dataType: string
+		summarizeBy: none
+		lineageTag: 33492392-3142-589a-b007-a98c43d83626
+		sourceColumn: biosimilar_vs_peer
+
+	column risk
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 0e32756b-bc9b-574e-9c87-c12b7b26718e
+		sourceColumn: risk
+
+	partition fact_provider_scorecard = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_provider_scorecard.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"npi", type text}, {"provider_type", type text}, {"state_abbr", type text}, {"county_fips", type text}, {"benes", Int64.Type}, {"allowed_per_bene", type number}, {"allowed_per_bene_risk_adj", type number}, {"services_per_bene", type number}, {"drug_share", type number}, {"infusion_share", type number}, {"bills_chair_infusions", type logical}, {"allowed_per_bene_pctile", type number}, {"allowed_per_bene_risk_adj_pctile", type number}, {"services_per_bene_pctile", type number}, {"drug_share_pctile", type number}, {"infusion_share_pctile", type number}, {"biosimilar_rate_shrunk", type number}, {"biosimilar_ci_lo", type number}, {"biosimilar_ci_hi", type number}, {"biosimilar_censored", type logical}, {"biosimilar_molecules", type number}, {"biosimilar_rate_pctile", type number}, {"biosimilar_vs_peer", type text}, {"risk", type number}}, "en-US")
+				in
+				    Typed
+

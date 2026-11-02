@@ -1,0 +1,91 @@
+table dim_drug
+	lineageTag: 1a478f0b-afab-56c3-bcc5-f671fb72fce8
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: 810c469d-137e-55d3-ba9c-2b37d87924f6
+		sourceColumn: hcpcs
+
+	column molecule
+		dataType: string
+		summarizeBy: none
+		lineageTag: c669b9c7-be3d-599a-bbcc-ae15d1c983da
+		sourceColumn: molecule
+
+	column brand
+		dataType: string
+		summarizeBy: none
+		lineageTag: 7251bc48-0fc4-593a-aa68-95e39b6af224
+		sourceColumn: brand
+
+	column product_type
+		dataType: string
+		summarizeBy: none
+		lineageTag: d3ace181-5d9f-5702-b053-5be34387ef23
+		sourceColumn: product_type
+
+	column reference_hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: b8faad06-7881-5be6-a2c9-298fd81c1d24
+		sourceColumn: reference_hcpcs
+
+	column therapeutic_area
+		dataType: string
+		summarizeBy: none
+		lineageTag: 2503933a-d601-55c7-8de0-62a0c922342e
+		sourceColumn: therapeutic_area
+
+	column admin_family
+		dataType: string
+		summarizeBy: none
+		lineageTag: 39b7d703-b789-50ba-ad46-0edaba4b2876
+		sourceColumn: admin_family
+
+	column formulary_listed
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 6b7d913d-fce7-5197-b360-cc596665e659
+		sourceColumn: formulary_listed
+
+	column ipay2028_selected
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 4e438ffc-47e2-5144-aab2-1117af0597d1
+		sourceColumn: ipay2028_selected
+
+	column is_biosimilar
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: b9d27cfa-6910-5b35-85aa-9702551b331a
+		sourceColumn: is_biosimilar
+
+	column is_multisource
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 3ed60707-6aaf-5e74-8948-a12428c5e546
+		sourceColumn: is_multisource
+
+	column cms_short_desc
+		dataType: string
+		summarizeBy: none
+		lineageTag: 1da2a729-7983-5dbf-80a9-df879a6ee88e
+		sourceColumn: cms_short_desc
+
+	column billing_unit
+		dataType: string
+		summarizeBy: none
+		lineageTag: 439fb96a-5c9c-50be-b50f-238b538ab433
+		sourceColumn: billing_unit
+
+	partition dim_drug = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_drug.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"hcpcs", type text}, {"molecule", type text}, {"brand", type text}, {"product_type", type text}, {"reference_hcpcs", type text}, {"therapeutic_area", type text}, {"admin_family", type text}, {"formulary_listed", type logical}, {"ipay2028_selected", type logical}, {"is_biosimilar", type logical}, {"is_multisource", type logical}, {"cms_short_desc", type text}, {"billing_unit", type text}}, "en-US")
+				in
+				    Typed
+

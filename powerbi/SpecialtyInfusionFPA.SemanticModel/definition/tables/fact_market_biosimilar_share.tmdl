@@ -1,0 +1,37 @@
+table fact_market_biosimilar_share
+	lineageTag: 9321678d-c129-532a-be46-5b9c4a3eee35
+
+	column geo
+		dataType: string
+		summarizeBy: none
+		lineageTag: cdfd7805-24e3-568b-92c8-c9c7131fde57
+		sourceColumn: geo
+
+	column molecule
+		dataType: string
+		summarizeBy: none
+		lineageTag: 2b92bcf7-697c-5ee9-a8e2-f785953995d1
+		sourceColumn: molecule
+
+	column biosimilar_share
+		dataType: double
+		summarizeBy: sum
+		lineageTag: d5ec3d91-b379-5c1d-b9b1-f3f82c819124
+		sourceColumn: biosimilar_share
+
+	column admins
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 4d139a10-2f2f-5cd2-aa02-d98d383228f0
+		sourceColumn: admins
+
+	partition fact_market_biosimilar_share = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_market_biosimilar_share.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"geo", type text}, {"molecule", type text}, {"biosimilar_share", type number}, {"admins", type number}}, "en-US")
+				in
+				    Typed
+

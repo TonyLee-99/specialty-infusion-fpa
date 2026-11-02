@@ -6,7 +6,7 @@ DBT   := cd dbt && ../.venv/bin/dbt
 export DBT_PROFILES_DIR := $(CURDIR)/dbt
 
 .PHONY: init check lint test dbt-ci verify reproduce ingest dbt fixtures analyses margin forecast \
-        scenarios excel benchmark market rcm exports kpis memo scorecard screenshots readme dq \
+        scenarios excel benchmark market rcm exports pbi kpis memo scorecard screenshots readme dq \
         monthly-pack clean
 
 init:             ## fresh clone -> working env (venv, pinned deps, browser for screenshots)
@@ -28,7 +28,7 @@ verify:           ## the ONLY writer of feature_list.json state/evidence
 	$(PY) scripts/verify_features.py
 
 # ---------- full rebuild from public sources ----------
-reproduce: ingest dbt fixtures analyses exports kpis excel memo scorecard screenshots readme dq test
+reproduce: ingest dbt fixtures analyses exports pbi kpis excel memo scorecard screenshots readme dq test
 	@echo "make reproduce: OK"
 
 ingest:           ## filtered CMS / CDC / Census pulls -> data/raw/*.parquet + data_manifest.json
@@ -58,6 +58,8 @@ rcm:              ## SYNTHETIC revenue-cycle method demo
 
 exports:          ## star schema CSVs for the Power BI semantic model
 	$(PY) -m sifpa.exports
+pbi:              ## PBIP + TMDL semantic model over exports/ (+ SQL twins in sql/measures/)
+	$(PY) -m sifpa.pbi
 kpis:             ## SQL twins of the DAX measures -> outputs/kpis.json
 	$(PY) -m sifpa.kpis
 excel:            ## scenario workbook with live formulas (+ LibreOffice recalculation check)

@@ -1,0 +1,92 @@
+/// SYNTHETIC data: revenue-cycle method demo only (ADR 0008). No business conclusion.
+table fact_rcm_remits_SYNTHETIC
+	lineageTag: 1265f35e-dcb6-5fb2-8a69-8247321cd70b
+
+	/// SYNTHETIC demo: initial denials / first remits.
+	measure 'Denial Rate (SYNTHETIC)' = CALCULATE ( DIVIDE ( COUNTROWS ( FILTER ( fact_rcm_remits_SYNTHETIC, fact_rcm_remits_SYNTHETIC[denied] = TRUE () ) ), COUNTROWS ( fact_rcm_remits_SYNTHETIC ) ), fact_rcm_remits_SYNTHETIC[remit_seq] = 1 )
+		formatString: 0.0%
+		displayFolder: RCM (SYNTHETIC)
+		lineageTag: 9f3088b2-0625-5f3c-a945-7c1d9d9fd325
+
+	/// SYNTHETIC demo: first-pass paid without scrubber edit / claims with a first remit.
+	measure 'Clean Claim Rate (SYNTHETIC)' = VAR firsts = FILTER ( fact_rcm_remits_SYNTHETIC, fact_rcm_remits_SYNTHETIC[remit_seq] = 1 ) RETURN DIVIDE ( COUNTROWS ( FILTER ( firsts, fact_rcm_remits_SYNTHETIC[denied] = FALSE () && RELATED ( fact_rcm_claims_SYNTHETIC[scrubber_edit] ) = FALSE () ) ), COUNTROWS ( firsts ) )
+		formatString: 0.0%
+		displayFolder: RCM (SYNTHETIC)
+		lineageTag: 1420a62b-ace4-5c96-a1fa-abe476c097c3
+
+	column data_label
+		dataType: string
+		summarizeBy: none
+		lineageTag: d29e8ee2-9e80-52d6-820c-91492318243c
+		sourceColumn: data_label
+
+	column claim_id
+		dataType: string
+		summarizeBy: none
+		lineageTag: 5c32493d-f917-5a34-854a-a09b6546d579
+		sourceColumn: claim_id
+
+	column remit_date
+		dataType: dateTime
+		summarizeBy: none
+		lineageTag: 77525320-1d33-5548-b048-e7c6accd36fc
+		sourceColumn: remit_date
+
+	column payer_paid
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 5df14a58-84ec-5adc-9cfd-2fea55e23d5d
+		sourceColumn: payer_paid
+
+	column patient_resp
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 321bc501-4229-50e9-b753-e8f59639d5fa
+		sourceColumn: patient_resp
+
+	column adj_group
+		dataType: string
+		summarizeBy: none
+		lineageTag: 83822f06-c4c7-5121-b8f6-d4c82782aed3
+		sourceColumn: adj_group
+
+	column carc_code
+		dataType: string
+		summarizeBy: none
+		lineageTag: 7b51dabf-4acf-5a79-9f2f-2e5194ed9c41
+		sourceColumn: carc_code
+
+	column carc_group
+		dataType: string
+		summarizeBy: none
+		lineageTag: eedbe35c-c501-52ac-8c75-9193adff3ce3
+		sourceColumn: carc_group
+
+	column denied
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 3bb23c4e-5267-5616-b840-6faa8028be82
+		sourceColumn: denied
+
+	column remit_seq
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: d5b8ab6f-7070-5323-871e-edc85e9d11d8
+		sourceColumn: remit_seq
+
+	column patient_paid
+		dataType: double
+		summarizeBy: sum
+		lineageTag: da789f5f-7ff2-5919-9163-48bb8adf6306
+		sourceColumn: patient_paid
+
+	partition fact_rcm_remits_SYNTHETIC = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_rcm_remits_SYNTHETIC.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"data_label", type text}, {"claim_id", type text}, {"remit_date", type date}, {"payer_paid", type number}, {"patient_resp", type number}, {"adj_group", type text}, {"carc_code", type text}, {"carc_group", type text}, {"denied", type logical}, {"remit_seq", Int64.Type}, {"patient_paid", type number}}, "en-US")
+				in
+				    Typed
+

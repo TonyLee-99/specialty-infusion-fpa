@@ -1,0 +1,67 @@
+table fact_provider_drug_year
+	lineageTag: e1513a6a-0d6c-5eaf-a7da-b99b53f4fc25
+
+	column year
+		dataType: int64
+		summarizeBy: none
+		lineageTag: 9c655ccf-7bd0-522c-90bd-2e4ec4cbf123
+		sourceColumn: year
+
+	column npi
+		dataType: string
+		summarizeBy: none
+		lineageTag: 2a93d938-2d6b-593a-8e20-799fb0967dc3
+		sourceColumn: npi
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: 98df37ff-4350-58da-8f62-aa88a6f2c67e
+		sourceColumn: hcpcs
+
+	column place_of_service
+		dataType: string
+		summarizeBy: none
+		lineageTag: 31123efd-ffcc-5929-a7ff-a9fea61c594e
+		sourceColumn: place_of_service
+
+	column hcpcs_role
+		dataType: string
+		summarizeBy: none
+		lineageTag: a4c6ea8a-5339-5715-bc02-9d3f9b6d9733
+		sourceColumn: hcpcs_role
+
+	column benes
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 255cdef3-473c-5667-b612-312d1831479d
+		sourceColumn: benes
+
+	column services
+		dataType: double
+		summarizeBy: sum
+		lineageTag: eef6ab10-0d1c-55a6-90f1-7273cd3471c9
+		sourceColumn: services
+
+	column bene_day_services
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: e0735efc-2dc6-5d33-977e-9d90153ad77e
+		sourceColumn: bene_day_services
+
+	column allowed_amt
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 9599487b-05cc-5cbc-b318-a865a838cc99
+		sourceColumn: allowed_amt
+
+	partition fact_provider_drug_year = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_provider_drug_year.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"year", Int64.Type}, {"npi", type text}, {"hcpcs", type text}, {"place_of_service", type text}, {"hcpcs_role", type text}, {"benes", Int64.Type}, {"services", type number}, {"bene_day_services", Int64.Type}, {"allowed_amt", type number}}, "en-US")
+				in
+				    Typed
+

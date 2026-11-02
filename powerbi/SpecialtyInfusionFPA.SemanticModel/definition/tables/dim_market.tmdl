@@ -1,0 +1,229 @@
+table dim_market
+	lineageTag: cd76f2a2-ef1c-51ce-8042-1fae85495edd
+
+	/// Markets (CBSA or stand-alone county) above the population screen.
+	measure 'Eligible Markets' = COUNTROWS ( FILTER ( dim_market, dim_market[eligible] = TRUE () ) )
+		formatString: #,##0
+		displayFolder: Market
+		lineageTag: 02da8941-8192-5330-af94-1b4114053cc0
+
+	/// Share of 2,000 random weightings in which the #1 market stays in the top 10.
+	measure 'Top Market P(top 10)' = VAR best = MINX ( FILTER ( dim_market, dim_market[eligible] = TRUE () ), dim_market[rank] ) RETURN CALCULATE ( MAX ( dim_market[p_top10] ), dim_market[rank] = best )
+		formatString: 0.0%
+		displayFolder: Market
+		lineageTag: 42771562-abd7-5056-9089-a17c857e2454
+
+	column market_id
+		dataType: string
+		summarizeBy: none
+		lineageTag: b37dc15f-8f23-5d7f-bc25-fe8b1c184b75
+		sourceColumn: market_id
+
+	column market_name
+		dataType: string
+		summarizeBy: none
+		lineageTag: c5f4d866-6751-51fa-8d5c-f4bc33215cbd
+		sourceColumn: market_name
+
+	column market_type
+		dataType: string
+		summarizeBy: none
+		lineageTag: 4e9d3e30-42f5-5659-b3ec-05c391cecc8a
+		sourceColumn: market_type
+
+	column population
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 1ec953ab-1018-59ea-b995-19e868276590
+		sourceColumn: population
+
+	column pop_18plus
+		dataType: double
+		summarizeBy: sum
+		lineageTag: fc21d381-d556-557b-ba19-1c5461185b89
+		sourceColumn: pop_18plus
+
+	column pop_65plus
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e9687290-1644-5408-a66a-a350857da1e5
+		sourceColumn: pop_65plus
+
+	column arthritis_adults
+		dataType: double
+		summarizeBy: sum
+		lineageTag: af602c06-645e-5be6-b2a6-d6ea7888293d
+		sourceColumn: arthritis_adults
+
+	column medicare_benes
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 4a532730-0b20-5cef-9de1-ad9332c839b0
+		sourceColumn: medicare_benes
+
+	column ffs_benes
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 43cffbcd-b53e-5ac8-9b6f-a838a946cb8f
+		sourceColumn: ffs_benes
+
+	column specialists
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: f49f4bec-d620-597d-b783-802fbe3dbb77
+		sourceColumn: specialists
+
+	column rheumatologists
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: c5ebd00f-df81-5d62-a0b6-2c409b8930c1
+		sourceColumn: rheumatologists
+
+	column neurologists
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: b1b3eeb8-245c-597b-af6f-74c2348c4886
+		sourceColumn: neurologists
+
+	column infusion_billers
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 06e83c66-e33b-58a7-ae81-445686eaf67b
+		sourceColumn: infusion_billers
+
+	column infusion_admins
+		dataType: double
+		summarizeBy: sum
+		lineageTag: c09031de-3aa5-5126-8cf6-004a1046a6f9
+		sourceColumn: infusion_admins
+
+	column has_site
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: b757e879-ace5-5865-931b-3d9e7a30f59c
+		sourceColumn: has_site
+
+	column n_counties
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 6cf29c89-32bb-50e4-9d69-9702fdf4c7e5
+		sourceColumn: n_counties
+
+	column partial_market
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 8b108e6c-451a-5c60-8750-feae2fa6705e
+		sourceColumn: partial_market
+
+	column states
+		dataType: string
+		summarizeBy: none
+		lineageTag: f9bd776f-4c23-5833-9808-4374b12066d2
+		sourceColumn: states
+
+	column lat
+		dataType: double
+		summarizeBy: sum
+		lineageTag: f72ecafc-c87d-5257-8880-bdd7f68207a3
+		sourceColumn: lat
+
+	column lon
+		dataType: double
+		summarizeBy: sum
+		lineageTag: dbd161ae-9480-53be-addf-f17b73903196
+		sourceColumn: lon
+
+	column miles_to_columbus_site
+		dataType: double
+		summarizeBy: sum
+		lineageTag: d5d5e78d-ad11-5da4-958a-7ab574276902
+		sourceColumn: miles_to_columbus_site
+
+	column specialists_per_100k
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 3d7a6351-df85-54ad-9edb-1ccf3a5ce7bc
+		sourceColumn: specialists_per_100k
+
+	column infusion_billers_per_100k
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e41c5621-998a-5082-bd29-7774b7e997ec
+		sourceColumn: infusion_billers_per_100k
+
+	column infusion_admins_per_1k_ffs
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 082c9a1d-4509-5f3a-b475-8fe8504e3b2d
+		sourceColumn: infusion_admins_per_1k_ffs
+
+	column eligible
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 4a0dabb5-0450-55ef-9b6a-eb68e7497b34
+		sourceColumn: eligible
+
+	column cannibalization_flag
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: c8d64456-447f-544e-93ff-dd9437fccc92
+		sourceColumn: cannibalization_flag
+
+	column score
+		dataType: double
+		summarizeBy: sum
+		lineageTag: b7ab0ef6-4deb-5c29-9194-42f937805392
+		sourceColumn: score
+
+	column rank
+		dataType: double
+		summarizeBy: none
+		lineageTag: 341e055f-8b0e-5c99-927f-70130ac6f7df
+		sourceColumn: rank
+
+	column p_top10
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 064ce34a-91cb-5525-922a-f5fe1767d2fd
+		sourceColumn: p_top10
+
+	column median_rank_random_weights
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 78470548-ebbf-5ad7-a757-86655fc223b1
+		sourceColumn: median_rank_random_weights
+
+	column z_market_size
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 8f9c3fc0-8ef5-5f93-9463-7b46f1354a72
+		sourceColumn: z_market_size
+
+	column z_medicare_ffs
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 8beb7a6e-bf11-5995-a8e0-0665caf066cf
+		sourceColumn: z_medicare_ffs
+
+	column z_specialist_gap
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 3be5992d-1656-535a-8a5c-1eada63c7261
+		sourceColumn: z_specialist_gap
+
+	column z_infusion_gap
+		dataType: double
+		summarizeBy: sum
+		lineageTag: f176a754-ceaa-5b56-8179-1fc240638557
+		sourceColumn: z_infusion_gap
+
+	partition dim_market = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_market.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"market_id", type text}, {"market_name", type text}, {"market_type", type text}, {"population", type number}, {"pop_18plus", type number}, {"pop_65plus", type number}, {"arthritis_adults", type number}, {"medicare_benes", type number}, {"ffs_benes", type number}, {"specialists", Int64.Type}, {"rheumatologists", Int64.Type}, {"neurologists", Int64.Type}, {"infusion_billers", Int64.Type}, {"infusion_admins", type number}, {"has_site", type logical}, {"n_counties", Int64.Type}, {"partial_market", type logical}, {"states", type text}, {"lat", type number}, {"lon", type number}, {"miles_to_columbus_site", type number}, {"specialists_per_100k", type number}, {"infusion_billers_per_100k", type number}, {"infusion_admins_per_1k_ffs", type number}, {"eligible", type logical}, {"cannibalization_flag", type logical}, {"score", type number}, {"rank", type number}, {"p_top10", type number}, {"median_rank_random_weights", type number}, {"z_market_size", type number}, {"z_medicare_ffs", type number}, {"z_specialist_gap", type number}, {"z_infusion_gap", type number}}, "en-US")
+				in
+				    Typed
+

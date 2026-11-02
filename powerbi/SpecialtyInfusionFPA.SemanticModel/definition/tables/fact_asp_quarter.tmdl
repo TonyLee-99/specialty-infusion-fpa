@@ -1,0 +1,97 @@
+table fact_asp_quarter
+	lineageTag: b21e02e8-1bee-568a-a175-4b3935bb06ba
+
+	/// Catalog HCPCS with a published Medicare payment limit in the latest ASP quarter.
+	measure 'Drugs Priced Latest Quarter' = VAR q = MAX ( fact_asp_quarter[quarter_start] ) RETURN CALCULATE ( DISTINCTCOUNT ( fact_asp_quarter[hcpcs] ), fact_asp_quarter[quarter_start] = q )
+		formatString: #,##0
+		displayFolder: Pricing
+		lineageTag: 5c5c75ca-7112-5e87-9356-cf991564c4f4
+
+	/// Median of payment limit / current-quarter ASP - 1: what the 2-quarter ASP lag pays above today's price.
+	measure 'Median Lag Spread %' = MEDIAN ( fact_asp_quarter[lag_spread_pct] )
+		formatString: 0.0%
+		displayFolder: Pricing
+		lineageTag: ccb6e8d2-011a-579f-8c4e-dc20a3b71d26
+
+	/// Share of drug-quarters where Medicare paid less than the current ASP (rising prices outran the lag).
+	measure 'Underwater Quarter Share' = DIVIDE ( COUNTROWS ( FILTER ( fact_asp_quarter, fact_asp_quarter[lag_spread_pct] < 0 ) ), COUNTROWS ( FILTER ( fact_asp_quarter, NOT ISBLANK ( fact_asp_quarter[lag_spread_pct] ) ) ) )
+		formatString: 0.0%
+		displayFolder: Pricing
+		lineageTag: 54d5cbe6-3ac4-5148-b258-02d7ab047d29
+
+	/// Catalog biosimilars paid at ASP + 8% of reference ASP (IRA s.11403) in the latest quarter.
+	measure 'IRA 8pct Add-on Codes Latest' = VAR q = MAX ( fact_asp_quarter[quarter_start] ) RETURN CALCULATE ( COUNTROWS ( fact_asp_quarter ), fact_asp_quarter[quarter_start] = q, fact_asp_quarter[flag_addon_8pct] = TRUE () )
+		formatString: #,##0
+		displayFolder: Pricing
+		lineageTag: e9910be9-bbcc-51b8-b569-abdeb0af6123
+
+	column payment_quarter
+		dataType: string
+		summarizeBy: none
+		lineageTag: b666c353-84e2-5cf5-9491-1ef309e4f2bf
+		sourceColumn: payment_quarter
+
+	column quarter_start
+		dataType: dateTime
+		summarizeBy: none
+		lineageTag: 437bc7c0-f7a0-5488-91d5-fde952a59942
+		sourceColumn: quarter_start
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: 4149afe8-3d95-5eea-82ac-f0cbc1cf0034
+		sourceColumn: hcpcs
+
+	column payment_limit
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 9bbd521e-71f3-517c-aa8c-6573c5790ce0
+		sourceColumn: payment_limit
+
+	column addon_pct
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 26254697-330b-52fe-b514-8793d45b6ea2
+		sourceColumn: addon_pct
+
+	column asp_basis
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 8fc1b7bc-732f-56ba-b026-90bddf2b1255
+		sourceColumn: asp_basis
+
+	column asp_current
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 31f4ea21-ecbb-507b-871a-94567772b7f8
+		sourceColumn: asp_current
+
+	column lag_spread
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 91813678-6586-5590-9356-c76adc78c38d
+		sourceColumn: lag_spread
+
+	column lag_spread_pct
+		dataType: double
+		summarizeBy: sum
+		lineageTag: b7aa0ccc-aa09-52ee-8580-f9b7c3a6847a
+		sourceColumn: lag_spread_pct
+
+	column flag_addon_8pct
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 5e3622f6-5e63-5309-8818-82aa410a6c69
+		sourceColumn: flag_addon_8pct
+
+	partition fact_asp_quarter = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_asp_quarter.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"payment_quarter", type text}, {"quarter_start", type date}, {"hcpcs", type text}, {"payment_limit", type number}, {"addon_pct", type number}, {"asp_basis", type number}, {"asp_current", type number}, {"lag_spread", type number}, {"lag_spread_pct", type number}, {"flag_addon_8pct", type logical}}, "en-US")
+				in
+				    Typed
+

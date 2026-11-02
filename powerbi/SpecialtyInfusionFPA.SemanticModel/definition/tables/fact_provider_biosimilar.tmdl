@@ -1,0 +1,73 @@
+table fact_provider_biosimilar
+	lineageTag: 3adaaa5e-fffd-5cca-895d-61781e97a084
+
+	column npi
+		dataType: string
+		summarizeBy: none
+		lineageTag: fd67ab8f-e6d3-55bb-be5c-4ded5fdd2dca
+		sourceColumn: npi
+
+	column provider_type
+		dataType: string
+		summarizeBy: none
+		lineageTag: de813d0e-2914-549f-a927-a608fd3bd334
+		sourceColumn: provider_type
+
+	column molecule
+		dataType: string
+		summarizeBy: none
+		lineageTag: 2d217bb3-4d75-58b4-b9f8-a9c7a2d9c4e8
+		sourceColumn: molecule
+
+	column bio_benes
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 13e142fd-4c49-5cb4-a1e3-7fa77208c6b6
+		sourceColumn: bio_benes
+
+	column ref_benes
+		dataType: double
+		summarizeBy: sum
+		lineageTag: b312e387-bffe-5478-8268-ecc484cb0179
+		sourceColumn: ref_benes
+
+	column censored
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 01f562ee-5025-5816-9bc3-e4fd79586495
+		sourceColumn: censored
+
+	column raw_rate
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e40511ff-d7a1-56a9-90f8-5a180ffb8192
+		sourceColumn: raw_rate
+
+	column post_mean
+		dataType: double
+		summarizeBy: sum
+		lineageTag: f0eb667b-793d-51fc-b0b4-13f79ce9a9a9
+		sourceColumn: post_mean
+
+	column ci_lo
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 43fa759b-4185-55e5-b2ef-71501563d5fd
+		sourceColumn: ci_lo
+
+	column ci_hi
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 02aa6b57-6142-5042-85ce-98b45ae20835
+		sourceColumn: ci_hi
+
+	partition fact_provider_biosimilar = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_provider_biosimilar.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"npi", type text}, {"provider_type", type text}, {"molecule", type text}, {"bio_benes", type number}, {"ref_benes", type number}, {"censored", type logical}, {"raw_rate", type number}, {"post_mean", type number}, {"ci_lo", type number}, {"ci_hi", type number}}, "en-US")
+				in
+				    Typed
+

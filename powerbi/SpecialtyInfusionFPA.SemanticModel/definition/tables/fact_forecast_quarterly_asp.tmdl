@@ -1,0 +1,55 @@
+table fact_forecast_quarterly_asp
+	lineageTag: bd6a63cb-42e3-57c0-a100-6c22b1be60bc
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: d806f8e5-c572-53c5-a699-1497de881bb0
+		sourceColumn: hcpcs
+
+	column quarter
+		dataType: string
+		summarizeBy: none
+		lineageTag: 9506e54f-1b1c-57b4-b0d8-3a8dce191ce3
+		sourceColumn: quarter
+
+	column model
+		dataType: string
+		summarizeBy: none
+		lineageTag: 5edb08b5-2410-52f5-a1e4-e0856e78691f
+		sourceColumn: model
+
+	column forecast
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 6e8ab6c1-8a3d-5694-887f-96018ae4dccf
+		sourceColumn: forecast
+
+	column lo80
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 0d779ff3-e1a2-5b91-b8d5-fb6a36ea0558
+		sourceColumn: lo80
+
+	column hi80
+		dataType: double
+		summarizeBy: sum
+		lineageTag: f8ab472b-edab-5a00-8349-4d2e49a251f1
+		sourceColumn: hi80
+
+	column last_actual_2026Q4
+		dataType: double
+		summarizeBy: sum
+		lineageTag: f2da44a7-380c-5b3b-885f-18bb0daad0fb
+		sourceColumn: last_actual_2026Q4
+
+	partition fact_forecast_quarterly_asp = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_forecast_quarterly_asp.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"hcpcs", type text}, {"quarter", type text}, {"model", type text}, {"forecast", type number}, {"lo80", type number}, {"hi80", type number}, {"last_actual_2026Q4", type number}}, "en-US")
+				in
+				    Typed
+
