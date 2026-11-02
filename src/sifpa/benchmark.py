@@ -162,10 +162,10 @@ def main() -> None:
             "drug_share_pctile", "infusion_share_pctile", "biosimilar_rate_shrunk", "biosimilar_ci_lo",
             "biosimilar_ci_hi", "biosimilar_censored", "biosimilar_molecules", "biosimilar_rate_pctile",
             "biosimilar_vs_peer", "risk"]
-    sc[keep].round(4).to_csv(EXPORTS / "fact_provider_scorecard.csv", index=False)
+    sc[keep].sort_values("npi").round(4).to_csv(EXPORTS / "fact_provider_scorecard.csv", index=False)
     bio_out = bio[["npi", "provider_type", "molecule", "bio_benes", "ref_benes", "censored", "raw_rate",
                    "post_mean", "ci_lo", "ci_hi"]]
-    bio_out.round(4).to_csv(EXPORTS / "fact_provider_biosimilar.csv", index=False)
+    bio_out.sort_values(["npi", "molecule"]).round(4).to_csv(EXPORTS / "fact_provider_biosimilar.csv", index=False)
 
     # shrinkage evidence: spread of raw vs shrunk rates among small-n, uncensored providers
     clean = bio[~bio["censored"]]

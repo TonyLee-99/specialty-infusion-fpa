@@ -139,10 +139,11 @@ def main() -> None:
     counties = county_frame(con)
     site = counties[counties["county_fips"] == site_fips].iloc[0]
     markets, m_stats = score(to_markets(counties, site_fips), cfg, site["lat"], site["lon"], rng)
-    markets.round(4).to_csv(EXPORTS / "dim_market.csv", index=False)
+    markets.sort_values("market_id").round(4).to_csv(EXPORTS / "dim_market.csv", index=False)
     counties_scored, c_stats = score(counties.assign(has_site=counties["county_fips"] == site_fips), cfg,
                                      site["lat"], site["lon"], rng)
-    counties_scored.drop(columns=["has_site"]).round(4).to_csv(EXPORTS / "dim_county_market.csv", index=False)
+    counties_scored.drop(columns=["has_site"]).sort_values("county_fips").round(4).to_csv(
+        EXPORTS / "dim_county_market.csv", index=False)
     df, w = counties_scored, cfg["weights"]["value"]
     el = df[df["eligible"]]
     ranked = el.sort_values("rank")

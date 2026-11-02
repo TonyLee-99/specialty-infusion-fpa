@@ -246,6 +246,9 @@ def main() -> None:
     ], start=1):
         readme.cell(row=i, column=1, value=line)
     XLSX.parent.mkdir(exist_ok=True)
+    # fixed document timestamps so a rebuild with unchanged inputs gives an identical file
+    import datetime as _dt
+    wb.properties.created = wb.properties.modified = _dt.datetime(2026, 11, 2)
     wb.save(XLSX)
 
     n_formulas = sum(1 for ws in wb.worksheets for row in ws.iter_rows() for c in row
