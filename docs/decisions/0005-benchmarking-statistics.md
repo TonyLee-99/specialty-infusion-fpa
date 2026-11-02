@@ -1,0 +1,31 @@
+# 0005. Benchmarking: suppression-aware, shrunk rates, no names
+
+Date: 2026-11-02. Status: accepted.
+
+## Context
+Raw percentile ranks of small-n providers are dominated by noise. A provider with 12 beneficiaries and
+a 100% biosimilar rate is not a "top performer". CMS also removes any provider x HCPCS row with fewer
+than 11 beneficiaries, which censors the data in a biased direction.
+
+## Decision
+1. **Unit** = rendering NPI, peers = same `Rndrng_Prvdr_Type`. Scope = the 7-state region, with the
+   national distribution as context.
+2. **Biosimilar adoption rate** per multi-source molecule (infliximab, rituximab, tocilizumab,
+   natalizumab) = biosimilar beneficiaries / all beneficiaries on that molecule. It is shrunk with
+   **empirical-Bayes beta-binomial** (method-of-moments prior per molecule from the peer set):
+   posterior mean = (x + a) / (n + a + b), plus 90% credible interval.
+3. **Censoring rule**: a provider's molecule rate is only scored when the provider has a visible row
+   for that molecule (n >= 11 on at least one code). A missing biosimilar row could mean 0 or 1-10
+   beneficiaries. I report how many providers fall in that ambiguous state, and I do not treat it as
+   zero.
+4. **Continuous KPIs** (Medicare allowed per beneficiary, services per beneficiary, infusion share of
+   allowed) are ranked within specialty. Payment per beneficiary is also shown divided by the
+   provider's average HCC risk score.
+5. **We do not publish any derived cell built from fewer than 11 beneficiaries**, mirroring CMS policy.
+   A test enforces this on the exported scorecard.
+6. **No names**. Exports carry NPI, specialty, state and county only. The HTML scorecard shows
+   distributions and an anonymised sample.
+
+## Consequences
+Ranks come with intervals. The scorecard labels a provider "above peer" only when its 90% interval
+clears the peer median.

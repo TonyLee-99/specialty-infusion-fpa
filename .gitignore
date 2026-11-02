@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+data/
+!data/.gitkeep
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+logs/
+.DS_Store
+tests/fixtures/*.duckdb
+*.duckdb.wal
+~$*.xlsx
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf

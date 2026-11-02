@@ -1,0 +1,39 @@
+[project]
+name = "specialty-infusion-fpa"
+version = "0.1.0"
+description = "In-office infusion FP&A for a specialty inflammatory-disease practice: CMS data model, margin drivers, forecasts, scenarios, benchmarking, white-space, Power BI (PBIP/TMDL)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "dbt-core==1.12.6",
+    "dbt-duckdb==1.11.1",
+    "duckdb==2.0.0",
+    "matplotlib",
+    "numpy==2.5.4",
+    "openpyxl",
+    "pandas==3.1.0",
+    "playwright==1.64.1",
+    "pyarrow==26.0.0",
+    "pytest==9.2.0",
+    "pyyaml==6.0.3",
+    "requests",
+    "ruff==0.17.3",
+    "scipy",
+    "statsmodels==0.15.0",
+    "xlrd",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["dbt/target", "dbt/dbt_packages", ".venv", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

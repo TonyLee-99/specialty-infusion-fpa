@@ -1,0 +1,20 @@
+# Offline gate: lint, tests on committed outputs/fixtures, dbt on the fixture warehouse,
+# feature regression check. No network pulls in CI (make reproduce is run locally / monthly).
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Pinned Python 3.12 env
+        run: |
+          uv venv --python 3.12 .venv
+          uv sync --frozen
+      - name: make check
+        run: make check
