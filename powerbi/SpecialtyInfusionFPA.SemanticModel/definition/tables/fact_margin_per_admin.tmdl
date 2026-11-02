@@ -1,89 +1,89 @@
 table fact_margin_per_admin
 	lineageTag: daab91a1-f166-5fb3-b792-749a1b0259e1
 
-	/// Mix-weighted Medicare FFS contribution per chair infusion (drug margin + admin fee - chair cost), 2026Q4 prices.
-	measure 'Medicare Contribution per Admin' = DIVIDE ( SUMX ( fact_margin_per_admin, fact_margin_per_admin[mix_share] * fact_margin_per_admin[contribution_medicare_ffs] ), SUM ( fact_margin_per_admin[mix_share] ) )
-		formatString: \$#,##0
-		displayFolder: Margin
-		lineageTag: 9b0e7bd4-41a8-5ef0-9fe9-60f6d2b74b5d
-
-	/// Mix-weighted commercial contribution per chair infusion under the ASSUMED commercial contract (ASP + markup).
-	measure 'Commercial Contribution per Admin' = DIVIDE ( SUMX ( fact_margin_per_admin, fact_margin_per_admin[mix_share] * fact_margin_per_admin[contribution_commercial] ), SUM ( fact_margin_per_admin[mix_share] ) )
-		formatString: \$#,##0
-		displayFolder: Margin
-		lineageTag: 0c6f7260-449a-5f89-9bed-534c8da089b5
-
-	/// Medicare FFS drug margin as % of collected drug revenue (ASP+6% after sequestration and coinsurance bad debt).
-	measure 'Medicare Drug Margin %' = DIVIDE ( SUMX ( fact_margin_per_admin, fact_margin_per_admin[mix_share] * fact_margin_per_admin[drug_margin_medicare_ffs] ), SUMX ( fact_margin_per_admin, fact_margin_per_admin[mix_share] * fact_margin_per_admin[drug_collected_medicare] ) )
-		formatString: 0.0%
-		displayFolder: Margin
-		lineageTag: 80b08153-9fbf-517b-abc0-ecb30fb8c492
-
 	column hcpcs
 		dataType: string
 		summarizeBy: none
-		lineageTag: fb6ea591-01d0-5d83-83cb-93e795cd2b68
+		lineageTag: c6eed0ef-c222-51a2-b957-258cae0e8e16
 		sourceColumn: hcpcs
 
 	column molecule
 		dataType: string
 		summarizeBy: none
-		lineageTag: ba5d8b41-e77b-52be-89e8-5ec95b218fb6
+		lineageTag: 1c96a057-83a3-5d83-8113-4d8389d1aa49
 		sourceColumn: molecule
 
 	column brand
 		dataType: string
 		summarizeBy: none
-		lineageTag: 1d2870e1-dcde-5143-ae85-50538b4e81a8
+		lineageTag: 2e92ada6-98e6-56db-b774-e06e657779d5
 		sourceColumn: brand
 
 	column product_type
 		dataType: string
 		summarizeBy: none
-		lineageTag: 47413eab-ff02-5060-8263-4bff28803831
+		lineageTag: fb6ea591-01d0-5d83-83cb-93e795cd2b68
 		sourceColumn: product_type
 
 	column admin_family
 		dataType: string
 		summarizeBy: none
-		lineageTag: ea7b7e30-f764-54c3-8e37-9ad3ddf67efc
+		lineageTag: ba5d8b41-e77b-52be-89e8-5ec95b218fb6
 		sourceColumn: admin_family
+
+	column formulary_listed
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 1d2870e1-dcde-5143-ae85-50538b4e81a8
+		sourceColumn: formulary_listed
 
 	column units_per_admin
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 1a4fecaf-fd2e-5a4f-ae42-27c3561a94b7
+		lineageTag: 47413eab-ff02-5060-8263-4bff28803831
 		sourceColumn: units_per_admin
 
 	column dose_mg
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 8bd35da3-9833-56d6-8408-994a2bc1ee35
+		lineageTag: ea7b7e30-f764-54c3-8e37-9ad3ddf67efc
 		sourceColumn: dose_mg
 
-	column payment_limit
+	column admins_per_patient_year
+		dataType: double
+		summarizeBy: none
+		lineageTag: 1a4fecaf-fd2e-5a4f-ae42-27c3561a94b7
+		sourceColumn: admins_per_patient_year
+
+	column pl_2027
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 8bd35da3-9833-56d6-8408-994a2bc1ee35
+		sourceColumn: pl_2027
+
+	column pay_asp_2027
 		dataType: double
 		summarizeBy: sum
 		lineageTag: ccf848dc-af7a-55a0-bf16-de3a01429e42
-		sourceColumn: payment_limit
+		sourceColumn: pay_asp_2027
 
-	column asp_basis
+	column buy_asp_2027
 		dataType: double
 		summarizeBy: sum
 		lineageTag: 5b4a5298-011e-5505-9676-b1b49a09240b
-		sourceColumn: asp_basis
+		sourceColumn: buy_asp_2027
+
+	column flag_lesser_of
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 67ded583-fca9-5a40-b157-02e7ff6e8ece
+		sourceColumn: flag_lesser_of
 
 	column asp_estimated
 		dataType: boolean
 		summarizeBy: none
-		lineageTag: 67ded583-fca9-5a40-b157-02e7ff6e8ece
-		sourceColumn: asp_estimated
-
-	column addon_pct
-		dataType: double
-		summarizeBy: sum
 		lineageTag: 1ce81468-48c4-5c41-a3ad-fb7324773b66
-		sourceColumn: addon_pct
+		sourceColumn: asp_estimated
 
 	column admin_hours
 		dataType: double
@@ -97,76 +97,124 @@ table fact_margin_per_admin
 		lineageTag: 9fc3c9fb-dd61-5899-9e70-156d69b72880
 		sourceColumn: chair_hours
 
-	column drug_allowed_medicare
+	column admin_allowed_medicare
 		dataType: double
 		summarizeBy: sum
 		lineageTag: c5521565-a233-5664-8094-c9fe3b0b60ba
-		sourceColumn: drug_allowed_medicare
-
-	column drug_collected_medicare
-		dataType: double
-		summarizeBy: sum
-		lineageTag: 57a1b5ab-9e1f-5559-89ad-c81b439f7c72
-		sourceColumn: drug_collected_medicare
+		sourceColumn: admin_allowed_medicare
 
 	column acquisition_cost
 		dataType: double
 		summarizeBy: sum
-		lineageTag: ee591fb2-aa53-5802-8c49-1986887a97eb
+		lineageTag: 57a1b5ab-9e1f-5559-89ad-c81b439f7c72
 		sourceColumn: acquisition_cost
+
+	column variable_cost
+		dataType: double
+		summarizeBy: sum
+		lineageTag: ee591fb2-aa53-5802-8c49-1986887a97eb
+		sourceColumn: variable_cost
+
+	column drug_revenue_medicare_ffs
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 9e3a6ae3-c5ac-5abc-ae36-fb4b6019a945
+		sourceColumn: drug_revenue_medicare_ffs
+
+	column admin_revenue_medicare_ffs
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 6c1d1d08-04ce-506a-a1da-32a2d4039130
+		sourceColumn: admin_revenue_medicare_ffs
 
 	column drug_margin_medicare_ffs
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 9e3a6ae3-c5ac-5abc-ae36-fb4b6019a945
-		sourceColumn: drug_margin_medicare_ffs
-
-	column admin_allowed_medicare
-		dataType: double
-		summarizeBy: sum
-		lineageTag: 6c1d1d08-04ce-506a-a1da-32a2d4039130
-		sourceColumn: admin_allowed_medicare
-
-	column admin_collected_medicare
-		dataType: double
-		summarizeBy: sum
 		lineageTag: bba6c427-9a8c-5b77-855c-22a6a8b99445
-		sourceColumn: admin_collected_medicare
-
-	column chair_cost
-		dataType: double
-		summarizeBy: sum
-		lineageTag: f6b17271-8884-5ed9-bfb6-d12e01bb4eb9
-		sourceColumn: chair_cost
+		sourceColumn: drug_margin_medicare_ffs
 
 	column contribution_medicare_ffs
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 9eb5959c-a4f1-544f-a34a-f76b88d6b1f9
+		lineageTag: f6b17271-8884-5ed9-bfb6-d12e01bb4eb9
 		sourceColumn: contribution_medicare_ffs
+
+	column drug_revenue_medicare_adv
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 9eb5959c-a4f1-544f-a34a-f76b88d6b1f9
+		sourceColumn: drug_revenue_medicare_adv
+
+	column admin_revenue_medicare_adv
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 86142e2f-9a7e-51c8-8971-d71ddcd8426e
+		sourceColumn: admin_revenue_medicare_adv
+
+	column drug_margin_medicare_adv
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e1fa8b40-0515-5756-be2d-9757b12a924f
+		sourceColumn: drug_margin_medicare_adv
+
+	column contribution_medicare_adv
+		dataType: double
+		summarizeBy: sum
+		lineageTag: f6bf5c3f-f040-59b0-aed4-5a0b1540c1a0
+		sourceColumn: contribution_medicare_adv
+
+	column drug_revenue_commercial
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 481ecbf7-f034-5838-91b3-03a2f3409f0c
+		sourceColumn: drug_revenue_commercial
+
+	column admin_revenue_commercial
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e2d60d29-72e3-5f29-9f5b-a41da73e509b
+		sourceColumn: admin_revenue_commercial
 
 	column drug_margin_commercial
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 86142e2f-9a7e-51c8-8971-d71ddcd8426e
+		lineageTag: f135a957-b44e-57d0-903d-72dcf0d6cead
 		sourceColumn: drug_margin_commercial
 
 	column contribution_commercial
 		dataType: double
 		summarizeBy: sum
-		lineageTag: e1fa8b40-0515-5756-be2d-9757b12a924f
+		lineageTag: 9ce7a221-7d9e-5885-bf8e-7ce78f94fd6e
 		sourceColumn: contribution_commercial
+
+	column drug_revenue_medicaid
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 37bcca0d-c46a-50a7-ac44-98dd968b58ad
+		sourceColumn: drug_revenue_medicaid
+
+	column admin_revenue_medicaid
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 8dd5cf28-78e4-5e2a-91e5-6f81a31ab625
+		sourceColumn: admin_revenue_medicaid
+
+	column drug_margin_medicaid
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 47c7c9c6-6314-5c05-a7aa-aa060ae5c908
+		sourceColumn: drug_margin_medicaid
 
 	column contribution_medicaid
 		dataType: double
 		summarizeBy: sum
-		lineageTag: f6bf5c3f-f040-59b0-aed4-5a0b1540c1a0
+		lineageTag: 7833ca89-0977-52e3-a06c-ba42acac5e83
 		sourceColumn: contribution_medicaid
 
 	column mix_share
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 481ecbf7-f034-5838-91b3-03a2f3409f0c
+		lineageTag: 2e86f874-9f97-581e-8bd1-41e75efd2f4b
 		sourceColumn: mix_share
 
 	partition fact_margin_per_admin = m
@@ -175,7 +223,7 @@ table fact_margin_per_admin
 				let
 				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_margin_per_admin.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    Typed = Table.TransformColumnTypes(Promoted, {{"hcpcs", type text}, {"molecule", type text}, {"brand", type text}, {"product_type", type text}, {"admin_family", type text}, {"units_per_admin", type number}, {"dose_mg", type number}, {"payment_limit", type number}, {"asp_basis", type number}, {"asp_estimated", type logical}, {"addon_pct", type number}, {"admin_hours", type number}, {"chair_hours", type number}, {"drug_allowed_medicare", type number}, {"drug_collected_medicare", type number}, {"acquisition_cost", type number}, {"drug_margin_medicare_ffs", type number}, {"admin_allowed_medicare", type number}, {"admin_collected_medicare", type number}, {"chair_cost", type number}, {"contribution_medicare_ffs", type number}, {"drug_margin_commercial", type number}, {"contribution_commercial", type number}, {"contribution_medicaid", type number}, {"mix_share", type number}}, "en-US")
+				    Typed = Table.TransformColumnTypes(Promoted, {{"hcpcs", type text}, {"molecule", type text}, {"brand", type text}, {"product_type", type text}, {"admin_family", type text}, {"formulary_listed", type logical}, {"units_per_admin", type number}, {"dose_mg", type number}, {"admins_per_patient_year", type number}, {"pl_2027", type number}, {"pay_asp_2027", type number}, {"buy_asp_2027", type number}, {"flag_lesser_of", type logical}, {"asp_estimated", type logical}, {"admin_hours", type number}, {"chair_hours", type number}, {"admin_allowed_medicare", type number}, {"acquisition_cost", type number}, {"variable_cost", type number}, {"drug_revenue_medicare_ffs", type number}, {"admin_revenue_medicare_ffs", type number}, {"drug_margin_medicare_ffs", type number}, {"contribution_medicare_ffs", type number}, {"drug_revenue_medicare_adv", type number}, {"admin_revenue_medicare_adv", type number}, {"drug_margin_medicare_adv", type number}, {"contribution_medicare_adv", type number}, {"drug_revenue_commercial", type number}, {"admin_revenue_commercial", type number}, {"drug_margin_commercial", type number}, {"contribution_commercial", type number}, {"drug_revenue_medicaid", type number}, {"admin_revenue_medicaid", type number}, {"drug_margin_medicaid", type number}, {"contribution_medicaid", type number}, {"mix_share", type number}}, "en-US")
 				in
 				    Typed
 

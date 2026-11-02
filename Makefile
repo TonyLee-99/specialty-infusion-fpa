@@ -6,7 +6,7 @@ DBT   := cd dbt && ../.venv/bin/dbt
 export DBT_PROFILES_DIR := $(CURDIR)/dbt
 
 .PHONY: init check lint test dbt-ci verify reproduce ingest dbt fixtures analyses margin forecast \
-        scenarios excel benchmark market rcm exports pbi kpis memo scorecard screenshots readme dq \
+        scenarios excel benchmark market rcm variance exports pbi kpis pbi-guide memo scorecard screenshots readme dq \
         monthly-pack clean
 
 init:             ## fresh clone -> working env (venv, pinned deps, browser for screenshots)
@@ -28,7 +28,7 @@ verify:           ## the ONLY writer of feature_list.json state/evidence
 	$(PY) scripts/verify_features.py
 
 # ---------- full rebuild from public sources ----------
-reproduce: ingest dbt fixtures analyses exports pbi kpis excel memo scorecard screenshots readme dq test
+reproduce: ingest dbt fixtures analyses exports pbi kpis pbi-guide excel memo scorecard screenshots readme dq test
 	@echo "make reproduce: OK"
 
 ingest:           ## filtered CMS / CDC / Census pulls -> data/raw/*.parquet + data_manifest.json
@@ -41,7 +41,7 @@ dbt:              ## dbt build on the full warehouse (data/warehouse.duckdb) -> 
 fixtures:         ## small slice of raw data for offline CI dbt runs (tests/fixtures/raw)
 	$(PY) -m sifpa.fixtures
 
-analyses: margin forecast scenarios benchmark market rcm
+analyses: forecast margin scenarios benchmark market rcm variance
 
 margin:
 	$(PY) -m sifpa.margin
@@ -53,6 +53,8 @@ benchmark:
 	$(PY) -m sifpa.benchmark
 market:
 	$(PY) -m sifpa.market
+variance:         ## budget (plan by site/month) vs SYNTHETIC actuals: volume/mix/rate bridge
+	$(PY) -m sifpa.variance
 rcm:              ## SYNTHETIC revenue-cycle method demo
 	$(PY) -m sifpa.rcm.generate
 	$(PY) -m sifpa.rcm.kpis
@@ -63,6 +65,8 @@ pbi:              ## PBIP + TMDL semantic model over exports/ (+ SQL twins in sq
 	$(PY) -m sifpa.pbi
 kpis:             ## SQL twins of the DAX measures -> outputs/kpis.json
 	$(PY) -m sifpa.kpis
+pbi-guide:        ## docs/powerbi_build_guide.md with expected numbers per visual
+	$(PY) -m sifpa.pbi_guide
 excel:            ## scenario workbook with live formulas (+ LibreOffice recalculation check)
 	$(PY) -m sifpa.excel_workbook
 memo:

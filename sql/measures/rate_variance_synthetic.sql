@@ -1,0 +1,2 @@
+-- SQL twin of DAX measure [Rate Variance (SYNTHETIC)] (table fact_actual_month_SYNTHETIC); context: site S1, months closed; DuckDB over exports/*.csv
+with b as (select item_key, sum(admins) bi, sum(contribution) bc from fact_plan_month where site_id = 'S1' and month_start <= (select max(month_start) from fact_actual_month_SYNTHETIC) group by 1), a as (select item_key, sum(admins) ai, sum(contribution) ac from fact_actual_month_SYNTHETIC where site_id = 'S1' group by 1) select sum(a.ai * (a.ac / a.ai - coalesce(b.bc / b.bi, 0))) from a left join b using (item_key)

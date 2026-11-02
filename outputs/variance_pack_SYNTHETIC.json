@@ -1,0 +1,93 @@
+{
+  "data_label": "SYNTHETIC actuals (method demo); budget = 2027 plan model",
+  "months_closed": [
+    "2027-01-01",
+    "2027-02-01",
+    "2027-03-01"
+  ],
+  "latest_month": "2027-03-01",
+  "budget_contribution_full_year": 5985794,
+  "by_site_month": [
+    {
+      "site_id": "S1",
+      "month_start": "2027-01-01",
+      "budget": 318095.84,
+      "actual": 303388.01,
+      "volume": -6650.53,
+      "mix": -7502.2,
+      "rate": -555.11,
+      "variance": -14707.84
+    },
+    {
+      "site_id": "S1",
+      "month_start": "2027-02-01",
+      "budget": 302948.42,
+      "actual": 284480.73,
+      "volume": -10912.52,
+      "mix": -7034.66,
+      "rate": -520.52,
+      "variance": -18467.69
+    },
+    {
+      "site_id": "S1",
+      "month_start": "2027-03-01",
+      "budget": 348390.69,
+      "actual": 308171.12,
+      "volume": -32035.22,
+      "mix": -7620.47,
+      "rate": -563.86,
+      "variance": -40219.56
+    },
+    {
+      "site_id": "S2",
+      "month_start": "2027-01-01",
+      "budget": 163519.76,
+      "actual": 128116.81,
+      "volume": -31504.11,
+      "mix": -3456.81,
+      "rate": -442.02,
+      "variance": -35402.95
+    },
+    {
+      "site_id": "S2",
+      "month_start": "2027-02-01",
+      "budget": 155733.1,
+      "actual": 161682.53,
+      "volume": 10869.73,
+      "mix": -4362.48,
+      "rate": -557.83,
+      "variance": 5949.43
+    },
+    {
+      "site_id": "S2",
+      "month_start": "2027-03-01",
+      "budget": 179093.07,
+      "actual": 162966.51,
+      "volume": -11167.18,
+      "mix": -4397.12,
+      "rate": -562.26,
+      "variance": -16126.56
+    }
+  ],
+  "by_site_ytd": [
+    {
+      "site_id": "S1",
+      "budget": 969434.95,
+      "actual": 896039.86,
+      "volume": -49598.27,
+      "mix": -22157.33,
+      "rate": -1639.49,
+      "variance": -73395.09
+    },
+    {
+      "site_id": "S2",
+      "budget": 498345.94,
+      "actual": 452765.85,
+      "volume": -31801.57,
+      "mix": -12216.41,
+      "rate": -1562.11,
+      "variance": -45580.08
+    }
+  ],
+  "identity_max_abs_error": 9.458744898438454e-11
+}

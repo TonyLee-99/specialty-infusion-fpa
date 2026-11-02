@@ -19,9 +19,10 @@ NAME = "SpecialtyInfusionFPA"
 SM = PBI / f"{NAME}.SemanticModel"
 DEF = SM / "definition"
 SQL_DIR = ROOT / "sql" / "measures"
-DATE_COLS = {"quarter_start", "date", "service_date", "submit_date", "remit_date"}
+DATE_COLS = {"quarter_start", "date", "service_date", "submit_date", "remit_date", "month_start"}
 TEXT_COLS = {"hcpcs", "npi", "county_fips", "market_id", "fips", "claim_id", "patient_id", "carc_code",
-             "reference_hcpcs", "payment_quarter", "quarter_label", "zip5", "origin", "target", "quarter"}
+             "reference_hcpcs", "payment_quarter", "quarter_label", "zip5", "origin", "target", "quarter",
+             "item_key", "site_id", "payer", "basis_quarter"}
 
 RELATIONSHIPS = [  # (from table.column [many side], to table.column [one side])
     ("fact_asp_quarter", "hcpcs", "dim_drug", "hcpcs"),
@@ -32,7 +33,16 @@ RELATIONSHIPS = [  # (from table.column [many side], to table.column [one side])
     ("fact_provider_scorecard", "npi", "dim_provider", "npi"),
     ("fact_provider_biosimilar", "npi", "dim_provider", "npi"),
     ("fact_margin_per_admin", "hcpcs", "dim_drug", "hcpcs"),
-    ("fact_forecast_quarterly_asp", "hcpcs", "dim_drug", "hcpcs"),
+    ("fact_price_path", "hcpcs", "dim_drug", "hcpcs"),
+    ("fact_plan_month", "site_id", "dim_site", "site_id"),
+    ("fact_plan_month", "item_key", "dim_item", "item_key"),
+    ("fact_plan_month", "month_start", "dim_date", "date"),
+    ("fact_actual_month_SYNTHETIC", "site_id", "dim_site", "site_id"),
+    ("fact_actual_month_SYNTHETIC", "item_key", "dim_item", "item_key"),
+    ("fact_actual_month_SYNTHETIC", "month_start", "dim_date", "date"),
+    ("fact_fixed_month", "site_id", "dim_site", "site_id"),
+    ("fact_fixed_month", "month_start", "dim_date", "date"),
+    ("dim_item", "hcpcs", "dim_drug", "hcpcs"),
     ("dim_provider", "county_fips", "dim_county_market", "county_fips"),
     ("dim_county_market", "market_id", "dim_market", "market_id"),
     ("fact_rcm_remits_SYNTHETIC", "claim_id", "fact_rcm_claims_SYNTHETIC", "claim_id"),
@@ -66,8 +76,8 @@ def table_tmdl(name: str, df: pd.DataFrame, measures: list[tuple]) -> str:
         lines += [f"table {name}", "\tdataCategory: Time", f"\tlineageTag: {tag()}", ""]
     else:
         lines += [f"table {q(name)}", f"\tlineageTag: {tag()}", ""]
-    for _table, m_name, dax, folder, fmt, desc, _sql in measures:
-        lines += [f"\t/// {desc}", f"\tmeasure {q(m_name)} = {dax}", f"\t\tformatString: {fmt}",
+    for _table, m_name, dax, folder, fmt, desc, context, _sql in measures:
+        lines += [f"\t/// {desc} SQL twin context: {context}.", f"\tmeasure {q(m_name)} = {dax}", f"\t\tformatString: {fmt}",
                   f"\t\tdisplayFolder: {folder}", f"\t\tlineageTag: {tag()}", ""]
     types = []
     for col in df.columns:
@@ -123,21 +133,20 @@ def main() -> None:
     report.mkdir(exist_ok=True)
     (report / "definition.pbir").write_text(json.dumps(
         {"version": "4.0", "datasetReference": {"byPath": {"path": f"../{NAME}.SemanticModel"}}}, indent=2) + "\n")
-    pages = ["Executive summary", "Pricing & ASP lag", "Margin per infusion", "Forecast & 2027 scenarios",
-             "Provider benchmark", "Market white space", "RCM (SYNTHETIC)"]
+    pages = ["Budget vs actual (SYNTHETIC actuals)", "Margin & pricing", "Growth & benchmark"]
     (report / "report.json").write_text(json.dumps({
         "config": json.dumps({"version": "5.43"}),
         "layoutOptimization": 0,
         "sections": [{"name": f"page{i}", "displayName": p, "displayOption": 1, "width": 1280, "height": 720,
                       "visualContainers": []} for i, p in enumerate(pages)],
-        "note": "Page shells only. Visual layout is mirrored in docs/scorecard.html; build visuals in Desktop.",
+        "note": "Page shells only. Build the visuals by hand with docs/powerbi_build_guide.md (expected numbers included).",
     }, indent=2) + "\n")
     (PBI / f"{NAME}.pbip").write_text(json.dumps({
         "version": "1.0", "artifacts": [{"report": {"path": f"{NAME}.Report"}}],
         "settings": {"enableAutoRecovery": True}}, indent=2) + "\n")
     for m_table, m_name, *_rest, sql in MEASURES:
         (SQL_DIR / f"{slug(m_name)}.sql").write_text(
-            f"-- SQL twin of DAX measure [{m_name}] (table {m_table}); runs on DuckDB over exports/*.csv\n{sql}\n")
+            f"-- SQL twin of DAX measure [{m_name}] (table {m_table}); context: {_rest[-1]}; DuckDB over exports/*.csv\n{sql}\n")
     print(f"PBIP written: {len(tables)} tables, {len(MEASURES)} measures, {len(RELATIONSHIPS)} relationships")
 
 

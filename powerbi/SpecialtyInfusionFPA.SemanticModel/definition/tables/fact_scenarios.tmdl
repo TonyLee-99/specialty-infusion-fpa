@@ -1,40 +1,28 @@
 table fact_scenarios
 	lineageTag: 401bf114-084c-51af-9978-b3b0a136494f
 
-	/// CY2027 base-case annual contribution of the illustrative 12-chair suite.
-	measure 'Base Annual Contribution' = CALCULATE ( SUM ( fact_scenarios[value] ), fact_scenarios[scenario] = "base", fact_scenarios[metric] = "contribution" )
+	/// Annual contribution of the 12-chair suite; use fact_scenarios[scenario] as a slicer. SQL twin context: scenario = policy_2028.
+	measure 'Scenario Contribution' = CALCULATE ( SUM ( fact_scenarios[value] ), fact_scenarios[metric] = "contribution" )
 		formatString: \$#,##0
 		displayFolder: Scenarios
 		lineageTag: 837530dd-bc09-5f69-ae8c-0d01d1c32ac7
 
-	/// Change in annual contribution if multi-source molecules move to the target biosimilar share.
-	measure 'Biosimilar Push Delta' = CALCULATE ( SUM ( fact_scenarios[value] ), fact_scenarios[scenario] = "biosimilar_push", fact_scenarios[metric] = "contribution" ) - [Base Annual Contribution]
-		formatString: \$#,##0
-		displayFolder: Scenarios
-		lineageTag: 5b302245-f389-562a-aa99-94815ac8dd65
-
-	/// Change in annual contribution under MFP for Orencia/Entyvio plus commercial white bagging (2028 run-rate).
-	measure 'Policy Shock Delta' = CALCULATE ( SUM ( fact_scenarios[value] ), fact_scenarios[scenario] = "policy_shock", fact_scenarios[metric] = "contribution" ) - [Base Annual Contribution]
-		formatString: \$#,##0
-		displayFolder: Scenarios
-		lineageTag: cb03eeba-8530-5989-8442-02f1d9daf746
-
 	column scenario
 		dataType: string
 		summarizeBy: none
-		lineageTag: 363bc5d3-e0b2-55b3-9ace-f9c84e3a0b26
+		lineageTag: badaa79b-4b44-5e74-9d2f-1f45d2cf249d
 		sourceColumn: scenario
 
 	column metric
 		dataType: string
 		summarizeBy: none
-		lineageTag: f22ab600-8be2-557d-b133-acfc6ebd94a3
+		lineageTag: cf5be29a-f806-50bf-978b-f1f31cb51daf
 		sourceColumn: metric
 
 	column value
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 7f228961-76fc-58c5-b586-e3d398122310
+		lineageTag: 363bc5d3-e0b2-55b3-9ace-f9c84e3a0b26
 		sourceColumn: value
 
 	partition fact_scenarios = m

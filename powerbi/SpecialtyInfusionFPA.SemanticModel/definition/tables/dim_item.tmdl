@@ -1,0 +1,31 @@
+table dim_item
+	lineageTag: c3b34a3f-dc39-5c6a-b276-1e2aa055f61d
+
+	column item_key
+		dataType: string
+		summarizeBy: none
+		lineageTag: 687b09b1-e365-50aa-970f-b616d6b3ae5c
+		sourceColumn: item_key
+
+	column payer
+		dataType: string
+		summarizeBy: none
+		lineageTag: d0dc687f-e99b-5061-985d-b5c38a2dfcdb
+		sourceColumn: payer
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: 5c5332b2-0fbc-569d-ae9c-11ebc9a886aa
+		sourceColumn: hcpcs
+
+	partition dim_item = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_item.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"item_key", type text}, {"payer", type text}, {"hcpcs", type text}}, "en-US")
+				in
+				    Typed
+

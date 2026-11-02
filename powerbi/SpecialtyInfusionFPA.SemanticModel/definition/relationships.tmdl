@@ -30,8 +30,44 @@ relationship 28f8ff6b-90f8-5c6d-86e8-0c1a618e81d8
 	fromColumn: fact_margin_per_admin.hcpcs
 	toColumn: dim_drug.hcpcs
 
-relationship 711a3314-4d23-5019-9320-3f86d99d2461
-	fromColumn: fact_forecast_quarterly_asp.hcpcs
+relationship 7f974a7f-8a47-563d-a536-e00e136f4fff
+	fromColumn: fact_price_path.hcpcs
+	toColumn: dim_drug.hcpcs
+
+relationship affaf0e1-2df7-5542-990e-1bc569e154bb
+	fromColumn: fact_plan_month.site_id
+	toColumn: dim_site.site_id
+
+relationship af94a013-f9fa-53f5-a7a9-2068aa2201d0
+	fromColumn: fact_plan_month.item_key
+	toColumn: dim_item.item_key
+
+relationship d40d93ad-dcb3-51a1-9347-64909186d47b
+	fromColumn: fact_plan_month.month_start
+	toColumn: dim_date.date
+
+relationship 144ec84a-8062-574d-81e7-7acb5015cede
+	fromColumn: fact_actual_month_SYNTHETIC.site_id
+	toColumn: dim_site.site_id
+
+relationship 382fa04f-b876-5fe2-be35-02a214f0ced7
+	fromColumn: fact_actual_month_SYNTHETIC.item_key
+	toColumn: dim_item.item_key
+
+relationship 7c3e597b-da92-5e7e-b317-03e9bd8be9d5
+	fromColumn: fact_actual_month_SYNTHETIC.month_start
+	toColumn: dim_date.date
+
+relationship a285271f-5c18-52b8-9e16-242a6fc3ee3d
+	fromColumn: fact_fixed_month.site_id
+	toColumn: dim_site.site_id
+
+relationship 288da1c9-c38e-56ce-af5f-ca097428fffc
+	fromColumn: fact_fixed_month.month_start
+	toColumn: dim_date.date
+
+relationship 01fed04d-f409-55cd-b7fc-b8443ee02710
+	fromColumn: dim_item.hcpcs
 	toColumn: dim_drug.hcpcs
 
 relationship 4e2604d3-322f-5b31-9878-846b294e0ec5

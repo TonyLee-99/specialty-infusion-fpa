@@ -1,0 +1,103 @@
+table fact_plan_month
+	lineageTag: 4f247db3-1358-5b95-b51b-b970c02d57c0
+
+	/// 2027 plan contribution (revenue collected - drug cost - variable cost); slice by site, payer, drug, month. SQL twin context: site S1, full year.
+	measure 'Budget Contribution' = SUM ( fact_plan_month[contribution] )
+		formatString: \$#,##0
+		displayFolder: Budget
+		lineageTag: 18fa06ff-8378-5d35-97a1-8c34a3bb2b03
+
+	/// 2027 planned chair infusions (demand-driven). SQL twin context: site S1, full year.
+	measure 'Budget Administrations' = SUM ( fact_plan_month[admins] )
+		formatString: #,##0
+		displayFolder: Budget
+		lineageTag: e04d10b2-8e95-5e16-b991-fb26a52428a0
+
+	/// Plan contribution per infusion. SQL twin context: payer = commercial, site S1.
+	measure 'Budget Contribution per Admin' = DIVIDE ( [Budget Contribution], [Budget Administrations] )
+		formatString: \$#,##0
+		displayFolder: Budget
+		lineageTag: 9759da3f-bcc7-52c1-b267-12ebcda8197e
+
+	/// Contribution after fixed suite costs. SQL twin context: site S1, full year.
+	measure 'Budget Operating Margin' = [Budget Contribution] - [Budget Fixed Costs]
+		formatString: \$#,##0
+		displayFolder: Budget
+		lineageTag: a1290127-ad8f-527a-9285-e36d7217bf3a
+
+	column payer
+		dataType: string
+		summarizeBy: none
+		lineageTag: 8dace3a9-46c3-5d88-8468-aa333f8d5469
+		sourceColumn: payer
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: 88fd1f1d-51dc-5d05-b177-3ade6246cce5
+		sourceColumn: hcpcs
+
+	column admins
+		dataType: double
+		summarizeBy: sum
+		lineageTag: ed24a3c0-9fa2-55e5-809a-991d752c6823
+		sourceColumn: admins
+
+	column drug_revenue
+		dataType: double
+		summarizeBy: sum
+		lineageTag: ac1404b8-bc40-52c8-b95e-52d9282fc1e7
+		sourceColumn: drug_revenue
+
+	column admin_revenue
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 0715c9e7-0048-540e-bf09-c20f68ccdd75
+		sourceColumn: admin_revenue
+
+	column drug_cost
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 8660a73d-ef62-5a23-8af2-e8bec478b4be
+		sourceColumn: drug_cost
+
+	column variable_cost
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 79b8ab62-67db-5e11-8d46-f4902b2220dd
+		sourceColumn: variable_cost
+
+	column contribution
+		dataType: double
+		summarizeBy: sum
+		lineageTag: d586f3fd-3530-59a2-9a88-fe2f668f7629
+		sourceColumn: contribution
+
+	column site_id
+		dataType: string
+		summarizeBy: none
+		lineageTag: 145265e8-e3c6-5d48-a683-c2c07257bb17
+		sourceColumn: site_id
+
+	column month_start
+		dataType: dateTime
+		summarizeBy: none
+		lineageTag: 8d8a3961-0926-5d8f-9aef-e37c002b26f5
+		sourceColumn: month_start
+
+	column item_key
+		dataType: string
+		summarizeBy: none
+		lineageTag: 25ffbb0f-00b6-56d5-bbb3-1e530faf61d0
+		sourceColumn: item_key
+
+	partition fact_plan_month = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_plan_month.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"payer", type text}, {"hcpcs", type text}, {"admins", type number}, {"drug_revenue", type number}, {"admin_revenue", type number}, {"drug_cost", type number}, {"variable_cost", type number}, {"contribution", type number}, {"site_id", type text}, {"month_start", type date}, {"item_key", type text}}, "en-US")
+				in
+				    Typed
+

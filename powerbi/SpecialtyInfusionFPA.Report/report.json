@@ -4,7 +4,7 @@
   "sections": [
     {
       "name": "page0",
-      "displayName": "Executive summary",
+      "displayName": "Budget vs actual (SYNTHETIC actuals)",
       "displayOption": 1,
       "width": 1280,
       "height": 720,
@@ -12,7 +12,7 @@
     },
     {
       "name": "page1",
-      "displayName": "Pricing & ASP lag",
+      "displayName": "Margin & pricing",
       "displayOption": 1,
       "width": 1280,
       "height": 720,
@@ -20,44 +20,12 @@
     },
     {
       "name": "page2",
-      "displayName": "Margin per infusion",
-      "displayOption": 1,
-      "width": 1280,
-      "height": 720,
-      "visualContainers": []
-    },
-    {
-      "name": "page3",
-      "displayName": "Forecast & 2027 scenarios",
-      "displayOption": 1,
-      "width": 1280,
-      "height": 720,
-      "visualContainers": []
-    },
-    {
-      "name": "page4",
-      "displayName": "Provider benchmark",
-      "displayOption": 1,
-      "width": 1280,
-      "height": 720,
-      "visualContainers": []
-    },
-    {
-      "name": "page5",
-      "displayName": "Market white space",
-      "displayOption": 1,
-      "width": 1280,
-      "height": 720,
-      "visualContainers": []
-    },
-    {
-      "name": "page6",
-      "displayName": "RCM (SYNTHETIC)",
+      "displayName": "Growth & benchmark",
       "displayOption": 1,
       "width": 1280,
       "height": 720,
       "visualContainers": []
     }
   ],
-  "note": "Page shells only. Visual layout is mirrored in docs/scorecard.html; build visuals in Desktop."
+  "note": "Page shells only. Build the visuals by hand with docs/powerbi_build_guide.md (expected numbers included)."
 }

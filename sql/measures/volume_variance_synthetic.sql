@@ -1,0 +1,2 @@
+-- SQL twin of DAX measure [Volume Variance (SYNTHETIC)] (table fact_actual_month_SYNTHETIC); context: site S1, months closed; DuckDB over exports/*.csv
+with b as (select sum(admins) ba, sum(contribution) bc from fact_plan_month where site_id = 'S1' and month_start <= (select max(month_start) from fact_actual_month_SYNTHETIC)), a as (select sum(admins) aa from fact_actual_month_SYNTHETIC where site_id = 'S1') select (aa - ba) * bc / ba from a, b

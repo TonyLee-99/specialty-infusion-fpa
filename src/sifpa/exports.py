@@ -12,7 +12,7 @@ import shutil
 
 import pandas as pd
 
-from sifpa import engine as E
+from sifpa import engine as E  # noqa: F401  (connect() for warehouse tables)
 from sifpa.paths import EXPORTS, OUTPUTS, SYNTHETIC
 
 WAREHOUSE_TABLES = {
@@ -41,20 +41,19 @@ def main() -> None:
     for name, sql in WAREHOUSE_TABLES.items():
         con.sql(sql).df().to_csv(EXPORTS / f"{name}.csv", index=False)
 
-    # margin per administration + the practice mix used for weighting
+    # margin per administration by drug x payer + the plan's administration share per drug
     margin = pd.read_csv(OUTPUTS / "margin_per_admin.csv", dtype={"hcpcs": str})
-    mix = E.molecule_mix(con)[["hcpcs", "share"]].rename(columns={"share": "mix_share"})
-    margin.merge(mix, on="hcpcs", how="left").fillna({"mix_share": 0.0}).to_csv(
+    det = pd.read_csv(OUTPUTS / "plan_detail.csv", dtype={"hcpcs": str})
+    mix = (det.groupby("hcpcs")["admins"].sum() / det["admins"].sum()).rename("mix_share")
+    margin.merge(mix, left_on="hcpcs", right_index=True, how="left").fillna({"mix_share": 0.0}).to_csv(
         EXPORTS / "fact_margin_per_admin.csv", index=False)
 
     sc = json.loads((OUTPUTS / "scenarios.json").read_text())
-    rows = [{"scenario": s, "metric": m, "value": v}
-            for s, body in sc["scenarios"].items() for m, v in body["annual"].items()]
-    rows += [{"scenario": s, "metric": f"per_admin_{m}", "value": v}
-             for s, body in sc["scenarios"].items() for m, v in body["per_admin"].items()]
+    rows = [{"scenario": s, "metric": m, "value": v} for s, body in sc["scenarios"].items()
+            for m, v in body.items() if isinstance(v, int | float)]
     pd.DataFrame(rows).to_csv(EXPORTS / "fact_scenarios.csv", index=False)
 
-    shutil.copy(OUTPUTS / "forecasts_quarterly_asp.csv", EXPORTS / "fact_forecast_quarterly_asp.csv")
+    shutil.copy(OUTPUTS / "price_path.csv", EXPORTS / "fact_price_path.csv")
     shutil.copy(OUTPUTS / "forecasts_annual_volume.csv", EXPORTS / "fact_forecast_annual_volume.csv")
     for src, dst in (("claims_837_SYNTHETIC.csv", "fact_rcm_claims_SYNTHETIC.csv"),
                      ("remits_835_SYNTHETIC.csv", "fact_rcm_remits_SYNTHETIC.csv")):

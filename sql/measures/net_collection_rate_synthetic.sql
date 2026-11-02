@@ -1,2 +1,2 @@
--- SQL twin of DAX measure [Net Collection Rate (SYNTHETIC)] (table fact_rcm_claims_SYNTHETIC); runs on DuckDB over exports/*.csv
+-- SQL twin of DAX measure [Net Collection Rate (SYNTHETIC)] (table fact_rcm_claims_SYNTHETIC); context: all; DuckDB over exports/*.csv
 with mature as (select claim_id, expected_allowed from fact_rcm_claims_SYNTHETIC where service_date <= date '2026-09-30' - interval 90 day), cash as (select claim_id, sum(payer_paid + patient_paid) as collected from fact_rcm_remits_SYNTHETIC group by claim_id) select sum(coalesce(cash.collected, 0)) / sum(mature.expected_allowed) from mature left join cash using (claim_id)

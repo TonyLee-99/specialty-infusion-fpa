@@ -19,202 +19,214 @@ table dim_county_market
 		lineageTag: e00213af-de7d-582f-8415-9ab90f115231
 		sourceColumn: state_abbr
 
+	column in_region
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 2e93ab0a-686c-5df9-815f-47c5c40b1f5b
+		sourceColumn: in_region
+
 	column market_id
 		dataType: string
 		summarizeBy: none
-		lineageTag: 2e93ab0a-686c-5df9-815f-47c5c40b1f5b
+		lineageTag: cf1dc02e-c4c3-53ff-a01e-be20ad31a0c6
 		sourceColumn: market_id
 
 	column market_name
 		dataType: string
 		summarizeBy: none
-		lineageTag: cf1dc02e-c4c3-53ff-a01e-be20ad31a0c6
+		lineageTag: e46be0ce-a6b7-54da-9404-cc67a3b0894c
 		sourceColumn: market_name
 
 	column market_type
 		dataType: string
 		summarizeBy: none
-		lineageTag: e46be0ce-a6b7-54da-9404-cc67a3b0894c
+		lineageTag: d711be3c-bae2-5d23-a007-c69eafff3062
 		sourceColumn: market_type
 
 	column market_counties_total
 		dataType: int64
 		summarizeBy: sum
-		lineageTag: d711be3c-bae2-5d23-a007-c69eafff3062
+		lineageTag: 6c6acd67-c2fd-584c-86c3-737bb63b02a6
 		sourceColumn: market_counties_total
+
+	column acute_hospitals
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 844f09d8-fc7c-5b7c-8838-4b9b08073b2a
+		sourceColumn: acute_hospitals
 
 	column population
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 6c6acd67-c2fd-584c-86c3-737bb63b02a6
+		lineageTag: cd238547-64b8-5be9-8a67-7e78ca6c64ee
 		sourceColumn: population
 
 	column pop_18plus
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 844f09d8-fc7c-5b7c-8838-4b9b08073b2a
+		lineageTag: 445f4e62-ca9e-53a0-a0a6-f8c3207a36c3
 		sourceColumn: pop_18plus
 
 	column pop_65plus
 		dataType: double
 		summarizeBy: sum
-		lineageTag: cd238547-64b8-5be9-8a67-7e78ca6c64ee
+		lineageTag: d7bc2bb9-ae1f-58d2-afcb-4b65bd533396
 		sourceColumn: pop_65plus
 
 	column arthritis_prev
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 445f4e62-ca9e-53a0-a0a6-f8c3207a36c3
+		lineageTag: a9e60cb5-0dd4-5a7f-8ff1-829e5f8f2633
 		sourceColumn: arthritis_prev
 
 	column arthritis_adults
 		dataType: double
 		summarizeBy: sum
-		lineageTag: d7bc2bb9-ae1f-58d2-afcb-4b65bd533396
+		lineageTag: a4c8fcdd-0d6b-54b1-8b6f-6501a9e82bfb
 		sourceColumn: arthritis_adults
 
 	column medicare_benes
 		dataType: double
 		summarizeBy: sum
-		lineageTag: a9e60cb5-0dd4-5a7f-8ff1-829e5f8f2633
+		lineageTag: 3567a25f-c293-536a-9bf7-5496e1e72e5b
 		sourceColumn: medicare_benes
 
 	column ffs_benes
 		dataType: double
 		summarizeBy: sum
-		lineageTag: a4c8fcdd-0d6b-54b1-8b6f-6501a9e82bfb
+		lineageTag: 632cbb0d-4d5b-55de-a65d-b9b9db75e027
 		sourceColumn: ffs_benes
 
 	column ffs_share
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 3567a25f-c293-536a-9bf7-5496e1e72e5b
+		lineageTag: 3631c94c-61a5-576f-9cf2-15b80fe0862d
 		sourceColumn: ffs_share
 
 	column lat
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 632cbb0d-4d5b-55de-a65d-b9b9db75e027
+		lineageTag: 863ddd68-5297-5434-9cee-8e368b0dec1f
 		sourceColumn: lat
 
 	column lon
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 3631c94c-61a5-576f-9cf2-15b80fe0862d
+		lineageTag: ccf8c542-5300-51b8-af68-bf213b9a1bfe
 		sourceColumn: lon
 
 	column specialists
 		dataType: int64
 		summarizeBy: sum
-		lineageTag: 863ddd68-5297-5434-9cee-8e368b0dec1f
+		lineageTag: a4148523-a181-5d6a-b172-f1469c354270
 		sourceColumn: specialists
 
 	column rheumatologists
 		dataType: int64
 		summarizeBy: sum
-		lineageTag: ccf8c542-5300-51b8-af68-bf213b9a1bfe
+		lineageTag: b427d141-1681-57b3-bb6d-b7ed024de35d
 		sourceColumn: rheumatologists
 
 	column neurologists
 		dataType: int64
 		summarizeBy: sum
-		lineageTag: a4148523-a181-5d6a-b172-f1469c354270
+		lineageTag: 20625358-b995-50d7-b56e-b6b62e7c41a1
 		sourceColumn: neurologists
 
 	column infusion_billers
 		dataType: int64
 		summarizeBy: sum
-		lineageTag: b427d141-1681-57b3-bb6d-b7ed024de35d
+		lineageTag: b07152b5-c4dc-533d-9bde-baee4b8b2696
 		sourceColumn: infusion_billers
 
 	column infusion_admins
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 20625358-b995-50d7-b56e-b6b62e7c41a1
+		lineageTag: d7801601-6670-559a-bf05-8dbb3c5a2cf3
 		sourceColumn: infusion_admins
 
 	column miles_to_columbus_site
 		dataType: double
 		summarizeBy: sum
-		lineageTag: b07152b5-c4dc-533d-9bde-baee4b8b2696
+		lineageTag: df302902-b761-5149-82cc-7473c4e44d9f
 		sourceColumn: miles_to_columbus_site
 
 	column specialists_per_100k
 		dataType: double
 		summarizeBy: sum
-		lineageTag: d7801601-6670-559a-bf05-8dbb3c5a2cf3
+		lineageTag: 4c4a8bf5-f91a-5c05-acdd-bed7aad08854
 		sourceColumn: specialists_per_100k
 
 	column infusion_billers_per_100k
 		dataType: double
 		summarizeBy: sum
-		lineageTag: df302902-b761-5149-82cc-7473c4e44d9f
+		lineageTag: 5b70f6d7-c907-5779-bd13-6a9d244e62ba
 		sourceColumn: infusion_billers_per_100k
 
-	column infusion_admins_per_1k_ffs
+	column acute_hospitals_per_100k
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 4c4a8bf5-f91a-5c05-acdd-bed7aad08854
-		sourceColumn: infusion_admins_per_1k_ffs
+		lineageTag: 4553240e-ba16-55c7-92c0-0206d6646ca3
+		sourceColumn: acute_hospitals_per_100k
 
 	column eligible
 		dataType: boolean
 		summarizeBy: none
-		lineageTag: 5b70f6d7-c907-5779-bd13-6a9d244e62ba
+		lineageTag: b4c487ae-38fc-5bf7-bf4f-10b93c661ae9
 		sourceColumn: eligible
 
 	column cannibalization_flag
 		dataType: boolean
 		summarizeBy: none
-		lineageTag: 4553240e-ba16-55c7-92c0-0206d6646ca3
+		lineageTag: 833ff5ab-8f37-5691-939b-de42acd076f1
 		sourceColumn: cannibalization_flag
 
 	column score
 		dataType: double
 		summarizeBy: sum
-		lineageTag: b4c487ae-38fc-5bf7-bf4f-10b93c661ae9
+		lineageTag: 1ffe0338-7c8d-5cb7-9c4c-f1faddc11197
 		sourceColumn: score
 
 	column rank
 		dataType: double
 		summarizeBy: none
-		lineageTag: 833ff5ab-8f37-5691-939b-de42acd076f1
+		lineageTag: df0db4bf-2cd1-5546-a292-26c8321f20c2
 		sourceColumn: rank
 
-	column p_top10
+	column share_of_weightings_in_top10
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 1ffe0338-7c8d-5cb7-9c4c-f1faddc11197
-		sourceColumn: p_top10
+		lineageTag: 67824b51-8de4-5888-99a7-7eddc46cda08
+		sourceColumn: share_of_weightings_in_top10
 
 	column median_rank_random_weights
 		dataType: double
 		summarizeBy: sum
-		lineageTag: df0db4bf-2cd1-5546-a292-26c8321f20c2
+		lineageTag: 9420fea0-f5ce-50ad-b46d-7c81f8b81a6f
 		sourceColumn: median_rank_random_weights
+
+	column hospital_heavy
+		dataType: boolean
+		summarizeBy: none
+		lineageTag: 9c6ee59a-d7b0-5e1f-bb28-b09731fbb798
+		sourceColumn: hospital_heavy
 
 	column z_market_size
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 67824b51-8de4-5888-99a7-7eddc46cda08
+		lineageTag: 9bcd1e0a-9c4a-54ee-94a7-aa3b0624fb84
 		sourceColumn: z_market_size
-
-	column z_medicare_ffs
-		dataType: double
-		summarizeBy: sum
-		lineageTag: 9420fea0-f5ce-50ad-b46d-7c81f8b81a6f
-		sourceColumn: z_medicare_ffs
 
 	column z_specialist_gap
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 9c6ee59a-d7b0-5e1f-bb28-b09731fbb798
+		lineageTag: 673d77e4-627c-5e01-bcd2-f6acb9f98503
 		sourceColumn: z_specialist_gap
 
 	column z_infusion_gap
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 9bcd1e0a-9c4a-54ee-94a7-aa3b0624fb84
+		lineageTag: f5d39663-6308-53ed-9f19-0e7c1252e91f
 		sourceColumn: z_infusion_gap
 
 	partition dim_county_market = m
@@ -223,7 +235,7 @@ table dim_county_market
 				let
 				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_county_market.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    Typed = Table.TransformColumnTypes(Promoted, {{"county_fips", type text}, {"county_name", type text}, {"state_abbr", type text}, {"market_id", type text}, {"market_name", type text}, {"market_type", type text}, {"market_counties_total", Int64.Type}, {"population", type number}, {"pop_18plus", type number}, {"pop_65plus", type number}, {"arthritis_prev", type number}, {"arthritis_adults", type number}, {"medicare_benes", type number}, {"ffs_benes", type number}, {"ffs_share", type number}, {"lat", type number}, {"lon", type number}, {"specialists", Int64.Type}, {"rheumatologists", Int64.Type}, {"neurologists", Int64.Type}, {"infusion_billers", Int64.Type}, {"infusion_admins", type number}, {"miles_to_columbus_site", type number}, {"specialists_per_100k", type number}, {"infusion_billers_per_100k", type number}, {"infusion_admins_per_1k_ffs", type number}, {"eligible", type logical}, {"cannibalization_flag", type logical}, {"score", type number}, {"rank", type number}, {"p_top10", type number}, {"median_rank_random_weights", type number}, {"z_market_size", type number}, {"z_medicare_ffs", type number}, {"z_specialist_gap", type number}, {"z_infusion_gap", type number}}, "en-US")
+				    Typed = Table.TransformColumnTypes(Promoted, {{"county_fips", type text}, {"county_name", type text}, {"state_abbr", type text}, {"in_region", type logical}, {"market_id", type text}, {"market_name", type text}, {"market_type", type text}, {"market_counties_total", Int64.Type}, {"acute_hospitals", Int64.Type}, {"population", type number}, {"pop_18plus", type number}, {"pop_65plus", type number}, {"arthritis_prev", type number}, {"arthritis_adults", type number}, {"medicare_benes", type number}, {"ffs_benes", type number}, {"ffs_share", type number}, {"lat", type number}, {"lon", type number}, {"specialists", Int64.Type}, {"rheumatologists", Int64.Type}, {"neurologists", Int64.Type}, {"infusion_billers", Int64.Type}, {"infusion_admins", type number}, {"miles_to_columbus_site", type number}, {"specialists_per_100k", type number}, {"infusion_billers_per_100k", type number}, {"acute_hospitals_per_100k", type number}, {"eligible", type logical}, {"cannibalization_flag", type logical}, {"score", type number}, {"rank", type number}, {"share_of_weightings_in_top10", type number}, {"median_rank_random_weights", type number}, {"hospital_heavy", type logical}, {"z_market_size", type number}, {"z_specialist_gap", type number}, {"z_infusion_gap", type number}}, "en-US")
 				in
 				    Typed
 

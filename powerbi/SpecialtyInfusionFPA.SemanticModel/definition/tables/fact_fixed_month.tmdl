@@ -1,0 +1,55 @@
+table fact_fixed_month
+	lineageTag: a01f7f94-1784-59b9-a156-3728a349651d
+
+	/// Nursing for open hours, rent/equipment per chair, site staff. SQL twin context: site S1, full year.
+	measure 'Budget Fixed Costs' = SUM ( fact_fixed_month[fixed_total] )
+		formatString: \$#,##0
+		displayFolder: Budget
+		lineageTag: ec7a39e2-d650-58af-8d37-3005c9d7e699
+
+	column site_id
+		dataType: string
+		summarizeBy: none
+		lineageTag: ae716e10-294c-59b3-afbb-73ec4aca4fce
+		sourceColumn: site_id
+
+	column month_start
+		dataType: dateTime
+		summarizeBy: none
+		lineageTag: daeb8005-63b2-5be7-9d39-7ba17563a303
+		sourceColumn: month_start
+
+	column nursing
+		dataType: double
+		summarizeBy: sum
+		lineageTag: e36c5613-96cf-5a8b-9d8c-cf7600639fdf
+		sourceColumn: nursing
+
+	column rent_equipment
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 2ddf3f36-0943-5c53-9273-b957c832e7ac
+		sourceColumn: rent_equipment
+
+	column site_staff
+		dataType: double
+		summarizeBy: sum
+		lineageTag: dfa1bdc1-229d-55f2-81d4-46c31f2cd5d1
+		sourceColumn: site_staff
+
+	column fixed_total
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 4ed8495c-e60f-540c-a1d2-03e18296ff51
+		sourceColumn: fixed_total
+
+	partition fact_fixed_month = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_fixed_month.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"site_id", type text}, {"month_start", type date}, {"nursing", type number}, {"rent_equipment", type number}, {"site_staff", type number}, {"fixed_total", type number}}, "en-US")
+				in
+				    Typed
+

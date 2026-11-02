@@ -1,0 +1,49 @@
+table dim_site
+	lineageTag: 8702bb25-8d9f-591e-b295-64673e5d1015
+
+	column site_id
+		dataType: string
+		summarizeBy: none
+		lineageTag: 069fa45f-2aa6-577c-aae9-b6bbb8408da2
+		sourceColumn: site_id
+
+	column site_name
+		dataType: string
+		summarizeBy: none
+		lineageTag: d6a7639f-b4f6-5b8d-87a8-3640c6a6b727
+		sourceColumn: site_name
+
+	column chairs
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 9ebbe787-52fc-5071-b897-263c3f2f19da
+		sourceColumn: chairs
+
+	column panel_patients
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: ca158896-f183-5175-b5e8-ef39a3addf8a
+		sourceColumn: panel_patients
+
+	column payer_mix_commercial
+		dataType: double
+		summarizeBy: sum
+		lineageTag: be27ee3f-24e5-5ec0-b286-7b2551dd7bd3
+		sourceColumn: payer_mix_commercial
+
+	column utilization_plan
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 68c04f9c-d1ab-5f5b-ac4d-2c6d47a2b670
+		sourceColumn: utilization_plan
+
+	partition dim_site = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\dim_site.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"site_id", type text}, {"site_name", type text}, {"chairs", Int64.Type}, {"panel_patients", Int64.Type}, {"payer_mix_commercial", type number}, {"utilization_plan", type number}}, "en-US")
+				in
+				    Typed
+

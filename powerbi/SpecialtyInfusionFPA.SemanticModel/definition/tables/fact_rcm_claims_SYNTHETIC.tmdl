@@ -2,13 +2,13 @@
 table fact_rcm_claims_SYNTHETIC
 	lineageTag: c5bdffb0-5da3-5c18-9a0d-d2e7bead565b
 
-	/// SYNTHETIC demo: payer + patient payments / expected allowed for claims >= 90 days old.
+	/// SYNTHETIC demo: payer + patient payments / expected allowed for claims >= 90 days old. SQL twin context: all.
 	measure 'Net Collection Rate (SYNTHETIC)' = VAR mature = FILTER ( fact_rcm_claims_SYNTHETIC, fact_rcm_claims_SYNTHETIC[service_date] <= DATE ( 2026, 9, 30 ) - 90 ) RETURN DIVIDE ( SUMX ( mature, CALCULATE ( SUM ( fact_rcm_remits_SYNTHETIC[payer_paid] ) + SUM ( fact_rcm_remits_SYNTHETIC[patient_paid] ) ) ), SUMX ( mature, fact_rcm_claims_SYNTHETIC[expected_allowed] ) )
 		formatString: 0.0%
 		displayFolder: RCM (SYNTHETIC)
 		lineageTag: 22a8c3ac-eb25-554c-a8fb-adfb412b170e
 
-	/// SYNTHETIC demo: open AR (unpaid claims + unpaid patient balances) / average daily net revenue, last 90 days.
+	/// SYNTHETIC demo: open AR / average daily net revenue, last 90 days. SQL twin context: all.
 	measure 'Days in AR (SYNTHETIC)' = VAR openAR = SUMX ( fact_rcm_claims_SYNTHETIC, VAR paid = CALCULATE ( COUNTROWS ( fact_rcm_remits_SYNTHETIC ), fact_rcm_remits_SYNTHETIC[denied] = FALSE () ) RETURN IF ( paid = 0, fact_rcm_claims_SYNTHETIC[expected_allowed], CALCULATE ( SUMX ( FILTER ( fact_rcm_remits_SYNTHETIC, fact_rcm_remits_SYNTHETIC[denied] = FALSE () ), fact_rcm_remits_SYNTHETIC[patient_resp] - fact_rcm_remits_SYNTHETIC[patient_paid] ) ) ) ) VAR daily = DIVIDE ( CALCULATE ( SUM ( fact_rcm_claims_SYNTHETIC[expected_allowed] ), fact_rcm_claims_SYNTHETIC[service_date] > DATE ( 2026, 9, 30 ) - 90 ), 90 ) RETURN DIVIDE ( openAR, daily )
 		formatString: #,##0.00
 		displayFolder: RCM (SYNTHETIC)

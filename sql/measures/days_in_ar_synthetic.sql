@@ -1,2 +1,2 @@
--- SQL twin of DAX measure [Days in AR (SYNTHETIC)] (table fact_rcm_claims_SYNTHETIC); runs on DuckDB over exports/*.csv
+-- SQL twin of DAX measure [Days in AR (SYNTHETIC)] (table fact_rcm_claims_SYNTHETIC); context: all; DuckDB over exports/*.csv
 with paid as (select claim_id, sum(patient_resp - patient_paid) as patient_open from fact_rcm_remits_SYNTHETIC where not denied group by claim_id), ar as (select sum(case when p.claim_id is null then c.expected_allowed else p.patient_open end) as open_ar from fact_rcm_claims_SYNTHETIC c left join paid p using (claim_id)), rev as (select sum(expected_allowed) / 90.0 as daily from fact_rcm_claims_SYNTHETIC where service_date > date '2026-09-30' - interval 90 day) select ar.open_ar / rev.daily from ar, rev

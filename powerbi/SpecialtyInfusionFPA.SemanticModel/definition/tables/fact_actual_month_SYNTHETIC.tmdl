@@ -1,0 +1,116 @@
+/// SYNTHETIC data: revenue-cycle method demo only (ADR 0008). No business conclusion.
+table fact_actual_month_SYNTHETIC
+	lineageTag: 12508b38-b5d0-5cde-b512-f153838177f9
+
+	/// SYNTHETIC actual contribution (method demo). SQL twin context: site S1, months closed.
+	measure 'Actual Contribution (SYNTHETIC)' = SUM ( fact_actual_month_SYNTHETIC[contribution] )
+		formatString: \$#,##0
+		displayFolder: Variance (SYNTHETIC)
+		lineageTag: da6eb225-0daf-5129-9b92-b445284e9b31
+
+	/// Actual - budget over the months closed (SYNTHETIC actuals). SQL twin context: site S1, months closed.
+	measure 'Contribution Variance (SYNTHETIC)' = VAR m = MAX ( fact_actual_month_SYNTHETIC[month_start] ) RETURN [Actual Contribution (SYNTHETIC)] - CALCULATE ( SUM ( fact_plan_month[contribution] ), fact_plan_month[month_start] <= m )
+		formatString: \$#,##0
+		displayFolder: Variance (SYNTHETIC)
+		lineageTag: 760a80fe-02e0-5ba6-b469-534752d9856b
+
+	/// Change in administrations at budget contribution per administration. SQL twin context: site S1, months closed.
+	measure 'Volume Variance (SYNTHETIC)' = VAR m = MAX ( fact_actual_month_SYNTHETIC[month_start] ) VAR ba = CALCULATE ( SUM ( fact_plan_month[admins] ), fact_plan_month[month_start] <= m ) VAR bc = CALCULATE ( SUM ( fact_plan_month[contribution] ), fact_plan_month[month_start] <= m ) RETURN ( SUM ( fact_actual_month_SYNTHETIC[admins] ) - ba ) * DIVIDE ( bc, ba )
+		formatString: \$#,##0
+		displayFolder: Variance (SYNTHETIC)
+		lineageTag: 92b002cc-a8c0-57a3-8d9e-c36362f6a147
+
+	/// Change in payer x drug mix at budget unit contribution. SQL twin context: site S1, months closed.
+	measure 'Mix Variance (SYNTHETIC)' = VAR m = MAX ( fact_actual_month_SYNTHETIC[month_start] ) VAR ba = CALCULATE ( SUM ( fact_plan_month[admins] ), fact_plan_month[month_start] <= m ) VAR aa = SUM ( fact_actual_month_SYNTHETIC[admins] ) RETURN SUMX ( VALUES ( dim_item[item_key] ), VAR bi = CALCULATE ( SUM ( fact_plan_month[admins] ), fact_plan_month[month_start] <= m ) VAR bc = CALCULATE ( SUM ( fact_plan_month[contribution] ), fact_plan_month[month_start] <= m ) VAR ai = CALCULATE ( SUM ( fact_actual_month_SYNTHETIC[admins] ) ) RETURN ( ai - aa * DIVIDE ( bi, ba ) ) * DIVIDE ( bc, bi ) )
+		formatString: \$#,##0
+		displayFolder: Variance (SYNTHETIC)
+		lineageTag: a0cad008-e5f9-5432-9097-58d62b8d1346
+
+	/// Change in contribution per administration (prices, collections, drug cost). SQL twin context: site S1, months closed.
+	measure 'Rate Variance (SYNTHETIC)' = VAR m = MAX ( fact_actual_month_SYNTHETIC[month_start] ) RETURN SUMX ( VALUES ( dim_item[item_key] ), VAR bi = CALCULATE ( SUM ( fact_plan_month[admins] ), fact_plan_month[month_start] <= m ) VAR bc = CALCULATE ( SUM ( fact_plan_month[contribution] ), fact_plan_month[month_start] <= m ) VAR ai = CALCULATE ( SUM ( fact_actual_month_SYNTHETIC[admins] ) ) VAR ac = CALCULATE ( SUM ( fact_actual_month_SYNTHETIC[contribution] ) ) RETURN ai * ( DIVIDE ( ac, ai ) - DIVIDE ( bc, bi ) ) )
+		formatString: \$#,##0
+		displayFolder: Variance (SYNTHETIC)
+		lineageTag: 06768abf-3af0-519e-9215-f9f9d8c69d32
+
+	column payer
+		dataType: string
+		summarizeBy: none
+		lineageTag: baf4a3a0-4304-56a7-91a4-1c9899d59e7d
+		sourceColumn: payer
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: ba132cb9-f6ec-54ee-a8aa-52c704c9b0ec
+		sourceColumn: hcpcs
+
+	column admins
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 47fec8e7-2a75-5f47-8507-6cd724d3ea82
+		sourceColumn: admins
+
+	column drug_revenue
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 31a1c43b-62d8-5453-8c82-a5bfc930c7d8
+		sourceColumn: drug_revenue
+
+	column admin_revenue
+		dataType: double
+		summarizeBy: sum
+		lineageTag: d5e4d066-b996-554e-8292-dc566ca6d0d5
+		sourceColumn: admin_revenue
+
+	column drug_cost
+		dataType: double
+		summarizeBy: sum
+		lineageTag: ecacad3b-150a-5b56-8470-d4255ac78826
+		sourceColumn: drug_cost
+
+	column variable_cost
+		dataType: double
+		summarizeBy: sum
+		lineageTag: c2b09ab4-0f7e-55ed-bd2d-a56f3e48b3f3
+		sourceColumn: variable_cost
+
+	column contribution
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 4540ad5b-24a1-5d98-a476-1792aa56a445
+		sourceColumn: contribution
+
+	column site_id
+		dataType: string
+		summarizeBy: none
+		lineageTag: 7d7e583d-2412-58f5-8c3d-823612ff6ff8
+		sourceColumn: site_id
+
+	column month_start
+		dataType: dateTime
+		summarizeBy: none
+		lineageTag: 7461d22c-27bb-56d6-ab92-65dcccbf04f3
+		sourceColumn: month_start
+
+	column item_key
+		dataType: string
+		summarizeBy: none
+		lineageTag: ada0ba45-497f-5f8e-a148-2abb1e7c2a9a
+		sourceColumn: item_key
+
+	column data_label
+		dataType: string
+		summarizeBy: none
+		lineageTag: 1ff942f0-7c3e-5259-99ed-1db2bdd15c8a
+		sourceColumn: data_label
+
+	partition fact_actual_month_SYNTHETIC = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_actual_month_SYNTHETIC.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"payer", type text}, {"hcpcs", type text}, {"admins", type number}, {"drug_revenue", type number}, {"admin_revenue", type number}, {"drug_cost", type number}, {"variable_cost", type number}, {"contribution", type number}, {"site_id", type text}, {"month_start", type date}, {"item_key", type text}, {"data_label", type text}}, "en-US")
+				in
+				    Typed
+

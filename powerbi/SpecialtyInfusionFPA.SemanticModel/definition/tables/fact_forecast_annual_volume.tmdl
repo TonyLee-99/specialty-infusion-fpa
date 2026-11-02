@@ -1,52 +1,46 @@
 table fact_forecast_annual_volume
 	lineageTag: a86391a0-1531-525c-b9e7-5e6239efe1f1
 
-	column series
-		dataType: string
-		summarizeBy: none
-		lineageTag: 44e5ebb1-df76-5627-b9cd-e346541a6b06
-		sourceColumn: series
-
 	column molecule
 		dataType: string
 		summarizeBy: none
-		lineageTag: 50db0e5e-7568-5fc2-8233-b3553da77409
+		lineageTag: 44e5ebb1-df76-5627-b9cd-e346541a6b06
 		sourceColumn: molecule
 
 	column metric
 		dataType: string
 		summarizeBy: none
-		lineageTag: ae40b777-8641-5f1b-acdb-d77c11c80929
+		lineageTag: 50db0e5e-7568-5fc2-8233-b3553da77409
 		sourceColumn: metric
 
 	column year
 		dataType: int64
 		summarizeBy: none
-		lineageTag: 42879b02-393c-5352-967b-835e564370fb
+		lineageTag: ae40b777-8641-5f1b-acdb-d77c11c80929
 		sourceColumn: year
 
 	column model
 		dataType: string
 		summarizeBy: none
-		lineageTag: 482a5376-2ba4-55c7-8ac5-c302351488e0
+		lineageTag: 42879b02-393c-5352-967b-835e564370fb
 		sourceColumn: model
 
 	column forecast
 		dataType: double
 		summarizeBy: sum
-		lineageTag: f242cfea-bef6-562b-beb9-07a5329ea14a
+		lineageTag: 482a5376-2ba4-55c7-8ac5-c302351488e0
 		sourceColumn: forecast
 
 	column lo80
 		dataType: double
 		summarizeBy: sum
-		lineageTag: 0ed4d8f0-9647-58f7-8150-fa3b7093691f
+		lineageTag: f242cfea-bef6-562b-beb9-07a5329ea14a
 		sourceColumn: lo80
 
 	column hi80
 		dataType: double
 		summarizeBy: sum
-		lineageTag: d4c01872-e8fe-5e35-96cd-47e394e929af
+		lineageTag: 0ed4d8f0-9647-58f7-8150-fa3b7093691f
 		sourceColumn: hi80
 
 	partition fact_forecast_annual_volume = m
@@ -55,7 +49,7 @@ table fact_forecast_annual_volume
 				let
 				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_forecast_annual_volume.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    Typed = Table.TransformColumnTypes(Promoted, {{"series", type text}, {"molecule", type text}, {"metric", type text}, {"year", Int64.Type}, {"model", type text}, {"forecast", type number}, {"lo80", type number}, {"hi80", type number}}, "en-US")
+				    Typed = Table.TransformColumnTypes(Promoted, {{"molecule", type text}, {"metric", type text}, {"year", Int64.Type}, {"model", type text}, {"forecast", type number}, {"lo80", type number}, {"hi80", type number}}, "en-US")
 				in
 				    Typed
 

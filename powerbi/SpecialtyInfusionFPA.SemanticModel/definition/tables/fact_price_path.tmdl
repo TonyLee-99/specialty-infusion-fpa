@@ -1,0 +1,61 @@
+table fact_price_path
+	lineageTag: eca6573c-5c20-5367-8577-a6537af66a3c
+
+	column hcpcs
+		dataType: string
+		summarizeBy: none
+		lineageTag: efbb29be-cf3c-5022-aee8-ba390b424046
+		sourceColumn: hcpcs
+
+	column basis_quarter
+		dataType: string
+		summarizeBy: none
+		lineageTag: 4dafec9e-536e-5a2a-82de-94f6ca37f81d
+		sourceColumn: basis_quarter
+
+	column h
+		dataType: int64
+		summarizeBy: sum
+		lineageTag: 6e793aeb-ad7d-5107-8e35-cdfed03c18dc
+		sourceColumn: h
+
+	column asp
+		dataType: double
+		summarizeBy: sum
+		lineageTag: efa75edc-42e2-5f53-affc-bee9e3336e1a
+		sourceColumn: asp
+
+	column lo80
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 1a1b2b4d-24e1-5d17-89f1-c5af175848e9
+		sourceColumn: lo80
+
+	column hi80
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 2f858dd7-73ff-50fc-bd4f-8b705af85b08
+		sourceColumn: hi80
+
+	column model
+		dataType: string
+		summarizeBy: none
+		lineageTag: 688a9768-1202-5df6-a1e8-fe327f39212d
+		sourceColumn: model
+
+	column guard
+		dataType: string
+		summarizeBy: none
+		lineageTag: bdb723e7-c1b6-5c4c-9a8e-9f7f9bd0071d
+		sourceColumn: guard
+
+	partition fact_price_path = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_price_path.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"hcpcs", type text}, {"basis_quarter", type text}, {"h", Int64.Type}, {"asp", type number}, {"lo80", type number}, {"hi80", type number}, {"model", type text}, {"guard", type text}}, "en-US")
+				in
+				    Typed
+

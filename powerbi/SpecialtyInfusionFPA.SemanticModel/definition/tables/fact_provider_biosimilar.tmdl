@@ -13,53 +13,77 @@ table fact_provider_biosimilar
 		lineageTag: de813d0e-2914-549f-a927-a608fd3bd334
 		sourceColumn: provider_type
 
-	column molecule
+	column state_abbr
 		dataType: string
 		summarizeBy: none
 		lineageTag: 2d217bb3-4d75-58b4-b9f8-a9c7a2d9c4e8
+		sourceColumn: state_abbr
+
+	column molecule
+		dataType: string
+		summarizeBy: none
+		lineageTag: 13e142fd-4c49-5cb4-a1e3-7fa77208c6b6
 		sourceColumn: molecule
 
-	column bio_benes
-		dataType: double
-		summarizeBy: sum
-		lineageTag: 13e142fd-4c49-5cb4-a1e3-7fa77208c6b6
-		sourceColumn: bio_benes
-
-	column ref_benes
-		dataType: double
+	column bio_benes_visible
+		dataType: int64
 		summarizeBy: sum
 		lineageTag: b312e387-bffe-5478-8268-ecc484cb0179
-		sourceColumn: ref_benes
+		sourceColumn: bio_benes_visible
 
-	column censored
-		dataType: boolean
-		summarizeBy: none
+	column ref_benes_visible
+		dataType: int64
+		summarizeBy: sum
 		lineageTag: 01f562ee-5025-5816-9bc3-e4fd79586495
-		sourceColumn: censored
+		sourceColumn: ref_benes_visible
 
-	column raw_rate
-		dataType: double
+	column missing_biosimilar_codes
+		dataType: int64
 		summarizeBy: sum
 		lineageTag: e40511ff-d7a1-56a9-90f8-5a180ffb8192
-		sourceColumn: raw_rate
+		sourceColumn: missing_biosimilar_codes
 
-	column post_mean
-		dataType: double
+	column missing_reference_codes
+		dataType: int64
 		summarizeBy: sum
 		lineageTag: f0eb667b-793d-51fc-b0b4-13f79ce9a9a9
-		sourceColumn: post_mean
+		sourceColumn: missing_reference_codes
 
-	column ci_lo
-		dataType: double
-		summarizeBy: sum
+	column fully_observed
+		dataType: boolean
+		summarizeBy: none
 		lineageTag: 43fa759b-4185-55e5-b2ef-71501563d5fd
-		sourceColumn: ci_lo
+		sourceColumn: fully_observed
 
-	column ci_hi
+	column share_lo
 		dataType: double
 		summarizeBy: sum
 		lineageTag: 02aa6b57-6142-5042-85ce-98b45ae20835
-		sourceColumn: ci_hi
+		sourceColumn: share_lo
+
+	column share_hi
+		dataType: double
+		summarizeBy: sum
+		lineageTag: ef5d6818-43c7-51c8-b882-bf36b22d056d
+		sourceColumn: share_hi
+
+	column state_share
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 7b9334cb-3e18-50dc-b6ce-bbd42f04f6f9
+		sourceColumn: state_share
+
+	column width
+		dataType: double
+		summarizeBy: sum
+		lineageTag: 2a1c5d43-6cf2-5327-821e-aa4bd805b05f
+		sourceColumn: width
+
+	column vs_state
+		dataType: string
+		summarizeBy: none
+		lineageTag: ef718f40-476b-5628-9d40-bd7954762a8a
+		sourceColumn: vs_state
 
 	partition fact_provider_biosimilar = m
 		mode: import
@@ -67,7 +91,7 @@ table fact_provider_biosimilar
 				let
 				    Source = Csv.Document(File.Contents(RepoPath & "\exports\fact_provider_biosimilar.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    Typed = Table.TransformColumnTypes(Promoted, {{"npi", type text}, {"provider_type", type text}, {"molecule", type text}, {"bio_benes", type number}, {"ref_benes", type number}, {"censored", type logical}, {"raw_rate", type number}, {"post_mean", type number}, {"ci_lo", type number}, {"ci_hi", type number}}, "en-US")
+				    Typed = Table.TransformColumnTypes(Promoted, {{"npi", type text}, {"provider_type", type text}, {"state_abbr", type text}, {"molecule", type text}, {"bio_benes_visible", Int64.Type}, {"ref_benes_visible", Int64.Type}, {"missing_biosimilar_codes", Int64.Type}, {"missing_reference_codes", Int64.Type}, {"fully_observed", type logical}, {"share_lo", type number}, {"share_hi", type number}, {"state_share", type number}, {"width", type number}, {"vs_state", type text}}, "en-US")
 				in
 				    Typed
 
