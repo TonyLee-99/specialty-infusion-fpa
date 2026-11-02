@@ -1,0 +1,85 @@
+molecule,payer,hcpcs,brand,product_type,listed,price_history_quarters,insufficient_price_history,drug_margin_base,drug_margin_if_price_falls_p10,drug_margin_if_price_rises_p90,best_for_payer,decision_robust
+infliximab,medicare_ffs,J1745,Remicade / unbranded infliximab,reference,True,38,False,17.36,74.24,-14.22,False,False
+infliximab,medicare_ffs,Q5103,Inflectra (infliximab-dyyb),biosimilar,True,33,False,43.49,374.84,-426.4,False,False
+infliximab,medicare_ffs,Q5104,Renflexis (infliximab-abda),biosimilar,False,33,False,50.28,209.81,15.55,True,False
+infliximab,medicare_ffs,Q5121,Avsola (infliximab-axxq),biosimilar,False,23,False,5.67,247.92,-566.62,False,False
+infliximab,medicare_adv,J1745,Remicade / unbranded infliximab,reference,True,38,False,-13.17,43.72,-44.74,False,False
+infliximab,medicare_adv,Q5103,Inflectra (infliximab-dyyb),biosimilar,True,33,False,14.54,345.89,-455.35,False,False
+infliximab,medicare_adv,Q5104,Renflexis (infliximab-abda),biosimilar,False,33,False,24.2,183.73,-10.52,True,False
+infliximab,medicare_adv,Q5121,Avsola (infliximab-axxq),biosimilar,False,23,False,-29.79,212.46,-602.08,False,False
+infliximab,commercial,J1745,Remicade / unbranded infliximab,reference,True,38,False,175.92,232.8,144.35,False,False
+infliximab,commercial,Q5103,Inflectra (infliximab-dyyb),biosimilar,True,33,False,163.66,495.0,-306.23,False,False
+infliximab,commercial,Q5104,Renflexis (infliximab-abda),biosimilar,False,33,False,146.12,305.65,111.4,False,False
+infliximab,commercial,Q5121,Avsola (infliximab-axxq),biosimilar,False,23,False,206.09,448.34,-366.2,True,False
+infliximab,medicaid,J1745,Remicade / unbranded infliximab,reference,True,38,False,13.14,70.02,-18.43,False,False
+infliximab,medicaid,Q5103,Inflectra (infliximab-dyyb),biosimilar,True,33,False,12.23,343.57,-457.66,False,False
+infliximab,medicaid,Q5104,Renflexis (infliximab-abda),biosimilar,False,33,False,10.92,170.44,-23.81,False,False
+infliximab,medicaid,Q5121,Avsola (infliximab-axxq),biosimilar,False,23,False,15.4,257.65,-556.89,True,False
+rituximab,medicare_ffs,J9312,Rituxan,reference,True,30,False,64.08,187.68,127.35,False,False
+rituximab,medicare_ffs,Q5115,Truxima (rituximab-abbs),biosimilar,True,26,False,281.66,715.93,-157.48,False,False
+rituximab,medicare_ffs,Q5119,Ruxience (rituximab-pvvr),biosimilar,False,23,False,5.15,268.21,-133.56,False,False
+rituximab,medicare_ffs,Q5123,Riabni (rituximab-arrx),biosimilar,False,20,False,336.82,705.08,373.47,True,False
+rituximab,medicare_adv,J9312,Rituxan,reference,True,30,False,-48.61,74.98,14.65,False,True
+rituximab,medicare_adv,Q5115,Truxima (rituximab-abbs),biosimilar,True,26,False,225.94,660.21,-213.21,False,True
+rituximab,medicare_adv,Q5119,Ruxience (rituximab-pvvr),biosimilar,False,23,False,-3.91,259.15,-142.62,False,True
+rituximab,medicare_adv,Q5123,Riabni (rituximab-arrx),biosimilar,False,20,False,304.39,672.66,341.04,True,True
+rituximab,commercial,J9312,Rituxan,reference,True,30,False,649.52,773.12,712.79,True,True
+rituximab,commercial,Q5115,Truxima (rituximab-abbs),biosimilar,True,26,False,291.72,725.99,-147.42,False,True
+rituximab,commercial,Q5119,Ruxience (rituximab-pvvr),biosimilar,False,23,False,52.18,315.24,-86.53,False,True
+rituximab,commercial,Q5123,Riabni (rituximab-arrx),biosimilar,False,20,False,149.38,517.65,186.03,False,True
+rituximab,medicaid,J9312,Rituxan,reference,True,30,False,48.53,172.12,111.79,True,False
+rituximab,medicaid,Q5115,Truxima (rituximab-abbs),biosimilar,True,26,False,21.79,456.06,-417.35,False,False
+rituximab,medicaid,Q5119,Ruxience (rituximab-pvvr),biosimilar,False,23,False,3.9,266.96,-134.81,False,False
+rituximab,medicaid,Q5123,Riabni (rituximab-arrx),biosimilar,False,20,False,11.16,379.43,47.81,False,False
+tocilizumab,medicare_ffs,J3262,Actemra IV,reference,False,38,False,30.03,121.41,27.19,False,True
+tocilizumab,medicare_ffs,Q5133,Tofidence (tocilizumab-bavi),biosimilar,False,6,False,96.23,338.5,169.18,False,True
+tocilizumab,medicare_ffs,Q5135,Tyenne (tocilizumab-aazg),biosimilar,False,6,False,104.11,252.93,-164.71,False,True
+tocilizumab,medicare_ffs,Q5156,Avtozma (tocilizumab-anoh),biosimilar,False,1,True,133.97,634.19,634.19,True,True
+tocilizumab,medicare_adv,J3262,Actemra IV,reference,False,38,False,-22.77,68.61,-25.61,False,True
+tocilizumab,medicare_adv,Q5133,Tofidence (tocilizumab-bavi),biosimilar,False,6,False,49.56,291.84,122.52,False,True
+tocilizumab,medicare_adv,Q5135,Tyenne (tocilizumab-aazg),biosimilar,False,6,False,60.78,209.6,-208.04,False,True
+tocilizumab,medicare_adv,Q5156,Avtozma (tocilizumab-anoh),biosimilar,False,1,True,103.25,603.47,603.47,True,True
+tocilizumab,commercial,J3262,Actemra IV,reference,False,38,False,304.32,395.7,301.49,True,False
+tocilizumab,commercial,Q5133,Tofidence (tocilizumab-bavi),biosimilar,False,6,False,260.73,503.01,333.69,False,False
+tocilizumab,commercial,Q5135,Tyenne (tocilizumab-aazg),biosimilar,False,6,False,240.38,389.19,-28.44,False,False
+tocilizumab,commercial,Q5156,Avtozma (tocilizumab-anoh),biosimilar,False,1,True,163.33,663.54,663.54,False,False
+tocilizumab,medicaid,J3262,Actemra IV,reference,False,38,False,22.74,114.12,19.9,True,False
+tocilizumab,medicaid,Q5133,Tofidence (tocilizumab-bavi),biosimilar,False,6,False,19.48,261.75,92.43,False,False
+tocilizumab,medicaid,Q5135,Tyenne (tocilizumab-aazg),biosimilar,False,6,False,17.96,166.77,-250.86,False,False
+tocilizumab,medicaid,Q5156,Avtozma (tocilizumab-anoh),biosimilar,False,1,True,12.2,512.42,512.42,False,False
+natalizumab,medicare_ffs,J2323,Tysabri,reference,True,38,False,76.93,183.71,-10.58,True,False
+natalizumab,medicare_ffs,Q5134,Tyruko (natalizumab-sztn),biosimilar,False,1,True,70.64,41.69,41.69,False,False
+natalizumab,medicare_adv,J2323,Tysabri,reference,True,38,False,-58.35,48.42,-145.87,True,False
+natalizumab,medicare_adv,Q5134,Tyruko (natalizumab-sztn),biosimilar,False,1,True,-67.3,-96.25,-96.25,False,False
+natalizumab,commercial,J2323,Tysabri,reference,True,38,False,779.73,886.51,692.22,False,False
+natalizumab,commercial,Q5134,Tyruko (natalizumab-sztn),biosimilar,False,1,True,795.97,767.02,767.02,True,False
+natalizumab,medicaid,J2323,Tysabri,reference,True,38,False,58.25,165.03,-29.26,False,False
+natalizumab,medicaid,Q5134,Tyruko (natalizumab-sztn),biosimilar,False,1,True,59.47,30.51,30.51,True,False
+denosumab,medicare_ffs,J0897,Prolia / Xgeva,reference,True,38,False,22.23,7.01,-94.66,False,False
+denosumab,medicare_ffs,Q5136,denosumab-bbdz,biosimilar,False,2,True,69.36,129.19,111.23,False,False
+denosumab,medicare_ffs,Q5157,denosumab-bmwo,biosimilar,False,1,True,78.62,216.15,216.15,False,False
+denosumab,medicare_ffs,Q5158,denosumab-bnht,biosimilar,False,1,True,64.05,171.2,171.2,False,False
+denosumab,medicare_ffs,Q5161,denosumab-kyqq,biosimilar,False,0,True,67.75,,,False,False
+denosumab,medicare_ffs,Q5162,denosumab-nxxp,biosimilar,False,1,True,105.48,140.15,140.15,False,False
+denosumab,medicare_ffs,Q5167,denosumab-qbde,biosimilar,False,0,True,129.2,,,True,False
+denosumab,medicare_adv,J0897,Prolia / Xgeva,reference,True,38,False,-16.86,-32.07,-133.74,False,False
+denosumab,medicare_adv,Q5136,denosumab-bbdz,biosimilar,False,2,True,34.02,93.86,75.9,False,False
+denosumab,medicare_adv,Q5157,denosumab-bmwo,biosimilar,False,1,True,47.2,184.72,184.72,False,False
+denosumab,medicare_adv,Q5158,denosumab-bnht,biosimilar,False,1,True,26.48,133.63,133.63,False,False
+denosumab,medicare_adv,Q5161,denosumab-kyqq,biosimilar,False,0,True,31.74,,,False,False
+denosumab,medicare_adv,Q5162,denosumab-nxxp,biosimilar,False,1,True,85.4,120.07,120.07,False,False
+denosumab,medicare_adv,Q5167,denosumab-qbde,biosimilar,False,0,True,119.14,,,True,False
+denosumab,commercial,J0897,Prolia / Xgeva,reference,True,38,False,225.28,210.06,108.39,True,False
+denosumab,commercial,Q5136,denosumab-bbdz,biosimilar,False,2,True,197.86,257.69,239.73,False,False
+denosumab,commercial,Q5157,denosumab-bmwo,biosimilar,False,1,True,173.95,311.48,311.48,False,False
+denosumab,commercial,Q5158,denosumab-bnht,biosimilar,False,1,True,211.54,318.69,318.69,False,False
+denosumab,commercial,Q5161,denosumab-kyqq,biosimilar,False,0,True,202.0,,,False,False
+denosumab,commercial,Q5162,denosumab-nxxp,biosimilar,False,1,True,104.64,139.31,139.31,False,False
+denosumab,commercial,Q5167,denosumab-qbde,biosimilar,False,0,True,43.41,,,False,False
+denosumab,medicaid,J0897,Prolia / Xgeva,reference,True,38,False,16.83,1.62,-100.05,True,False
+denosumab,medicaid,Q5136,denosumab-bbdz,biosimilar,False,2,True,14.78,74.62,56.66,False,False
+denosumab,medicaid,Q5157,denosumab-bmwo,biosimilar,False,1,True,13.0,150.52,150.52,False,False
+denosumab,medicaid,Q5158,denosumab-bnht,biosimilar,False,1,True,15.8,122.95,122.95,False,False
+denosumab,medicaid,Q5161,denosumab-kyqq,biosimilar,False,0,True,15.09,,,False,False
+denosumab,medicaid,Q5162,denosumab-nxxp,biosimilar,False,1,True,7.82,42.49,42.49,False,False
+denosumab,medicaid,Q5167,denosumab-qbde,biosimilar,False,0,True,3.24,,,False,False

@@ -1,58 +1,58 @@
-hcpcs,molecule,brand,product_type,reference_hcpcs,admin_family,units_per_admin,pl_2026q4,asp_2026q2,asp_estimated,price_source,asp_2027,ref_asp_2027,flag_addon_8pct,ira_existing,addon_2027,pl_2027,mfp_selected,mix_base,mix_push
-J0129,abatacept,Orencia IV,single_source,,iv_infusion,74.560385,45.937,43.336792,True,forecast_2027,43.336792,,False,False,0.06,45.937,True,0.356857,0.356857
-J0202,alemtuzumab,Lemtrada,single_source,,mab_infusion,11.212121,2506.2,2364.339623,False,forecast_2027,2419.468868,,False,False,0.06,2564.637,False,0.0,0.0
-J0490,belimumab,Benlysta,single_source,,mab_infusion,78.979051,58.333,55.031132,False,forecast_2027,56.210165,,False,False,0.06,59.582775,False,0.002595,0.002595
-J0585,onabotulinumtoxinA,Botox,single_source,,procedure,183.264972,6.514,6.145283,False,forecast_2027,6.181627,,False,False,0.06,6.552525,True,0.0,0.0
-J0717,certolizumab,Cimzia,single_source,,injection,391.12827,3.14,2.962264,True,forecast_2027,2.804057,,False,False,0.06,2.9723,True,0.0,0.0
-J0897,denosumab,Prolia / Xgeva,reference,,injection,67.902256,29.856,28.166038,False,forecast_2027,29.259646,,False,False,0.06,31.015225,False,0.0,0.0
-J1299,eculizumab,Soliris,reference,,mab_infusion,575.039448,43.763,41.285849,False,held_flat_2026Q4,41.285849,,False,False,0.06,43.763,False,0.0,0.0
-J1303,ravulizumab,Ultomiris,single_source,,mab_infusion,323.833158,226.454,213.635849,False,held_flat_2026Q4,213.635849,,False,False,0.06,226.454,False,0.0,0.0
-J1459,immune_globulin,Privigen,single_source,,iv_infusion,78.305426,48.963,46.191509,False,forecast_2027,46.896392,,False,False,0.06,49.710175,False,0.00585,0.00585
-J1557,immune_globulin,Gammaplex,single_source,,iv_infusion,78.305426,62.299,58.772642,False,forecast_2027,60.568986,,False,False,0.06,64.203125,False,0.0,0.0
-J1561,immune_globulin,Gamunex-C / Gammaked,single_source,,iv_infusion,78.305426,48.022,45.303774,False,forecast_2027,45.303774,,False,False,0.06,48.022,False,0.013934,0.013934
-J1566,immune_globulin,Gammagard S/D (powder),single_source,,iv_infusion,78.305426,82.756,78.071698,False,forecast_2027,79.478679,,False,False,0.06,84.2474,False,0.0,0.0
-J1568,immune_globulin,Octagam,single_source,,iv_infusion,78.305426,47.133,44.465094,False,forecast_2027,44.465094,,False,False,0.06,47.133,False,0.0,0.0
-J1569,immune_globulin,Gammagard Liquid,single_source,,iv_infusion,78.305426,49.495,46.693396,False,forecast_2027,47.114646,,False,False,0.06,49.941525,False,0.009284,0.009284
-J1602,golimumab,Simponi Aria,single_source,,mab_infusion,180.306469,10.978,10.356604,False,forecast_2027,9.842618,,False,False,0.06,10.433175,False,0.218791,0.218791
-J1628,guselkumab,Tremfya IV,single_source,,mab_infusion,200.0,66.998,63.20566,False,held_flat_2026Q4,63.20566,,False,False,0.06,66.998,False,0.0,0.0
-J1745,infliximab,Remicade / unbranded infliximab,reference,,mab_infusion,53.024971,29.856,28.166038,False,forecast_2027,27.111745,,False,False,0.06,28.73845,False,0.203702,0.041088
-J1823,inebilizumab,Uplizna,single_source,,mab_infusion,289.242105,511.573,482.616038,False,held_flat_2026Q4,482.616038,,False,False,0.06,511.573,False,0.0,0.0
-J2267,mirikizumab,Omvoh IV,single_source,,mab_infusion,290.196721,32.584,30.739623,True,held_flat_2026Q4,30.739623,,False,False,0.06,32.584,False,0.0,0.0
-J2323,natalizumab,Tysabri,reference,,mab_infusion,293.264243,23.927,22.572642,False,forecast_2027,22.572642,,False,False,0.06,23.927,False,0.002955,0.000591
-J2327,risankizumab,Skyrizi IV,single_source,,mab_infusion,609.812646,14.011,13.217925,False,held_flat_2026Q4,13.217925,,False,False,0.06,14.011,False,0.0,0.0
-J2329,ublituximab,Briumvi,single_source,,mab_infusion,354.911809,71.089,67.065094,False,held_flat_2026Q4,67.065094,,False,False,0.06,71.089,False,0.000435,0.000435
-J2350,ocrelizumab,Ocrevus,single_source,,mab_infusion,551.451991,60.689,57.253774,False,held_flat_2026Q4,57.253774,,False,False,0.06,60.689,False,0.006225,0.006225
-J2351,ocrelizumab,Ocrevus Zunovo (subcutaneous),single_source,,injection,551.451991,47.287,44.610377,False,held_flat_2026Q4,44.610377,,False,False,0.06,47.287,False,0.0,0.0
-J2507,pegloticase,Krystexxa,single_source,,iv_infusion,7.917212,4000.629,3774.178302,False,forecast_2027,3974.297311,,False,False,0.06,4212.75515,False,0.0,0.0
-J3032,eptinezumab,Vyepti,single_source,,mab_infusion,226.874013,21.243,20.040566,False,held_flat_2026Q4,20.040566,,False,False,0.06,21.243,False,0.00234,0.00234
-J3111,romosozumab,Evenity,single_source,,injection,207.805638,12.792,12.067925,False,held_flat_2026Q4,12.067925,,False,False,0.06,12.792,False,0.0,0.0
-J3262,tocilizumab,Actemra IV,reference,,mab_infusion,514.291612,5.325,5.023585,False,forecast_2027,5.023585,,False,False,0.06,5.325,False,0.126442,0.025288
-J3358,ustekinumab,Stelara IV,reference,,mab_infusion,384.509905,10.249,9.668868,False,held_flat_2026Q4,9.668868,,False,False,0.06,10.249,False,0.0,0.0
-J3380,vedolizumab,Entyvio IV,single_source,,mab_infusion,298.678845,20.949,19.763208,False,forecast_2027,19.918632,,False,False,0.06,21.11375,True,0.036283,0.036283
-J9312,rituximab,Rituxan,reference,,mab_infusion,81.076866,72.094,68.013208,False,held_flat_2026Q4,68.013208,,False,False,0.06,72.094,False,0.011444,0.002514
-J9332,efgartigimod,Vyvgart IV,single_source,,iv_infusion,520.591545,32.347,30.516038,False,held_flat_2026Q4,30.516038,,False,False,0.06,32.347,False,0.0,0.0
-Q5098,ustekinumab,ustekinumab-srlf,biosimilar,AMBIGUOUS,mab_infusion,384.509905,9.27,8.583333,True,held_flat_2026Q4,8.583333,,True,False,0.08,9.27,False,0.0,0.0
-Q5099,ustekinumab,ustekinumab-stba,biosimilar,AMBIGUOUS,mab_infusion,384.509905,2.89,2.675926,True,held_flat_2026Q4,2.675926,,True,False,0.08,2.89,False,0.0,0.0
-Q5100,ustekinumab,ustekinumab-kfce,biosimilar,AMBIGUOUS,mab_infusion,384.509905,3.08,2.851852,True,held_flat_2026Q4,2.851852,,True,False,0.08,3.08,False,0.0,0.0
-Q5103,infliximab,Inflectra (infliximab-dyyb),biosimilar,J1745,mab_infusion,53.024971,28.456,26.202717,False,held_flat_2026Q4,26.202717,27.111745,True,True,0.075,28.236098,False,0.0,0.0
-Q5104,infliximab,Renflexis (infliximab-abda),biosimilar,J1745,mab_infusion,53.024971,25.649,23.395717,False,held_flat_2026Q4,23.395717,27.111745,True,True,0.075,25.429098,False,0.00174,0.164353
-Q5115,rituximab,Truxima (rituximab-abbs),biosimilar,J9312,mab_infusion,81.076866,35.988,30.546943,False,held_flat_2026Q4,30.546943,68.013208,True,True,0.075,35.647934,False,0.000435,0.000435
-Q5119,rituximab,Ruxience (rituximab-pvvr),biosimilar,J9312,mab_infusion,81.076866,5.792,5.464151,True,held_flat_2026Q4,5.464151,68.013208,False,True,0.06,5.792,False,0.00069,0.00069
-Q5121,infliximab,Avsola (infliximab-axxq),biosimilar,J1745,mab_infusion,53.024971,34.686,32.996038,False,held_flat_2026Q4,32.996038,27.111745,False,True,0.06,34.622742,False,0.0,0.0
-Q5123,rituximab,Riabni (rituximab-arrx),biosimilar,J9312,mab_infusion,81.076866,21.083,15.641943,False,held_flat_2026Q4,15.641943,68.013208,True,True,0.075,20.742934,False,0.0,0.00893
-Q5133,tocilizumab,Tofidence (tocilizumab-bavi),biosimilar,J3262,mab_infusion,514.291612,4.706,4.304113,False,held_flat_2026Q4,4.304113,5.023585,True,False,0.08,4.706,False,0.0,0.0
-Q5134,natalizumab,Tyruko (natalizumab-sztn),biosimilar,J2323,mab_infusion,293.264243,24.397,23.042642,False,held_flat_2026Q4,23.042642,22.572642,False,False,0.06,24.397,False,0.0,0.002364
-Q5135,tocilizumab,Tyenne (tocilizumab-aazg),biosimilar,J3262,mab_infusion,514.291612,4.37,3.968113,False,held_flat_2026Q4,3.968113,5.023585,True,False,0.08,4.37,False,0.0,0.0
-Q5136,denosumab,denosumab-bbdz,biosimilar,J0897,injection,67.902256,26.991,24.737717,False,held_flat_2026Q4,24.737717,29.259646,True,False,0.08,27.078489,False,0.0,0.0
-Q5138,ustekinumab,Wezlana IV (ustekinumab-auub),biosimilar,AMBIGUOUS,mab_infusion,384.509905,2.273,2.10463,True,held_flat_2026Q4,2.10463,,True,False,0.08,2.273,False,0.0,0.0
-Q5151,eculizumab,eculizumab-aagh,biosimilar,J1299,mab_infusion,575.039448,31.547,28.244132,False,held_flat_2026Q4,28.244132,41.285849,True,False,0.08,31.547,False,0.0,0.0
-Q5152,eculizumab,eculizumab-aeeb,biosimilar,J1299,mab_infusion,575.039448,40.412,37.109132,False,held_flat_2026Q4,37.109132,41.285849,True,False,0.08,40.412,False,0.0,0.0
-Q5156,tocilizumab,Avtozma (tocilizumab-anoh),biosimilar,J3262,mab_infusion,514.291612,3.098,2.696113,False,held_flat_2026Q4,2.696113,5.023585,True,False,0.08,3.098,False,0.0,0.101153
-Q5157,denosumab,denosumab-bmwo,biosimilar,J0897,injection,67.902256,24.002,21.748717,False,held_flat_2026Q4,21.748717,29.259646,True,False,0.08,24.089489,False,0.0,0.0
-Q5158,denosumab,denosumab-bnht,biosimilar,J0897,injection,67.902256,28.702,26.448717,False,held_flat_2026Q4,26.448717,29.259646,True,False,0.08,28.789489,False,0.0,0.0
-Q5161,denosumab,denosumab-kyqq,biosimilar,J0897,injection,67.902256,27.509,25.255717,False,held_flat_2026Q4,25.255717,29.259646,True,False,0.08,27.596489,False,0.0,0.0
-Q5162,denosumab,denosumab-nxxp,biosimilar,J0897,injection,67.902256,15.336,13.082717,False,held_flat_2026Q4,13.082717,29.259646,True,False,0.08,15.423489,False,0.0,0.0
-Q5167,denosumab,denosumab-qbde,biosimilar,J0897,injection,67.902256,7.681,5.427717,False,held_flat_2026Q4,5.427717,29.259646,True,False,0.08,7.768489,False,0.0,0.0
-Q9997,ustekinumab,ustekinumab-ttwe,biosimilar,AMBIGUOUS,mab_infusion,384.509905,8.591,7.95463,True,held_flat_2026Q4,7.95463,,True,False,0.08,8.591,False,0.0,0.0
-Q9998,ustekinumab,ustekinumab-aekn,biosimilar,AMBIGUOUS,mab_infusion,384.509905,10.48,9.886792,True,held_flat_2026Q4,9.886792,,False,False,0.06,10.48,False,0.0,0.0
-Q9999,ustekinumab,ustekinumab-aauz,biosimilar,AMBIGUOUS,mab_infusion,384.509905,13.246,12.496226,True,held_flat_2026Q4,12.496226,,False,False,0.06,13.246,False,0.0,0.0
+hcpcs,molecule,brand,product_type,reference_hcpcs,admin_family,formulary_listed,ipay2028_selected,flag_lesser_of,flag_addon_8pct,ira_existing,asp_estimated,units_per_admin,admins_per_patient_year,admin_hours,chair_hours,pl_2027,pay_asp_2027,buy_asp_2027,addon_2027,admin_allowed_medicare,acquisition_cost,pl_2028_rules
+J0129,abatacept,Orencia IV,single_source,,iv_infusion,False,True,True,False,False,True,74.560385,8.660025,0.5,1.0,45.937,43.336792,43.336792,0.06,60.992119,3231.207884,45.937
+J0202,alemtuzumab,Lemtrada,single_source,,mab_infusion,True,False,False,False,False,False,11.212121,4.125,4.0,6.0,2506.2,2364.339623,2364.339623,0.06,198.92784,26509.26244,2506.2
+J0490,belimumab,Benlysta,single_source,,mab_infusion,True,False,False,False,False,False,78.979051,7.874714,1.0,1.5,58.333,55.031132,55.031132,0.06,120.653526,4346.306592,58.333
+J0585,onabotulinumtoxinA,Botox,single_source,,procedure,False,True,False,False,False,False,183.264972,2.467987,0.0,0.0,6.514,6.145283,6.145283,0.06,0.0,1126.215118,6.514
+J0717,certolizumab,Cimzia,single_source,,injection,False,True,True,False,False,True,391.12827,8.601171,0.0,0.5,3.14,2.962264,2.962264,0.06,14.309437,1158.625192,3.14
+J0897,denosumab,Prolia / Xgeva,reference,,injection,True,False,False,False,False,False,67.902256,1.829143,0.0,0.5,29.856,28.166038,28.166038,0.06,14.309437,1912.537516,29.856
+J1299,eculizumab,Soliris,reference,,mab_infusion,False,False,False,False,False,False,575.039448,14.738372,1.0,1.5,43.763,41.285849,41.285849,0.06,120.653526,23740.991808,43.763
+J1303,ravulizumab,Ultomiris,single_source,,mab_infusion,False,False,False,False,False,False,323.833158,4.70297,2.0,2.5,226.454,213.635849,213.635849,0.06,146.744964,69182.371621,226.454
+J1459,immune_globulin,Privigen,single_source,,iv_infusion,False,False,False,False,False,False,78.305426,8.431355,3.0,3.5,48.963,46.191509,46.191509,0.06,100.462284,3617.045785,48.963
+J1557,immune_globulin,Gammaplex,single_source,,iv_infusion,False,False,False,False,False,False,78.305426,8.431355,3.0,3.5,62.299001,58.772642,58.772642,0.06,100.462284,4602.216763,62.299001
+J1561,immune_globulin,Gamunex-C / Gammaked,single_source,,iv_infusion,True,False,False,False,False,False,78.305426,8.431355,3.0,3.5,48.022,45.303774,45.303774,0.06,100.462284,3547.531318,48.022
+J1566,immune_globulin,Gammagard S/D (powder),single_source,,iv_infusion,False,False,False,False,False,False,78.305426,8.431355,3.0,3.5,82.756,78.071698,78.071698,0.06,100.462284,6113.437562,82.756
+J1568,immune_globulin,Octagam,single_source,,iv_infusion,True,False,False,False,False,False,78.305426,8.431355,3.0,3.5,47.133,44.465094,44.465094,0.06,100.462284,3481.858123,47.133
+J1569,immune_globulin,Gammagard Liquid,single_source,,iv_infusion,True,False,False,False,False,False,78.305426,8.431355,3.0,3.5,49.495,46.693396,46.693396,0.06,100.462284,3656.34626,49.495
+J1602,golimumab,Simponi Aria,single_source,,mab_infusion,False,False,False,False,False,False,180.306469,4.713198,0.5,1.0,10.978,10.356604,10.356604,0.06,120.653526,1867.3627,10.978
+J1628,guselkumab,Tremfya IV,single_source,,mab_infusion,False,False,False,False,False,False,200.0,1.714286,1.0,1.5,66.998,63.20566,63.20566,0.06,120.653526,12641.132,66.998
+J1745,infliximab,Remicade / unbranded infliximab,reference,,mab_infusion,True,False,False,False,False,False,53.024971,5.624269,2.0,2.5,29.856,28.166038,28.166038,0.06,146.744964,1493.503335,29.856
+J1823,inebilizumab,Uplizna,single_source,,mab_infusion,False,False,False,False,False,False,289.242105,1.938776,1.5,2.5,511.573,482.616038,482.616038,0.06,120.653526,139592.878865,511.573
+J2267,mirikizumab,Omvoh IV,single_source,,mab_infusion,False,False,True,False,False,True,290.196721,1.967742,0.5,1.0,32.584,30.739623,30.739623,0.06,120.653526,8920.537809,32.584
+J2323,natalizumab,Tysabri,reference,,mab_infusion,True,False,False,False,False,False,293.264243,7.65956,1.0,2.0,23.927001,22.572642,22.572642,0.06,120.653526,6619.748765,23.927001
+J2327,risankizumab,Skyrizi IV,single_source,,mab_infusion,False,False,False,False,False,False,609.812646,2.398473,1.0,1.5,14.011,13.217925,13.217925,0.06,120.653526,8060.457817,14.011
+J2329,ublituximab,Briumvi,single_source,,mab_infusion,True,False,False,False,False,False,354.911809,2.033435,1.0,2.0,71.089,67.065094,67.065094,0.06,120.653526,23802.19381,71.089
+J2350,ocrelizumab,Ocrevus,single_source,,mab_infusion,True,False,False,False,False,False,551.451991,1.717636,3.5,4.5,60.689,57.253774,57.253774,0.06,172.836402,31572.707689,60.689
+J2351,ocrelizumab,Ocrevus Zunovo (subcutaneous),single_source,,injection,False,False,False,False,False,False,551.451991,1.717636,0.0,0.5,47.287,44.610377,44.610377,0.06,14.309437,24600.481235,47.287
+J2507,pegloticase,Krystexxa,single_source,,iv_infusion,False,False,False,False,False,False,7.917212,9.731452,2.0,3.0,4000.629,3774.178302,3774.178302,0.06,80.727202,29880.971625,4000.629
+J3032,eptinezumab,Vyepti,single_source,,mab_infusion,True,False,False,False,False,False,226.874013,2.729232,0.5,1.0,21.243,20.040566,20.040566,0.06,120.653526,4546.683625,21.243
+J3111,romosozumab,Evenity,single_source,,injection,True,False,False,False,False,False,207.805638,5.400467,0.0,0.5,12.792001,12.067925,12.067925,0.06,14.309437,2507.782857,12.792001
+J3262,tocilizumab,Actemra IV,reference,,mab_infusion,False,False,False,False,False,False,514.291612,7.721701,1.0,1.5,5.325,5.023585,5.023585,0.06,120.653526,2583.58763,5.325
+J3358,ustekinumab,Stelara IV,reference,,mab_infusion,False,False,False,False,False,False,384.509905,1.106768,1.0,1.5,10.249,9.668868,9.668868,0.06,120.653526,3717.775519,10.249
+J3380,vedolizumab,Entyvio IV,single_source,,mab_infusion,False,True,False,False,False,False,298.678845,5.76482,0.5,1.0,20.949,19.763208,19.763208,0.06,120.653526,5902.852141,20.949
+J9312,rituximab,Rituxan,reference,,mab_infusion,True,False,False,False,False,False,81.076866,3.308994,4.0,4.5,72.094,68.013208,68.013208,0.06,198.92784,5514.297737,72.094
+J9332,efgartigimod,Vyvgart IV,single_source,,iv_infusion,False,False,False,False,False,False,520.591545,13.869936,1.0,1.5,32.347,30.516038,30.516038,0.06,60.992119,15886.391369,32.347
+Q5098,ustekinumab,ustekinumab-srlf,biosimilar,AMBIGUOUS,mab_infusion,False,False,True,True,False,True,384.509905,1.106768,1.0,1.5,9.27,8.583333,8.583333,0.08,120.653526,3300.376559,9.27
+Q5099,ustekinumab,ustekinumab-stba,biosimilar,AMBIGUOUS,mab_infusion,False,False,True,True,False,True,384.509905,1.106768,1.0,1.5,2.89,2.675926,2.675926,0.08,120.653526,1028.920053,2.89
+Q5100,ustekinumab,ustekinumab-kfce,biosimilar,AMBIGUOUS,mab_infusion,False,False,True,True,False,True,384.509905,1.106768,1.0,1.5,3.08,2.851852,2.851852,0.08,120.653526,1096.565342,3.08
+Q5103,infliximab,Inflectra (infliximab-dyyb),biosimilar,J1745,mab_infusion,True,False,False,True,True,False,53.024971,5.624269,2.0,2.5,28.31517,26.202717,26.202717,0.075,146.744964,1389.398297,27.892679
+Q5104,infliximab,Renflexis (infliximab-abda),biosimilar,J1745,mab_infusion,False,False,False,True,True,False,53.024971,5.624269,2.0,2.5,25.50817,23.395717,23.395717,0.075,146.744964,1240.557205,25.085679
+Q5115,rituximab,Truxima (rituximab-abbs),biosimilar,J9312,mab_infusion,True,False,False,True,True,False,81.076866,3.308994,4.0,4.5,35.647934,30.546943,30.546943,0.075,198.92784,2476.650398,34.627735
+Q5119,rituximab,Ruxience (rituximab-pvvr),biosimilar,J9312,mab_infusion,False,False,False,False,True,True,81.076866,3.308994,4.0,4.5,5.792,5.464151,5.464151,0.06,198.92784,443.016237,5.792
+Q5121,infliximab,Avsola (infliximab-axxq),biosimilar,J1745,mab_infusion,False,False,False,False,True,False,53.024971,5.624269,2.0,2.5,34.686,32.996038,32.996038,0.06,146.744964,1749.613943,34.686
+Q5123,rituximab,Riabni (rituximab-arrx),biosimilar,J9312,mab_infusion,False,False,False,True,True,False,81.076866,3.308994,4.0,4.5,20.742934,15.641943,15.641943,0.075,198.92784,1268.199713,19.722735
+Q5133,tocilizumab,Tofidence (tocilizumab-bavi),biosimilar,J3262,mab_infusion,False,False,False,True,False,False,514.291612,7.721701,1.0,1.5,4.706,4.304113,4.304113,0.08,120.653526,2213.569215,4.706
+Q5134,natalizumab,Tyruko (natalizumab-sztn),biosimilar,J2323,mab_infusion,False,False,False,False,False,False,293.264243,7.65956,1.0,2.0,24.397001,23.042642,23.042642,0.06,120.653526,6757.582959,24.397001
+Q5135,tocilizumab,Tyenne (tocilizumab-aazg),biosimilar,J3262,mab_infusion,False,False,False,True,False,False,514.291612,7.721701,1.0,1.5,4.37,3.968113,3.968113,0.08,120.653526,2040.767233,4.37
+Q5136,denosumab,denosumab-bbdz,biosimilar,J0897,injection,False,False,False,True,False,False,67.902256,1.829143,0.0,0.5,26.991,24.737717,24.737717,0.08,14.309437,1679.746787,26.991
+Q5138,ustekinumab,Wezlana IV (ustekinumab-auub),biosimilar,AMBIGUOUS,mab_infusion,False,False,False,True,False,True,384.509905,1.106768,1.0,1.5,2.273,2.10463,2.10463,0.08,120.653526,809.251082,2.273
+Q5151,eculizumab,eculizumab-aagh,biosimilar,J1299,mab_infusion,False,False,False,True,False,False,575.039448,14.738372,1.0,1.5,31.547,28.244132,28.244132,0.08,120.653526,16241.490067,31.547
+Q5152,eculizumab,eculizumab-aeeb,biosimilar,J1299,mab_infusion,False,False,False,True,False,False,575.039448,14.738372,1.0,1.5,40.412,37.109132,37.109132,0.08,120.653526,21339.214771,40.412
+Q5156,tocilizumab,Avtozma (tocilizumab-anoh),biosimilar,J3262,mab_infusion,False,False,False,True,False,False,514.291612,7.721701,1.0,1.5,3.098,2.696113,2.696113,0.08,120.653526,1386.588302,3.098
+Q5157,denosumab,denosumab-bmwo,biosimilar,J0897,injection,False,False,False,True,False,False,67.902256,1.829143,0.0,0.5,24.002,21.748717,21.748717,0.08,14.309437,1476.786944,24.002
+Q5158,denosumab,denosumab-bnht,biosimilar,J0897,injection,False,False,False,True,False,False,67.902256,1.829143,0.0,0.5,28.702,26.448717,26.448717,0.08,14.309437,1795.927546,28.702
+Q5161,denosumab,denosumab-kyqq,biosimilar,J0897,injection,False,False,False,True,False,False,67.902256,1.829143,0.0,0.5,27.509,25.255717,25.255717,0.08,14.309437,1714.920155,27.509
+Q5162,denosumab,denosumab-nxxp,biosimilar,J0897,injection,False,False,False,True,False,False,67.902256,1.829143,0.0,0.5,15.336,13.082717,13.082717,0.08,14.309437,888.345996,15.336
+Q5167,denosumab,denosumab-qbde,biosimilar,J0897,injection,False,False,False,True,False,False,67.902256,1.829143,0.0,0.5,7.681,5.427717,5.427717,0.08,14.309437,368.554228,7.681
+Q9997,ustekinumab,ustekinumab-ttwe,biosimilar,AMBIGUOUS,mab_infusion,False,False,False,True,False,True,384.509905,1.106768,1.0,1.5,8.591,7.95463,7.95463,0.08,120.653526,3058.634028,8.591
+Q9998,ustekinumab,ustekinumab-aekn,biosimilar,AMBIGUOUS,mab_infusion,False,False,True,False,False,True,384.509905,1.106768,1.0,1.5,10.48,9.886792,9.886792,0.06,120.653526,3801.569455,10.48
+Q9999,ustekinumab,ustekinumab-aauz,biosimilar,AMBIGUOUS,mab_infusion,False,False,True,False,False,True,384.509905,1.106768,1.0,1.5,13.246,12.496226,12.496226,0.06,120.653526,4804.922675,13.246

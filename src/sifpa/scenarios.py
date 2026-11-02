@@ -1,18 +1,19 @@
-"""Module 3b: CY2027 plan scenarios for the illustrative infusion suite (ADR 0006).
+"""Module 3b: CY2027 plan scenarios for the illustrative 12-chair suite (ADRs 0006, 0009).
 
-  base            2027 prices from the ASP forecast; CY2027 proposed PFS conversion factor; the IRA +8%
-                  biosimilar add-on reverts to +6% for existing biosimilars from 2027Q4 (current law);
-                  today's regional drug mix.
-  biosimilar_push multi-source molecules reach the target biosimilar share, moved to the lowest-ASP
-                  qualifying biosimilar (proxy for the payer-preferred product).
-  policy_shock    2028 run-rate on the base: Medicare pays 106% of an assumed MFP for Orencia and Entyvio
-                  (practice cost falls to MFP via effectuation), and payer white bagging takes a share of
-                  commercial infusions.
+  base                 2027 prices on the lagged ASP path (payment on ASP(t-2), purchase at ASP(t)),
+                       CY2027 proposed CF, IRA +8% ends 2027-09-30 for existing biosimilars (current law),
+                       formulary-listed drug mix by payer, demand-driven volume, net-revenue haircuts.
+  biosimilar_listed    infliximab and rituximab move to the target biosimilar share on the products
+                       the formulary lists (Inflectra, Truxima).
+  biosimilar_best      upper bound: each payer's patients get the product with the best drug margin for that
+                       payer (payer formularies permitting).
+  policy_2028          2028 run-rate at 2027 prices: IRA add-on back to +6% all year for existing
+                       biosimilars, MFP for selected drugs, cost-tiered white bagging net of the owned specialty pharmacy
+                       recapture. Each component is also run alone (bridge).
+  *_full_formulary     the same base and 2028 shock with the non-listed rheum/neuro chair drugs the operator
+                       could add (Orencia, Simponi Aria, Actemra, ...): this is where MFP exposure lives.
 
-The Excel workbook (excel_workbook.py) rebuilds the same numbers with live formulas from the inputs this
-module writes; tests/test_excel.py checks they agree.
-
-`make scenarios` -> outputs/scenarios.json, outputs/scenario_drug_inputs.csv
+`make scenarios` -> outputs/scenarios.json, outputs/scenario_drug_inputs.csv, outputs/plan_detail.csv
 """
 
 from __future__ import annotations
@@ -23,170 +24,126 @@ import pandas as pd
 
 from sifpa import assumptions as A
 from sifpa import engine as E
-from sifpa import mechanics as M
 from sifpa.paths import OUTPUTS
 
-PUSH_MOLECULES = ["infliximab", "rituximab", "tocilizumab", "natalizumab"]
-IRA_EXISTING_LAST_FIRST_QUARTER = "2022Q3"  # paid under ASP by 2022-09-30 -> window ends 2027-09-30
+PUSH_MOLECULES = ["infliximab", "rituximab"]  # multi-source molecules on the operator's published list
 
 
-def addon_2027(row, first_quarter: dict[str, str]) -> float:
-    """Average 2027 add-on % of reference ASP for a biosimilar (single-source/reference: 6% of own ASP)."""
-    asp_addon = A.value("policy", "asp_addon_pct")
-    ira = A.value("policy", "biosimilar_ira_addon_pct")
-    if row.product_type != "biosimilar" or not row.flag_addon_8pct:
-        return asp_addon
-    if first_quarter[row.hcpcs] <= IRA_EXISTING_LAST_FIRST_QUARTER:
-        return (3 * ira + asp_addon) / 4  # 8% for Q1-Q3, 6% for Q4 2027
-    return ira
-
-
-def drug_inputs_2027(con) -> pd.DataFrame:
-    """Price table for 2027: forecast PL for reference/single-source codes with full history, latest PL
-    held flat otherwise; biosimilar PL rebuilt from its ASP + the 2027 average add-on on reference ASP."""
-    d = E.drug_table(con)
-    fc = pd.read_csv(OUTPUTS / "forecasts_quarterly_asp.csv", dtype={"hcpcs": str})
-    pl27 = fc.groupby("hcpcs")["forecast"].mean()
-    first_q = con.sql("select hcpcs, min(payment_quarter) q from marts.fct_asp_quarter group by 1").df()
-    first_quarter = dict(zip(first_q["hcpcs"], first_q["q"], strict=True))
-    asp_addon = A.value("policy", "asp_addon_pct")
-
-    d["price_source"] = d["hcpcs"].map(lambda h: "forecast_2027" if h in pl27.index else "held_flat_2026Q4")
-    is_ref = d["product_type"] != "biosimilar"
-    d.loc[is_ref, "asp_2027"] = d.loc[is_ref].apply(
-        lambda r: pl27[r.hcpcs] / (1 + asp_addon) if r.hcpcs in pl27.index else r.asp_basis, axis=1)
-    ref_asp = d.set_index("hcpcs")["asp_2027"]
-    d.loc[~is_ref, "asp_2027"] = d.loc[~is_ref, "asp_basis"]
-    d["ref_asp_2027"] = d["reference_hcpcs"].map(ref_asp)
-    d["ira_existing"] = d["hcpcs"].map(lambda h: first_quarter[h] <= IRA_EXISTING_LAST_FIRST_QUARTER) & ~is_ref
-    d["addon_2027"] = d.apply(lambda r: addon_2027(r, first_quarter), axis=1)
-    bio_ok = ~is_ref & d["ref_asp_2027"].notna() & ~d["asp_estimated"]
-    d["pl_2027"] = d["asp_2027"] * (1 + asp_addon)
-    d.loc[bio_ok, "pl_2027"] = d.loc[bio_ok, "asp_2027"] + d.loc[bio_ok, "addon_2027"] * d.loc[bio_ok, "ref_asp_2027"]
-    # Non-ASP-priced biosimilars (AMP-based / ambiguous reference): hold the published PL
-    d.loc[~is_ref & ~bio_ok, "pl_2027"] = d.loc[~is_ref & ~bio_ok, "payment_limit"]
-    d["mfp_selected"] = d["ipay2028_selected"].astype(bool)
-    return d
-
-
-def mixes(con, d: pd.DataFrame) -> pd.DataFrame:
-    """Base mix (region, 2024) and the biosimilar-push mix per HCPCS."""
+def push_listed_mix(mix: pd.DataFrame, drugs: pd.DataFrame) -> pd.DataFrame:
+    """Raise the biosimilar share of each listed multi-source molecule to the target, on the listed product."""
     target = A.load()["scenarios"]["biosimilar_push_target_share"]["value"]
-    mix = E.molecule_mix(con)[["hcpcs", "share"]].rename(columns={"share": "mix_base"})
-    m = d[["hcpcs", "molecule", "product_type", "asp_2027", "flag_addon_8pct"]].merge(mix, on="hcpcs", how="left")
-    m["mix_base"] = m["mix_base"].fillna(0.0)
-    m["mix_push"] = m["mix_base"]
-    for mol in PUSH_MOLECULES:
-        g = m[m["molecule"] == mol]
-        total = g["mix_base"].sum()
-        if total == 0:
-            continue
-        bios = g[(g["product_type"] == "biosimilar") & g["flag_addon_8pct"]]
-        if bios.empty:
-            bios = g[g["product_type"] == "biosimilar"]
-        cheapest = bios.sort_values("asp_2027").index[0]
-        bio_now = g[g["product_type"] == "biosimilar"]["mix_base"].sum()
-        move = max(0.0, target * total - bio_now)  # only move reference volume, never reduce biosimilars
-        ref_idx = g[g["product_type"] == "reference"].index
-        ref_share = m.loc[ref_idx, "mix_base"].sum()
-        if ref_share > 0:
-            m.loc[ref_idx, "mix_push"] = m.loc[ref_idx, "mix_base"] * (1 - min(move, ref_share) / ref_share)
-            m.loc[cheapest, "mix_push"] += min(move, ref_share)
-    return m[["hcpcs", "mix_base", "mix_push"]]
+    d = drugs.set_index("hcpcs")
+    m = mix.copy()
+    m["molecule"] = m["hcpcs"].map(d["molecule"])
+    m["is_bio"] = m["hcpcs"].map(d["product_type"]).eq("biosimilar")
+    for _key, g in m[m["molecule"].isin(PUSH_MOLECULES)].groupby(["payer", "molecule"]):
+        total, bio = g["patient_share"].sum(), g.loc[g["is_bio"], "patient_share"].sum()
+        move = max(0.0, target * total - bio)
+        ref_idx, bio_idx = g.index[~g["is_bio"]], g.index[g["is_bio"]]
+        if len(bio_idx) and m.loc[ref_idx, "patient_share"].sum() > 0:
+            ref_total = m.loc[ref_idx, "patient_share"].sum()
+            m.loc[ref_idx, "patient_share"] *= 1 - min(move, ref_total) / ref_total
+            m.loc[bio_idx[0], "patient_share"] += min(move, ref_total)
+    return m.drop(columns=["molecule", "is_bio"])
 
 
-def economics_2027(d: pd.DataFrame, fees: dict, drivers: E.Drivers) -> pd.DataFrame:
-    priced = d.assign(payment_limit=d["pl_2027"], asp_basis=d["asp_2027"])
-    return E.per_admin_economics(priced, fees, drivers)
+def best_product_mix(mix: pd.DataFrame, drugs: pd.DataFrame, econ: pd.DataFrame) -> pd.DataFrame:
+    """Each payer's share of a multi-source molecule goes to the product with the highest drug margin for
+    that payer (all marketed products of the molecule are eligible)."""
+    d = drugs.set_index("hcpcs")
+    e = econ.set_index("hcpcs")
+    rows = []
+    m = mix.assign(molecule=mix["hcpcs"].map(d["molecule"]))
+    for (payer, mol), g in m.groupby(["payer", "molecule"]):
+        cands = drugs[(drugs["molecule"] == mol) & drugs["admin_family"].isin(E.CHAIR_FAMILIES)]["hcpcs"]
+        if mol in PUSH_MOLECULES + ["natalizumab"] and len(cands) > 1:
+            best = max(cands, key=lambda h: e.at[h, f"drug_margin_{payer}"])
+            rows.append({"payer": payer, "line": g["line"].iloc[0], "hcpcs": best, "patient_share": g["patient_share"].sum()})
+        else:
+            rows += g.drop(columns="molecule").to_dict(orient="records")
+    return pd.DataFrame(rows)
 
 
-def apply_mfp(econ: pd.DataFrame, drivers: E.Drivers) -> pd.DataFrame:
-    """Medicare (FFS and MA) pays 106% of MFP; the practice's net cost falls to MFP after the
-    manufacturer's effectuation refund, so the Medicare drug margin = units x MFP x (1.06 x collect - 1)."""
-    disc = A.value("policy", "mfp_discount_vs_asp")
-    collect = M.provider_collection_factor(drivers.coinsurance_collection_rate)
-    e = econ.copy()
-    sel = e["mfp_selected"]
-    mfp = e.loc[sel, "asp_basis"] * (1 - disc)
-    margin = e.loc[sel, "units_per_admin"] * mfp * ((1 + A.value("policy", "mfp_payment_pct")) * collect - 1)
-    revenue = e.loc[sel, "units_per_admin"] * mfp * (1 + A.value("policy", "mfp_payment_pct")) * collect
-    for payer, rate in (("medicare_ffs", 1.0), ("medicare_adv", drivers.ma_rate_vs_ffs)):
-        e.loc[sel, f"drug_revenue_{payer}"] = revenue * rate
-        e.loc[sel, f"drug_margin_{payer}"] = margin * rate
-        e.loc[sel, f"contribution_{payer}"] = (margin * rate + e.loc[sel, f"admin_revenue_{payer}"]
-                                               - e.loc[sel, "chair_cost"])
-    return e
+def summarise(r: dict) -> dict:
+    p = r["pnl"]
+    keys = ["patients", "administrations", "utilization", "drug_revenue", "admin_revenue", "drug_cost",
+            "variable_cost", "contribution", "operating_margin", "contribution_per_admin", "contribution_per_chair_hour",
+            "added_chair_fixed_cost", "added_chair_breakeven_utilization", "added_chair_value"]
+    out = {k: round(p[k], 4) if isinstance(p[k], float) and abs(p[k]) < 10 else round(p[k]) for k in keys}
+    out["fixed_costs"] = {k: round(v) for k, v in p["fixed_costs"].items()}
+    det = p["detail"]
+    for payer in E.PAYERS:
+        g = det[det["payer"] == payer]
+        out[f"contribution_per_admin_{payer}"] = round(float(g["contribution"].sum() / g["admins"].sum()), 2)
+    out["commercial_share_of_contribution"] = round(float(det[det["payer"] == "commercial"]["contribution"].sum()
+                                                         / det["contribution"].sum()), 4)
+    out["commercial_share_of_admins"] = round(float(det[det["payer"] == "commercial"]["admins"].sum()
+                                                   / det["admins"].sum()), 4)
+    return out
 
 
 def run(con) -> dict:
-    p = A.practice()
-    d = drug_inputs_2027(con)
-    fees = E.admin_fee_table(con, A.value("policy", "cf_2027_proposed"))
-    drivers = E.Drivers.from_yaml()
-    payers = E.payer_mix(con)
-    m = mixes(con, d)
-    econ = economics_2027(d, fees, drivers)
-    econ_shock = apply_mfp(econ, drivers)
-    wb = A.load()["scenarios"]["policy_shock_white_bagging"]["value"]
-    vol = {k: p[k] for k in ("chairs", "operating_days", "chair_hours_per_day", "chair_utilization")}
-
-    def scenario(econ_df, mix_col, white_bag):
-        mix = m.rename(columns={mix_col: "share"})[["hcpcs", "share"]]
-        mix = mix[mix["share"] > 0]
-        per = E.blended(econ_df, mix, payers, white_bag)
-        pnl = E.practice_pnl(per, **vol)
-        medicare = E.blended(econ_df, mix, {"medicare_ffs": 1.0})
-        commercial = E.blended(econ_df, mix, {"commercial": 1.0})
-        return {"per_admin": {k: round(v, 4) for k, v in per.items()},
-                "annual": {k: round(v) for k, v in pnl.items()},
-                "contribution_per_chair": round(pnl["contribution"] / vol["chairs"]),
-                "medicare_ffs_contribution_per_admin": round(medicare["contribution"], 2),
-                "commercial_contribution_per_admin": round(commercial["contribution"], 2)}
-
+    base = E.build(con)
+    drugs, econ, mix = base["drugs"], base["econ"], base["mix"]
+    res = {"base": base,
+           "biosimilar_listed": E.build(con, mix_override=push_listed_mix(mix, drugs)),
+           "biosimilar_best": E.build(con, mix_override=best_product_mix(mix, drugs, econ)),
+           "policy_2028": E.build(con, rules_year=2028, mfp=True, white_bag=True),
+           "base_full_formulary": E.build(con, full_formulary=True),
+           "policy_2028_full_formulary": E.build(con, rules_year=2028, mfp=True, white_bag=True, full_formulary=True)}
+    bridge_runs = {"ira_addon_expiry": E.build(con, rules_year=2028), "mfp": E.build(con, mfp=True),
+                   "white_bagging_net_of_ivs": E.build(con, white_bag=True)}
+    ff_mfp = E.build(con, mfp=True, full_formulary=True)
+    b = base["pnl"]["contribution"]
     out = {
         "plan_year": 2027,
-        "volume_drivers": vol,
-        "payer_mix": {k: round(v, 4) for k, v in payers.items()},
+        "price_basis": "2027 average: payment on lagged ASP path, purchase at current-quarter ASP (outputs/price_path.csv)",
+        "payer_patient_shares": {k: round(v, 4) for k, v in base["payers"].items()},
         "conversion_factor_2027_proposed": A.value("policy", "cf_2027_proposed"),
-        "scenarios": {
-            "base": scenario(econ, "mix_base", 0.0),
-            "biosimilar_push": scenario(econ, "mix_push", 0.0),
-            "policy_shock": scenario(econ_shock, "mix_base", wb),
-        },
+        "scenarios": {k: summarise(v) for k, v in res.items()},
+        "policy_2028_bridge": {k: round(v["pnl"]["contribution"] - b) for k, v in bridge_runs.items()},
+        "mfp_effect_full_formulary": round(ff_mfp["pnl"]["contribution"] - res["base_full_formulary"]["pnl"]["contribution"]),
+        "mfp_selected_share_of_admins_full_formulary": round(float(
+            ff_mfp["pnl"]["detail"].assign(sel=lambda x: x["hcpcs"].map(drugs.set_index("hcpcs")["ipay2028_selected"]))
+            .query("sel")["admins"].sum() / ff_mfp["pnl"]["detail"]["admins"].sum()), 4),
+        "white_bag_tiers": A.load()["scenarios"]["white_bagging_by_cost_tier"]["value"],
+        "labels": {"rvu": "CY2026 RVUs/GPCI with CY2027 proposed CF (2027 RVUs not final)",
+                   "policy_2028": "2027 prices held; 2028 rules applied (no 2028 price forecast)"},
     }
-    # Policy-shock bridge: each component alone vs base
-    out["policy_shock_bridge"] = {
-        "mfp_orencia_entyvio": scenario(econ_shock, "mix_base", 0.0)["annual"]["contribution"]
-        - out["scenarios"]["base"]["annual"]["contribution"],
-        "white_bagging": scenario(econ, "mix_base", wb)["annual"]["contribution"]
-        - out["scenarios"]["base"]["annual"]["contribution"],
-    }
-    # IRA +8% -> +6% expiry: the base already includes Q4 2027; full-year run-rate hit for 2028
-    full8 = d.copy()
-    full8["addon_2027"] = full8.apply(lambda r: A.value("policy", "asp_addon_pct") if r.ira_existing else r.addon_2027, axis=1)
-    bio_ok = (full8["product_type"] == "biosimilar") & full8["ref_asp_2027"].notna() & ~full8["asp_estimated"]
-    full8.loc[bio_ok, "pl_2027"] = full8.loc[bio_ok, "asp_2027"] + full8.loc[bio_ok, "addon_2027"] * full8.loc[bio_ok, "ref_asp_2027"]
-    out["ira_addon_expiry_full_year_effect"] = scenario(economics_2027(full8, fees, drivers), "mix_base", 0.0)[
-        "annual"]["contribution"] - out["scenarios"]["base"]["annual"]["contribution"]
-    out["mfp_selected_share_of_base_mix"] = round(float(m.merge(d[["hcpcs", "mfp_selected"]], on="hcpcs")
-                                                        .query("mfp_selected")["mix_base"].sum()), 4)
-    out["n_drugs"] = int(len(d))
-    out["n_drugs_forecast_priced"] = int((d["price_source"] == "forecast_2027").sum())
-
-    keep = ["hcpcs", "molecule", "brand", "product_type", "reference_hcpcs", "admin_family", "units_per_admin",
-            "payment_limit", "asp_basis", "asp_estimated", "price_source", "asp_2027", "ref_asp_2027",
-            "flag_addon_8pct", "ira_existing", "addon_2027", "pl_2027", "mfp_selected"]
-    table = d[keep].rename(columns={"payment_limit": "pl_2026q4", "asp_basis": "asp_2026q2"}).merge(m, on="hcpcs")
-    table.round(6).to_csv(OUTPUTS / "scenario_drug_inputs.csv", index=False)
+    out["policy_2028_operating_margin_by_ivs_recapture"] = {
+        str(r): round(E.build(con, rules_year=2028, mfp=True, white_bag=True,
+                              overrides={"ivs_recapture_share": r})["pnl"]["operating_margin"]) for r in (0.0, 0.25, 0.5)}
+    # 'fill vs add': value of 100 more patients (if chairs are free) vs one more chair
+    more = E.build(con, panel=A.practice()["panel_patients"] + 100)
+    out["value_of_100_more_patients"] = round(more["pnl"]["contribution"] - b)
+    tbl = econ.merge(drugs[["hcpcs"]], on="hcpcs")[[
+        "hcpcs", "molecule", "brand", "product_type", "reference_hcpcs", "admin_family", "formulary_listed",
+        "ipay2028_selected", "flag_lesser_of", "flag_addon_8pct", "ira_existing", "asp_estimated", "units_per_admin",
+        "admins_per_patient_year", "admin_hours", "chair_hours", "pl_2027", "pay_asp_2027", "buy_asp_2027", "addon_2027",
+        "admin_allowed_medicare", "acquisition_cost"]]
+    pl28, _ = E.plan_prices(drugs, E.load_price_path(), 2028)
+    tbl = tbl.merge(pl28[["hcpcs", "pl_2027"]].rename(columns={"pl_2027": "pl_2028_rules"}), on="hcpcs")
+    tbl.round(6).to_csv(OUTPUTS / "scenario_drug_inputs.csv", index=False)
+    mixes = (base["mix"].rename(columns={"patient_share": "share_base"})
+             .merge(res["biosimilar_listed"]["mix"].rename(columns={"patient_share": "share_listed"}),
+                    on=["payer", "line", "hcpcs"], how="outer").fillna(0.0))
+    mixes.round(8).to_csv(OUTPUTS / "scenario_mix.csv", index=False)
+    base["pnl"]["detail"].round(4).to_csv(OUTPUTS / "plan_detail.csv", index=False)
     (OUTPUTS / "scenarios.json").write_text(json.dumps(out, indent=2) + "\n")
     return out
 
 
 def main() -> None:
     out = run(E.connect())
-    for name, s in out["scenarios"].items():
-        print(name, s["annual"]["contribution"], s["per_admin"]["contribution"], s["annual"]["administrations"])
-    print("bridge", out["policy_shock_bridge"], "ira full-year", out["ira_addon_expiry_full_year_effect"])
+    for k, s in out["scenarios"].items():
+        print(f"{k:28s} contrib {s['contribution']:>10,} op {s['operating_margin']:>10,} util {s['utilization']:.3f} "
+              f"per-admin {s['contribution_per_admin']}  med {s['contribution_per_admin_medicare_ffs']} "
+              f"com {s['contribution_per_admin_commercial']} com-share {s['commercial_share_of_contribution']}")
+    print("bridge", out["policy_2028_bridge"], "mfp ff", out["mfp_effect_full_formulary"],
+          "+100 patients", out["value_of_100_more_patients"])
+    b = out["scenarios"]["base"]
+    print("added chair: fixed", b["added_chair_fixed_cost"], "breakeven util", b["added_chair_breakeven_utilization"],
+          "value", b["added_chair_value"], "fixed", b["fixed_costs"])
 
 
 if __name__ == "__main__":

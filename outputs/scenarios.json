@@ -1,93 +1,205 @@
 {
   "plan_year": 2027,
-  "volume_drivers": {
-    "chairs": 12,
-    "operating_days": 250,
-    "chair_hours_per_day": 10,
-    "chair_utilization": 0.7
-  },
-  "payer_mix": {
+  "price_basis": "2027 average: payment on lagged ASP path, purchase at current-quarter ASP (outputs/price_path.csv)",
+  "payer_patient_shares": {
     "commercial": 0.5,
     "medicaid": 0.08,
     "medicare_ffs": 0.1819,
-    "medicare_adv": 0.2381,
-    "ohio_ffs_share": 0.433
+    "medicare_adv": 0.2381
   },
   "conversion_factor_2027_proposed": 32.8409,
   "scenarios": {
     "base": {
-      "per_admin": {
-        "drug_revenue": 3111.5409,
-        "admin_revenue": 123.2525,
-        "drug_margin": 314.3935,
-        "contribution": 376.186,
-        "chair_hours": 1.5145,
-        "chair_cost": 61.4599,
-        "acquisition_cost": 2797.1475
+      "patients": 1700,
+      "administrations": 7736,
+      "utilization": 0.6901,
+      "drug_revenue": 50157608,
+      "admin_revenue": 1173219,
+      "drug_cost": 47067896,
+      "variable_cost": 309454,
+      "contribution": 3953477,
+      "operating_margin": 2920062,
+      "contribution_per_admin": 511,
+      "contribution_per_chair_hour": 191,
+      "added_chair_fixed_cost": 56951,
+      "added_chair_breakeven_utilization": 0.1193,
+      "added_chair_value": -56951,
+      "fixed_costs": {
+        "nursing": 467415,
+        "rent_equipment": 216000,
+        "site_staff": 350000,
+        "total": 1033415
       },
-      "annual": {
-        "administrations": 13866,
-        "drug_revenue": 43143967,
-        "admin_revenue": 1708993,
-        "drug_margin": 4359313,
-        "chair_cost": 852190,
-        "contribution": 5216116
-      },
-      "contribution_per_chair": 434676,
-      "medicare_ffs_contribution_per_admin": 101.45,
-      "commercial_contribution_per_admin": 645.59
+      "contribution_per_admin_medicare_ffs": 161.37,
+      "contribution_per_admin_medicare_adv": 55.3,
+      "contribution_per_admin_commercial": 952.64,
+      "contribution_per_admin_medicaid": 127.05,
+      "commercial_share_of_contribution": 0.8929,
+      "commercial_share_of_admins": 0.479
     },
-    "biosimilar_push": {
-      "per_admin": {
-        "drug_revenue": 2907.8618,
-        "admin_revenue": 123.2525,
-        "drug_margin": 301.4303,
-        "contribution": 363.2228,
-        "chair_hours": 1.5145,
-        "chair_cost": 61.4599,
-        "acquisition_cost": 2606.4315
+    "biosimilar_listed": {
+      "patients": 1700,
+      "administrations": 7736,
+      "utilization": 0.6901,
+      "drug_revenue": 49660600,
+      "admin_revenue": 1173219,
+      "drug_cost": 46553335,
+      "variable_cost": 309454,
+      "contribution": 3971031,
+      "operating_margin": 2937616,
+      "contribution_per_admin": 513,
+      "contribution_per_chair_hour": 192,
+      "added_chair_fixed_cost": 56951,
+      "added_chair_breakeven_utilization": 0.1188,
+      "added_chair_value": -56951,
+      "fixed_costs": {
+        "nursing": 467415,
+        "rent_equipment": 216000,
+        "site_staff": 350000,
+        "total": 1033415
       },
-      "annual": {
-        "administrations": 13866,
-        "drug_revenue": 40319795,
-        "admin_revenue": 1708993,
-        "drug_margin": 4179568,
-        "chair_cost": 852190,
-        "contribution": 5036371
-      },
-      "contribution_per_chair": 419698,
-      "medicare_ffs_contribution_per_admin": 117.44,
-      "commercial_contribution_per_admin": 607.45
+      "contribution_per_admin_medicare_ffs": 173.09,
+      "contribution_per_admin_medicare_adv": 68.36,
+      "contribution_per_admin_commercial": 945.88,
+      "contribution_per_admin_medicaid": 126.54,
+      "commercial_share_of_contribution": 0.8827,
+      "commercial_share_of_admins": 0.479
     },
-    "policy_shock": {
-      "per_admin": {
-        "drug_revenue": 2654.1694,
-        "admin_revenue": 123.2525,
-        "drug_margin": 268.0413,
-        "contribution": 329.8339,
-        "chair_hours": 1.5145,
-        "chair_cost": 61.4599,
-        "acquisition_cost": 2797.1475
+    "biosimilar_best": {
+      "patients": 1700,
+      "administrations": 7736,
+      "utilization": 0.6901,
+      "drug_revenue": 50305685,
+      "admin_revenue": 1173219,
+      "drug_cost": 47031454,
+      "variable_cost": 309454,
+      "contribution": 4137996,
+      "operating_margin": 3104581,
+      "contribution_per_admin": 535,
+      "contribution_per_chair_hour": 200,
+      "added_chair_fixed_cost": 56951,
+      "added_chair_breakeven_utilization": 0.114,
+      "added_chair_value": -56951,
+      "fixed_costs": {
+        "nursing": 467415,
+        "rent_equipment": 216000,
+        "site_staff": 350000,
+        "total": 1033415
       },
-      "annual": {
-        "administrations": 13866,
-        "drug_revenue": 36802151,
-        "admin_revenue": 1708993,
-        "drug_margin": 3716604,
-        "chair_cost": 852190,
-        "contribution": 4573407
+      "contribution_per_admin_medicare_ffs": 185.09,
+      "contribution_per_admin_medicare_adv": 84.08,
+      "contribution_per_admin_commercial": 977.47,
+      "contribution_per_admin_medicaid": 128.9,
+      "commercial_share_of_contribution": 0.8753,
+      "commercial_share_of_admins": 0.479
+    },
+    "policy_2028": {
+      "patients": 1700,
+      "administrations": 7736,
+      "utilization": 0.6901,
+      "drug_revenue": 43869484,
+      "admin_revenue": 1173219,
+      "drug_cost": 41454546,
+      "variable_cost": 309454,
+      "contribution": 3334837,
+      "operating_margin": 2301422,
+      "contribution_per_admin": 431,
+      "contribution_per_chair_hour": 161,
+      "added_chair_fixed_cost": 56951,
+      "added_chair_breakeven_utilization": 0.1414,
+      "added_chair_value": -56951,
+      "fixed_costs": {
+        "nursing": 467415,
+        "rent_equipment": 216000,
+        "site_staff": 350000,
+        "total": 1033415
       },
-      "contribution_per_chair": 381117,
-      "medicare_ffs_contribution_per_admin": 90.98,
-      "commercial_contribution_per_admin": 645.59
+      "contribution_per_admin_medicare_ffs": 157.37,
+      "contribution_per_admin_medicare_adv": 51.39,
+      "contribution_per_admin_commercial": 789.36,
+      "contribution_per_admin_medicaid": 127.05,
+      "commercial_share_of_contribution": 0.8771,
+      "commercial_share_of_admins": 0.479
+    },
+    "base_full_formulary": {
+      "patients": 1700,
+      "administrations": 8604,
+      "utilization": 0.5817,
+      "drug_revenue": 57780992,
+      "admin_revenue": 1084291,
+      "drug_cost": 54307386,
+      "variable_cost": 344172,
+      "contribution": 4213725,
+      "operating_margin": 3180310,
+      "contribution_per_admin": 490,
+      "contribution_per_chair_hour": 241,
+      "added_chair_fixed_cost": 56951,
+      "added_chair_breakeven_utilization": 0.0944,
+      "added_chair_value": -56951,
+      "fixed_costs": {
+        "nursing": 467415,
+        "rent_equipment": 216000,
+        "site_staff": 350000,
+        "total": 1033415
+      },
+      "contribution_per_admin_medicare_ffs": 130.52,
+      "contribution_per_admin_medicare_adv": 19.7,
+      "contribution_per_admin_commercial": 951.53,
+      "contribution_per_admin_medicaid": 113.08,
+      "commercial_share_of_contribution": 0.9202,
+      "commercial_share_of_admins": 0.4736
+    },
+    "policy_2028_full_formulary": {
+      "patients": 1700,
+      "administrations": 8604,
+      "utilization": 0.5817,
+      "drug_revenue": 49612092,
+      "admin_revenue": 1084291,
+      "drug_cost": 46893996,
+      "variable_cost": 344172,
+      "contribution": 3522031,
+      "operating_margin": 2488616,
+      "contribution_per_admin": 409,
+      "contribution_per_chair_hour": 202,
+      "added_chair_fixed_cost": 56951,
+      "added_chair_breakeven_utilization": 0.1129,
+      "added_chair_value": -56951,
+      "fixed_costs": {
+        "nursing": 467415,
+        "rent_equipment": 216000,
+        "site_staff": 350000,
+        "total": 1033415
+      },
+      "contribution_per_admin_medicare_ffs": 126.44,
+      "contribution_per_admin_medicare_adv": 21.07,
+      "contribution_per_admin_commercial": 782.73,
+      "contribution_per_admin_medicaid": 113.08,
+      "commercial_share_of_contribution": 0.9056,
+      "commercial_share_of_admins": 0.4736
     }
   },
-  "policy_shock_bridge": {
-    "mfp_orencia_entyvio": -60939,
-    "white_bagging": -581770
+  "policy_2028_bridge": {
+    "ira_addon_expiry": -13582,
+    "mfp": 0,
+    "white_bagging_net_of_ivs": -605058
   },
-  "ira_addon_expiry_full_year_effect": -413,
-  "mfp_selected_share_of_base_mix": 0.3931,
-  "n_drugs": 57,
-  "n_drugs_forecast_priced": 18
+  "mfp_effect_full_formulary": -35,
+  "mfp_selected_share_of_admins_full_formulary": 0.2037,
+  "white_bag_tiers": {
+    "above_10k": 0.3,
+    "from_3k_to_10k": 0.15,
+    "below_3k": 0.05,
+    "threshold_high": 10000,
+    "threshold_low": 3000
+  },
+  "labels": {
+    "rvu": "CY2026 RVUs/GPCI with CY2027 proposed CF (2027 RVUs not final)",
+    "policy_2028": "2027 prices held; 2028 rules applied (no 2028 price forecast)"
+  },
+  "policy_2028_operating_margin_by_ivs_recapture": {
+    "0.0": 2245288,
+    "0.25": 2301422,
+    "0.5": 2357555
+  },
+  "value_of_100_more_patients": 232557
 }

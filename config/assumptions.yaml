@@ -44,12 +44,19 @@ locality:
   locality: "00"
 
 practice:
+  # ---- volume: demand-driven (patients x administrations/yr), capacity is a check, not the driver ----
+  panel_patients:
+    value: 1700
+    low: 1200
+    high: 2200
+    label: ASSUMPTION
+    why: "Active chair-infusion patients of the illustrative 12-chair suite (sized so the base runs near 70% of chair capacity). Administrations per patient per year are observed per molecule (2024 Medicare)."
   chairs:
     value: 12
     low: 8
     high: 16
     label: ASSUMPTION
-    why: "Illustrative mid-size suite; results are reported per infusion and per chair so they scale."
+    why: "Illustrative mid-size suite; results are also reported per infusion and per added chair."
   operating_days:
     value: 250
     low: 240
@@ -62,37 +69,80 @@ practice:
     high: 11
     label: ASSUMPTION
     why: "Typical 7am-5pm infusion suite."
-  chair_utilization:
-    value: 0.70
-    low: 0.55
-    high: 0.85
-    label: ASSUMPTION
-    why: "Share of available chair-hours booked; no public benchmark used."
   payer_mix_commercial:
     value: 0.50
     low: 0.40
     high: 0.60
     label: ASSUMPTION
-    why: "Inflammatory-disease biologics skew to working-age commercial patients for GI/rheum and to Medicare for MS/older RA. Remainder after Medicaid is Medicare."
+    why: "Share of infusion PATIENTS. Remainder after Medicaid is Medicare (split FFS vs MA by Ohio's real Original-Medicare share)."
   payer_mix_medicaid:
     value: 0.08
     low: 0.04
     high: 0.12
     label: ASSUMPTION
     why: "Ohio Medicaid share of a specialty infusion book; no public practice-level source."
-  # Medicare is split into FFS vs MA using Ohio's real Original-Medicare share from CMS enrollment.
+  # ---- drug mix by payer: service-line weights (within-line shares are observed, ADR 0006) ----
+  neuro_share_medicare:
+    value: 0.40
+    low: 0.25
+    high: 0.55
+    label: ASSUMPTION
+    why: "Share of Medicare infusion patients in neurology (MS/neuroimmunology) at a MS-center-anchored site; rest rheum (0.85) / immunology-IVIG (0.15) split of the remainder."
+  neuro_share_commercial:
+    value: 0.60
+    low: 0.45
+    high: 0.75
+    label: ASSUMPTION
+    why: "MS is diagnosed mostly at ages 20-50, so commercial patients skew to neurology; RA/osteoporosis skew older (Medicare)."
+  immunology_share_of_non_neuro:
+    value: 0.15
+    low: 0.08
+    high: 0.25
+    label: ASSUMPTION
+    why: "IVIG (immunology / CIDP) share of the non-neurology infusion book."
+  # ---- net revenue: every payer gets a collection haircut, not just Medicare ----
   commercial_drug_markup_vs_asp:
     value: 0.20
     low: 0.08
     high: 0.35
     label: ASSUMPTION
-    why: "Commercial physician-office contracts are commonly ASP-based with a higher add-on than Medicare; actual contracts are private. Widest-range driver by design."
+    why: "Commercial physician-office contracts are commonly ASP-based with a higher add-on than Medicare; actual contracts are private."
   commercial_admin_multiple_of_medicare:
     value: 1.40
     low: 1.15
     high: 1.80
     label: ASSUMPTION
     why: "Commercial pays more than Medicare for professional services; multiple is not public per contract."
+  commercial_patient_resp_share:
+    value: 0.10
+    low: 0.05
+    high: 0.20
+    label: ASSUMPTION
+    why: "Share of commercial allowed owed by the patient (deductible/coinsurance after copay-assistance programs)."
+  patient_collection_rate:
+    value: 0.70
+    low: 0.50
+    high: 0.90
+    label: ASSUMPTION
+    why: "Share of commercial patient responsibility actually collected."
+  denial_writeoff_medicare:
+    value: 0.01
+    low: 0.005
+    high: 0.03
+    label: ASSUMPTION
+    why: "Final (unrecovered) denial write-off as % of allowed, Medicare FFS. The RCM net-collection-rate KPI is how these are measured from 835s."
+  denial_writeoff_commercial:
+    value: 0.03
+    low: 0.015
+    high: 0.06
+    label: ASSUMPTION
+    why: "Final denial write-off, commercial and MA (prior-auth heavy biologics)."
+  underpayment_commercial:
+    value: 0.01
+    low: 0.0
+    high: 0.03
+    label: ASSUMPTION
+    why: "Paid below contract and not recovered."
   medicaid_drug_markup_vs_asp:
     value: 0.04
     low: 0.00
@@ -110,24 +160,32 @@ practice:
     low: 0.95
     high: 1.00
     label: ASSUMPTION
-    why: "MA plans commonly pay at or slightly below FFS rates for Part B drugs; MA claims are NOT in the FFS data (MA vs FFS caveat)."
+    why: "MA plans commonly pay at or slightly below FFS rates for Part B drugs; MA claims are NOT in the FFS data."
   coinsurance_collection_rate:
     value: 0.90
     low: 0.75
     high: 1.00
     label: ASSUMPTION
-    why: "Most Medicare FFS beneficiaries have Medigap/Medicaid/employer secondary; uncollected share is bad debt."
+    why: "Medicare coinsurance collected (most FFS beneficiaries have Medigap/Medicaid/employer secondary)."
+  # ---- drug cost ----
   acquisition_spread_vs_asp:
     value: 0.00
     low: -0.05
     high: 0.03
     label: ASSUMPTION
-    why: "ASP is a volume-weighted average net price, so roughly half of purchasers pay more and half pay less; GPO members tend to be below."
+    why: "ASP is a volume-weighted average net price, so roughly half of purchasers pay more and half pay less."
+  lesser_of_acquisition_premium:
+    value: 0.00
+    low: 0.00
+    high: 0.70
+    label: ASSUMPTION
+    why: "For 'lesser of' (WAC-priced) codes (abatacept J0129 since 2021Q3, certolizumab J0717) PL/1.06 = WAC is a LOWER bound on ASP. Base: a buy-and-bill practice buys IV vials against WAC. High: acquisition tracks the pre-2021Q3 ASP trend of J0129 (+1.37%/qtr -> +70% over today's WAC-based limit; computed in margin.py, ADR 0003)."
+  # ---- costs: fixed vs variable ----
   rn_hourly_wage:
     value: 47.94
     low: 42.68
     high: 55.00
-    source: "BLS OEWS May 2025, Columbus OH MSA, 'Healthcare practitioners and technical' mean hourly wage (Table A) used as RN proxy; low = RN-specific Columbus figure via secondary source (TrueNursePay citing OEWS May 2025)"
+    source: "BLS OEWS May 2025, Columbus OH MSA, 'Healthcare practitioners and technical' mean hourly wage (Table A) as RN proxy; low = RN-specific Columbus figure via secondary source (TrueNursePay citing OEWS May 2025)"
   benefits_load:
     value: 0.30
     low: 0.25
@@ -139,39 +197,68 @@ practice:
     low: 3
     high: 5
     label: ASSUMPTION
-    why: "Nurse-to-chair ratio for biologic infusions with observation; varies by acuity."
-  overhead_per_chair_hour:
-    value: 25.0
-    low: 15.0
-    high: 40.0
+    why: "Nurse-to-chair ratio for biologic infusions with observation. Nurses are FIXED cost: staffed for open hours whether or not chairs are booked."
+  variable_cost_per_infusion:
+    value: 40.0
+    low: 25.0
+    high: 60.0
     label: ASSUMPTION
-    why: "Rent, pumps, pharmacy prep, supplies, scheduling and prior-auth staff per occupied chair-hour; no public source."
-  white_bagging_share_commercial:
-    value: 0.00
-    low: 0.00
-    high: 0.25
+    why: "Supplies, IV sets, pharmacy compounding per infusion."
+  rent_equipment_per_chair_year:
+    value: 18000.0
+    low: 12000.0
+    high: 30000.0
     label: ASSUMPTION
-    why: "Share of commercial infusions where the payer mandates specialty-pharmacy supply (practice keeps only the admin fee). 0 in base; stressed in the policy-shock scenario."
+    why: "Space, recliner, pump and monitor depreciation per chair per year (fixed)."
+  site_fixed_staff_per_year:
+    value: 350000.0
+    low: 250000.0
+    high: 500000.0
+    label: ASSUMPTION
+    why: "Front desk, prior-auth / benefits verification, pharmacy tech for the suite (fixed)."
 
 scenarios:
   biosimilar_push_target_share:
     value: 0.80
     label: ASSUMPTION
-    why: "Target biosimilar share for multi-source molecules (infliximab, rituximab, tocilizumab, natalizumab, ustekinumab) under an active conversion program."
-  policy_shock_white_bagging:
-    value: 0.15
+    why: "Target biosimilar share for multi-source molecules under an active conversion program."
+  white_bagging_by_cost_tier:
+    value: {above_10k: 0.30, from_3k_to_10k: 0.15, below_3k: 0.05, threshold_high: 10000, threshold_low: 3000}
     label: ASSUMPTION
-    why: "Policy/payer shock: 15% of commercial infusions move to payer-mandated white bagging."
+    why: "Payers mandate specialty-pharmacy supply first for the most expensive drugs. Share of commercial infusions white-bagged by acquisition cost per infusion (2028 shock)."
+  ivs_recapture_share:
+    value: 0.25
+    low: 0.0
+    high: 0.5
+    label: ASSUMPTION
+    why: "Share of white-bagged infusions whose drug the practice's own specialty pharmacy could dispense, if it is in the payer's specialty network."
+  ivs_dispensing_margin:
+    value: 0.04
+    low: 0.02
+    high: 0.08
+    label: ASSUMPTION
+    why: "Specialty-pharmacy gross margin as % of drug cost."
+
+sites:
+  value:
+    "Site A (illustrative 12-chair suite)": {chairs: 12, panel_patients: 1700, payer_mix_commercial: 0.50}
+    "Site B (illustrative 8-chair suite)": {chairs: 8, panel_patients: 1000, payer_mix_commercial: 0.42}
+  label: ASSUMPTION
+  why: "Two illustrative sites so the Power BI budget-vs-actual layer has a site dimension. Site A is the plan suite used in the memo and Excel."
 
 market:
   weights:
-    value: {market_size: 0.30, medicare_ffs: 0.15, specialist_gap: 0.30, infusion_gap: 0.25}
+    value: {market_size: 0.40, specialist_gap: 0.35, infusion_gap: 0.25}
     label: ASSUMPTION
-    why: "Default emphasis: enough patients (size, FFS buy-and-bill) and too few specialists / infusion providers per patient. Rank stability is tested over 2,000 random weightings, so the call does not rest on these numbers."
+    why: "Enough patients (size) and too few specialists / infusion providers per patient. The Medicare-FFS size component was dropped after review: its z-score correlated 0.98 with market size (double counting). Rank stability is tested over 2,000 random weightings."
   min_population:
     value: 100000
     label: ASSUMPTION
     why: "Screen for a county large enough to support a specialist + infusion site."
+  min_rheum_neuro_clinicians:
+    value: 5
+    label: ASSUMPTION
+    why: "A comprehensive site needs a local referral base / recruiting pool; markets with fewer than 5 rheumatologists + neurologists billing Medicare are not ranked (Ottawa IL ranked #3 with ~0 before this floor)."
   cannibalization_miles:
     value: 40
     label: ASSUMPTION

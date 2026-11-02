@@ -1,367 +1,302 @@
 {
-  "price_quarter": "2026Q4",
+  "price_basis": "2027 average (payment on ASP t-2, purchase at ASP t)",
   "net_addon_after_sequestration_full_collection": 0.04304,
-  "ohio_admin_fee_96413": 122.71,
-  "ohio_admin_fee_96415": 26.54,
-  "ohio_admin_fee_96365": 62.03,
-  "chair_cost_per_hour": 40.58,
-  "payer_mix": {
-    "commercial": 0.5,
-    "medicaid": 0.08,
-    "medicare_ffs": 0.1819,
-    "medicare_adv": 0.2381,
-    "ohio_ffs_share": 0.433
+  "collection_factor_by_payer": {
+    "medicare_ffs": 0.9544,
+    "medicare_adv": 0.9351,
+    "commercial": 0.9315,
+    "medicaid": 0.97
   },
-  "blended_per_admin": {
-    "drug_revenue": 3143.93,
-    "admin_revenue": 125.35,
-    "drug_margin": 317.68,
-    "contribution": 381.57,
-    "chair_hours": 1.51,
-    "chair_cost": 61.46,
-    "acquisition_cost": 2826.26
+  "medicare_drug_margin_pct_of_drug_revenue": 0.0135,
+  "contribution_per_admin_by_payer": {
+    "medicare_ffs": 161.37,
+    "medicare_adv": 55.3,
+    "commercial": 952.64,
+    "medicaid": 127.05
   },
-  "medicare_ffs_per_admin": {
-    "drug_revenue": 2888.18,
-    "admin_revenue": 103.38,
-    "drug_margin": 61.92,
-    "contribution": 103.85,
-    "chair_hours": 1.51,
-    "chair_cost": 61.46,
-    "acquisition_cost": 2826.26
-  },
-  "commercial_per_admin": {
-    "drug_revenue": 3391.51,
-    "admin_revenue": 150.14,
-    "drug_margin": 565.25,
-    "contribution": 653.93,
-    "chair_hours": 1.51,
-    "chair_cost": 61.46,
-    "acquisition_cost": 2826.26
-  },
-  "drug_margin_share_of_gross_margin": 0.7171,
-  "medicare_drug_margin_pct_of_drug_revenue": 0.0214,
-  "n_drugs_priced": 57,
-  "n_drugs_in_mix": 17,
-  "realization": {
-    "allowed_weighted_ratio_2024": 0.9678,
-    "median_ratio_2024": 0.9638,
-    "n_codes": 36
-  },
-  "median_lag_spread_pct_last8_reference_single_source": 0.053,
-  "share_quarters_underwater_all_drugs": 0.0551,
-  "practice_mix_top": [
-    {
-      "hcpcs": "J0129",
-      "admins": 23792.0,
-      "share": 0.3569
+  "ohio_admin_fee_96413_cf2027": 120.65,
+  "underwater": {
+    "raw": {
+      "share_drug_quarters": 0.0623,
+      "dollar_weighted_share": 0.0454
     },
-    {
-      "hcpcs": "J1602",
-      "admins": 14587.0,
-      "share": 0.2188
+    "after_sequestration": {
+      "share_drug_quarters": 0.12,
+      "dollar_weighted_share": 0.1269
     },
-    {
-      "hcpcs": "J1745",
-      "admins": 13581.0,
-      "share": 0.2037
+    "after_sequestration_and_coinsurance": {
+      "share_drug_quarters": 0.2978,
+      "dollar_weighted_share": 0.3588
     },
-    {
-      "hcpcs": "J3262",
-      "admins": 8430.0,
-      "share": 0.1264
-    },
-    {
-      "hcpcs": "J3380",
-      "admins": 2419.0,
-      "share": 0.0363
-    },
-    {
-      "hcpcs": "J1561",
-      "admins": 929.0,
-      "share": 0.0139
-    },
-    {
-      "hcpcs": "J9312",
-      "admins": 763.0,
-      "share": 0.0114
-    },
-    {
-      "hcpcs": "J1569",
-      "admins": 619.0,
-      "share": 0.0093
+    "factors": {
+      "raw": 1.0,
+      "after_sequestration": 0.984,
+      "after_sequestration_and_coinsurance": 0.964
     }
-  ],
+  },
+  "median_lag_spread_pct_last8_reference_single_source": 0.051,
+  "lesser_of_premium_effect_full_formulary": -3963483,
+  "plan_mix_top": {
+    "J1745": 0.3618,
+    "J2323": 0.2118,
+    "J2350": 0.091,
+    "J3032": 0.0852,
+    "J1569": 0.0591,
+    "J1568": 0.0493,
+    "Q5103": 0.0446,
+    "Q5115": 0.0311
+  },
   "contribution_per_chair_hour": [
-    {
-      "hcpcs": "J1823",
-      "molecule": "inebilizumab",
-      "mix_share": 0.0,
-      "chair_hours": 2.5,
-      "contribution_medicare_ffs": 3065.55,
-      "contribution_commercial": 27988.92,
-      "medicare_per_chair_hour": 1226.22,
-      "commercial_per_chair_hour": 11195.57
-    },
-    {
-      "hcpcs": "J1303",
-      "molecule": "ravulizumab",
-      "mix_share": 0.0,
-      "chair_hours": 2.5,
-      "contribution_medicare_ffs": 1553.37,
-      "contribution_commercial": 13943.97,
-      "medicare_per_chair_hour": 621.35,
-      "commercial_per_chair_hour": 5577.59
-    },
-    {
-      "hcpcs": "J1299",
-      "molecule": "eculizumab",
-      "mix_share": 0.0,
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 575.93,
-      "contribution_commercial": 4859.12,
-      "medicare_per_chair_hour": 383.95,
-      "commercial_per_chair_hour": 3239.42
-    },
     {
       "hcpcs": "J2329",
       "molecule": "ublituximab",
-      "mix_share": 0.0,
       "chair_hours": 2.0,
-      "contribution_medicare_ffs": 556.97,
-      "contribution_commercial": 4851.07,
-      "medicare_per_chair_hour": 278.49,
-      "commercial_per_chair_hour": 2425.54
-    },
-    {
-      "hcpcs": "J2267",
-      "molecule": "mirikizumab",
-      "mix_share": 0.0,
-      "chair_hours": 1.0,
-      "contribution_medicare_ffs": 272.54,
-      "contribution_commercial": 1915.32,
-      "medicare_per_chair_hour": 272.54,
-      "commercial_per_chair_hour": 1915.32
-    },
-    {
-      "hcpcs": "J9332",
-      "molecule": "efgartigimod",
-      "mix_share": 0.0,
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 345.89,
-      "contribution_commercial": 3203.25,
-      "medicare_per_chair_hour": 230.59,
-      "commercial_per_chair_hour": 2135.5
-    },
-    {
-      "hcpcs": "J1628",
-      "molecule": "guselkumab",
-      "mix_share": 0.0,
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 333.5,
-      "contribution_commercial": 2639.15,
-      "medicare_per_chair_hour": 222.34,
-      "commercial_per_chair_hour": 1759.43
-    },
-    {
-      "hcpcs": "J3380",
-      "molecule": "vedolizumab",
-      "mix_share": 0.04,
-      "chair_hours": 1.0,
-      "contribution_medicare_ffs": 206.63,
-      "contribution_commercial": 1311.79,
-      "medicare_per_chair_hour": 206.63,
-      "commercial_per_chair_hour": 1311.79
-    },
-    {
-      "hcpcs": "J2507",
-      "molecule": "pegloticase",
-      "mix_share": 0.0,
-      "chair_hours": 3.0,
-      "contribution_medicare_ffs": 610.01,
-      "contribution_commercial": 5969.4,
-      "medicare_per_chair_hour": 203.34,
-      "commercial_per_chair_hour": 1989.8
+      "contribution_medicare_ffs": 351.77,
+      "contribution_commercial": 2920.98,
+      "medicare_ffs_per_chair_hour": 175.88,
+      "commercial_per_chair_hour": 1460.49
     },
     {
       "hcpcs": "J3032",
       "molecule": "eptinezumab",
-      "mix_share": 0.0,
       "chair_hours": 1.0,
-      "contribution_medicare_ffs": 177.01,
-      "contribution_commercial": 1040.55,
-      "medicare_per_chair_hour": 177.01,
-      "commercial_per_chair_hour": 1040.55
-    },
-    {
-      "hcpcs": "J2327",
-      "molecule": "risankizumab",
-      "mix_share": 0.0,
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 233.46,
-      "contribution_commercial": 1723.02,
-      "medicare_per_chair_hour": 155.64,
-      "commercial_per_chair_hour": 1148.68
+      "contribution_medicare_ffs": 127.99,
+      "contribution_commercial": 652.89,
+      "medicare_ffs_per_chair_hour": 127.99,
+      "commercial_per_chair_hour": 652.89
     },
     {
       "hcpcs": "J2350",
       "molecule": "ocrelizumab",
-      "mix_share": 0.01,
       "chair_hours": 4.5,
-      "contribution_medicare_ffs": 676.39,
-      "contribution_commercial": 6378.03,
-      "medicare_per_chair_hour": 150.31,
-      "commercial_per_chair_hour": 1417.34
+      "contribution_medicare_ffs": 491.87,
+      "contribution_commercial": 3904.32,
+      "medicare_ffs_per_chair_hour": 109.31,
+      "commercial_per_chair_hour": 867.63
     },
     {
-      "hcpcs": "J1602",
-      "molecule": "golimumab",
-      "mix_share": 0.22,
-      "chair_hours": 1.0,
-      "contribution_medicare_ffs": 118.5,
-      "contribution_commercial": 504.69,
-      "medicare_per_chair_hour": 118.5,
-      "commercial_per_chair_hour": 504.69
+      "hcpcs": "Q5115",
+      "molecule": "rituximab",
+      "chair_hours": 4.5,
+      "contribution_medicare_ffs": 431.51,
+      "contribution_commercial": 511.14,
+      "medicare_ffs_per_chair_hour": 95.89,
+      "commercial_per_chair_hour": 113.59
     },
     {
       "hcpcs": "J0490",
       "molecule": "belimumab",
-      "mix_share": 0.0,
       "chair_hours": 1.5,
-      "contribution_medicare_ffs": 152.35,
-      "contribution_commercial": 980.19,
-      "medicare_per_chair_hour": 101.56,
-      "commercial_per_chair_hour": 653.46
-    },
-    {
-      "hcpcs": "J3358",
-      "molecule": "ustekinumab",
-      "mix_share": 0.0,
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 138.62,
-      "contribution_commercial": 854.48,
-      "medicare_per_chair_hour": 92.41,
-      "commercial_per_chair_hour": 569.65
+      "contribution_medicare_ffs": 125.66,
+      "contribution_commercial": 629.29,
+      "medicare_ffs_per_chair_hour": 83.77,
+      "commercial_per_chair_hour": 419.53
     },
     {
       "hcpcs": "J2323",
       "molecule": "natalizumab",
-      "mix_share": 0.0,
       "chair_hours": 2.0,
-      "contribution_medicare_ffs": 181.71,
-      "contribution_commercial": 1414.58,
-      "medicare_per_chair_hour": 90.85,
-      "commercial_per_chair_hour": 707.29
+      "contribution_medicare_ffs": 152.08,
+      "contribution_commercial": 897.08,
+      "medicare_ffs_per_chair_hour": 76.04,
+      "commercial_per_chair_hour": 448.54
     },
     {
-      "hcpcs": "J0129",
-      "molecule": "abatacept",
-      "mix_share": 0.36,
-      "chair_hours": 1.0,
-      "contribution_medicare_ffs": 89.79,
-      "contribution_commercial": 692.51,
-      "medicare_per_chair_hour": 89.79,
-      "commercial_per_chair_hour": 692.51
-    },
-    {
-      "hcpcs": "J0202",
-      "molecule": "alemtuzumab",
-      "mix_share": 0.0,
-      "chair_hours": 6.0,
-      "contribution_medicare_ffs": 530.52,
-      "contribution_commercial": 5341.62,
-      "medicare_per_chair_hour": 88.42,
-      "commercial_per_chair_hour": 890.27
-    },
-    {
-      "hcpcs": "J3262",
-      "molecule": "tocilizumab",
-      "mix_share": 0.13,
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 113.85,
-      "contribution_commercial": 627.64,
-      "medicare_per_chair_hour": 75.9,
-      "commercial_per_chair_hour": 418.43
-    },
-    {
-      "hcpcs": "J1745",
+      "hcpcs": "Q5103",
       "molecule": "infliximab",
-      "mix_share": 0.2,
       "chair_hours": 2.5,
-      "contribution_medicare_ffs": 75.04,
-      "contribution_commercial": 406.2,
-      "medicare_per_chair_hour": 30.02,
-      "commercial_per_chair_hour": 162.48
+      "contribution_medicare_ffs": 143.54,
+      "contribution_commercial": 315.02,
+      "medicare_ffs_per_chair_hour": 57.41,
+      "commercial_per_chair_hour": 126.01
     },
     {
       "hcpcs": "J9312",
       "molecule": "rituximab",
-      "mix_share": 0.01,
       "chair_hours": 4.5,
-      "contribution_medicare_ffs": 132.86,
-      "contribution_commercial": 1203.5,
-      "medicare_per_chair_hour": 29.52,
-      "commercial_per_chair_hour": 267.44
+      "contribution_medicare_ffs": 213.93,
+      "contribution_commercial": 868.94,
+      "medicare_ffs_per_chair_hour": 47.54,
+      "commercial_per_chair_hour": 193.1
     },
     {
-      "hcpcs": "J1566",
-      "molecule": "immune_globulin",
-      "mix_share": 0.0,
-      "chair_hours": 3.5,
-      "contribution_medicare_ffs": 89.98,
-      "contribution_commercial": 1223.7,
-      "medicare_per_chair_hour": 25.71,
-      "commercial_per_chair_hour": 349.63
-    },
-    {
-      "hcpcs": "J1557",
-      "molecule": "immune_globulin",
-      "mix_share": 0.0,
-      "chair_hours": 3.5,
-      "contribution_medicare_ffs": 56.98,
-      "contribution_commercial": 921.46,
-      "medicare_per_chair_hour": 16.28,
-      "commercial_per_chair_hour": 263.27
+      "hcpcs": "J1745",
+      "molecule": "infliximab",
+      "chair_hours": 2.5,
+      "contribution_medicare_ffs": 117.4,
+      "contribution_commercial": 327.29,
+      "medicare_ffs_per_chair_hour": 46.96,
+      "commercial_per_chair_hour": 130.91
     },
     {
       "hcpcs": "J1569",
       "molecule": "immune_globulin",
-      "mix_share": 0.01,
       "chair_hours": 3.5,
-      "contribution_medicare_ffs": 36.32,
-      "contribution_commercial": 732.28,
-      "medicare_per_chair_hour": 10.38,
-      "commercial_per_chair_hour": 209.22
-    },
-    {
-      "hcpcs": "J1459",
-      "molecule": "immune_globulin",
-      "mix_share": 0.01,
-      "chair_hours": 3.5,
-      "contribution_medicare_ffs": 35.46,
-      "contribution_commercial": 724.42,
-      "medicare_per_chair_hour": 10.13,
-      "commercial_per_chair_hour": 206.98
+      "contribution_medicare_ffs": 98.37,
+      "contribution_commercial": 521.69,
+      "medicare_ffs_per_chair_hour": 28.11,
+      "commercial_per_chair_hour": 149.05
     },
     {
       "hcpcs": "J1561",
       "molecule": "immune_globulin",
-      "mix_share": 0.01,
       "chair_hours": 3.5,
-      "contribution_medicare_ffs": 33.94,
-      "contribution_commercial": 710.52,
-      "medicare_per_chair_hour": 9.7,
-      "commercial_per_chair_hour": 203.01
+      "contribution_medicare_ffs": 97.11,
+      "contribution_commercial": 508.87,
+      "medicare_ffs_per_chair_hour": 27.74,
+      "commercial_per_chair_hour": 145.39
     },
     {
       "hcpcs": "J1568",
       "molecule": "immune_globulin",
-      "mix_share": 0.0,
       "chair_hours": 3.5,
-      "contribution_medicare_ffs": 32.51,
-      "contribution_commercial": 697.39,
-      "medicare_per_chair_hour": 9.29,
-      "commercial_per_chair_hour": 199.25
+      "contribution_medicare_ffs": 96.34,
+      "contribution_commercial": 501.14,
+      "medicare_ffs_per_chair_hour": 27.53,
+      "commercial_per_chair_hour": 143.18
     }
-  ]
+  ],
+  "biosimilar_best_products": [
+    {
+      "molecule": "infliximab",
+      "payer": "medicare_ffs",
+      "hcpcs": "Q5104",
+      "brand": "Renflexis (infliximab-abda)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "infliximab",
+      "payer": "medicare_adv",
+      "hcpcs": "Q5104",
+      "brand": "Renflexis (infliximab-abda)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "infliximab",
+      "payer": "commercial",
+      "hcpcs": "Q5121",
+      "brand": "Avsola (infliximab-axxq)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "infliximab",
+      "payer": "medicaid",
+      "hcpcs": "Q5121",
+      "brand": "Avsola (infliximab-axxq)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "rituximab",
+      "payer": "medicare_ffs",
+      "hcpcs": "Q5123",
+      "brand": "Riabni (rituximab-arrx)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "rituximab",
+      "payer": "medicare_adv",
+      "hcpcs": "Q5123",
+      "brand": "Riabni (rituximab-arrx)",
+      "decision_robust": true
+    },
+    {
+      "molecule": "rituximab",
+      "payer": "commercial",
+      "hcpcs": "J9312",
+      "brand": "Rituxan",
+      "decision_robust": true
+    },
+    {
+      "molecule": "rituximab",
+      "payer": "medicaid",
+      "hcpcs": "J9312",
+      "brand": "Rituxan",
+      "decision_robust": false
+    },
+    {
+      "molecule": "tocilizumab",
+      "payer": "medicare_ffs",
+      "hcpcs": "Q5156",
+      "brand": "Avtozma (tocilizumab-anoh)",
+      "decision_robust": true
+    },
+    {
+      "molecule": "tocilizumab",
+      "payer": "medicare_adv",
+      "hcpcs": "Q5156",
+      "brand": "Avtozma (tocilizumab-anoh)",
+      "decision_robust": true
+    },
+    {
+      "molecule": "tocilizumab",
+      "payer": "commercial",
+      "hcpcs": "J3262",
+      "brand": "Actemra IV",
+      "decision_robust": false
+    },
+    {
+      "molecule": "tocilizumab",
+      "payer": "medicaid",
+      "hcpcs": "J3262",
+      "brand": "Actemra IV",
+      "decision_robust": false
+    },
+    {
+      "molecule": "natalizumab",
+      "payer": "medicare_ffs",
+      "hcpcs": "J2323",
+      "brand": "Tysabri",
+      "decision_robust": false
+    },
+    {
+      "molecule": "natalizumab",
+      "payer": "medicare_adv",
+      "hcpcs": "J2323",
+      "brand": "Tysabri",
+      "decision_robust": false
+    },
+    {
+      "molecule": "natalizumab",
+      "payer": "commercial",
+      "hcpcs": "Q5134",
+      "brand": "Tyruko (natalizumab-sztn)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "natalizumab",
+      "payer": "medicaid",
+      "hcpcs": "Q5134",
+      "brand": "Tyruko (natalizumab-sztn)",
+      "decision_robust": false
+    },
+    {
+      "molecule": "denosumab",
+      "payer": "medicare_ffs",
+      "hcpcs": "Q5167",
+      "brand": "denosumab-qbde",
+      "decision_robust": false
+    },
+    {
+      "molecule": "denosumab",
+      "payer": "medicare_adv",
+      "hcpcs": "Q5167",
+      "brand": "denosumab-qbde",
+      "decision_robust": false
+    },
+    {
+      "molecule": "denosumab",
+      "payer": "commercial",
+      "hcpcs": "J0897",
+      "brand": "Prolia / Xgeva",
+      "decision_robust": false
+    },
+    {
+      "molecule": "denosumab",
+      "payer": "medicaid",
+      "hcpcs": "J0897",
+      "brand": "Prolia / Xgeva",
+      "decision_robust": false
+    }
+  ],
+  "n_drugs_priced": 57
 }
