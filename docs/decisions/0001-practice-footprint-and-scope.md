@@ -27,7 +27,7 @@ the operator's public website and press releases (fetched 2026-11-02):
    admin code family. Spasticity management means onabotulinumtoxinA (J0585). It is included because
    Botox was selected for Medicare negotiation (IPAY 2028).
 3. **Specialties for benchmarking and supply = Rheumatology, Neurology, Gastroenterology,
-   Allergy/Immunology** (Medicare `Rndrng_Prvdr_Type`).
+   Allergy/ Immunology** (Medicare `Rndrng_Prvdr_Type`).
 
 ## Consequences
 - The memo talks about "a regional inflammatory-disease practice". It never claims to know the operator's own volumes,

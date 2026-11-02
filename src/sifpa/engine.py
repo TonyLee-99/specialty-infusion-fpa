@@ -171,7 +171,7 @@ def payer_mix(con: duckdb.DuckDBPyConnection, overrides: dict | None = None) -> 
             "medicare_ffs": medicare * ffs, "medicare_adv": medicare * (1 - ffs), "ohio_ffs_share": ffs}
 
 
-SPECIALTIES = ("Rheumatology", "Neurology", "Gastroenterology", "Allergy/Immunology")
+SPECIALTIES = ("Rheumatology", "Neurology", "Gastroenterology", "Allergy/ Immunology")  # CMS spelling has a space
 
 
 def molecule_mix(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:

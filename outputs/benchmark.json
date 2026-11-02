@@ -1,0 +1,114 @@
+{
+  "year": 2024,
+  "n_providers_scored": 7649,
+  "n_by_specialty": {
+    "Neurology": 3252,
+    "Gastroenterology": 2785,
+    "Rheumatology": 975,
+    "Allergy/ Immunology": 637
+  },
+  "n_providers_with_biosimilar_rate": 380,
+  "n_provider_molecule_rates": 597,
+  "share_provider_molecule_censored": 0.995,
+  "region_biosimilar_rate_by_molecule": {
+    "denosumab": 0.0,
+    "infliximab": 0.0131,
+    "natalizumab": 0.0,
+    "rituximab": 0.0888,
+    "tocilizumab": 0.0
+  },
+  "small_n_raw_rate_sd": null,
+  "small_n_shrunk_rate_sd": null,
+  "n_small_n_uncensored": 0,
+  "biosimilar_vs_peer_counts": {
+    "no_rate": 7269,
+    "not_distinguishable": 341,
+    "below_peer": 35,
+    "above_peer": 4
+  },
+  "naive_top_quartile_biosimilar": 96,
+  "median_by_specialty": {
+    "Allergy/ Immunology": {
+      "allowed_per_bene": 401.5663,
+      "allowed_per_bene_risk_adj": 409.4953,
+      "services_per_bene": 23.0968,
+      "drug_share": 0.0,
+      "infusion_share": 0.0
+    },
+    "Gastroenterology": {
+      "allowed_per_bene": 244.5469,
+      "allowed_per_bene_risk_adj": 166.2715,
+      "services_per_bene": 1.9765,
+      "drug_share": 0.0,
+      "infusion_share": 0.0
+    },
+    "Neurology": {
+      "allowed_per_bene": 226.1905,
+      "allowed_per_bene_risk_adj": 136.534,
+      "services_per_bene": 2.2093,
+      "drug_share": 0.0,
+      "infusion_share": 0.0
+    },
+    "Rheumatology": {
+      "allowed_per_bene": 307.6076,
+      "allowed_per_bene_risk_adj": 216.1368,
+      "services_per_bene": 5.384,
+      "drug_share": 0.0028,
+      "infusion_share": 0.0
+    }
+  },
+  "infusing_providers": 793,
+  "infusing_median_drug_share": 0.7374,
+  "infusing_median_infusion_share": 0.0265,
+  "rheum_infusing_median_drug_share": 0.8404,
+  "market_biosimilar_share_2024": {
+    "denosumab": {
+      "IL": 0.0,
+      "IN": 0.0,
+      "KY": 0.0,
+      "MI": 0.0,
+      "OH": 0.0,
+      "PA": 0.0,
+      "US": 0.0,
+      "WV": 0.0
+    },
+    "infliximab": {
+      "IL": 0.0575,
+      "IN": 0.0995,
+      "KY": 0.0641,
+      "MI": 0.3276,
+      "OH": 0.1097,
+      "PA": 0.0419,
+      "US": 0.1413,
+      "WV": 0.0
+    },
+    "natalizumab": {
+      "IL": 0.0,
+      "IN": 0.0,
+      "MI": 0.0,
+      "OH": 0.0,
+      "PA": 0.0,
+      "US": 0.0
+    },
+    "rituximab": {
+      "IL": 0.6726,
+      "IN": 0.4139,
+      "KY": 0.3715,
+      "MI": 0.8133,
+      "OH": 0.5737,
+      "PA": 0.4325,
+      "US": 0.5929,
+      "WV": 0.0
+    },
+    "tocilizumab": {
+      "IL": 0.0,
+      "IN": 0.0,
+      "KY": 0.0,
+      "MI": 0.0,
+      "OH": 0.0,
+      "PA": 0.0,
+      "US": 0.0018,
+      "WV": 0.0
+    }
+  }
+}

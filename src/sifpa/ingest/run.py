@@ -24,7 +24,7 @@ SPENDING = "Medicare Part B Spending by Drug"
 QUARTERLY_SPENDING = "Medicare Quarterly Part B Spending by Drug"
 
 PROVIDER_SERVICE_YEARS = range(2019, 2025)
-SPECIALTIES = ["Rheumatology", "Neurology", "Gastroenterology", "Allergy/Immunology"]
+SPECIALTIES = ["Rheumatology", "Neurology", "Gastroenterology", "Allergy/ Immunology"]  # CMS spelling has a space
 ADMIN_CODES = ["96365", "96366", "96413", "96415", "96372"]
 
 

@@ -92,11 +92,11 @@
   "provider_2024": {
     "file": "data/raw/provider_2024.parquet",
     "source_url": "https://data.cms.gov/data-api/v1/dataset/<uuid per year from data.json>/data [Medicare Physician & Other Practitioners - by Provider]",
-    "rows": 36505,
+    "rows": 39779,
     "columns": 82,
-    "bytes": 4647471,
-    "sha256": "8fa921d165c1c0b40439e119547e1744fa54fdd0eaa6d7cf8b41c84b5ef30619",
-    "pulled_at": "2026-11-02T09:43:45Z"
+    "bytes": 5055326,
+    "sha256": "564e194577e032b3323dfe5f71d9c9c478120ae49434bbab1ee84623c1a429fe",
+    "pulled_at": "2026-11-02T10:03:17Z"
   },
   "provider_service": {
     "file": "data/raw/provider_service.parquet",
@@ -107,5 +107,5 @@
     "sha256": "56ceeff71c5da520b2f49060a7b46fff28faa8afd915a3c79b2555b45e762f53",
     "pulled_at": "2026-11-02T09:46:41Z"
   },
-  "_total_raw_mb": 43.6
+  "_total_raw_mb": 44.0
 }
