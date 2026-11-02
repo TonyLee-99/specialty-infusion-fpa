@@ -1,6 +1,6 @@
 """`make ingest`: every raw pull, written to data/raw/*.parquet, with data_manifest.json.
 
-Run time ~10 min (several hundred small filtered API calls, run 6 at a time).
+Run time ~5-10 min (several hundred small filtered API calls, 3 at a time, with 429 back-off).
 """
 
 from __future__ import annotations
@@ -36,7 +36,7 @@ def _states() -> pd.DataFrame:
     return pd.read_csv(SEEDS / "region_states.csv", dtype=str)
 
 
-def _parallel(fn, jobs: list, workers: int = 6) -> pd.DataFrame:
+def _parallel(fn, jobs: list, workers: int = 3) -> pd.DataFrame:  # 3: stay under the CMS API rate limit
     with ThreadPoolExecutor(workers) as pool:
         frames = [f for f in pool.map(fn, jobs) if f is not None and len(f)]
     return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
@@ -100,6 +100,10 @@ def _write(name: str, df: pd.DataFrame, url: str, manifest: dict) -> None:
         "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "pulled_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
+    # write the manifest after every source so an interrupted run (e.g. HTTP 429) never leaves
+    # files on disk whose hashes the manifest does not describe
+    manifest["_total_raw_mb"] = round(sum(p.stat().st_size for p in RAW.glob("*")) / 1e6, 1)
+    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"  {name}: {len(df):,} rows, {path.stat().st_size / 1e6:.1f} MB")
 
 

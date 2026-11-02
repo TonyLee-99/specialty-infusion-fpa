@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-02T10:29:23Z",
+  "run_at": "2026-11-02T10:42:49Z",
   "offline": true,
   "all_ok": true,
   "automated_minutes_measured": 0.4,
@@ -17,21 +17,21 @@
     {
       "step": "dbt",
       "status": "ok",
-      "seconds": 3.2,
+      "seconds": 4.0,
       "manual_step": "Clean, join and validate source tables (HCPCS changes, biosimilar codes, reconciliations)",
       "manual_minutes_estimate": 90
     },
     {
       "step": "fixtures",
       "status": "ok",
-      "seconds": 0.8,
+      "seconds": 1.0,
       "manual_step": "(no manual equivalent: keeps the offline CI slice in sync)",
       "manual_minutes_estimate": 0
     },
     {
       "step": "margin",
       "status": "ok",
-      "seconds": 1.1,
+      "seconds": 0.9,
       "manual_step": "Rebuild per-infusion margin by drug and payer; refresh lag spread",
       "manual_minutes_estimate": 60
     },
@@ -66,7 +66,7 @@
     {
       "step": "rcm",
       "status": "ok",
-      "seconds": 1.1,
+      "seconds": 1.0,
       "manual_step": "Refresh RCM KPI layer (SYNTHETIC demo here)",
       "manual_minutes_estimate": 20
     },
@@ -115,7 +115,7 @@
     {
       "step": "screenshots",
       "status": "ok",
-      "seconds": 1.2,
+      "seconds": 1.1,
       "manual_step": "Screenshot pages for the deck",
       "manual_minutes_estimate": 10
     },
@@ -136,7 +136,7 @@
     {
       "step": "test",
       "status": "ok",
-      "seconds": 3.8,
+      "seconds": 3.5,
       "manual_step": "(no manual equivalent: regression suite)",
       "manual_minutes_estimate": 0
     }

@@ -136,6 +136,11 @@ make check         # offline gate: ruff + pytest (81 test functions) + dbt on fi
 make reproduce     # full rebuild from public pulls (~5 min, ~44.2 MB raw)
 make monthly-pack  # the recurring refresh, timed step by step
 ```
+Reproducibility note: data.cms.gov rate-limits repeated full pulls (HTTP 429). `make ingest` backs off and
+writes the manifest after every source. A same-day re-pull reproduced 12 of the 14 raw files byte for byte
+(sha256 match with `data_manifest.json`) before the API throttled it. The offline rebuild
+(`make monthly-pack OFFLINE=1`: dbt -> analyses -> exports -> Excel -> memo -> scorecard -> tests) runs end to end.
+
 Open `excel/infusion_plan_2027_scenarios.xlsx` (change any blue input) and `docs/scorecard.html`. On Windows,
 open `powerbi/SpecialtyInfusionFPA.pbip` after setting the `RepoPath` parameter.
 
