@@ -18,7 +18,7 @@ def test_dq_report_has_no_hard_failures_and_flags_anomalies():
 
 def test_monthly_pack_covers_the_pipeline_and_quantifies_manual_steps():
     targets = [s[0] for s in STEPS]
-    for t in ("ingest", "dbt", "exports", "kpis", "excel", "memo", "scorecard", "dq", "test"):
+    for t in ("ingest", "dbt", "dq", "variance", "exports", "kpis", "excel", "memo", "scorecard", "test"):
         assert t in targets
     last = json.loads((ROOT / "outputs/monthly_pack_last.json").read_text())
     assert last["all_ok"] is True

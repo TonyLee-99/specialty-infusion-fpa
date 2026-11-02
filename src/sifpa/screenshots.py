@@ -12,7 +12,7 @@ from playwright.sync_api import sync_playwright
 
 from sifpa.paths import DOCS, IMG, OUTPUTS
 
-SECTIONS = ["exec", "pricing", "forecast", "market", "rcm"]
+SECTIONS = ["exec", "pricing", "forecast", "market", "variance", "rcm"]
 
 
 def main() -> None:

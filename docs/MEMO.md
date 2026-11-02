@@ -1,63 +1,64 @@
 # Decision memo: CY2027 in-office infusion plan
 
 **To:** EVP, Financial Planning & Analysis. **From:** Zhengtao (Tony) Li. **Date:** 2026-11-02.
-**Basis:** public CMS / CDC / Census data (ASP files through 2026Q4). Practice volumes, payer mix and
-contract rates are labelled assumptions for an illustrative 12-chair suite in Ohio. Use the $ per
-infusion and the % figures; the totals are illustrations.
+**Basis:** public CMS / CDC / Census data, one price basis (2027: Medicare pays on the ASP of two quarters
+earlier, the practice buys at the current ASP). Patients, payer mix, contracts and costs are labelled
+assumptions for an illustrative 12-chair suite with a regional operator's published drug list. Read the $ per
+infusion and the deltas; the totals are illustrations.
 
 ## Recommendation
-1. **Budget the infusion line as a commercial-contract business, not a drug-volume business.** Base-case 2027
-   contribution is $376 per chair infusion (-1.4% vs 2026Q4 prices), or
-   $5.2M on 13,866 infusions at 70% chair utilization. Medicare FFS earns $101 per
-   infusion. Its drug margin is only 2.1% of drug revenue: ASP+6% nets to 4.3% after
-   sequestration, before coinsurance bad debt. Commercial earns $646 (assumed contract). Commercial is
-   50% of volume but 86% of infusion contribution.
-2. **Do not run a blanket biosimilar conversion for margin.** Moving infliximab, rituximab, tocilizumab and
-   natalizumab to 80% biosimilar changes contribution by -$180K (-3.4%). Medicare gains
-   $16 per infusion, because the IRA add-on is 8% of the *reference* ASP. Commercial loses
-   $38 per infusion, because ASP-plus contracts pay less on a cheaper drug. Convert where payers
-   mandate it, or where a contract pays at least $94 more per switched commercial infusion
-   (shared savings or reference-ASP pricing).
-3. **Contract for the 2028 policy stack now.** 39% of the chair-infusion mix is Orencia or Entyvio,
-   both selected for Medicare negotiation (MFP effective 2028). At an assumed 35% MFP discount the
-   Medicare effect is only -$61K, because Medicare margin is already thin. The larger exposure is payer
-   white bagging: -$582K if 15% of commercial infusions move to specialty pharmacy. Together that is
-   -$643K per year. The scheduled end of the +8% biosimilar add-on (2027-09-30) is small for this mix
-   (-$413 full-year).
-4. **Grow capacity in Ohio first, and pick the next site at metro grain.** National in-office Medicare
-   administrations of these drugs grew 5.4% a year from 2019 to 2024 (2.30M in 2024). One chair
-   is worth $435K a year, and each 5 points of utilization is worth $373K. Fill chairs before
-   adding them. For a new comprehensive site, **Cleveland, OH** is the strongest Ohio market outside the Columbus
-   catchment: rank 5 of 83, 131 miles away, 12.5 relevant specialists per 100k, in
-   the top 10 under 77% of 2,000 random weightings. Detroit-Warren-Dearborn, MI (84%) and Chicago-Naperville-Elgin, IL-IN (75%) rank higher but
-   leave Ohio. Chicago pairs with the existing Wood Dale (the owned specialty pharmacy) footprint.
+1. **Budget the infusion line as a commercial-contract business.** The 2027 base case gives 7,736
+   infusions for 1,700 patients (69% of chair capacity). Contribution is $3.95M; after $1.03M of
+   fixed suite cost, operating margin is $2.92M. Medicare FFS contributes $161 per infusion: ASP+6% nets
+   to 4.3% after sequestration, and after coinsurance bad debt and denials the Medicare drug margin is
+   1.4% of drug revenue. MA contributes $55. The assumed commercial contract contributes $953,
+   after patient bad debt, denials and underpayment (93.2% collected). Commercial is 48% of
+   infusions and 89% of contribution.
+2. **Decide biosimilars product by payer; don't push them across the board.** Moving infliximab and rituximab
+   to 80% on the listed products (Inflectra, Truxima) changes operating margin by $18K.
+   Giving each payer its best-margin product would add up to $185K. But only 4 of 20 of
+   those payer-level picks survive the products' own price swings over the last 12 quarters. The workable
+   rule: put Medicare patients on the IRA +8% products while that window lasts, and ask commercial payers to
+   price biosimilars on reference-ASP terms before converting them.
+3. **Contract for 2028 now; the exposure is white bagging, not drug negotiation.** The 2028 run-rate changes
+   operating margin by -$619K. White bagging accounts for -$605K (tiered by drug cost, net of the owned specialty pharmacy
+   recapture), and the end of the +8% add-on for -$14K. Medicare negotiation costs $0 on the listed drug
+   list, because none of those drugs was selected. Adding Orencia to the formulary (selected drugs would be
+   20% of infusions in a full-formulary book) changes this by only -$35, because the Medicare margin on it is
+   about 1%. Priorities: site-of-care and white-bagging carve-outs in contracts; the owned specialty pharmacy in payer
+   networks (each 25 points of recapture is worth $56K).
+4. **Grow by patients, not chairs.** At 69% utilization, another chair adds $57K of fixed cost and
+   no volume (-$57K a year). 100 more patients add $233K. Once demand exceeds capacity, an added
+   chair breaks even at 12% utilization. For a new site, Northeast Ohio leads.
+   - **Canton-Massillon, OH** ranks 2 of 74 and is in the top 10 under 76% of random weightings. It has
+     4.7 relevant specialists per 100k and 0 Medicare-billing rheumatologists, so a site
+     there means recruiting.
+   - **Cleveland** (rank 6, 58%, 37 rheumatologists) is the larger base.
+   - Detroit-Warren-Dearborn, MI ranks first (63%) but leaves Ohio.
 
 ## Risks
-- **Realization.** In 2024 the national in-office allowed amount per billed unit was 96.8% of the
-  average quarterly payment limit. If that 3.2% gap is real for us, it is larger than the Medicare
-  drug margin. Check it against our 835s before relying on any Medicare drug margin.
-- **Commercial terms dominate.** Across the documented range (8% to 35% over ASP), annual
-  contribution runs from $2.9M to $8.2M. No other driver moves the answer as much.
-- **Purchasing.** A Medicare infusion stops covering its chair cost if we buy 3.7% above ASP.
-- **Forecasts.** Quarterly ASP backtest MAPE is 3.0% (damped ETS) vs 3.5% naive and
-  5.1% seasonal naive. Annual volume MAPE is 14.2% vs 15.9% naive. On the
-  2025 out-of-sample check, spend MAPE was 13.1% vs 17.1% naive. Volume is the uncertain
-  part, not price.
-- **Data limits.** Medicare FFS only (MA claims are not public). Provider-level biosimilar rates are censored
-  for 99.5% of provider-molecule pairs, so adoption is benchmarked at state level (infliximab biosimilar
-  share 11.0% in Ohio vs 14.1% nationally).
+- **Commercial terms dominate.** Across the documented markup range (8% to 35% over ASP),
+  operating margin runs from $57K to $6.50M. Purchasing is next: an acquisition spread of -5% to
+  +3% vs ASP moves it from $5.27M to $1.51M.
+- **Price path.** Across the test window, no forecasting model beat naive (MAPE 6.6% naive vs
+  6.4% for the selected models), so 2027 prices are held at the latest file. That makes the lag spread
+  zero in the base. In 30% of past drug-quarters (36% dollar-weighted), Medicare's collected payment fell
+  below the price the practice paid at the time. The held-flat path's 80% band covered 83% of test
+  outcomes.
+- **Orencia pricing.** Orencia's Medicare limit is set on WAC ("lesser of"). If acquisition tracked its old
+  ASP trend, a full rheum formulary would lose $3.96M a year.
+- **Data limits.** Medicare FFS only; MA claims are not public. The drug mix comes from what
+  neurologists and rheumatologists bill in office nationally, and it under-represents hospital-based MS
+  infusion. Provider-level biosimilar rates cannot be measured through CMS suppression, so adoption is
+  benchmarked by state (infliximab 11.0% Ohio vs 14.1% US).
 
 ## What would change this recommendation
-- Commercial contracts that pay biosimilars on reference-ASP terms, or share at least $94 per
-  switched infusion. Biosimilar conversion would then add margin.
-- Acquisition cost at or above ASP+3.7% (non-GPO purchasing). Medicare infusion volume would then
-  need to be capped or re-routed.
-- Published MFPs (due 2026-11-30) far below the assumed 35% discount, or payer white bagging above
-  15%. The 2028 exposure would then become the first-order issue.
-- Internal referral and leakage data that contradicts the public ranking. The ranking is only moderately
-  stable (mean top-10 overlap under random weightings: 65%), so referral data should outweigh it.
+- Commercial biosimilar contracts priced on reference-ASP terms: biosimilar conversion becomes a margin lever.
+- Acquisition cost above ASP (non-GPO purchasing): Medicare and MA infusions turn loss-making.
+- the owned specialty pharmacy inside the big payers' specialty networks, or white bagging below the assumed tiers: the 2028
+  exposure shrinks.
+- Referral data showing Northeast Ohio demand already served. Weight-stability of the ranking is moderate
+  (mean top-10 overlap 51%), so referral data should outweigh it.
 
-**Three internal numbers that would most sharpen this:** commercial drug terms by payer (markup over ASP or
-% of WAC), invoice acquisition cost vs ASP for the top 10 drugs, and chair utilization plus payer mix by site.
-In this region's Medicare data, drugs are 84% of allowed for infusing rheumatologists, so these
-three inputs decide most of the practice's revenue picture.
+**The three internal numbers that would sharpen this most:** commercial drug terms by payer, invoice
+acquisition cost vs ASP for the top 10 drugs, and the active patient panel by drug and payer.

@@ -9,7 +9,7 @@ from sifpa import memo
 ROOT = Path(__file__).resolve().parents[1]
 # numbers that are part of the framing, not model outputs (dates, plan years, statutory facts, page refs)
 ALLOWED = {"2026", "2027", "2028", "2019", "2024", "2025", "11", "02", "30", "09", "8", "6", "5", "10", "2", "3",
-           "2,000", "1", "835", "100"}  # 100 = "per 100k" unit
+           "2,000", "1", "100", "12", "25", "+8", "80"}  # plan year, "100 more patients", "per 100k", "+8%", "12 quarters", "25 points"
 
 
 def test_memo_is_reproducible_from_outputs():
@@ -37,4 +37,4 @@ def test_every_number_in_memo_comes_from_the_numbers_dict():
 
 def test_memo_draws_no_conclusion_from_synthetic_data():
     text = (ROOT / "docs/MEMO.md").read_text().lower()
-    assert "synthetic" not in text and "denial" not in text and "days in ar" not in text
+    assert "synthetic" not in text and "days in ar" not in text and "clean-claim" not in text

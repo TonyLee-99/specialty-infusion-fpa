@@ -117,90 +117,93 @@ def table(df: pd.DataFrame) -> str:
 def build() -> str:
     m, sc, fc, bm, mk, kp = (J(n) for n in ("margin.json", "scenarios.json", "forecast.json", "benchmark.json",
                                              "market.json", "kpis.json"))
-    rcm = J("rcm_kpis_SYNTHETIC.json")
-    conv = J("biosimilar_conversion.json")
-    tor = J("tornado.json")
-    base = sc["scenarios"]["base"]
+    rcm, var, tor = J("rcm_kpis_SYNTHETIC.json"), J("variance_pack_SYNTHETIC.json"), J("tornado.json")
+    s = sc["scenarios"]
+    base = s["base"]
+    op = base["operating_margin"]
 
-    # ---- page 1: executive ----
+    # ---- page 1: executive (2027 basis throughout) ----
     p1 = "".join([
-        tile("CY2027 base contribution (illustrative 12-chair suite)", money(base["annual"]["contribution"]),
-             f'{base["annual"]["administrations"]:,} infusions/yr'),
-        tile("Contribution per infusion: Medicare FFS", money(m["medicare_ffs_per_admin"]["contribution"], 2),
-             f'drug margin {pct(m["medicare_drug_margin_pct_of_drug_revenue"])} of drug revenue'),
-        tile("Contribution per infusion: commercial (assumed contract)", money(m["commercial_per_admin"]["contribution"], 2),
-             "ASP + 20% assumption; widest tornado bar"),
-        tile("Policy shock (2028 run-rate)", money(sc["scenarios"]["policy_shock"]["annual"]["contribution"] - base["annual"]["contribution"]),
-             "MFP Orencia/Entyvio + 15% white bagging"),
-        tile("Biosimilar push", money(sc["scenarios"]["biosimilar_push"]["annual"]["contribution"] - base["annual"]["contribution"]),
-             "to 80% biosimilar on 4 molecules"),
-        tile("Allowed vs payment limit (2024, measured)", pct(m["realization"]["allowed_weighted_ratio_2024"]),
-             "unexplained gap; downside sensitivity"),
+        tile("CY2027 operating margin (illustrative 12-chair suite)", money(op),
+             f'{base["administrations"]:,} infusions/yr, {pct(base["utilization"], 0)} of chair capacity'),
+        tile("Contribution per infusion: Medicare FFS", money(base["contribution_per_admin_medicare_ffs"], 0),
+             f'drug margin {pct(m["medicare_drug_margin_pct_of_drug_revenue"])} of Medicare drug revenue'),
+        tile("Contribution per infusion: commercial (assumed contract)", money(base["contribution_per_admin_commercial"], 0),
+             f'commercial = {pct(base["commercial_share_of_contribution"], 0)} of contribution'),
+        tile("2028 policy run-rate vs base", money(s["policy_2028"]["operating_margin"] - op),
+             f'white bagging {money(sc["policy_2028_bridge"]["white_bagging_net_of_ivs"])}; MFP {money(sc["policy_2028_bridge"]["mfp"])}'),
+        tile("Biosimilars on listed products (Inflectra, Truxima)", money(s["biosimilar_listed"]["operating_margin"] - op),
+             f'best product per payer: up to {money(s["biosimilar_best"]["operating_margin"] - op)}'),
+        tile("Grow by patients, not chairs", money(sc["value_of_100_more_patients"]),
+             f'per 100 more patients; one more chair today: {money(base["added_chair_value"])}/yr'),
     ])
-    scen_rows = [(n.replace("_", " "), [s["annual"]["contribution"]]) for n, s in sc["scenarios"].items()]
-    p1 += '<h3>CY2027 annual contribution by scenario</h3>' + hbars(scen_rows, [("Contribution", S1)], money)
+    order = ["base", "biosimilar_listed", "biosimilar_best", "policy_2028"]
+    p1 += '<h3>CY2027 operating margin by scenario</h3>' + hbars(
+        [(k.replace("_", " "), [s[k]["operating_margin"]]) for k in order], [("Operating margin", S1)], money)
     bars = tor["bars"][:8]
-    tor_rows = [(b["driver"].replace("_", " ")[:30], [b["contribution_at_low"] - tor["base_contribution"],
-                                                     b["contribution_at_high"] - tor["base_contribution"]]) for b in bars]
-    p1 += ('<h3>Tornado: change in annual contribution, each assumption at its documented low / high</h3>'
-           + hbars(tor_rows, [("at low value", S2), ("at high value", S1)], money))
+    p1 += ('<h3>Tornado: change in operating margin, each assumption at its documented low / high</h3>'
+           + hbars([(b["driver"].replace("_", " ")[:30], [b["at_low"] - tor["base"], b["at_high"] - tor["base"]]) for b in bars],
+                   [("at low value", S2), ("at high value", S1)], money))
 
     # ---- page 2: pricing & margin ----
-    hist = pd.DataFrame(conv["_infliximab_history"])
+    asp = pd.read_csv(EXPORTS / "fact_asp_quarter.csv", dtype={"hcpcs": str})
     names = {"J1745": "Remicade J1745", "Q5103": "Inflectra Q5103", "Q5104": "Renflexis Q5104", "Q5121": "Avsola Q5121"}
     series = []
     for code, color in zip(names, (S1, S2, S3, S4), strict=True):
-        g = hist[hist["hcpcs"] == code]
+        g = asp[asp["hcpcs"] == code]
         series.append((names[code], color, list(zip(g["payment_quarter"], g["payment_limit"], strict=True))))
     p2 = '<h3>Infliximab: Medicare payment limit per 10 mg, by product (CMS ASP files, 2017Q1-2026Q4)</h3>'
     p2 += lines(series, lambda v: f"${v:,.0f}")
-    cph = [r for r in m["contribution_per_chair_hour"] if r["mix_share"] > 0][:12]
-    p2 += ('<h3>Contribution per chair-hour, infusions in the practice mix (reference / single-source, 2026Q4 prices)</h3>'
-           + hbars([(f'{r["molecule"]} {r["hcpcs"]}', [r["medicare_per_chair_hour"], r["commercial_per_chair_hour"]]) for r in cph],
+    cph = m["contribution_per_chair_hour"][:12]
+    p2 += ('<h3>Contribution per chair-hour, drugs in the 2027 plan mix</h3>'
+           + hbars([(f'{r["molecule"]} {r["hcpcs"]}', [r["medicare_ffs_per_chair_hour"], r["commercial_per_chair_hour"]]) for r in cph],
                    [("Medicare FFS", S1), ("Commercial (assumed)", S2)], money))
-    conv_tbl = pd.DataFrame([{"molecule": k, "reference": v["reference"], "best biosimilar (payer-mix margin)": v["best_biosimilar"],
-                              "switch: Medicare $/infusion": round(v["switch_delta_medicare_per_admin"]),
-                              "switch: commercial $/infusion": round(v["switch_delta_commercial_per_admin"]),
-                              "IRA +8% expiry hit $/infusion": round(v["ira_addon_expiry_hit_per_admin"])}
-                             for k, v in conv.items() if not k.startswith("_")])
-    p2 += "<h3>Biosimilar conversion economics per infusion</h3>" + table(conv_tbl)
+    dec = pd.read_csv(OUTPUTS / "biosimilar_decision.csv")
+    best = dec[dec["best_for_payer"]][["molecule", "payer", "brand", "drug_margin_base", "decision_robust"]]
+    best["drug_margin_base"] = best["drug_margin_base"].map(lambda x: f"${x:,.0f}")
+    p2 += "<h3>Biosimilar decision: best product per payer (robust = survives the product's p10/p90 price swing)</h3>" + table(best)
+    uw = m["underwater"]
+    p2 += (f'<p class="note">Medicare collected payment below the current purchase price: {pct(uw["raw"]["share_drug_quarters"])} of '
+           f'drug-quarters raw, {pct(uw["after_sequestration"]["share_drug_quarters"])} after sequestration, '
+           f'{pct(uw["after_sequestration_and_coinsurance"]["share_drug_quarters"])} after sequestration and coinsurance '
+           f'({pct(uw["after_sequestration_and_coinsurance"]["dollar_weighted_share"])} dollar-weighted).</p>')
 
-    # ---- page 3: forecast & scenarios ----
-    qa, an = fc["quarterly_asp"], fc["annual"]
+    # ---- page 3: forecasts ----
+    qa, av, al = fc["quarterly_asp"], fc["annual"]["administrations"], fc["annual"]["allowed"]
     models = ["naive", "seasonal_naive", "drift", "ets_damped"]
-    p3 = (f'<h3>Backtest MAPE: quarterly ASP payment limit ({qa["n_series"]} drugs, origins {qa["first_origin"]}-{qa["last_origin"]}, h = 1-4)</h3>'
-          + hbars([(mm.replace("_", " "), [qa["mape_by_model"][mm]]) for mm in models], [("MAPE", S1)], pct))
-    p3 += (f'<h3>Backtest MAPE: annual in-office volume and allowed $ ({an["n_series"]} series, origins {an["origins"][0]}-{an["origins"][-1]}, h = 1-2)</h3>'
-           + hbars([(mm.replace("_", " "), [an["mape_by_model"][mm]]) for mm in ("naive", "drift", "ets_damped")], [("MAPE", S1)], pct))
-    cov = pd.DataFrame(qa["pi80_coverage_eval"] + an["pi80_coverage_eval"])
-    cov.insert(0, "problem", ["quarterly ASP"] * len(qa["pi80_coverage_eval"]) + ["annual volume"] * len(an["pi80_coverage_eval"]))
-    cov["coverage_80"] = cov["coverage_80"].map(pct)
-    p3 += "<h3>80% prediction intervals: coverage on held-out origins (calibrated on earlier origins)</h3>" + table(cov)
-    ext = fc["external_2025"]
-    p3 += (f'<p class="note">Out-of-sample 2025 check (all-settings Part B spend, {ext["n_molecules"]} molecules, never used in fitting): '
-           f'MAPE naive {pct(ext["mape_2025"]["naive"])}, drift {pct(ext["mape_2025"]["drift"])}, damped ETS {pct(ext["mape_2025"]["ets_damped"])}.</p>')
+    p3 = (f'<h3>Quarterly ASP: test-window MAPE by model (origins from {qa["test_first_origin"]}, h = 1-6)</h3>'
+          + hbars([(mm.replace("_", " "), [qa["test_mape_by_model"][mm]]) for mm in models], [("MAPE", S1)], pct))
+    dm = pd.DataFrame([{"h": h, "n": d["n"], "DM (selected vs naive)": d["dm"], "p-value": d["p_value"],
+                        "80% coverage (naive band)": pct(qa["pi80_test_coverage_by_h"][h])} for h, d in qa["dm_selected_vs_naive_by_h"].items()])
+    p3 += f'<h3>Decision: {esc(qa["decision"])}</h3>' + table(dm)
+    p3 += ("<h3>Annual national in-office series, test-window MAPE: volume and spend scored separately</h3>"
+           + hbars([("volume: naive", [av["test_mape_naive"]]), ("volume: selected", [av["test_mape_selected"]]),
+                    ("spend: naive", [al["test_mape_naive"]]), ("spend: selected", [al["test_mape_selected"]])], [("MAPE", S1)], pct))
 
-    # ---- page 4: benchmark & market ----
+    # ---- page 4: growth & benchmark ----
     top = pd.DataFrame(mk["market_top10"])
-    top["market"] = top["market"] + top["partial_market"].map({True: " (in-region part only)", False: ""})
-    top = top[["rank", "market", "p_top10", "population", "specialists_per_100k", "infusion_billers_per_100k",
-               "miles_to_columbus_site"]]
-    p4 = (f'<h3>White space: top 10 markets of {mk["markets"]["n_eligible"]} eligible (P(top 10) over {mk["n_weight_draws"]:,} random weightings)</h3>'
-          + hbars([(r.market[:28], [r.p_top10]) for r in top.itertuples()], [("P(top 10)", S1)], pct))
-    top["p_top10"] = top["p_top10"].map(pct)
-    top["population"] = top["population"].map("{:,}".format)
-    p4 += table(top)
+    p4 = (f'<h3>White space: top 10 of {mk["markets"]["n_eligible"]} eligible markets (share of {mk["n_weight_draws"]:,} random weightings in the top 10)</h3>'
+          + hbars([(r.market[:30], [r.share_of_weightings_in_top10]) for r in top.itertuples()], [("share of weightings", S1)], pct))
+    t = top[["rank", "market", "share_of_weightings_in_top10", "specialists_per_100k", "rheumatologists",
+             "infusion_billers_per_100k", "hospital_heavy", "miles_to_columbus_site"]].copy()
+    t["share_of_weightings_in_top10"] = t["share_of_weightings_in_top10"].map(pct)
+    p4 += table(t)
     share = pd.read_csv(EXPORTS / "fact_market_biosimilar_share.csv")
-    inf = share[(share["molecule"] == "infliximab")].sort_values("biosimilar_share", ascending=False)
-    p4 += ("<h3>Infliximab biosimilar share of in-office administrations, 2024 (Medicare FFS geography totals)</h3>"
+    inf = share[share["molecule"] == "infliximab"].sort_values("biosimilar_share", ascending=False)
+    p4 += ("<h3>Infliximab biosimilar share of in-office administrations, 2024 (unsuppressed geography totals)</h3>"
            + hbars([(r.geo, [r.biosimilar_share]) for r in inf.itertuples()], [("Biosimilar share", S1)], pct))
-    vs = bm["biosimilar_vs_peer_counts"]
-    p4 += (f'<p class="note">Provider level ({bm["n_providers_scored"]:,} clinicians scored): {pct(bm["share_provider_molecule_censored"])} of '
-           f'provider-molecule rates are censored by CMS cell suppression, so only {vs.get("above_peer", 0)} providers are distinguishably '
-           f'above and {vs.get("below_peer", 0)} below their specialty median on biosimilar adoption. Infusing providers: median '
-           f'{pct(bm["infusing_median_drug_share"])} of Medicare allowed is drugs.</p>')
+    p4 += (f'<p class="note">Provider level ({bm["n_providers_scored"]:,} clinicians): {pct(bm["share_pairs_fully_observed"], 0)} of '
+           f'{bm["n_provider_molecule_pairs"]} provider-molecule pairs are fully observed after CMS suppression, so provider biosimilar '
+           f'labels are interval-based and mostly "insufficient data".</p>')
 
-    # ---- page 5: RCM SYNTHETIC ----
+    # ---- page 5: budget vs actual (SYNTHETIC) ----
+    p6 = '<div class="synthetic">SYNTHETIC ACTUALS: method demo only. Budget = 2027 plan model.</div>'
+    rows = var["by_site_ytd"]
+    p6 += ("<h3>Contribution variance, months closed (SYNTHETIC actuals): volume / mix / rate by site</h3>"
+           + hbars([(f'{r["site_id"]} {k}', [r[k]]) for r in rows for k in ("volume", "mix", "rate", "variance")],
+                   [("contribution $", S1)], money))
+
+    # ---- page 6: RCM SYNTHETIC ----
     p5 = '<div class="synthetic">SYNTHETIC DATA: method demo only. No business conclusion is drawn from this page.</div>'
     p5 += "".join([tile("Clean-claim rate (SYNTHETIC)", pct(rcm["clean_claim_rate"])),
                    tile("Initial denial rate (SYNTHETIC)", pct(rcm["denial_rate"])),
@@ -209,12 +212,12 @@ def build() -> str:
     p5 += ("<h3>Initial denials by CARC group, share of first remits (SYNTHETIC)</h3>"
            + hbars(list((k, [v]) for k, v in rcm["denial_rate_by_carc_group"].items()), [("share", S3)], pct))
 
-    sections = [("exec", "Executive summary", p1), ("pricing", "Pricing, ASP lag and margin per infusion", p2),
-                ("forecast", "Forecasts and 2027 scenarios", p3), ("market", "Benchmark and market white space", p4),
-                ("rcm", "Revenue cycle (SYNTHETIC)", p5)]
+    sections = [("exec", "Executive summary (2027 basis)", p1), ("pricing", "Pricing, ASP lag and margin per infusion", p2),
+                ("forecast", "Forecasts", p3), ("market", "Growth and benchmark", p4),
+                ("variance", "Budget vs actual (SYNTHETIC actuals)", p6), ("rcm", "Revenue cycle (SYNTHETIC)", p5)]
     nav = "".join(f'<a href="#{i}">{esc(t)}</a>' for i, t, _ in sections)
     body = "".join(f'<section id="{i}"><h2>{esc(t)}</h2><div class="tiles">{c}</div></section>'
-                   if i in ("exec", "rcm") else f'<section id="{i}"><h2>{esc(t)}</h2>{c}</section>' for i, t, c in sections)
+                   if i in ("exec", "rcm", "variance") else f'<section id="{i}"><h2>{esc(t)}</h2>{c}</section>' for i, t, c in sections)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Specialty infusion FP&amp;A scorecard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"><style>
 :root {{ color-scheme: light; --bg:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --rule:#e4e3df;
@@ -244,7 +247,7 @@ footer {{ padding:16px 32px 40px; color:var(--ink2); font-size:12px; }}
 </style></head><body>
 <header><h1>Specialty infusion FP&amp;A scorecard: CY2027 plan</h1>
 <p>Public CMS / CDC / Census data; illustrative practice drivers are labelled assumptions. Mirrors the pages of the
-Power BI model in <code>powerbi/</code> (not opened in Power BI Desktop). Prices: CMS ASP {esc(m["price_quarter"])}.</p></header>
+Power BI model in <code>powerbi/</code> (not opened in Power BI Desktop). Price basis: 2027 (payment on lagged ASP, purchase at current ASP).</p></header>
 <nav>{nav}</nav>{body}
 <footer>Generated by <code>make scorecard</code> from outputs/*.json and exports/*.csv. Hover any bar or point for its value.
 KPI cross-check: {len(kp)} DAX measures have SQL twins (outputs/kpis.json).</footer>

@@ -1,7 +1,8 @@
-"""`make monthly-pack`: the recurring FP&A refresh as one command.
+"""`make monthly-pack`: the month-end FP&A pack as one command.
 
-refresh public pulls -> dbt build + data tests -> analyses -> star-schema exports + PBIP -> SQL-twin KPIs
--> Excel scenarios -> memo -> scorecard + screenshots -> README -> data-quality checks -> test suite.
+refresh public pulls -> dbt build + data tests -> data-quality checks -> plan engine + scenarios ->
+budget by site/month vs actuals (volume / mix / rate bridge; actuals are SYNTHETIC here) -> exports + PBIP
+-> SQL-twin KPIs -> Excel -> memo + variance pack -> scorecard + screenshots -> README -> test suite.
 Each step is timed; outputs/monthly_pack_last.json records the run and the manual steps it replaces.
 `--offline` skips the network pull and reuses data/raw.
 """
@@ -22,21 +23,23 @@ STEPS = [
     ("ingest", "Download the new ASP quarter, PFS/GPCI, CMS utilization, PLACES/Census files; check row counts", 60),
     ("dbt", "Clean, join and validate source tables (HCPCS changes, biosimilar codes, reconciliations)", 90),
     ("fixtures", "(no manual equivalent: keeps the offline CI slice in sync)", 0),
-    ("margin", "Rebuild per-infusion margin by drug and payer; refresh lag spread", 60),
+    ("dq", "Check anomalies (price jumps, coverage gaps, allowed vs payment limit)", 30),
     ("forecast", "Re-forecast ASP and volume; re-score against last quarter", 60),
+    ("margin", "Rebuild per-infusion margin by drug and payer; refresh lag spread", 60),
     ("scenarios", "Update base / biosimilar / policy scenarios for the plan", 45),
     ("benchmark", "Refresh provider scorecards and peer percentiles", 45),
     ("market", "Refresh market white-space ranking", 30),
     ("rcm", "Refresh RCM KPI layer (SYNTHETIC demo here)", 20),
+    ("variance", "Month-end budget vs actual: volume / mix / rate bridge by site (SYNTHETIC actuals here)", 90),
     ("exports", "Export star-schema extracts for the Power BI model", 20),
     ("pbi", "Update semantic-model tables/measures", 15),
     ("kpis", "Tie out dashboard KPIs to the SQL numbers", 30),
+    ("pbi-guide", "Refresh the expected numbers in the Power BI build guide", 10),
     ("excel", "Roll the Excel scenario workbook forward", 30),
     ("memo", "Re-write the executive memo numbers", 45),
     ("scorecard", "Rebuild scorecard pages", 30),
     ("screenshots", "Screenshot pages for the deck", 10),
     ("readme", "Update documentation numbers", 10),
-    ("dq", "Eyeball anomalies (price jumps, coverage gaps, realization)", 30),
     ("test", "(no manual equivalent: regression suite)", 0),
 ]
 

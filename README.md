@@ -1,22 +1,23 @@
 # specialty-infusion-fpa
 
-**In-office infusion FP&A for a multi-site inflammatory-disease practice, built on public CMS data:** how much
-margin infusion really makes, how exposed it is to biosimilar, ASP and Medicare-negotiation shifts, and where
-the next site should go. It is written for the EVP of FP&A at a regional inflammatory-disease practice. It uses public data
-only, and I have no affiliation with the operator it is modelled on.
+**In-office infusion FP&A for a multi-site inflammatory-disease practice, built on public CMS data:** what
+infusion really earns, how exposed it is to biosimilar, ASP and policy shifts, where growth should come from,
+and how the plan becomes a monthly budget-vs-actual pack. It is written for the EVP of FP&A at a
+regional inflammatory-disease practice. It uses public data only, and I have no affiliation with the operator it is modelled on.
 
-> **Headline:** a chair infusion earns about **$376** in 2027 (base case). Medicare FFS contributes
-> **$101** per infusion. Its drug margin is **2.1%** after sequestration and
-> coinsurance bad debt. The assumed commercial contract contributes **$646**, so commercial is
-> 86% of infusion contribution. A blanket biosimilar push *lowers* contribution
-> (-$180K). The 2028 policy stack (MFP + white bagging) changes contribution by **-$643K** a year. The next site:
-> **Cleveland, OH** (strongest Ohio market outside Columbus, P(top 10) = 77%).
+> **Headline (2027 basis):** an illustrative 12-chair suite on a regional operator's published drug list makes
+> **$2.92M** operating margin on 7,736 infusions. Medicare FFS contributes **$161** per infusion,
+> because its drug margin is **1.4%** after sequestration, coinsurance bad debt and denials. The
+> assumed commercial contract contributes **$953**, so commercial is 89% of contribution. The 2028
+> risk is white bagging (-$605K), not Medicare negotiation ($0 on the listed drugs). Grow by patients
+> (100 more add $233K), not chairs (one more costs $57K/yr at 69% utilization). Next site:
+> **Northeast Ohio**: Canton-Massillon, OH (gap leader, needs recruited rheumatologists) or Cleveland (larger base).
 
 | Problem | What I built | Key results (real numbers, reproducible) |
 |---|---|---|
-| Next year's plan needs to know how much margin infusion makes and how fragile it is | Buy-and-bill engine: ASP+6% with the 2-quarter lag, biosimilar add-on on *reference* ASP, sequestration, Ohio PFS admin fees, observed dose per infusion. Tornado over every assumption | Medicare drug margin 2.1% of drug revenue. Break-even acquisition price ASP+3.7%. Measured 2024 allowed/PL realization 96.8% |
-| Policy shifts (biosimilars, IRA +8% expiry, MFP 2028, PFS cut) hit at different times | Backtested forecasts (ASP MAPE 3.0% vs naive 3.5%). 3 scenarios in Python **and** an Excel workbook with 1,635 live formulas | Base $5.2M, biosimilar push -$180K, policy shock -$643K (illustrative 12-chair suite) |
-| Growth: where to add sites, chairs or providers | Market-grain white-space ranking (7 states, 83 eligible markets) with a 2,000-draw weight-stability test; provider benchmarks with EB shrinkage | Cleveland, OH: rank 5, P(top 10) 77%. One chair = $435K/yr. Each 5 pts of utilization = $373K |
+| Next year's plan needs to know what infusion earns and how fragile it is | Buy-and-bill engine on the real 2-quarter lag (pay on ASP t-2, buy at ASP t), biosimilar add-on on *reference* ASP, net collection for every payer, demand-driven volume, fixed vs variable cost | Medicare FFS $161, MA $55, commercial $953 per infusion. Commercial markup range moves operating margin $57K to $6.50M |
+| Policy and product shifts hit at different times | Product x payer biosimilar decision table; cost-tiered white bagging with owned-pharmacy recapture; 2028 run-rate bridge; Excel with 1,757 live formulas | Listed biosimilars $18K; best product per payer up to $185K (only 4/20 picks robust); 2028 -$619K |
+| Growth and the monthly pack | Market-grain white-space ranking (cross-state metros whole, prescriber floor); budget by site/month + SYNTHETIC actuals with a volume/mix/rate bridge; sliceable Power BI model | Canton-Massillon, OH: rank 2 of 74. Site A Q1 variance (SYNTHETIC) $-73,395 = volume $-49,598 + mix $-22,157 + rate $-1,639 |
 
 ![Executive page of the scorecard](docs/img/scorecard_exec.png)
 
@@ -25,69 +26,70 @@ only, and I have no affiliation with the operator it is modelled on.
 ## Executive decision memo: CY2027 in-office infusion plan
 
 **To:** EVP, Financial Planning & Analysis. **From:** Zhengtao (Tony) Li. **Date:** 2026-11-02.
-**Basis:** public CMS / CDC / Census data (ASP files through 2026Q4). Practice volumes, payer mix and
-contract rates are labelled assumptions for an illustrative 12-chair suite in Ohio. Use the $ per
-infusion and the % figures; the totals are illustrations.
+**Basis:** public CMS / CDC / Census data, one price basis (2027: Medicare pays on the ASP of two quarters
+earlier, the practice buys at the current ASP). Patients, payer mix, contracts and costs are labelled
+assumptions for an illustrative 12-chair suite with a regional operator's published drug list. Read the $ per
+infusion and the deltas; the totals are illustrations.
 
 ### Recommendation
-1. **Budget the infusion line as a commercial-contract business, not a drug-volume business.** Base-case 2027
-   contribution is $376 per chair infusion (-1.4% vs 2026Q4 prices), or
-   $5.2M on 13,866 infusions at 70% chair utilization. Medicare FFS earns $101 per
-   infusion. Its drug margin is only 2.1% of drug revenue: ASP+6% nets to 4.3% after
-   sequestration, before coinsurance bad debt. Commercial earns $646 (assumed contract). Commercial is
-   50% of volume but 86% of infusion contribution.
-2. **Do not run a blanket biosimilar conversion for margin.** Moving infliximab, rituximab, tocilizumab and
-   natalizumab to 80% biosimilar changes contribution by -$180K (-3.4%). Medicare gains
-   $16 per infusion, because the IRA add-on is 8% of the *reference* ASP. Commercial loses
-   $38 per infusion, because ASP-plus contracts pay less on a cheaper drug. Convert where payers
-   mandate it, or where a contract pays at least $94 more per switched commercial infusion
-   (shared savings or reference-ASP pricing).
-3. **Contract for the 2028 policy stack now.** 39% of the chair-infusion mix is Orencia or Entyvio,
-   both selected for Medicare negotiation (MFP effective 2028). At an assumed 35% MFP discount the
-   Medicare effect is only -$61K, because Medicare margin is already thin. The larger exposure is payer
-   white bagging: -$582K if 15% of commercial infusions move to specialty pharmacy. Together that is
-   -$643K per year. The scheduled end of the +8% biosimilar add-on (2027-09-30) is small for this mix
-   (-$413 full-year).
-4. **Grow capacity in Ohio first, and pick the next site at metro grain.** National in-office Medicare
-   administrations of these drugs grew 5.4% a year from 2019 to 2024 (2.30M in 2024). One chair
-   is worth $435K a year, and each 5 points of utilization is worth $373K. Fill chairs before
-   adding them. For a new comprehensive site, **Cleveland, OH** is the strongest Ohio market outside the Columbus
-   catchment: rank 5 of 83, 131 miles away, 12.5 relevant specialists per 100k, in
-   the top 10 under 77% of 2,000 random weightings. Detroit-Warren-Dearborn, MI (84%) and Chicago-Naperville-Elgin, IL-IN (75%) rank higher but
-   leave Ohio. Chicago pairs with the existing Wood Dale (the owned specialty pharmacy) footprint.
+1. **Budget the infusion line as a commercial-contract business.** The 2027 base case gives 7,736
+   infusions for 1,700 patients (69% of chair capacity). Contribution is $3.95M; after $1.03M of
+   fixed suite cost, operating margin is $2.92M. Medicare FFS contributes $161 per infusion: ASP+6% nets
+   to 4.3% after sequestration, and after coinsurance bad debt and denials the Medicare drug margin is
+   1.4% of drug revenue. MA contributes $55. The assumed commercial contract contributes $953,
+   after patient bad debt, denials and underpayment (93.2% collected). Commercial is 48% of
+   infusions and 89% of contribution.
+2. **Decide biosimilars product by payer; don't push them across the board.** Moving infliximab and rituximab
+   to 80% on the listed products (Inflectra, Truxima) changes operating margin by $18K.
+   Giving each payer its best-margin product would add up to $185K. But only 4 of 20 of
+   those payer-level picks survive the products' own price swings over the last 12 quarters. The workable
+   rule: put Medicare patients on the IRA +8% products while that window lasts, and ask commercial payers to
+   price biosimilars on reference-ASP terms before converting them.
+3. **Contract for 2028 now; the exposure is white bagging, not drug negotiation.** The 2028 run-rate changes
+   operating margin by -$619K. White bagging accounts for -$605K (tiered by drug cost, net of the owned specialty pharmacy
+   recapture), and the end of the +8% add-on for -$14K. Medicare negotiation costs $0 on the listed drug
+   list, because none of those drugs was selected. Adding Orencia to the formulary (selected drugs would be
+   20% of infusions in a full-formulary book) changes this by only -$35, because the Medicare margin on it is
+   about 1%. Priorities: site-of-care and white-bagging carve-outs in contracts; the owned specialty pharmacy in payer
+   networks (each 25 points of recapture is worth $56K).
+4. **Grow by patients, not chairs.** At 69% utilization, another chair adds $57K of fixed cost and
+   no volume (-$57K a year). 100 more patients add $233K. Once demand exceeds capacity, an added
+   chair breaks even at 12% utilization. For a new site, Northeast Ohio leads.
+   - **Canton-Massillon, OH** ranks 2 of 74 and is in the top 10 under 76% of random weightings. It has
+     4.7 relevant specialists per 100k and 0 Medicare-billing rheumatologists, so a site
+     there means recruiting.
+   - **Cleveland** (rank 6, 58%, 37 rheumatologists) is the larger base.
+   - Detroit-Warren-Dearborn, MI ranks first (63%) but leaves Ohio.
 
 ### Risks
-- **Realization.** In 2024 the national in-office allowed amount per billed unit was 96.8% of the
-  average quarterly payment limit. If that 3.2% gap is real for us, it is larger than the Medicare
-  drug margin. Check it against our 835s before relying on any Medicare drug margin.
-- **Commercial terms dominate.** Across the documented range (8% to 35% over ASP), annual
-  contribution runs from $2.9M to $8.2M. No other driver moves the answer as much.
-- **Purchasing.** A Medicare infusion stops covering its chair cost if we buy 3.7% above ASP.
-- **Forecasts.** Quarterly ASP backtest MAPE is 3.0% (damped ETS) vs 3.5% naive and
-  5.1% seasonal naive. Annual volume MAPE is 14.2% vs 15.9% naive. On the
-  2025 out-of-sample check, spend MAPE was 13.1% vs 17.1% naive. Volume is the uncertain
-  part, not price.
-- **Data limits.** Medicare FFS only (MA claims are not public). Provider-level biosimilar rates are censored
-  for 99.5% of provider-molecule pairs, so adoption is benchmarked at state level (infliximab biosimilar
-  share 11.0% in Ohio vs 14.1% nationally).
+- **Commercial terms dominate.** Across the documented markup range (8% to 35% over ASP),
+  operating margin runs from $57K to $6.50M. Purchasing is next: an acquisition spread of -5% to
+  +3% vs ASP moves it from $5.27M to $1.51M.
+- **Price path.** Across the test window, no forecasting model beat naive (MAPE 6.6% naive vs
+  6.4% for the selected models), so 2027 prices are held at the latest file. That makes the lag spread
+  zero in the base. In 30% of past drug-quarters (36% dollar-weighted), Medicare's collected payment fell
+  below the price the practice paid at the time. The held-flat path's 80% band covered 83% of test
+  outcomes.
+- **Orencia pricing.** Orencia's Medicare limit is set on WAC ("lesser of"). If acquisition tracked its old
+  ASP trend, a full rheum formulary would lose $3.96M a year.
+- **Data limits.** Medicare FFS only; MA claims are not public. The drug mix comes from what
+  neurologists and rheumatologists bill in office nationally, and it under-represents hospital-based MS
+  infusion. Provider-level biosimilar rates cannot be measured through CMS suppression, so adoption is
+  benchmarked by state (infliximab 11.0% Ohio vs 14.1% US).
 
 ### What would change this recommendation
-- Commercial contracts that pay biosimilars on reference-ASP terms, or share at least $94 per
-  switched infusion. Biosimilar conversion would then add margin.
-- Acquisition cost at or above ASP+3.7% (non-GPO purchasing). Medicare infusion volume would then
-  need to be capped or re-routed.
-- Published MFPs (due 2026-11-30) far below the assumed 35% discount, or payer white bagging above
-  15%. The 2028 exposure would then become the first-order issue.
-- Internal referral and leakage data that contradicts the public ranking. The ranking is only moderately
-  stable (mean top-10 overlap under random weightings: 65%), so referral data should outweigh it.
+- Commercial biosimilar contracts priced on reference-ASP terms: biosimilar conversion becomes a margin lever.
+- Acquisition cost above ASP (non-GPO purchasing): Medicare and MA infusions turn loss-making.
+- the owned specialty pharmacy inside the big payers' specialty networks, or white bagging below the assumed tiers: the 2028
+  exposure shrinks.
+- Referral data showing Northeast Ohio demand already served. Weight-stability of the ranking is moderate
+  (mean top-10 overlap 51%), so referral data should outweigh it.
 
-**Three internal numbers that would most sharpen this:** commercial drug terms by payer (markup over ASP or
-% of WAC), invoice acquisition cost vs ASP for the top 10 drugs, and chair utilization plus payer mix by site.
-In this region's Medicare data, drugs are 84% of allowed for infusing rheumatologists, so these
-three inputs decide most of the practice's revenue picture.
+**The three internal numbers that would sharpen this most:** commercial drug terms by payer, invoice
+acquisition cost vs ASP for the top 10 drugs, and the active patient panel by drug and payer.
 
-*Every figure above is filled from `outputs/*.json` by `make memo` (`src/sifpa/memo.py`); `tests/test_memo.py`
-fails if a number in the memo cannot be traced to the model.*
+*Every figure above is filled from `outputs/*.json` by `make memo`; `tests/test_memo.py` fails if a number
+in the memo cannot be traced to the model.*
 
 ---
 
@@ -99,18 +101,18 @@ flowchart LR
     A[CMS ASP files 2017Q1-2026Q4]:::src
     B[CMS PFS RVU26D + GPCI]:::src
     C[CMS Physician & Other Practitioners<br/>provider / service / geography 2013-2024]:::src
-    D[CMS Part B spending + enrollment]:::src
+    D[CMS Part B spending, enrollment, hospitals]:::src
     E[CDC PLACES, Census PEP, ZCTA, Gazetteer, OMB CBSA]:::src
   end
-  A & B & C & D & E -->|make ingest: filtered API pulls + manifest| R[(data/raw Parquet 44.2 MB)]
-  R -->|dbt build: 25 models, 36 tests| W[(DuckDB star schema)]
-  W --> M[margin engine] --> S[2027 scenarios] --> X[Excel workbook<br/>live formulas]
-  W --> F[backtested forecasts] --> S
+  A & B & C & D & E -->|make ingest: filtered pulls + manifest| R[(data/raw 44.3 MB)]
+  R -->|dbt build: 26 models, 36 tests| W[(DuckDB star schema)]
+  W --> F[price path<br/>validation/test backtests] --> M[plan engine<br/>lag, net revenue, demand volume, fixed/variable]
+  M --> S[2027 scenarios + 2028 bridge] --> X[Excel<br/>live formulas]
+  M --> V[budget by site/month] --> VA[variance bridge<br/>vs SYNTHETIC actuals]
   W --> BM[benchmark] & MK[white space]
-  W & M & S & BM & MK --> EX[exports/*.csv] --> P[PBIP / TMDL<br/>22 DAX measures] & Q[SQL twins -> kpis.json]
-  EX --> H[HTML scorecard + screenshots]
-  M & S & F & BM & MK --> MEMO[decision memo]
-  SYN[SYNTHETIC 837/835] --> RCM[RCM KPI layer] --> EX
+  S & V & VA & BM & MK --> EX[exports/*.csv] --> P[PBIP / TMDL<br/>24 sliceable DAX measures] & Q[SQL twins -> kpis.json]
+  EX --> H[HTML scorecard] & G[Power BI build guide]
+  S & BM & MK --> MEMO[decision memo]
   classDef src fill:#eef3fb,stroke:#2a78d6
 ```
 
@@ -118,89 +120,86 @@ flowchart LR
 
 | Source | Used for | Link | License / terms |
 |---|---|---|---|
-| CMS ASP payment-limit files (40 quarters) + NDC-HCPCS crosswalk | prices, implied ASP, lag spread, IRA flags | [cms.gov ASP pricing files](https://www.cms.gov/medicare/payment/part-b-drugs/asp-pricing-files) | US Government work. Pre-2021 files sit behind the CMS/AMA CPT license page; only HCPCS Level II codes are kept |
-| CMS PFS RVU26D, GPCI, localities | admin fees (96413/96415/96365/96366/96372) | [PFS relative value files](https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files) | Public. CPT codes are AMA copyright: no descriptors stored |
-| Medicare Physician & Other Practitioners (by provider and service / provider / geography and service) | dose, volume, mix, benchmarks, supply | [data.cms.gov](https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners) | Public. Rows < 11 beneficiaries suppressed by CMS |
-| Medicare Part B Spending by Drug (annual + quarterly) | 2025 out-of-sample check | [data.cms.gov Part B spending](https://data.cms.gov/summary-statistics-on-use-and-payments/medicare-medicaid-spending-by-drug/medicare-part-b-spending-by-drug) | Public |
-| Medicare Monthly Enrollment (county) | Original Medicare vs MA share | [data.cms.gov enrollment](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment) | Public |
-| CMS IPAY 2028 selected drugs; CMS biosimilar (IRA s.11403) FAQ | MFP exposure, +8% window | [fact sheet](https://www.cms.gov/files/document/factsheet-medicare-negotiation-selected-drug-list-ipay-2028.pdf), [FAQ](https://www.cms.gov/files/document/biosimilar-faqs.pdf) | Public |
-| CDC PLACES county 2025 (2024 for KY/PA) | arthritis prevalence | [data.cdc.gov](https://data.cdc.gov/resource/i46a-9kgh.json) | Public domain |
-| Census PEP vintage 2025, ZCTA-county 2020, Gazetteer 2025, OMB CBSA 2023 | population, 65+, geography | [census.gov](https://www.census.gov/programs-surveys/popest.html) | Public domain. The ACS API now needs a key, so PEP is used instead |
-| operator website (public pages) | footprint, drug list, geography choice | not linked in the public version | Public information only (ADR 0001) |
+| CMS ASP payment-limit files (40 quarters) | price path, lag, IRA flags, "lesser of" | [cms.gov ASP files](https://www.cms.gov/medicare/payment/part-b-drugs/asp-pricing-files) | US Government work. Only HCPCS Level II kept (pre-2021 files sit behind the CMS/AMA CPT page) |
+| CMS PFS RVU26D, GPCI | admin fees (CY2026 RVUs, CY2027 proposed CF) | [PFS files](https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files) | Public; no CPT descriptors stored |
+| Medicare Physician & Other Practitioners | dose, admins/patient, drug mix by specialty, benchmarks, supply | [data.cms.gov](https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners) | Public; rows < 11 beneficiaries suppressed |
+| Medicare Part B Spending by Drug | 2025 out-of-sample check; realization reconciliation | [data.cms.gov](https://data.cms.gov/summary-statistics-on-use-and-payments/medicare-medicaid-spending-by-drug/medicare-part-b-spending-by-drug) | Public |
+| Medicare Monthly Enrollment; Hospital General Information | Ohio FFS vs MA split; hospital-heavy market flag | [enrollment](https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment), [hospitals](https://data.cms.gov/provider-data/dataset/xubh-q36u) | Public |
+| CMS IPAY 2028 list; IRA s.11403 biosimilar FAQ | MFP exposure; +8% window | [fact sheet](https://www.cms.gov/files/document/factsheet-medicare-negotiation-selected-drug-list-ipay-2028.pdf), [FAQ](https://www.cms.gov/files/document/biosimilar-faqs.pdf) | Public |
+| CDC PLACES; Census PEP, ZCTA, Gazetteer; OMB CBSA | demand, population, geography, metros | [PLACES](https://data.cdc.gov/resource/i46a-9kgh.json), [census.gov](https://www.census.gov/programs-surveys/popest.html) | Public domain (ACS API needs a key, so PEP is used) |
+| A regional operator's public website | footprint, published drug list (the plan formulary) | not linked in the public version | Public pages only (ADR 0001) |
 
 ## How to run
 
 ```bash
 make init          # uv env with pinned deps + Chromium for screenshots
-make check         # offline gate: ruff + pytest (81 test functions) + dbt on fixtures + feature regression
-make reproduce     # full rebuild from public pulls (~5 min, ~44.2 MB raw)
-make monthly-pack  # the recurring refresh, timed step by step
+make check         # lint + dbt on fixtures + pytest (88 test functions, incl. regeneration on fixtures) + strict feature gate
+make reproduce     # full rebuild from public pulls
+make monthly-pack  # month-end pack: refresh, DQ, budget vs actual bridge, memo, scorecard (OFFLINE=1 skips the pull)
 ```
-Reproducibility note: data.cms.gov rate-limits repeated full pulls (HTTP 429). `make ingest` backs off and
-writes the manifest after every source. A same-day re-pull reproduced 12 of the 14 raw files byte for byte
-(sha256 match with `data_manifest.json`) before the API throttled it. The offline rebuild
-(`make monthly-pack OFFLINE=1`: dbt -> analyses -> exports -> Excel -> memo -> scorecard -> tests) runs end to end.
-
-Open `excel/infusion_plan_2027_scenarios.xlsx` (change any blue input) and `docs/scorecard.html`. On Windows,
-open `powerbi/SpecialtyInfusionFPA.pbip` after setting the `RepoPath` parameter.
+data.cms.gov rate-limits repeated full pulls (HTTP 429); `make ingest` backs off and writes the manifest after
+each source. Open `excel/infusion_plan_2027_scenarios.xlsx` (blue cells are inputs), `docs/scorecard.html`,
+and follow `docs/powerbi_build_guide.md` to build the report pages in Power BI Desktop.
 
 ## Results (every value is produced by the command / file shown)
 
 | Area | Metric | Value | Source |
 |---|---|---|---|
-| Data | raw sources / size / ASP quarters | 14 / 44.2 MB / 40 | `data_manifest.json` |
-| Data model | dbt models / tests / business-rule tests (all pass) | 25 / 36 / 10 | `outputs/dbt_summary.json` |
-| Mechanics | ASP+6% after sequestration (full coinsurance collection) | ASP + 4.3% | `outputs/margin.json` |
-| Mechanics | Ohio CY2026 non-facility 96413 / chair cost per hour | $122.71 / $40.58 | `outputs/margin.json` |
-| Pricing | median lag spread (ref/single-source, last 8 qtrs) / underwater drug-quarters | 5.3% / 5.5% | `outputs/lag_spread_by_drug.csv` |
-| Margin | contribution per infusion: Medicare FFS / commercial (2027 base) | $101 / $646 | `outputs/scenarios.json` |
-| Margin | allowed / payment limit, 2024 in-office (measured) | 96.8% | `outputs/margin.json` |
-| Forecast | quarterly ASP MAPE: damped ETS / naive / seasonal naive (18 drugs, h=1-4) | 3.0% / 3.5% / 5.1% | `outputs/forecast.json` |
-| Forecast | annual volume+spend MAPE: damped ETS / naive (22 series, h=1-2) | 14.2% / 15.9% | `outputs/forecast.json` |
-| Forecast | 80% PI coverage on held-out origins (all models) | 67% to 85% | `outputs/forecast.json` |
-| Forecast | 2025 out-of-sample spend MAPE: damped ETS / naive (19 molecules) | 13.1% / 17.1% | `outputs/forecast_external_2025.csv` |
-| Scenarios | 2027 contribution: base / biosimilar push / policy shock | $5,216,116 / $5.04M / $4.57M | `outputs/scenarios.json` |
-| Excel | live formulas / max rel. diff vs Python after LibreOffice recalc | 1,635 / 1.6e-05 | `outputs/excel_recalc_check.json` |
-| Benchmark | clinicians scored / biosimilar rates censored / above vs below peer | 7,649 / 99.5% / 4 vs 35 | `outputs/benchmark.json` |
-| Benchmark | infliximab biosimilar share 2024: Ohio / US | 11.0% / 14.1% | `outputs/benchmark.json` |
-| Market | eligible markets / Cleveland, OH rank, P(top 10) / mean top-10 overlap | 83 / 5, 77% / 65% | `outputs/market.json` |
-| Power BI | TMDL tables / DAX measures, each with a SQL twin equal to `kpis.json` | 18 / 22 | `tests/test_tmdl.py` |
+| Data | raw sources / size | 15 / 44.3 MB | `data_manifest.json` |
+| Data model | dbt models / tests / business-rule tests (all pass) | 26 / 36 / 10 | `outputs/dbt_summary.json` |
+| Mechanics | ASP+6% after sequestration (full coinsurance collection); Ohio 96413 at CY2027 proposed CF | ASP + 4.3%; $120.65 | `outputs/margin.json` |
+| Pricing | Medicare paid below current price: raw / after sequestration / after sequestration + coinsurance (drug-quarters; $-weighted) | 6.2% / 12.0% / 30% (36%) | `outputs/margin.json` |
+| Plan 2027 | contribution / operating margin / infusions / utilization | $3,953,477 / $2,920,062 / 7,736 / 69% | `outputs/scenarios.json` |
+| Plan 2027 | contribution per infusion: Medicare FFS / MA / commercial | $161 / $55 / $953 | `outputs/scenarios.json` |
+| Growth | added chair at current demand / 100 more patients / added-chair break-even utilization | -$57K / $233K / 12% | `outputs/scenarios.json` |
+| Forecast | quarterly ASP, test window MAPE: naive / validation-selected (33 modelled, 30 held flat) | 6.6% / 6.4%; DM p 0.004-0.022 (selected worse) | `outputs/forecast.json` |
+| Forecast | annual volume MAPE naive / selected; spend MAPE naive / selected | 16.4% / 18.3%; 20.2% / 28.7% | `outputs/forecast.json` |
+| Forecast | 80% interval coverage on the test window: ASP / volume / spend | 83% / 79% / 65% | `outputs/forecast.json` |
+| Excel | live formulas / max rel. diff vs Python (default + stressed inputs, LibreOffice recalc) | 1,757 / 5.0e-07 | `outputs/excel_recalc_check.json` |
+| Benchmark | clinicians scored / provider-molecule pairs fully observed / above vs below state | 7,649 / 0% of 284 / 2 vs 0 | `outputs/benchmark.json` |
+| Market | eligible markets / Canton-Massillon, OH rank, share of weightings in top 10 / mean top-10 overlap | 74 / 2, 76% / 51% | `outputs/market.json` |
+| Power BI | TMDL tables / DAX measures (each mapped to a SQL twin; several checked independently in pandas) | 23 / 24 | `tests/test_tmdl.py` |
+| Variance (**SYNTHETIC** actuals) | Site A Jan-Mar: total = volume + mix + rate | $-73,395 = $-49,598 + $-22,157 + $-1,639 | `outputs/variance_pack_SYNTHETIC.json` |
 | RCM (**SYNTHETIC**) | clean-claim / denial / days in AR / net collection | 81.9% / 11.2% / 57.0 / 91.0% | `outputs/rcm_kpis_SYNTHETIC.json` |
-| Automation | DQ checks pass / flag / fail; manual steps replaced (estimated hours) / measured run | 5 / 3 / 0; 17 (10.5 h est.) / 0.4 min | `outputs/dq_report.json`, `outputs/monthly_pack_last.json` |
+| Automation | DQ pass / flag / fail; manual steps replaced (est. hours) / measured run | 6 / 3 / 0; 19 (12.2 h est.) / 0.6 min | `outputs/monthly_pack_last.json` |
 
 ## How this maps to the job
 
 | FP&A work in the JD | Where it lives here |
 |---|---|
-| Power BI dashboards and scorecards | `powerbi/` PBIP + TMDL (star schema, date table, 22 documented DAX measures); `docs/scorecard.html` mirrors the pages |
-| Clean, join, validate multi-source data | `dbt/`: 14 public sources into one star schema; tests for HCPCS continuity, biosimilar qualification, payment <= allowed, suppression-aware reconciliation, no fan-out |
-| Financial / operational / payer analysis | per-infusion economics by drug and payer, lag spread, biosimilar conversion, tornado (`src/sifpa/margin.py`) |
-| Forecasting, scenarios, plan support | backtested forecasts + 2027 scenarios; Excel workbook FP&A can edit (`excel/`) |
-| Benchmarking, market analysis, growth | provider scorecards with EB shrinkage; white-space ranking at metro grain |
-| Revenue cycle | KPI logic (clean-claim, CARC denials, days in AR, NCR) in SQL + DAX on **SYNTHETIC** 837/835 data, ready to point at real remits |
-| Automate recurring workflows | `make monthly-pack` (timed, 17 manual steps replaced), DQ flags, CI |
-| Executive communication | `docs/MEMO.md`: recommendation, risks, and what would change it |
+| Power BI dashboards and scorecards | `powerbi/`: star schema, date table, site / payer / drug / month slicing, budget vs actual measures; `docs/powerbi_build_guide.md` |
+| Clean, join, validate multi-source data | `dbt/`: one star schema from the public sources; HCPCS continuity, biosimilar qualification, exact reconciliation to CMS's published averages, suppression-aware sums |
+| Financial / payer analysis | per-infusion economics by drug x payer with net collection; product x payer biosimilar decisions; tornado |
+| Forecasting, budgeting, variance | backtested price/volume forecasts; 2027 plan by site and month; volume/mix/rate bridge; Excel model |
+| Benchmarking, market analysis, growth | state-level biosimilar adoption, suppression-aware provider intervals; metro white-space ranking; chair vs patient growth economics |
+| Revenue cycle | KPI logic on **SYNTHETIC** 837/835 data, and net-collection factors per payer as plan drivers |
+| Automate recurring workflows | `make monthly-pack`: refresh, DQ, variance bridge, memo, scorecard (19 manual steps) |
+| Executive communication | `docs/MEMO.md`: recommendation, risks, what would change it |
 
 ## Known limitations / what differs from production
-- **Medicare FFS only.** MA and commercial claims are not public. Commercial reimbursement, payer mix, chair
-  count, utilization and costs are **labelled assumptions** (`config/assumptions.yaml`), so absolute dollars are
-  illustrative. The tornado shows how much each one matters.
-- **Acquisition cost is proxied by ASP.** GPO/contract prices, rebates, discarded-drug (JW/JZ) amounts and bad
-  debt beyond coinsurance are not modelled. The measured **96.8% allowed/PL realization** is
-  unexplained (unit-billing artifacts, MSP or deductible effects are candidates) and appears only as a downside.
-- **2027 PFS** uses the July 2026 *proposed* conversion factor. **IPAY 2028 MFPs** were not published at build
-  time, so the discount is an assumption.
-- **CMS cell suppression (< 11)** censors provider-level biosimilar rates (99.5% of provider-molecule
-  pairs). Adoption is therefore benchmarked at geography level, and provider ranks carry intervals.
-- **Market analysis**: arthritis prevalence (all types) is a weak proxy for inflammatory disease. There is no
-  public county MS prevalence. ZIP does not equal ZCTA. Supply counts are Medicare FFS billers only, and an infusion biller only
-  counts where CMS shows a row (11 or more beneficiaries for a code), so supply is undercounted in small markets. Some CBSAs cross
-  the region (flagged).
-- **Forecasts**: the annual series are short (2013-2024), and per-series model choice is optimistic (ADR 0004).
-- **Power BI: the PBIP has not been opened in Power BI Desktop** (built on macOS). The TMDL is validated
-  structurally, and every measure's logic is mirrored by a SQL twin that reproduces the published value.
-  Report pages are shells; the visual layout lives in the HTML scorecard.
-- **RCM data is SYNTHETIC** and supports no conclusion.
+- **Practice inputs are assumptions** (`config/assumptions.yaml`): patient panel, payer mix, service-line
+  split, contract terms, collection rates and costs. Absolute dollars are illustrative; the tornado shows
+  each one's weight.
+- **Drug mix**: national in-office Medicare billing by neurologists and rheumatologists, restricted to
+  the operator's published drugs, with Ohio biosimilar shares on the listed products. Hospital-administered
+  MS infusion is not in physician data.
+- **Prices are held flat for 2027** because no model beat naive on the test window. The lag mechanics are
+  built in, but they produce no spread on a flat path. Acquisition is proxied by ASP; for WAC-priced
+  ("lesser of") codes the proxy is a lower bound, and a range is shown.
+- **Allowed vs payment limit**: physician-PUF allowed per unit is 96.4% of the payment limit, and Part B
+  Spending per unit is 97.8%, including for flat-price codes. That makes it a systematic or
+  definitional effect, not a practice risk, so it is excluded from the plan (`make dq` keeps it under watch).
+- **2027 PFS** uses CY2026 RVUs with the proposed CY2027 CF. **2028** applies 2028 rules to 2027 prices.
+  **MFPs** (due 2026-11-30) are an assumed discount.
+- **Benchmarking**: CMS suppression leaves no provider-molecule pair fully observed, so provider labels are
+  interval-based and mostly "insufficient data". State-level adoption is the reliable comparison.
+- **Market**: arthritis prevalence is all-type. Hospital outpatient infusion volume is not public at market
+  level, so hospital-heavy markets are flagged by hospital density instead of being scored.
+- **Power BI: the PBIP has not been opened in Power BI Desktop** (built on macOS). Each measure is mapped to
+  a SQL twin in a stated filter context; the budget, variance and adoption twins are re-derived
+  independently in pandas. The DAX itself has never been executed. Report pages are built by hand from the
+  guide.
+- **SYNTHETIC data** (RCM, monthly actuals) supports no conclusion.
 
-Decisions an interviewer will probe are in `docs/decisions/` (8 ADRs). Acceptance evidence is in
+ADRs for the decisions an interviewer will probe are in `docs/decisions/`. Acceptance evidence is in
 `docs/ACCEPTANCE.md`.

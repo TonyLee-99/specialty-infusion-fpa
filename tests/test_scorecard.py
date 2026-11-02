@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_scorecard_is_self_contained():
     html = (ROOT / "docs/scorecard.html").read_text()
     assert "<script src=" not in html and "https://" not in html  # no CDN, works offline
-    for section in ("exec", "pricing", "forecast", "market", "rcm"):
+    for section in ("exec", "pricing", "forecast", "market", "variance", "rcm"):
         assert f'id="{section}"' in html
     assert "SYNTHETIC DATA" in html
 
@@ -28,5 +28,6 @@ def test_screenshots_exist_and_are_real_images():
 def test_scorecard_numbers_come_from_outputs():
     html = (ROOT / "docs/scorecard.html").read_text()
     sc = json.loads((ROOT / "outputs/scenarios.json").read_text())
-    base = sc["scenarios"]["base"]["annual"]["administrations"]
+    base = sc["scenarios"]["base"]["administrations"]
     assert f"{base:,} infusions/yr" in html
+    assert "realization" not in html.lower() and "MAPE" not in html[: html.index('id="pricing"')]  # exec page: plan numbers only
