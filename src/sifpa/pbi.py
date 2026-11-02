@@ -66,7 +66,7 @@ def table_tmdl(name: str, df: pd.DataFrame, measures: list[tuple]) -> str:
         lines += [f"table {name}", "\tdataCategory: Time", f"\tlineageTag: {tag()}", ""]
     else:
         lines += [f"table {q(name)}", f"\tlineageTag: {tag()}", ""]
-    for m_table, m_name, dax, folder, fmt, desc, _sql in measures:
+    for _table, m_name, dax, folder, fmt, desc, _sql in measures:
         lines += [f"\t/// {desc}", f"\tmeasure {q(m_name)} = {dax}", f"\t\tformatString: {fmt}",
                   f"\t\tdisplayFolder: {folder}", f"\t\tlineageTag: {tag()}", ""]
     types = []
