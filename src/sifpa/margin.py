@@ -130,14 +130,16 @@ def tornado(con, drugs: pd.DataFrame, fees: dict, realization: float) -> dict:
             "n_ranged_assumptions": len([r for r in A.ranged() if r[0] == "practice"])}
 
 
-def per_chair_hour(econ: pd.DataFrame) -> list[dict]:
+def per_chair_hour(econ: pd.DataFrame, mix: pd.DataFrame) -> list[dict]:
     """Which infusions earn the most per chair-hour (Medicare FFS vs commercial)? Reference and
     single-source infusion drugs only; this is the capacity-allocation view for a full suite."""
     e = econ[econ["admin_family"].isin(["mab_infusion", "iv_infusion"]) & (econ["product_type"] != "biosimilar")].copy()
     e["medicare_per_chair_hour"] = e["contribution_medicare_ffs"] / e["chair_hours"]
     e["commercial_per_chair_hour"] = e["contribution_commercial"] / e["chair_hours"]
+    e = e.merge(mix[["hcpcs", "share"]].rename(columns={"share": "mix_share"}), on="hcpcs", how="left")
+    e["mix_share"] = e["mix_share"].fillna(0.0)
     e = e.sort_values("medicare_per_chair_hour", ascending=False)
-    keep = ["hcpcs", "molecule", "chair_hours", "contribution_medicare_ffs", "contribution_commercial",
+    keep = ["hcpcs", "molecule", "mix_share", "chair_hours", "contribution_medicare_ffs", "contribution_commercial",
             "medicare_per_chair_hour", "commercial_per_chair_hour"]
     return e[keep].round(2).to_dict(orient="records")
 
@@ -188,7 +190,7 @@ def main() -> None:
             lag[lag["product_type"] != "biosimilar"]["median_lag_pct_last8"].median()), 4),
         "share_quarters_underwater_all_drugs": round(float(lag["share_quarters_underwater"].mean()), 4),
         "practice_mix_top": mix.sort_values("share", ascending=False).head(8).round(4).to_dict(orient="records"),
-        "contribution_per_chair_hour": per_chair_hour(econ),
+        "contribution_per_chair_hour": per_chair_hour(econ, mix),
     }
     (OUTPUTS / "margin.json").write_text(json.dumps(summary, indent=2) + "\n")
     (OUTPUTS / "biosimilar_conversion.json").write_text(json.dumps(conv, indent=2, default=float) + "\n")

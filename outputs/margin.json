@@ -96,6 +96,7 @@
     {
       "hcpcs": "J1823",
       "molecule": "inebilizumab",
+      "mix_share": 0.0,
       "chair_hours": 2.5,
       "contribution_medicare_ffs": 3065.55,
       "contribution_commercial": 27988.92,
@@ -105,6 +106,7 @@
     {
       "hcpcs": "J1303",
       "molecule": "ravulizumab",
+      "mix_share": 0.0,
       "chair_hours": 2.5,
       "contribution_medicare_ffs": 1553.37,
       "contribution_commercial": 13943.97,
@@ -114,6 +116,7 @@
     {
       "hcpcs": "J1299",
       "molecule": "eculizumab",
+      "mix_share": 0.0,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 575.93,
       "contribution_commercial": 4859.12,
@@ -123,6 +126,7 @@
     {
       "hcpcs": "J2329",
       "molecule": "ublituximab",
+      "mix_share": 0.0,
       "chair_hours": 2.0,
       "contribution_medicare_ffs": 556.97,
       "contribution_commercial": 4851.07,
@@ -132,6 +136,7 @@
     {
       "hcpcs": "J2267",
       "molecule": "mirikizumab",
+      "mix_share": 0.0,
       "chair_hours": 1.0,
       "contribution_medicare_ffs": 272.54,
       "contribution_commercial": 1915.32,
@@ -141,6 +146,7 @@
     {
       "hcpcs": "J9332",
       "molecule": "efgartigimod",
+      "mix_share": 0.0,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 345.89,
       "contribution_commercial": 3203.25,
@@ -150,6 +156,7 @@
     {
       "hcpcs": "J1628",
       "molecule": "guselkumab",
+      "mix_share": 0.0,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 333.5,
       "contribution_commercial": 2639.15,
@@ -159,6 +166,7 @@
     {
       "hcpcs": "J3380",
       "molecule": "vedolizumab",
+      "mix_share": 0.04,
       "chair_hours": 1.0,
       "contribution_medicare_ffs": 206.63,
       "contribution_commercial": 1311.79,
@@ -168,6 +176,7 @@
     {
       "hcpcs": "J2507",
       "molecule": "pegloticase",
+      "mix_share": 0.0,
       "chair_hours": 3.0,
       "contribution_medicare_ffs": 610.01,
       "contribution_commercial": 5969.4,
@@ -177,6 +186,7 @@
     {
       "hcpcs": "J3032",
       "molecule": "eptinezumab",
+      "mix_share": 0.0,
       "chair_hours": 1.0,
       "contribution_medicare_ffs": 177.01,
       "contribution_commercial": 1040.55,
@@ -186,6 +196,7 @@
     {
       "hcpcs": "J2327",
       "molecule": "risankizumab",
+      "mix_share": 0.0,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 233.46,
       "contribution_commercial": 1723.02,
@@ -195,6 +206,7 @@
     {
       "hcpcs": "J2350",
       "molecule": "ocrelizumab",
+      "mix_share": 0.01,
       "chair_hours": 4.5,
       "contribution_medicare_ffs": 676.39,
       "contribution_commercial": 6378.03,
@@ -204,6 +216,7 @@
     {
       "hcpcs": "J1602",
       "molecule": "golimumab",
+      "mix_share": 0.22,
       "chair_hours": 1.0,
       "contribution_medicare_ffs": 118.5,
       "contribution_commercial": 504.69,
@@ -213,6 +226,7 @@
     {
       "hcpcs": "J0490",
       "molecule": "belimumab",
+      "mix_share": 0.0,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 152.35,
       "contribution_commercial": 980.19,
@@ -222,6 +236,7 @@
     {
       "hcpcs": "J3358",
       "molecule": "ustekinumab",
+      "mix_share": 0.0,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 138.62,
       "contribution_commercial": 854.48,
@@ -231,6 +246,7 @@
     {
       "hcpcs": "J2323",
       "molecule": "natalizumab",
+      "mix_share": 0.0,
       "chair_hours": 2.0,
       "contribution_medicare_ffs": 181.71,
       "contribution_commercial": 1414.58,
@@ -240,6 +256,7 @@
     {
       "hcpcs": "J0129",
       "molecule": "abatacept",
+      "mix_share": 0.36,
       "chair_hours": 1.0,
       "contribution_medicare_ffs": 89.79,
       "contribution_commercial": 692.51,
@@ -249,6 +266,7 @@
     {
       "hcpcs": "J0202",
       "molecule": "alemtuzumab",
+      "mix_share": 0.0,
       "chair_hours": 6.0,
       "contribution_medicare_ffs": 530.52,
       "contribution_commercial": 5341.62,
@@ -258,6 +276,7 @@
     {
       "hcpcs": "J3262",
       "molecule": "tocilizumab",
+      "mix_share": 0.13,
       "chair_hours": 1.5,
       "contribution_medicare_ffs": 113.85,
       "contribution_commercial": 627.64,
@@ -267,6 +286,7 @@
     {
       "hcpcs": "J1745",
       "molecule": "infliximab",
+      "mix_share": 0.2,
       "chair_hours": 2.5,
       "contribution_medicare_ffs": 75.04,
       "contribution_commercial": 406.2,
@@ -276,6 +296,7 @@
     {
       "hcpcs": "J9312",
       "molecule": "rituximab",
+      "mix_share": 0.01,
       "chair_hours": 4.5,
       "contribution_medicare_ffs": 132.86,
       "contribution_commercial": 1203.5,
@@ -285,6 +306,7 @@
     {
       "hcpcs": "J1566",
       "molecule": "immune_globulin",
+      "mix_share": 0.0,
       "chair_hours": 3.5,
       "contribution_medicare_ffs": 89.98,
       "contribution_commercial": 1223.7,
@@ -294,6 +316,7 @@
     {
       "hcpcs": "J1557",
       "molecule": "immune_globulin",
+      "mix_share": 0.0,
       "chair_hours": 3.5,
       "contribution_medicare_ffs": 56.98,
       "contribution_commercial": 921.46,
@@ -303,6 +326,7 @@
     {
       "hcpcs": "J1569",
       "molecule": "immune_globulin",
+      "mix_share": 0.01,
       "chair_hours": 3.5,
       "contribution_medicare_ffs": 36.32,
       "contribution_commercial": 732.28,
@@ -312,6 +336,7 @@
     {
       "hcpcs": "J1459",
       "molecule": "immune_globulin",
+      "mix_share": 0.01,
       "chair_hours": 3.5,
       "contribution_medicare_ffs": 35.46,
       "contribution_commercial": 724.42,
@@ -321,6 +346,7 @@
     {
       "hcpcs": "J1561",
       "molecule": "immune_globulin",
+      "mix_share": 0.01,
       "chair_hours": 3.5,
       "contribution_medicare_ffs": 33.94,
       "contribution_commercial": 710.52,
@@ -330,6 +356,7 @@
     {
       "hcpcs": "J1568",
       "molecule": "immune_globulin",
+      "mix_share": 0.0,
       "chair_hours": 3.5,
       "contribution_medicare_ffs": 32.51,
       "contribution_commercial": 697.39,
