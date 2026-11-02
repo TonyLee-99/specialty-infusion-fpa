@@ -16,14 +16,19 @@
       }
     },
     {
-      "check": "county_coverage_607",
+      "check": "county_coverage_607_region_plus_crossing_metros",
       "status": "pass",
       "detail": {
-        "counts": [
+        "region_counts": [
           607,
           607,
           607,
           607
+        ],
+        "cross_region_metro_counties": [
+          50,
+          50,
+          50
         ]
       }
     },
@@ -125,23 +130,49 @@
       ]
     },
     {
-      "check": "allowed_below_90pct_of_payment_limit_2024",
+      "check": "allowed_vs_payment_limit_explained",
+      "status": "pass",
+      "detail": {
+        "median_puf_allowed_ratio": 0.9638,
+        "median_partb_spend_ratio": 0.9782,
+        "median_ratio_flat_price_codes": 0.9618,
+        "n_flat_price_codes": 21,
+        "reading": "systematic in two independent CMS products, incl. flat-price codes -> definitional, not realization"
+      }
+    },
+    {
+      "check": "allowed_far_below_cross_code_median_2024",
       "status": "flag",
       "detail": [
         {
           "hcpcs": "J0202",
-          "ratio": 0.6232,
-          "allowed_amt": 1079022.49
+          "cv": 0.0048,
+          "puf_allowed_ratio": 0.6232,
+          "partb_spend_ratio": 0.7977
         },
         {
           "hcpcs": "J1557",
-          "ratio": 0.8362,
-          "allowed_amt": 515464.66
+          "cv": 0.0275,
+          "puf_allowed_ratio": 0.8362,
+          "partb_spend_ratio": 0.9812
+        },
+        {
+          "hcpcs": "J2323",
+          "cv": 0.0067,
+          "puf_allowed_ratio": 0.9036,
+          "partb_spend_ratio": 0.9665
         },
         {
           "hcpcs": "J2329",
-          "ratio": 0.8941,
-          "allowed_amt": 14562785.7001
+          "cv": 0.0198,
+          "puf_allowed_ratio": 0.8941,
+          "partb_spend_ratio": 0.9545
+        },
+        {
+          "hcpcs": "J2350",
+          "cv": 0.0106,
+          "puf_allowed_ratio": 0.9038,
+          "partb_spend_ratio": 0.9655
         }
       ]
     },
@@ -167,5 +198,5 @@
   ],
   "n_fail": 0,
   "n_flag": 3,
-  "n_pass": 5
+  "n_pass": 6
 }
