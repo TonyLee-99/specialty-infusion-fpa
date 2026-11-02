@@ -34,3 +34,8 @@ Two forecast problems, each scored against honest baselines:
 ## Consequences
 Spend for the 2027 plan = volume forecast x price forecast, with intervals from both. Misses are
 reported as measured.
+
+## Known optimism (stated, not fixed)
+Picking the best model per series on the same backtest that reports its error flatters the winner. The
+pooled model-level MAPE/MASE in `outputs/forecast.json` is the unbiased comparison. The per-series
+"best beats naive" share is an upper bound.

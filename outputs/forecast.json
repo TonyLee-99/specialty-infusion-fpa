@@ -1,0 +1,129 @@
+{
+  "annual": {
+    "n_series": 22,
+    "origins": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "mape_by_model": {
+      "drift": 0.1895,
+      "ets_damped": 0.1417,
+      "naive": 0.1593
+    },
+    "mase_by_model": {
+      "drift": 1.925,
+      "ets_damped": 1.4803,
+      "naive": 1.8382
+    },
+    "share_series_best_beats_naive": 0.6818,
+    "pi80_coverage_eval": [
+      {
+        "model": "drift",
+        "coverage_80": 0.7455,
+        "n_eval": 110
+      },
+      {
+        "model": "ets_damped",
+        "coverage_80": 0.6727,
+        "n_eval": 110
+      },
+      {
+        "model": "naive",
+        "coverage_80": 0.6909,
+        "n_eval": 110
+      }
+    ]
+  },
+  "quarterly_asp": {
+    "n_series": 18,
+    "first_origin": "2021Q4",
+    "last_origin": "2026Q3",
+    "mape_by_model": {
+      "drift": 0.0326,
+      "ets_damped": 0.0305,
+      "naive": 0.0349,
+      "seasonal_naive": 0.0514
+    },
+    "mape_by_model_and_horizon": {
+      "drift": {
+        "1": 0.0212,
+        "2": 0.0288,
+        "3": 0.0367,
+        "4": 0.0459
+      },
+      "ets_damped": {
+        "1": 0.0217,
+        "2": 0.0281,
+        "3": 0.034,
+        "4": 0.0399
+      },
+      "naive": {
+        "1": 0.0211,
+        "2": 0.0318,
+        "3": 0.0404,
+        "4": 0.0488
+      },
+      "seasonal_naive": {
+        "1": 0.0539,
+        "2": 0.0523,
+        "3": 0.05,
+        "4": 0.0488
+      }
+    },
+    "share_series_best_beats_naive": 0.7222,
+    "share_series_best_beats_seasonal_naive": 0.9444,
+    "best_model_counts": {
+      "drift": 9,
+      "naive": 5,
+      "ets_damped": 3,
+      "seasonal_naive": 1
+    },
+    "pi80_coverage_eval": [
+      {
+        "model": "drift",
+        "coverage_80": 0.7646,
+        "n_eval": 684
+      },
+      {
+        "model": "ets_damped",
+        "coverage_80": 0.7237,
+        "n_eval": 684
+      },
+      {
+        "model": "naive",
+        "coverage_80": 0.8523,
+        "n_eval": 684
+      },
+      {
+        "model": "seasonal_naive",
+        "coverage_80": 0.8509,
+        "n_eval": 684
+      }
+    ]
+  },
+  "external_2025": {
+    "n_molecules": 19,
+    "mape_2025": {
+      "naive": 0.1708,
+      "drift": 0.1464,
+      "ets_damped": 0.1306
+    },
+    "median_ape_2025": {
+      "naive": 0.0979,
+      "drift": 0.0592,
+      "ets_damped": 0.0667
+    },
+    "note": "2025 actual from the Quarterly Part B Spending file (all settings); fit on 2020-2024 annual file."
+  },
+  "national_inoffice_administrations_2019": 1764357,
+  "national_inoffice_administrations_2024": 2297629,
+  "national_inoffice_allowed_2024": 6670271365,
+  "national_inoffice_admin_cagr_2019_2024": 0.0542,
+  "molecules_growing_2019_2024": 13,
+  "molecules_compared_2019_2024": 19
+}
