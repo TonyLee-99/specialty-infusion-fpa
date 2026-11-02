@@ -1,0 +1,1287 @@
+{
+  "infliximab": {
+    "units_per_admin": 53.0,
+    "dose_mg": 530.0,
+    "reference": "J1745",
+    "best_biosimilar": "Q5121",
+    "switch_delta_medicare_per_admin": -9.22,
+    "switch_delta_commercial_per_admin": 51.22,
+    "switch_delta_blended_per_admin": 22.56,
+    "acquisition_saving_per_admin": -256.11,
+    "ira_addon_expiry_hit_per_admin": 0.0,
+    "products": [
+      {
+        "hcpcs": "Q5104",
+        "brand": "Renflexis (infliximab-abda)",
+        "product_type": "biosimilar",
+        "payment_limit": 25.649,
+        "asp": 23.396,
+        "addon_8pct": true,
+        "medicare_drug_margin": 70.52,
+        "commercial_drug_margin": 248.11,
+        "blended_drug_margin": 157.64,
+        "asp_estimated": false,
+        "acquisition_cost": 1240.56
+      },
+      {
+        "hcpcs": "Q5103",
+        "brand": "Inflectra (infliximab-dyyb)",
+        "product_type": "biosimilar",
+        "payment_limit": 28.456,
+        "asp": 26.203,
+        "addon_8pct": true,
+        "medicare_drug_margin": 65.16,
+        "commercial_drug_margin": 277.88,
+        "blended_drug_margin": 170.75,
+        "asp_estimated": false,
+        "acquisition_cost": 1389.4
+      },
+      {
+        "hcpcs": "J1745",
+        "brand": "Remicade / unbranded infliximab",
+        "product_type": "reference",
+        "payment_limit": 29.856,
+        "asp": 28.166,
+        "addon_8pct": false,
+        "medicare_drug_margin": 32.62,
+        "commercial_drug_margin": 298.7,
+        "blended_drug_margin": 167.83,
+        "asp_estimated": false,
+        "acquisition_cost": 1493.5
+      },
+      {
+        "hcpcs": "Q5121",
+        "brand": "Avsola (infliximab-axxq)",
+        "product_type": "biosimilar",
+        "payment_limit": 34.686,
+        "asp": 32.996,
+        "addon_8pct": false,
+        "medicare_drug_margin": 23.4,
+        "commercial_drug_margin": 349.92,
+        "blended_drug_margin": 190.39,
+        "asp_estimated": false,
+        "acquisition_cost": 1749.61
+      }
+    ]
+  },
+  "rituximab": {
+    "units_per_admin": 81.1,
+    "dose_mg": 811.0,
+    "reference": "J9312",
+    "best_biosimilar": "Q5115",
+    "switch_delta_medicare_per_admin": 215.67,
+    "switch_delta_commercial_per_admin": -607.53,
+    "switch_delta_blended_per_admin": -222.9,
+    "acquisition_saving_per_admin": 3037.65,
+    "ira_addon_expiry_hit_per_admin": 106.32,
+    "products": [
+      {
+        "hcpcs": "Q5119",
+        "brand": "Ruxience (rituximab-pvvr)",
+        "product_type": "biosimilar",
+        "payment_limit": 5.792,
+        "asp": 5.464,
+        "addon_8pct": false,
+        "medicare_drug_margin": 9.68,
+        "commercial_drug_margin": 88.6,
+        "blended_drug_margin": 49.78,
+        "asp_estimated": true,
+        "acquisition_cost": 443.02
+      },
+      {
+        "hcpcs": "Q5123",
+        "brand": "Riabni (rituximab-arrx)",
+        "product_type": "biosimilar",
+        "payment_limit": 21.083,
+        "asp": 15.642,
+        "addon_8pct": true,
+        "medicare_drug_margin": 379.61,
+        "commercial_drug_margin": 253.64,
+        "blended_drug_margin": 290.31,
+        "asp_estimated": false,
+        "acquisition_cost": 1268.2
+      },
+      {
+        "hcpcs": "Q5115",
+        "brand": "Truxima (rituximab-abbs)",
+        "product_type": "biosimilar",
+        "payment_limit": 35.988,
+        "asp": 30.547,
+        "addon_8pct": true,
+        "medicare_drug_margin": 336.1,
+        "commercial_drug_margin": 495.33,
+        "blended_drug_margin": 396.75,
+        "asp_estimated": false,
+        "acquisition_cost": 2476.65
+      },
+      {
+        "hcpcs": "J9312",
+        "brand": "Rituxan",
+        "product_type": "reference",
+        "payment_limit": 72.094,
+        "asp": 68.013,
+        "addon_8pct": false,
+        "medicare_drug_margin": 120.43,
+        "commercial_drug_margin": 1102.86,
+        "blended_drug_margin": 619.66,
+        "asp_estimated": false,
+        "acquisition_cost": 5514.3
+      }
+    ]
+  },
+  "tocilizumab": {
+    "units_per_admin": 514.3,
+    "dose_mg": 514.0,
+    "reference": "J3262",
+    "best_biosimilar": "Q5133",
+    "switch_delta_medicare_per_admin": 63.13,
+    "switch_delta_commercial_per_admin": -74.0,
+    "switch_delta_blended_per_admin": -11.67,
+    "acquisition_saving_per_admin": 370.02,
+    "ira_addon_expiry_hit_per_admin": 49.81,
+    "products": [
+      {
+        "hcpcs": "Q5156",
+        "brand": "Avtozma (tocilizumab-anoh)",
+        "product_type": "biosimilar",
+        "payment_limit": 3.098,
+        "asp": 2.696,
+        "addon_8pct": true,
+        "medicare_drug_margin": 149.33,
+        "commercial_drug_margin": 277.32,
+        "blended_drug_margin": 205.81,
+        "asp_estimated": false,
+        "acquisition_cost": 1386.59
+      },
+      {
+        "hcpcs": "Q5135",
+        "brand": "Tyenne (tocilizumab-aazg)",
+        "product_type": "biosimilar",
+        "payment_limit": 4.37,
+        "asp": 3.968,
+        "addon_8pct": true,
+        "medicare_drug_margin": 125.78,
+        "commercial_drug_margin": 408.15,
+        "blended_drug_margin": 263.43,
+        "asp_estimated": false,
+        "acquisition_cost": 2040.77
+      },
+      {
+        "hcpcs": "Q5133",
+        "brand": "Tofidence (tocilizumab-bavi)",
+        "product_type": "biosimilar",
+        "payment_limit": 4.706,
+        "asp": 4.304,
+        "addon_8pct": true,
+        "medicare_drug_margin": 119.56,
+        "commercial_drug_margin": 442.71,
+        "blended_drug_margin": 278.65,
+        "asp_estimated": false,
+        "acquisition_cost": 2213.57
+      },
+      {
+        "hcpcs": "J3262",
+        "brand": "Actemra IV",
+        "product_type": "reference",
+        "payment_limit": 5.325,
+        "asp": 5.024,
+        "addon_8pct": false,
+        "medicare_drug_margin": 56.43,
+        "commercial_drug_margin": 516.72,
+        "blended_drug_margin": 290.32,
+        "asp_estimated": false,
+        "acquisition_cost": 2583.59
+      }
+    ]
+  },
+  "natalizumab": {
+    "units_per_admin": 293.3,
+    "dose_mg": 293.0,
+    "reference": "J2323",
+    "best_biosimilar": "Q5134",
+    "switch_delta_medicare_per_admin": -4.96,
+    "switch_delta_commercial_per_admin": 27.57,
+    "switch_delta_blended_per_admin": 12.14,
+    "acquisition_saving_per_admin": -137.83,
+    "ira_addon_expiry_hit_per_admin": 0.0,
+    "products": [
+      {
+        "hcpcs": "J2323",
+        "brand": "Tysabri",
+        "product_type": "reference",
+        "payment_limit": 23.927,
+        "asp": 22.573,
+        "addon_8pct": false,
+        "medicare_drug_margin": 144.58,
+        "commercial_drug_margin": 1323.95,
+        "blended_drug_margin": 743.88,
+        "asp_estimated": false,
+        "acquisition_cost": 6619.75
+      },
+      {
+        "hcpcs": "Q5134",
+        "brand": "Tyruko (natalizumab-sztn)",
+        "product_type": "biosimilar",
+        "payment_limit": 24.397,
+        "asp": 23.043,
+        "addon_8pct": false,
+        "medicare_drug_margin": 139.61,
+        "commercial_drug_margin": 1351.52,
+        "blended_drug_margin": 756.02,
+        "asp_estimated": false,
+        "acquisition_cost": 6757.58
+      }
+    ]
+  },
+  "denosumab": {
+    "units_per_admin": 67.9,
+    "dose_mg": 68.0,
+    "reference": "J0897",
+    "best_biosimilar": "Q5158",
+    "switch_delta_medicare_per_admin": 41.07,
+    "switch_delta_commercial_per_admin": -23.32,
+    "switch_delta_blended_per_admin": 5.22,
+    "acquisition_saving_per_admin": 116.61,
+    "ira_addon_expiry_hit_per_admin": 36.87,
+    "products": [
+      {
+        "hcpcs": "Q5167",
+        "brand": "denosumab-qbde",
+        "product_type": "biosimilar",
+        "payment_limit": 7.681,
+        "asp": 5.428,
+        "addon_8pct": true,
+        "medicare_drug_margin": 134.23,
+        "commercial_drug_margin": 73.71,
+        "blended_drug_margin": 94.41,
+        "asp_estimated": false,
+        "acquisition_cost": 368.55
+      },
+      {
+        "hcpcs": "Q5162",
+        "brand": "denosumab-nxxp",
+        "product_type": "biosimilar",
+        "payment_limit": 15.336,
+        "asp": 13.083,
+        "addon_8pct": true,
+        "medicare_drug_margin": 115.51,
+        "commercial_drug_margin": 177.67,
+        "blended_drug_margin": 140.19,
+        "asp_estimated": false,
+        "acquisition_cost": 888.35
+      },
+      {
+        "hcpcs": "Q5157",
+        "brand": "denosumab-bmwo",
+        "product_type": "biosimilar",
+        "payment_limit": 24.002,
+        "asp": 21.749,
+        "addon_8pct": true,
+        "medicare_drug_margin": 94.33,
+        "commercial_drug_margin": 295.36,
+        "blended_drug_margin": 192.02,
+        "asp_estimated": false,
+        "acquisition_cost": 1476.79
+      },
+      {
+        "hcpcs": "Q5136",
+        "brand": "denosumab-bbdz",
+        "product_type": "biosimilar",
+        "payment_limit": 26.991,
+        "asp": 24.738,
+        "addon_8pct": true,
+        "medicare_drug_margin": 87.02,
+        "commercial_drug_margin": 335.95,
+        "blended_drug_margin": 209.9,
+        "asp_estimated": false,
+        "acquisition_cost": 1679.75
+      },
+      {
+        "hcpcs": "Q5161",
+        "brand": "denosumab-kyqq",
+        "product_type": "biosimilar",
+        "payment_limit": 27.509,
+        "asp": 25.256,
+        "addon_8pct": true,
+        "medicare_drug_margin": 85.76,
+        "commercial_drug_margin": 342.98,
+        "blended_drug_margin": 213.0,
+        "asp_estimated": false,
+        "acquisition_cost": 1714.92
+      },
+      {
+        "hcpcs": "Q5158",
+        "brand": "denosumab-bnht",
+        "product_type": "biosimilar",
+        "payment_limit": 28.702,
+        "asp": 26.449,
+        "addon_8pct": true,
+        "medicare_drug_margin": 82.84,
+        "commercial_drug_margin": 359.19,
+        "blended_drug_margin": 220.13,
+        "asp_estimated": false,
+        "acquisition_cost": 1795.93
+      },
+      {
+        "hcpcs": "J0897",
+        "brand": "Prolia / Xgeva",
+        "product_type": "reference",
+        "payment_limit": 29.856,
+        "asp": 28.166,
+        "addon_8pct": false,
+        "medicare_drug_margin": 41.77,
+        "commercial_drug_margin": 382.51,
+        "blended_drug_margin": 214.92,
+        "asp_estimated": false,
+        "acquisition_cost": 1912.54
+      }
+    ]
+  },
+  "_infliximab_history": [
+    {
+      "payment_quarter": "2017Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 82.218,
+      "asp_basis": 77.5642,
+      "asp_current": 80.8868
+    },
+    {
+      "payment_quarter": "2017Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 85.591,
+      "asp_basis": 80.7462,
+      "asp_current": 82.216
+    },
+    {
+      "payment_quarter": "2017Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 85.74,
+      "asp_basis": 80.8868,
+      "asp_current": 80.9538
+    },
+    {
+      "payment_quarter": "2017Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 87.149,
+      "asp_basis": 82.216,
+      "asp_current": 78.5726
+    },
+    {
+      "payment_quarter": "2018Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 85.811,
+      "asp_basis": 80.9538,
+      "asp_current": 79.15
+    },
+    {
+      "payment_quarter": "2018Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 83.287,
+      "asp_basis": 78.5726,
+      "asp_current": 74.3708
+    },
+    {
+      "payment_quarter": "2018Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 69.712,
+      "asp_basis": 64.9976,
+      "asp_current": 56.9008
+    },
+    {
+      "payment_quarter": "2018Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 70.378,
+      "asp_basis": 65.6636,
+      "asp_current": 59.9198
+    },
+    {
+      "payment_quarter": "2018Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 83.899,
+      "asp_basis": 79.15,
+      "asp_current": 72.3104
+    },
+    {
+      "payment_quarter": "2018Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 64.979,
+      "asp_basis": 60.23,
+      "asp_current": 52.9374
+    },
+    {
+      "payment_quarter": "2018Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 69.222,
+      "asp_basis": 64.473,
+      "asp_current": 57.5644
+    },
+    {
+      "payment_quarter": "2018Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 78.833,
+      "asp_basis": 74.3708,
+      "asp_current": 67.6981
+    },
+    {
+      "payment_quarter": "2018Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 61.363,
+      "asp_basis": 56.9008,
+      "asp_current": 50.2761
+    },
+    {
+      "payment_quarter": "2018Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 64.382,
+      "asp_basis": 59.9198,
+      "asp_current": 55.2041
+    },
+    {
+      "payment_quarter": "2019Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 76.649,
+      "asp_basis": 72.3104,
+      "asp_current": 61.2009
+    },
+    {
+      "payment_quarter": "2019Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 57.276,
+      "asp_basis": 52.9374,
+      "asp_current": 47.6519
+    },
+    {
+      "payment_quarter": "2019Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 61.903,
+      "asp_basis": 57.5644,
+      "asp_current": 50.9769
+    },
+    {
+      "payment_quarter": "2019Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 71.76,
+      "asp_basis": 67.6981,
+      "asp_current": 59.7028
+    },
+    {
+      "payment_quarter": "2019Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 54.338,
+      "asp_basis": 50.2761,
+      "asp_current": 45.6648
+    },
+    {
+      "payment_quarter": "2019Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 59.266,
+      "asp_basis": 55.2041,
+      "asp_current": 49.8128
+    },
+    {
+      "payment_quarter": "2019Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 64.873,
+      "asp_basis": 61.2009,
+      "asp_current": 54.1
+    },
+    {
+      "payment_quarter": "2019Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 51.324,
+      "asp_basis": 47.6519,
+      "asp_current": 44.525
+    },
+    {
+      "payment_quarter": "2019Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 54.649,
+      "asp_basis": 50.9769,
+      "asp_current": 48.504
+    },
+    {
+      "payment_quarter": "2019Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 63.285,
+      "asp_basis": 59.7028,
+      "asp_current": 52.5434
+    },
+    {
+      "payment_quarter": "2019Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 49.247,
+      "asp_basis": 45.6648,
+      "asp_current": 44.6264
+    },
+    {
+      "payment_quarter": "2019Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 53.395,
+      "asp_basis": 49.8128,
+      "asp_current": 45.8504
+    },
+    {
+      "payment_quarter": "2020Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 57.346,
+      "asp_basis": 54.1,
+      "asp_current": 48.3019
+    },
+    {
+      "payment_quarter": "2020Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 47.771,
+      "asp_basis": 44.525,
+      "asp_current": 44.2279
+    },
+    {
+      "payment_quarter": "2020Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 51.75,
+      "asp_basis": 48.504,
+      "asp_current": 44.7669
+    },
+    {
+      "payment_quarter": "2020Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 55.696,
+      "asp_basis": 52.5434,
+      "asp_current": 44.9245
+    },
+    {
+      "payment_quarter": "2020Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 47.779,
+      "asp_basis": 44.6264,
+      "asp_current": 41.0285
+    },
+    {
+      "payment_quarter": "2020Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 49.003,
+      "asp_basis": 45.8504,
+      "asp_current": 41.8515
+    },
+    {
+      "payment_quarter": "2020Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 51.2,
+      "asp_basis": 48.3019,
+      "asp_current": 42.3604
+    },
+    {
+      "payment_quarter": "2020Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 47.126,
+      "asp_basis": 44.2279,
+      "asp_current": 40.5174
+    },
+    {
+      "payment_quarter": "2020Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 47.665,
+      "asp_basis": 44.7669,
+      "asp_current": 39.5444
+    },
+    {
+      "payment_quarter": "2020Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 47.62,
+      "asp_basis": 44.9245,
+      "asp_current": 39.5774
+    },
+    {
+      "payment_quarter": "2020Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 43.724,
+      "asp_basis": 41.0285,
+      "asp_current": 38.2364
+    },
+    {
+      "payment_quarter": "2020Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 44.547,
+      "asp_basis": 41.8515,
+      "asp_current": 38.5004
+    },
+    {
+      "payment_quarter": "2020Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 51.5,
+      "asp_basis": 48.8045,
+      "asp_current": 47.6864
+    },
+    {
+      "payment_quarter": "2021Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 44.902,
+      "asp_basis": 42.3604,
+      "asp_current": 38.9802
+    },
+    {
+      "payment_quarter": "2021Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 43.059,
+      "asp_basis": 40.5174,
+      "asp_current": 37.7132
+    },
+    {
+      "payment_quarter": "2021Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 42.086,
+      "asp_basis": 39.5444,
+      "asp_current": 37.2182
+    },
+    {
+      "payment_quarter": "2021Q1",
+      "hcpcs": "Q5121",
+      "payment_limit": 51.5,
+      "asp_basis": 48.9584,
+      "asp_current": 46.8132
+    },
+    {
+      "payment_quarter": "2021Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 41.952,
+      "asp_basis": 39.5774,
+      "asp_current": 37.2943
+    },
+    {
+      "payment_quarter": "2021Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 40.611,
+      "asp_basis": 38.2364,
+      "asp_current": 38.9503
+    },
+    {
+      "payment_quarter": "2021Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 40.875,
+      "asp_basis": 38.5004,
+      "asp_current": 36.5543
+    },
+    {
+      "payment_quarter": "2021Q2",
+      "hcpcs": "Q5121",
+      "payment_limit": 50.061,
+      "asp_basis": 47.6864,
+      "asp_current": 44.8793
+    },
+    {
+      "payment_quarter": "2021Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 41.319,
+      "asp_basis": 38.9802,
+      "asp_current": 35.5491
+    },
+    {
+      "payment_quarter": "2021Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 40.052,
+      "asp_basis": 37.7132,
+      "asp_current": 38.4411
+    },
+    {
+      "payment_quarter": "2021Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 39.557,
+      "asp_basis": 37.2182,
+      "asp_current": 37.4511
+    },
+    {
+      "payment_quarter": "2021Q3",
+      "hcpcs": "Q5121",
+      "payment_limit": 49.152,
+      "asp_basis": 46.8132,
+      "asp_current": 43.1711
+    },
+    {
+      "payment_quarter": "2021Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 39.532,
+      "asp_basis": 37.2943,
+      "asp_current": 34.4462
+    },
+    {
+      "payment_quarter": "2021Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 41.188,
+      "asp_basis": 38.9503,
+      "asp_current": 36.6152
+    },
+    {
+      "payment_quarter": "2021Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 38.792,
+      "asp_basis": 36.5543,
+      "asp_current": 59.0282
+    },
+    {
+      "payment_quarter": "2021Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 47.117,
+      "asp_basis": 44.8793,
+      "asp_current": 41.2232
+    },
+    {
+      "payment_quarter": "2022Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 37.682,
+      "asp_basis": 35.5491,
+      "asp_current": 33.6915
+    },
+    {
+      "payment_quarter": "2022Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 40.574,
+      "asp_basis": 38.4411,
+      "asp_current": 31.2355
+    },
+    {
+      "payment_quarter": "2022Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 39.584,
+      "asp_basis": 37.4511,
+      "asp_current": 49.2315
+    },
+    {
+      "payment_quarter": "2022Q1",
+      "hcpcs": "Q5121",
+      "payment_limit": 45.304,
+      "asp_basis": 43.1711,
+      "asp_current": 36.6275
+    },
+    {
+      "payment_quarter": "2022Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 36.513,
+      "asp_basis": 34.4462,
+      "asp_current": 33.0396
+    },
+    {
+      "payment_quarter": "2022Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 38.682,
+      "asp_basis": 36.6152,
+      "asp_current": 28.3018
+    },
+    {
+      "payment_quarter": "2022Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 61.095,
+      "asp_basis": 59.0282,
+      "asp_current": 46.6666
+    },
+    {
+      "payment_quarter": "2022Q2",
+      "hcpcs": "Q5121",
+      "payment_limit": 43.29,
+      "asp_basis": 41.2232,
+      "asp_current": 34.4366
+    },
+    {
+      "payment_quarter": "2022Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 35.713,
+      "asp_basis": 33.6915,
+      "asp_current": 32.8887
+    },
+    {
+      "payment_quarter": "2022Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 33.257,
+      "asp_basis": 31.2355,
+      "asp_current": 21.7859
+    },
+    {
+      "payment_quarter": "2022Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 51.253,
+      "asp_basis": 49.2315,
+      "asp_current": 43.4977
+    },
+    {
+      "payment_quarter": "2022Q3",
+      "hcpcs": "Q5121",
+      "payment_limit": 38.649,
+      "asp_basis": 36.6275,
+      "asp_current": 30.8709
+    },
+    {
+      "payment_quarter": "2022Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 35.022,
+      "asp_basis": 33.0396,
+      "asp_current": 32.116
+    },
+    {
+      "payment_quarter": "2022Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 30.945,
+      "asp_basis": 28.3018,
+      "asp_current": 17.4137
+    },
+    {
+      "payment_quarter": "2022Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 48.649,
+      "asp_basis": 46.6666,
+      "asp_current": 34.503
+    },
+    {
+      "payment_quarter": "2022Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 36.419,
+      "asp_basis": 34.4366,
+      "asp_current": 25.8897
+    },
+    {
+      "payment_quarter": "2023Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 34.862,
+      "asp_basis": 32.8887,
+      "asp_current": 31.0443
+    },
+    {
+      "payment_quarter": "2023Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 24.417,
+      "asp_basis": 21.7859,
+      "asp_current": 15.0975
+    },
+    {
+      "payment_quarter": "2023Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 45.471,
+      "asp_basis": 43.4977,
+      "asp_current": 33.6843
+    },
+    {
+      "payment_quarter": "2023Q1",
+      "hcpcs": "Q5121",
+      "payment_limit": 33.502,
+      "asp_basis": 30.8709,
+      "asp_current": 25.8505
+    },
+    {
+      "payment_quarter": "2023Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 34.043,
+      "asp_basis": 32.116,
+      "asp_current": 30.7896
+    },
+    {
+      "payment_quarter": "2023Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 19.983,
+      "asp_basis": 17.4137,
+      "asp_current": 11.4678
+    },
+    {
+      "payment_quarter": "2023Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 36.43,
+      "asp_basis": 34.503,
+      "asp_current": 30.0988
+    },
+    {
+      "payment_quarter": "2023Q2",
+      "hcpcs": "Q5121",
+      "payment_limit": 28.459,
+      "asp_basis": 25.8897,
+      "asp_current": 24.0048
+    },
+    {
+      "payment_quarter": "2023Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 32.907,
+      "asp_basis": 31.0443,
+      "asp_current": 30.3406
+    },
+    {
+      "payment_quarter": "2023Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 17.581,
+      "asp_basis": 15.0975,
+      "asp_current": 11.8668
+    },
+    {
+      "payment_quarter": "2023Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 35.547,
+      "asp_basis": 33.6843,
+      "asp_current": 29.0718
+    },
+    {
+      "payment_quarter": "2023Q3",
+      "hcpcs": "Q5121",
+      "payment_limit": 28.334,
+      "asp_basis": 25.8505,
+      "asp_current": 23.1278
+    },
+    {
+      "payment_quarter": "2023Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 32.637,
+      "asp_basis": 30.7896,
+      "asp_current": 29.8783
+    },
+    {
+      "payment_quarter": "2023Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 13.931,
+      "asp_basis": 11.4678,
+      "asp_current": 8.7017
+    },
+    {
+      "payment_quarter": "2023Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 32.562,
+      "asp_basis": 30.0988,
+      "asp_current": 28.1887
+    },
+    {
+      "payment_quarter": "2023Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 26.468,
+      "asp_basis": 24.0048,
+      "asp_current": 21.9827
+    },
+    {
+      "payment_quarter": "2024Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 32.161,
+      "asp_basis": 30.3406,
+      "asp_current": 29.9123
+    },
+    {
+      "payment_quarter": "2024Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 14.294,
+      "asp_basis": 11.8668,
+      "asp_current": 8.27
+    },
+    {
+      "payment_quarter": "2024Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 31.499,
+      "asp_basis": 29.0718,
+      "asp_current": 27.518
+    },
+    {
+      "payment_quarter": "2024Q1",
+      "hcpcs": "Q5121",
+      "payment_limit": 25.555,
+      "asp_basis": 23.1278,
+      "asp_current": 19.496
+    },
+    {
+      "payment_quarter": "2024Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 31.671,
+      "asp_basis": 29.8783,
+      "asp_current": 30.3991
+    },
+    {
+      "payment_quarter": "2024Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 11.092,
+      "asp_basis": 8.7017,
+      "asp_current": 11.1861
+    },
+    {
+      "payment_quarter": "2024Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 30.579,
+      "asp_basis": 28.1887,
+      "asp_current": 24.7501
+    },
+    {
+      "payment_quarter": "2024Q2",
+      "hcpcs": "Q5121",
+      "payment_limit": 24.373,
+      "asp_basis": 21.9827,
+      "asp_current": 18.8581
+    },
+    {
+      "payment_quarter": "2024Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 31.707,
+      "asp_basis": 29.9123,
+      "asp_current": 28.7972
+    },
+    {
+      "payment_quarter": "2024Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 10.663,
+      "asp_basis": 8.27,
+      "asp_current": 9.2462
+    },
+    {
+      "payment_quarter": "2024Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 29.911,
+      "asp_basis": 27.518,
+      "asp_current": 23.9592
+    },
+    {
+      "payment_quarter": "2024Q3",
+      "hcpcs": "Q5121",
+      "payment_limit": 21.889,
+      "asp_basis": 19.496,
+      "asp_current": 17.5212
+    },
+    {
+      "payment_quarter": "2024Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 32.223,
+      "asp_basis": 30.3991,
+      "asp_current": 28.7953
+    },
+    {
+      "payment_quarter": "2024Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 13.618,
+      "asp_basis": 11.1861,
+      "asp_current": 13.6084
+    },
+    {
+      "payment_quarter": "2024Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 27.182,
+      "asp_basis": 24.7501,
+      "asp_current": 25.5414
+    },
+    {
+      "payment_quarter": "2024Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 21.29,
+      "asp_basis": 18.8581,
+      "asp_current": 17.4454
+    },
+    {
+      "payment_quarter": "2025Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 30.525,
+      "asp_basis": 28.7972,
+      "asp_current": 29.4142
+    },
+    {
+      "payment_quarter": "2025Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 11.55,
+      "asp_basis": 9.2462,
+      "asp_current": 17.3259
+    },
+    {
+      "payment_quarter": "2025Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 26.263,
+      "asp_basis": 23.9592,
+      "asp_current": 22.6999
+    },
+    {
+      "payment_quarter": "2025Q1",
+      "hcpcs": "Q5121",
+      "payment_limit": 19.825,
+      "asp_basis": 17.5212,
+      "asp_current": 18.5329
+    },
+    {
+      "payment_quarter": "2025Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 30.523,
+      "asp_basis": 28.7953,
+      "asp_current": 29.3302
+    },
+    {
+      "payment_quarter": "2025Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 15.912,
+      "asp_basis": 13.6084,
+      "asp_current": 17.6436
+    },
+    {
+      "payment_quarter": "2025Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 27.845,
+      "asp_basis": 25.5414,
+      "asp_current": 24.6526
+    },
+    {
+      "payment_quarter": "2025Q2",
+      "hcpcs": "Q5121",
+      "payment_limit": 19.749,
+      "asp_basis": 17.4454,
+      "asp_current": 18.0586
+    },
+    {
+      "payment_quarter": "2025Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 31.179,
+      "asp_basis": 29.4142,
+      "asp_current": 30.5877
+    },
+    {
+      "payment_quarter": "2025Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 19.679,
+      "asp_basis": 17.3259,
+      "asp_current": 21.773
+    },
+    {
+      "payment_quarter": "2025Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 25.053,
+      "asp_basis": 22.6999,
+      "asp_current": 25.307
+    },
+    {
+      "payment_quarter": "2025Q3",
+      "hcpcs": "Q5121",
+      "payment_limit": 20.886,
+      "asp_basis": 18.5329,
+      "asp_current": 21.364
+    },
+    {
+      "payment_quarter": "2025Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 31.09,
+      "asp_basis": 29.3302,
+      "asp_current": 29.284
+    },
+    {
+      "payment_quarter": "2025Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 19.99,
+      "asp_basis": 17.6436,
+      "asp_current": 23.6923
+    },
+    {
+      "payment_quarter": "2025Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 26.999,
+      "asp_basis": 24.6526,
+      "asp_current": 24.4603
+    },
+    {
+      "payment_quarter": "2025Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 20.405,
+      "asp_basis": 18.0586,
+      "asp_current": 25.6973
+    },
+    {
+      "payment_quarter": "2026Q1",
+      "hcpcs": "J1745",
+      "payment_limit": 32.423,
+      "asp_basis": 30.5877,
+      "asp_current": 29.6972
+    },
+    {
+      "payment_quarter": "2026Q1",
+      "hcpcs": "Q5103",
+      "payment_limit": 24.22,
+      "asp_basis": 21.773,
+      "asp_current": 25.3342
+    },
+    {
+      "payment_quarter": "2026Q1",
+      "hcpcs": "Q5104",
+      "payment_limit": 27.754,
+      "asp_basis": 25.307,
+      "asp_current": 24.2392
+    },
+    {
+      "payment_quarter": "2026Q1",
+      "hcpcs": "Q5121",
+      "payment_limit": 23.811,
+      "asp_basis": 21.364,
+      "asp_current": 28.4542
+    },
+    {
+      "payment_quarter": "2026Q2",
+      "hcpcs": "J1745",
+      "payment_limit": 31.041,
+      "asp_basis": 29.284,
+      "asp_current": 28.166
+    },
+    {
+      "payment_quarter": "2026Q2",
+      "hcpcs": "Q5103",
+      "payment_limit": 26.035,
+      "asp_basis": 23.6923,
+      "asp_current": 26.2027
+    },
+    {
+      "payment_quarter": "2026Q2",
+      "hcpcs": "Q5104",
+      "payment_limit": 26.803,
+      "asp_basis": 24.4603,
+      "asp_current": 23.3957
+    },
+    {
+      "payment_quarter": "2026Q2",
+      "hcpcs": "Q5121",
+      "payment_limit": 28.04,
+      "asp_basis": 25.6973,
+      "asp_current": 32.996
+    },
+    {
+      "payment_quarter": "2026Q3",
+      "hcpcs": "J1745",
+      "payment_limit": 31.479,
+      "asp_basis": 29.6972,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q3",
+      "hcpcs": "Q5103",
+      "payment_limit": 27.71,
+      "asp_basis": 25.3342,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q3",
+      "hcpcs": "Q5104",
+      "payment_limit": 26.615,
+      "asp_basis": 24.2392,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q3",
+      "hcpcs": "Q5121",
+      "payment_limit": 30.83,
+      "asp_basis": 28.4542,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q4",
+      "hcpcs": "J1745",
+      "payment_limit": 29.856,
+      "asp_basis": 28.166,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q4",
+      "hcpcs": "Q5103",
+      "payment_limit": 28.456,
+      "asp_basis": 26.2027,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q4",
+      "hcpcs": "Q5104",
+      "payment_limit": 25.649,
+      "asp_basis": 23.3957,
+      "asp_current": NaN
+    },
+    {
+      "payment_quarter": "2026Q4",
+      "hcpcs": "Q5121",
+      "payment_limit": 34.686,
+      "asp_basis": 32.996,
+      "asp_current": NaN
+    }
+  ]
+}

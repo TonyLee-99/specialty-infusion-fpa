@@ -1,0 +1,158 @@
+{
+  "base_contribution": 5290794,
+  "bars": [
+    {
+      "driver": "commercial_drug_markup_vs_asp",
+      "low_value": 0.08,
+      "high_value": 0.35,
+      "contribution_at_low": 2939498,
+      "contribution_at_high": 8229915,
+      "swing": 5290417
+    },
+    {
+      "driver": "chairs",
+      "low_value": 8,
+      "high_value": 16,
+      "contribution_at_low": 3527196,
+      "contribution_at_high": 7054393,
+      "swing": 3527196
+    },
+    {
+      "driver": "acquisition_spread_vs_asp",
+      "low_value": -0.05,
+      "high_value": 0.03,
+      "contribution_at_low": 7250208,
+      "contribution_at_high": 4115146,
+      "swing": 3135062
+    },
+    {
+      "driver": "chair_utilization",
+      "low_value": 0.55,
+      "high_value": 0.85,
+      "contribution_at_low": 4157053,
+      "contribution_at_high": 6424536,
+      "swing": 2267483
+    },
+    {
+      "driver": "payer_mix_commercial",
+      "low_value": 0.4,
+      "high_value": 0.6,
+      "contribution_at_low": 4528057,
+      "contribution_at_high": 6053531,
+      "swing": 1525474
+    },
+    {
+      "driver": "chair_hours_per_day",
+      "low_value": 9,
+      "high_value": 11,
+      "contribution_at_low": 4761715,
+      "contribution_at_high": 5819874,
+      "swing": 1058159
+    },
+    {
+      "driver": "white_bagging_share_commercial",
+      "low_value": 0.0,
+      "high_value": 0.25,
+      "contribution_at_low": 5290794,
+      "contribution_at_high": 4311088,
+      "swing": 979707
+    },
+    {
+      "driver": "coinsurance_collection_rate",
+      "low_value": 0.75,
+      "high_value": 1.0,
+      "contribution_at_low": 4748624,
+      "contribution_at_high": 5652242,
+      "swing": 903618
+    },
+    {
+      "driver": "drug_realization_vs_pl (measured 2024)",
+      "low_value": 0.9678,
+      "high_value": 1.0,
+      "contribution_at_low": 4749200,
+      "contribution_at_high": 5290794,
+      "swing": 541594
+    },
+    {
+      "driver": "overhead_per_chair_hour",
+      "low_value": 15.0,
+      "high_value": 40.0,
+      "contribution_at_low": 5500794,
+      "contribution_at_high": 4975794,
+      "swing": 525000
+    },
+    {
+      "driver": "ma_rate_vs_ffs",
+      "low_value": 0.95,
+      "high_value": 1.0,
+      "contribution_at_low": 4796876,
+      "contribution_at_high": 5290794,
+      "swing": 493918
+    },
+    {
+      "driver": "commercial_admin_multiple_of_medicare",
+      "low_value": 1.15,
+      "high_value": 1.8,
+      "contribution_at_low": 5104918,
+      "contribution_at_high": 5588196,
+      "swing": 483278
+    },
+    {
+      "driver": "operating_days",
+      "low_value": 240,
+      "high_value": 260,
+      "contribution_at_low": 5079163,
+      "contribution_at_high": 5502426,
+      "swing": 423264
+    },
+    {
+      "driver": "medicaid_drug_markup_vs_asp",
+      "low_value": 0.0,
+      "high_value": 0.06,
+      "contribution_at_low": 5165392,
+      "contribution_at_high": 5353496,
+      "swing": 188104
+    },
+    {
+      "driver": "chairs_per_rn",
+      "low_value": 3,
+      "high_value": 5,
+      "contribution_at_low": 5181731,
+      "contribution_at_high": 5356233,
+      "swing": 174502
+    },
+    {
+      "driver": "rn_hourly_wage",
+      "low_value": 42.68,
+      "high_value": 55.0,
+      "contribution_at_low": 5326694,
+      "contribution_at_high": 5242610,
+      "swing": 84084
+    },
+    {
+      "driver": "medicaid_admin_multiple_of_medicare",
+      "low_value": 0.65,
+      "high_value": 1.0,
+      "contribution_at_low": 5272950,
+      "contribution_at_high": 5314587,
+      "swing": 41636
+    },
+    {
+      "driver": "payer_mix_medicaid",
+      "low_value": 0.04,
+      "high_value": 0.12,
+      "contribution_at_low": 5272193,
+      "contribution_at_high": 5309396,
+      "swing": 37203
+    },
+    {
+      "driver": "benefits_load",
+      "low_value": 0.25,
+      "high_value": 0.35,
+      "contribution_at_low": 5303379,
+      "contribution_at_high": 5278210,
+      "swing": 25168
+    }
+  ],
+  "n_ranged_assumptions": 18
+}

@@ -5,7 +5,7 @@ with latest as (
     qualify row_number() over (partition by hcpcs order by quarter_start desc) = 1
 )
 select
-    d.hcpcs, d.molecule, d.brand, d.product_type, d.therapeutic_area, d.admin_family,
+    d.hcpcs, d.molecule, d.brand, d.product_type, d.reference_hcpcs, d.therapeutic_area, d.admin_family,
     d.formulary_listed = 'Y' as formulary_listed,
     d.ipay2028_selected = 'Y' as ipay2028_selected,
     d.product_type = 'biosimilar' as is_biosimilar,
