@@ -28,7 +28,8 @@ def connect() -> duckdb.DuckDBPyConnection:
 
 def compute() -> dict[str, float]:
     con = connect()
-    return {p.stem: float(con.sql(p.read_text()).fetchall()[0][0]) for p in sorted(SQL_DIR.glob("*.sql"))}
+    # rounded to 9 dp: parallel float sums differ in the last bits run to run
+    return {p.stem: round(float(con.sql(p.read_text()).fetchall()[0][0]), 9) for p in sorted(SQL_DIR.glob("*.sql"))}
 
 
 def main() -> None:
