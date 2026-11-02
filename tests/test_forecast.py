@@ -1,4 +1,5 @@
-"""F05: rolling-origin backtests with baselines, honest intervals, and a 2025 out-of-sample check."""
+"""F05/F22: validation-selected models scored on an untouched test window, DM tests, decision rule,
+conformal coverage measured out of sample, volume and spend scored separately."""
 
 import json
 from pathlib import Path
@@ -15,41 +16,40 @@ def test_backtest_uses_only_past_data():
     s = pd.Series([10.0, 11, 12, 30, 14, 15, 16, 17], index=range(2017, 2025))
     bt = F.backtest(s, {"naive": F.naive}, horizons=2, first_origin=3, season=1)
     assert (bt["target"] > bt["origin"]).all()
-    # naive forecast from origin 2020 must be the 2020 value, whatever comes later
     assert bt[(bt["origin"] == 2020)]["forecast"].eq(30.0).all()
 
 
-def test_seasonal_naive_repeats_last_year():
-    y = np.array([1.0, 2, 3, 4, 5, 6, 7, 8])
-    assert F.seasonal_naive(y, 6).tolist() == [5, 6, 7, 8, 5, 6]
+def test_dm_test_detects_a_clearly_better_model():
+    rng = np.random.default_rng(1)
+    base = rng.normal(0, 1, 200)
+    r = F.dm_test(base * 0.5, base, h=1)
+    assert r["dm"] < 0 and r["p_value"] < 0.01
 
 
-def test_summary_reports_baselines_and_origins():
+def test_validation_and_test_windows_do_not_overlap_and_decision_is_recorded():
     f = json.loads((OUT / "forecast.json").read_text())
-    assert {"naive", "drift", "ets_damped"} <= set(f["annual"]["mape_by_model"])
-    assert {"naive", "seasonal_naive"} <= set(f["quarterly_asp"]["mape_by_model"])
-    assert len(f["annual"]["origins"]) >= 5
-    assert f["quarterly_asp"]["n_series"] >= 10
+    q = f["quarterly_asp"]
+    assert q["valid_last_target"] < q["test_first_origin"]
+    assert "decision" in q and "dm_selected_vs_naive_by_h" in q
+    for metric in ("administrations", "allowed"):
+        assert "decision" in f["annual"][metric]
+        assert "test_mape_naive" in f["annual"][metric]
 
 
-def test_interval_coverage_is_measured_out_of_calibration_and_in_range():
+def test_interval_coverage_is_reported_per_horizon():
     f = json.loads((OUT / "forecast.json").read_text())
-    for problem in ("annual", "quarterly_asp"):
-        for row in f[problem]["pi80_coverage_eval"]:
-            assert row["n_eval"] >= 50
-            assert 0.65 <= row["coverage_80"] <= 0.95, (problem, row)
+    cov = f["quarterly_asp"]["pi80_test_coverage_by_h"]
+    assert set(cov) == {str(h) for h in range(1, 7)}
+    assert 0.70 <= f["quarterly_asp"]["pi80_test_coverage_overall"] <= 0.90  # honest band around 80%
 
 
-def test_external_2025_check_exists():
+def test_price_path_covers_the_plan_horizon_and_flags_held_codes():
+    p = pd.read_csv(OUT / "price_path.csv")
+    assert p.groupby("hcpcs")["h"].max().eq(6).all()
+    held = p[p["model"] == "held"]
+    assert held["guard"].str.startswith("held_").all()
+
+
+def test_chair_and_injection_volume_reported_apart():
     f = json.loads((OUT / "forecast.json").read_text())
-    assert f["external_2025"]["n_molecules"] >= 10
-    ext = pd.read_csv(OUT / "forecast_external_2025.csv")
-    assert ext["actual_2025"].gt(0).all()
-
-
-def test_plan_forecasts_cover_2027():
-    q = pd.read_csv(OUT / "forecasts_quarterly_asp.csv")
-    assert set(q["quarter"]) == {"2027Q1", "2027Q2", "2027Q3", "2027Q4"}
-    assert (q["lo80"] <= q["forecast"]).all() and (q["forecast"] <= q["hi80"]).all()
-    a = pd.read_csv(OUT / "forecasts_annual_volume.csv")
-    assert set(a["year"]) == {2025, 2026, 2027}
+    assert set(f["national_inoffice_admins_2024"]) == {"chair", "injection"}
