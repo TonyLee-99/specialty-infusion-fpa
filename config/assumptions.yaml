@@ -162,10 +162,6 @@ scenarios:
     value: 0.15
     label: ASSUMPTION
     why: "Policy/payer shock: 15% of commercial infusions move to payer-mandated white bagging."
-  policy_shock_reference_asp_change:
-    value: -0.15
-    label: ASSUMPTION
-    why: "Faster reference-product ASP erosion in 2027 (e.g., competitor launches); flows through the 2-quarter lag."
 
 # Infusion time by molecule (admin hours billed; chair hours include observation). Source: FDA
 # prescribing information (DailyMed), section 2 "Dosage and Administration", maintenance dosing.

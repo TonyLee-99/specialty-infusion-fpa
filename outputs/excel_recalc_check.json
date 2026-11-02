@@ -1,0 +1,121 @@
+{
+  "workbook": "excel/infusion_plan_2027_scenarios.xlsx",
+  "n_formulas": 1635,
+  "cells": {
+    "base.chair_hours_per_admin": "B4",
+    "biosimilar_push.chair_hours_per_admin": "C4",
+    "policy_shock.chair_hours_per_admin": "D4",
+    "base.contribution_per_admin": "B5",
+    "biosimilar_push.contribution_per_admin": "C5",
+    "policy_shock.contribution_per_admin": "D5",
+    "base.drug_revenue_per_admin": "B6",
+    "biosimilar_push.drug_revenue_per_admin": "C6",
+    "policy_shock.drug_revenue_per_admin": "D6",
+    "base.admin_revenue_per_admin": "B7",
+    "biosimilar_push.admin_revenue_per_admin": "C7",
+    "policy_shock.admin_revenue_per_admin": "D7",
+    "base.administrations": "B8",
+    "biosimilar_push.administrations": "C8",
+    "policy_shock.administrations": "D8",
+    "base.annual_contribution": "B9",
+    "biosimilar_push.annual_contribution": "C9",
+    "policy_shock.annual_contribution": "D9",
+    "base.annual_drug_revenue": "B10",
+    "biosimilar_push.annual_drug_revenue": "C10",
+    "policy_shock.annual_drug_revenue": "D10",
+    "base.annual_admin_revenue": "B11",
+    "biosimilar_push.annual_admin_revenue": "C11",
+    "policy_shock.annual_admin_revenue": "D11",
+    "base.contribution_per_chair": "B12",
+    "biosimilar_push.contribution_per_chair": "C12",
+    "policy_shock.contribution_per_chair": "D12"
+  },
+  "libreoffice_recalc": true,
+  "comparisons": [
+    {
+      "scenario": "base",
+      "metric": "annual_contribution",
+      "python": 5216116,
+      "excel": 5216135.09323822,
+      "rel_diff": 3.6604320570360775e-06
+    },
+    {
+      "scenario": "base",
+      "metric": "contribution_per_admin",
+      "python": 376.186,
+      "excel": 376.187531517741,
+      "rel_diff": 4.071171550776061e-06
+    },
+    {
+      "scenario": "base",
+      "metric": "administrations",
+      "python": 13866,
+      "excel": 13865.7841002692,
+      "rel_diff": 1.557044070385978e-05
+    },
+    {
+      "scenario": "base",
+      "metric": "annual_drug_revenue",
+      "python": 43143967,
+      "excel": 43144156.1373906,
+      "rel_diff": 4.383866476595783e-06
+    },
+    {
+      "scenario": "biosimilar_push",
+      "metric": "annual_contribution",
+      "python": 5036371,
+      "excel": 5036397.79488174,
+      "rel_diff": 5.320275599167267e-06
+    },
+    {
+      "scenario": "biosimilar_push",
+      "metric": "contribution_per_admin",
+      "python": 363.2228,
+      "excel": 363.224649224171,
+      "rel_diff": 5.091156642689891e-06
+    },
+    {
+      "scenario": "biosimilar_push",
+      "metric": "administrations",
+      "python": 13866,
+      "excel": 13865.7929896531,
+      "rel_diff": 1.4929348543166827e-05
+    },
+    {
+      "scenario": "biosimilar_push",
+      "metric": "annual_drug_revenue",
+      "python": 40319795,
+      "excel": 40320071.0916234,
+      "rel_diff": 6.847545316218298e-06
+    },
+    {
+      "scenario": "policy_shock",
+      "metric": "annual_contribution",
+      "python": 4573407,
+      "excel": 4573423.51817065,
+      "rel_diff": 3.6117867161433696e-06
+    },
+    {
+      "scenario": "policy_shock",
+      "metric": "contribution_per_admin",
+      "python": 329.8339,
+      "excel": 329.83518891527,
+      "rel_diff": 3.9077707597106196e-06
+    },
+    {
+      "scenario": "policy_shock",
+      "metric": "administrations",
+      "python": 13866,
+      "excel": 13865.7841002692,
+      "rel_diff": 1.557044070385978e-05
+    },
+    {
+      "scenario": "policy_shock",
+      "metric": "annual_drug_revenue",
+      "python": 36802151,
+      "excel": 36802325.4709598,
+      "rel_diff": 4.740781586312755e-06
+    }
+  ],
+  "max_rel_diff": 1.557044070385978e-05
+}
