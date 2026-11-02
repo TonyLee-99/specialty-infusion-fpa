@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
     "asp_payment_limits", "pfs_rvu", "pfs_gpci", "places_county", "census_pep_county", "zcta_county",
     "medicare_enrollment_county", "partb_spending_annual", "partb_spending_quarterly", "geo_service",
-    "provider_2024", "provider_service",
+    "provider_2024", "provider_service", "county_gazetteer", "cbsa_county",
 }
 
 

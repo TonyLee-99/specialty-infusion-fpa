@@ -31,6 +31,8 @@ def main() -> None:
         "places_county": f"select * from {r('places_county')}",
         "census_pep_county": f"select * from {r('census_pep_county')} where lpad(STATE, 2, '0') in (select state_fips from states)",
         "zcta_county": f"select * from {r('zcta_county')} where left(GEOID_COUNTY_20, 2) in (select state_fips from states)",
+        "county_gazetteer": f"select * from {r('county_gazetteer')} where left(GEOID, 2) in (select state_fips from states)",
+        "cbsa_county": f"select * from {r('cbsa_county')} where left(county_fips, 2) in (select state_fips from states)",
         "medicare_enrollment_county": f"select * from {r('medicare_enrollment_county')} where MONTH = 'Year' "
                                       f"and YEAR = (select max(YEAR) from {r('medicare_enrollment_county')} where MONTH = 'Year')",
     }

@@ -118,6 +118,8 @@ def main() -> None:
     _write("places_county", sources.pull_places(states), sources.PLACES_URL, manifest)
     _write("census_pep_county", sources.pull_pep(), sources.PEP_URL, manifest)
     _write("zcta_county", sources.pull_zcta(), sources.ZCTA_URL, manifest)
+    _write("county_gazetteer", sources.pull_gazetteer(), sources.GAZ_URL, manifest)
+    _write("cbsa_county", sources.pull_cbsa(), sources.CBSA_URL, manifest)
     _write("medicare_enrollment_county", pull_enrollment(), cms + f" [{ENROLLMENT}]", manifest)
     for name, df in pull_spending().items():
         _write(name, df, cms + " [Part B Spending by Drug]", manifest)

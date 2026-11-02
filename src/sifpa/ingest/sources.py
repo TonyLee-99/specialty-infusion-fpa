@@ -15,6 +15,8 @@ PLACES_URL = "https://data.cdc.gov/resource/i46a-9kgh.json"  # 2025 release
 # 2025 release has null arthritis estimates for KY and PA; the 2024 release fills those states.
 PLACES_FALLBACK_URL = "https://data.cdc.gov/resource/d3i6-k6z5.json"
 PEP_URL = "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/counties/asrh/cc-est2025-agesex-all.csv"
+GAZ_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_counties_national.zip"
+CBSA_URL = "https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx"
 ZCTA_URL = "https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt"
 
 # Admin + E/M codes whose RVUs we need. CPT descriptors are intentionally dropped (AMA copyright).
@@ -68,3 +70,23 @@ def pull_zcta() -> pd.DataFrame:
     df = pd.read_csv(io.BytesIO(get(ZCTA_URL, timeout=300).content), sep="|", dtype=str, encoding="latin-1")
     return df[["GEOID_ZCTA5_20", "GEOID_COUNTY_20", "NAMELSAD_COUNTY_20", "AREALAND_PART"]].dropna(
         subset=["GEOID_ZCTA5_20"])
+
+
+def pull_gazetteer() -> pd.DataFrame:
+    """County internal-point lat/long (Census Gazetteer 2025), for distance to the existing site."""
+    zf = zipfile.ZipFile(io.BytesIO(get(GAZ_URL).content))
+    name = next(n for n in zf.namelist() if n.endswith(".txt"))
+    df = pd.read_csv(io.BytesIO(zf.read(name)), sep="|", dtype=str, encoding="latin-1")  # 2025 file is pipe-delimited
+    df.columns = [c.strip() for c in df.columns]
+    return df[["GEOID", "USPS", "NAME", "INTPTLAT", "INTPTLONG", "ALAND_SQMI"]]
+
+
+def pull_cbsa() -> pd.DataFrame:
+    """OMB 2023 CBSA delineation: county -> metro/micro area, so markets are scored at metro grain."""
+    df = pd.read_excel(io.BytesIO(get(CBSA_URL).content), header=2, dtype=str)
+    df = df.dropna(subset=["FIPS County Code"])
+    df["county_fips"] = df["FIPS State Code"].str.zfill(2) + df["FIPS County Code"].str.zfill(3)
+    df = df.rename(columns={"CBSA Code": "cbsa_code", "CBSA Title": "cbsa_title",
+                            "Metropolitan/Micropolitan Statistical Area": "cbsa_type",
+                            "Central/Outlying County": "central_outlying"})
+    return df[["county_fips", "cbsa_code", "cbsa_title", "cbsa_type", "central_outlying"]]

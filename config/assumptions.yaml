@@ -163,6 +163,23 @@ scenarios:
     label: ASSUMPTION
     why: "Policy/payer shock: 15% of commercial infusions move to payer-mandated white bagging."
 
+market:
+  weights:
+    value: {market_size: 0.30, medicare_ffs: 0.15, specialist_gap: 0.30, infusion_gap: 0.25}
+    label: ASSUMPTION
+    why: "Default emphasis: enough patients (size, FFS buy-and-bill) and too few specialists / infusion providers per patient. Rank stability is tested over 2,000 random weightings, so the call does not rest on these numbers."
+  min_population:
+    value: 100000
+    label: ASSUMPTION
+    why: "Screen for a county large enough to support a specialist + infusion site."
+  cannibalization_miles:
+    value: 40
+    label: ASSUMPTION
+    why: "Counties within 40 miles of the Columbus site (Franklin County internal point as proxy) are flagged: they would mostly draw from the existing site."
+  existing_site_county_fips:
+    value: "39049"
+    source: "operator website (locations page): Columbus OH 43235 (Franklin County)"
+
 # Infusion time by molecule (admin hours billed; chair hours include observation). Source: FDA
 # prescribing information (DailyMed), section 2 "Dosage and Administration", maintenance dosing.
 infusion_time:

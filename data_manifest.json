@@ -107,5 +107,23 @@
     "sha256": "56ceeff71c5da520b2f49060a7b46fff28faa8afd915a3c79b2555b45e762f53",
     "pulled_at": "2026-11-02T09:46:41Z"
   },
-  "_total_raw_mb": 44.0
+  "_total_raw_mb": 44.2,
+  "county_gazetteer": {
+    "file": "data/raw/county_gazetteer.parquet",
+    "source_url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_counties_national.zip",
+    "rows": 3222,
+    "columns": 6,
+    "bytes": 88685,
+    "sha256": "e04bc0cd8ea69127e5958343fa8634a9acdc9c1e20a55ffbb7c9296605438b35",
+    "pulled_at": "2026-11-02T10:05:11Z"
+  },
+  "cbsa_county": {
+    "file": "data/raw/cbsa_county.parquet",
+    "source_url": "https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx",
+    "rows": 1915,
+    "columns": 5,
+    "bytes": 26308,
+    "sha256": "ebf2f9d7c43be5e00a38ae9e338c912331f19305b412dc08c7242b7a968e2683",
+    "pulled_at": "2026-11-02T10:06:34Z"
+  }
 }
