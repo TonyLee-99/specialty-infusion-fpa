@@ -15,5 +15,6 @@ select
     notes ilike '%inflation-adjusted coinsurance%'      as flag_inflation_coins
 from {{ source('raw', 'asp_payment_limits') }}
 where try_cast(replace(payment_limit, ',', '') as double) > 0
--- A handful of files list a code twice (restated rows); keep the last occurrence.
-qualify row_number() over (partition by quarter, hcpcs order by payment_limit desc) = 1
+-- A handful of files list a code twice (restated rows); keep the row with the HIGHEST payment limit
+-- (deterministic; the duplicates seen differ by rounding only).
+qualify row_number() over (partition by quarter, hcpcs order by try_cast(replace(payment_limit, ',', '') as double) desc) = 1

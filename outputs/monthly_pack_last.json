@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-02T11:37:10Z",
+  "run_at": "2026-11-02T11:42:20Z",
   "offline": true,
   "all_ok": true,
   "automated_minutes_measured": 0.6,
@@ -17,7 +17,7 @@
     {
       "step": "dbt",
       "status": "ok",
-      "seconds": 3.9,
+      "seconds": 3.3,
       "manual_step": "Clean, join and validate source tables (HCPCS changes, biosimilar codes, reconciliations)",
       "manual_minutes_estimate": 90
     },
@@ -38,14 +38,14 @@
     {
       "step": "forecast",
       "status": "ok",
-      "seconds": 4.3,
+      "seconds": 4.4,
       "manual_step": "Re-forecast ASP and volume; re-score against last quarter",
       "manual_minutes_estimate": 60
     },
     {
       "step": "margin",
       "status": "ok",
-      "seconds": 3.3,
+      "seconds": 3.4,
       "manual_step": "Rebuild per-infusion margin by drug and payer; refresh lag spread",
       "manual_minutes_estimate": 60
     },
@@ -80,7 +80,7 @@
     {
       "step": "variance",
       "status": "ok",
-      "seconds": 0.7,
+      "seconds": 0.8,
       "manual_step": "Month-end budget vs actual: volume / mix / rate bridge by site (SYNTHETIC actuals here)",
       "manual_minutes_estimate": 90
     },
@@ -94,14 +94,14 @@
     {
       "step": "pbi",
       "status": "ok",
-      "seconds": 0.7,
+      "seconds": 0.6,
       "manual_step": "Update semantic-model tables/measures",
       "manual_minutes_estimate": 15
     },
     {
       "step": "kpis",
       "status": "ok",
-      "seconds": 1.1,
+      "seconds": 1.2,
       "manual_step": "Tie out dashboard KPIs to the SQL numbers",
       "manual_minutes_estimate": 30
     },
@@ -136,7 +136,7 @@
     {
       "step": "screenshots",
       "status": "ok",
-      "seconds": 1.2,
+      "seconds": 1.3,
       "manual_step": "Screenshot pages for the deck",
       "manual_minutes_estimate": 10
     },
@@ -150,7 +150,7 @@
     {
       "step": "test",
       "status": "ok",
-      "seconds": 6.5,
+      "seconds": 6.6,
       "manual_step": "(no manual equivalent: regression suite)",
       "manual_minutes_estimate": 0
     }

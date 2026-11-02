@@ -22,7 +22,7 @@ test:
 	$(PY) -m pytest -q
 
 dbt-ci:           ## dbt build (models + data tests) on the committed fixture warehouse
-	cd dbt && SIFPA_RAW_DIR=../tests/fixtures/raw ../.venv/bin/dbt build --target ci --quiet
+	cd dbt && SIFPA_RAW_DIR=../tests/fixtures/raw ../.venv/bin/dbt build --target ci --quiet --full-refresh
 
 verify:           ## the ONLY writer of feature_list.json state/evidence
 	$(PY) scripts/verify_features.py
@@ -35,7 +35,7 @@ ingest:           ## filtered CMS / CDC / Census pulls -> data/raw/*.parquet + d
 	$(PY) -m sifpa.ingest.run
 
 dbt:              ## dbt build on the full warehouse (data/warehouse.duckdb) -> outputs/dbt_summary.json
-	$(DBT) build --target dev --quiet
+	$(DBT) build --target dev --quiet --full-refresh
 	$(PY) -m sifpa.dbt_summary
 
 fixtures:         ## small slice of raw data for offline CI dbt runs (tests/fixtures/raw)
