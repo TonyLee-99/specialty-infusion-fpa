@@ -1,0 +1,8 @@
+state_abbr,state_fips,state_name,role
+OH,39,Ohio,home (Columbus comprehensive-care site)
+IL,17,Illinois,owned site (Wood Dale) + HQ
+IN,18,Indiana,borders Ohio
+KY,21,Kentucky,borders Ohio
+MI,26,Michigan,borders Ohio
+PA,42,Pennsylvania,borders Ohio
+WV,54,West Virginia,borders Ohio

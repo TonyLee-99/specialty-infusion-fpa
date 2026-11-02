@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: dim_drug
+    description: One row per catalog HCPCS (drug), with molecule, reference/biosimilar flags and IRA selection.
+    columns:
+      - name: hcpcs
+        data_tests: [unique, not_null]
+      - name: molecule
+        data_tests: [not_null]
+      - name: product_type
+        data_tests:
+          - accepted_values:
+              arguments: {values: ['reference', 'biosimilar', 'single_source']}
+      - name: admin_family
+        data_tests:
+          - accepted_values:
+              arguments: {values: ['mab_infusion', 'iv_infusion', 'injection', 'procedure']}
+  - name: dim_quarter
+    columns:
+      - name: quarter_label
+        data_tests: [unique, not_null]
+  - name: dim_date
+    columns:
+      - name: date
+        data_tests: [unique, not_null]
+  - name: dim_provider
+    description: Rendering providers (no names). County via ZCTA crosswalk.
+    columns:
+      - name: npi
+        data_tests: [unique, not_null]
+  - name: dim_county
+    columns:
+      - name: county_fips
+        data_tests: [unique, not_null]
+      - name: population
+        data_tests: [not_null]
+  - name: fct_asp_quarter
+    description: Payment limit, implied ASP (basis and current) and lag spread per HCPCS-quarter.
+    data_tests:
+      - dbt_utils_unique_combination: {columns: ['hcpcs', 'payment_quarter']}
+    columns:
+      - name: hcpcs
+        data_tests:
+          - relationships:
+              arguments: {to: ref('dim_drug'), field: hcpcs}
+      - name: payment_quarter
+        data_tests:
+          - relationships:
+              arguments: {to: ref('dim_quarter'), field: quarter_label}
+      - name: payment_limit
+        data_tests: [not_null]
+  - name: fct_provider_drug_year
+    data_tests:
+      - dbt_utils_unique_combination: {columns: ['year', 'npi', 'hcpcs', 'place_of_service']}
+    columns:
+      - name: npi
+        data_tests:
+          - not_null
+          - relationships:
+              arguments: {to: ref('dim_provider'), field: npi}
+      - name: place_of_service
+        data_tests:
+          - accepted_values:
+              arguments: {values: ['O', 'F']}
+      - name: benes
+        data_tests: [not_null]
+  - name: fct_national_drug_year
+    data_tests:
+      - dbt_utils_unique_combination: {columns: ['year', 'hcpcs', 'place_of_service']}
+  - name: fct_state_drug_2024
+    data_tests:
+      - dbt_utils_unique_combination: {columns: ['state_abbr', 'hcpcs', 'place_of_service']}
+  - name: fct_partb_spending
+    data_tests:
+      - dbt_utils_unique_combination: {columns: ['hcpcs', 'year']}

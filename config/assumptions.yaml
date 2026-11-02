@@ -1,0 +1,198 @@
+# Every driver that is NOT read from a public dataset lives here.
+# Each entry: value, (low, high) for sensitivity, and either `source` (a citation) or `label: ASSUMPTION`
+# with the reasoning. Policy constants are statute/regulation; practice drivers are labelled assumptions.
+# Read by src/sifpa/assumptions.py; tornado ranges = low/high.
+
+policy:
+  asp_addon_pct:
+    value: 0.06
+    source: "SSA s.1847A(b)(1); 42 CFR 414.904 (Part B drugs paid at 106% of ASP)"
+  biosimilar_ira_addon_pct:
+    value: 0.08
+    source: "IRA s.11403; CMS biosimilar FAQ (cms.gov/files/document/biosimilar-faqs.pdf): ASP + 8% of reference ASP for 5 years"
+  biosimilar_ira_end_existing:
+    value: "2027-09-30"
+    source: "CMS: 5-year period for biosimilars already paid under ASP on 2022-09-30 began 2022-10-01"
+  sequestration_pct:
+    value: 0.02
+    source: "Budget Control Act 2011 as extended; 2% reduction of Medicare FFS payment (not the beneficiary share)"
+  coinsurance_pct:
+    value: 0.20
+    source: "Part B coinsurance 20% of allowed (42 CFR 410.152); inflation-adjusted coinsurance noted per code in ASP file"
+  cf_2026:
+    value: 33.4009
+    source: "CMS RVU26D (Oct 2026) PPRRVU2026_Oct_nonQPP.csv conversion factor column"
+  cf_2027_proposed:
+    value: 32.8409
+    source: "CY2027 PFS proposed rule, Federal Register 2026-14327 (2026-07-16), non-qualifying APM CF; final rule pending at build time"
+  mfp_payment_pct:
+    value: 0.06
+    source: "IRA s.11001 / SSA s.1847A(b)(1)(B) as amended: Part B selected drugs paid at 106% of MFP"
+  mfp_effective:
+    value: "2028-01-01"
+    source: "CMS IPAY 2028 fact sheet: negotiated prices effective 2028; MFPs published by 2026-11-30"
+  mfp_discount_vs_asp:
+    value: 0.35
+    low: 0.20
+    high: 0.55
+    label: ASSUMPTION
+    why: "IPAY 2028 MFPs were not yet published (due 2026-11-30). Cycles 1-2 discounts are quoted vs list price (WAC); ASP is already net of discounts, so the cut vs ASP is smaller. Range brackets plausible outcomes; replace with the published MFP on 2026-11-30."
+
+# Ohio is a single statewide PFS locality (GPCI read from data); the plan uses Ohio.
+locality:
+  state_abbr: "OH"
+  locality: "00"
+
+practice:
+  chairs:
+    value: 12
+    low: 8
+    high: 16
+    label: ASSUMPTION
+    why: "Illustrative mid-size suite; results are reported per infusion and per chair so they scale."
+  operating_days:
+    value: 250
+    low: 240
+    high: 260
+    label: ASSUMPTION
+    why: "Weekday operation, holidays closed."
+  chair_hours_per_day:
+    value: 10
+    low: 9
+    high: 11
+    label: ASSUMPTION
+    why: "Typical 7am-5pm infusion suite."
+  chair_utilization:
+    value: 0.70
+    low: 0.55
+    high: 0.85
+    label: ASSUMPTION
+    why: "Share of available chair-hours booked; no public benchmark used."
+  payer_mix_commercial:
+    value: 0.50
+    low: 0.40
+    high: 0.60
+    label: ASSUMPTION
+    why: "Inflammatory-disease biologics skew to working-age commercial patients for GI/rheum and to Medicare for MS/older RA. Remainder after Medicaid is Medicare."
+  payer_mix_medicaid:
+    value: 0.08
+    low: 0.04
+    high: 0.12
+    label: ASSUMPTION
+    why: "Ohio Medicaid share of a specialty infusion book; no public practice-level source."
+  # Medicare is split into FFS vs MA using Ohio's real Original-Medicare share from CMS enrollment.
+  commercial_drug_markup_vs_asp:
+    value: 0.20
+    low: 0.08
+    high: 0.35
+    label: ASSUMPTION
+    why: "Commercial physician-office contracts are commonly ASP-based with a higher add-on than Medicare; actual contracts are private. Widest-range driver by design."
+  commercial_admin_multiple_of_medicare:
+    value: 1.40
+    low: 1.15
+    high: 1.80
+    label: ASSUMPTION
+    why: "Commercial pays more than Medicare for professional services; multiple is not public per contract."
+  medicaid_drug_markup_vs_asp:
+    value: 0.04
+    low: 0.00
+    high: 0.06
+    label: ASSUMPTION
+    why: "Many state Medicaid programs price physician-administered drugs near ASP+0% to ASP+6%."
+  medicaid_admin_multiple_of_medicare:
+    value: 0.80
+    low: 0.65
+    high: 1.00
+    label: ASSUMPTION
+    why: "Medicaid fee schedules typically below Medicare."
+  ma_rate_vs_ffs:
+    value: 1.00
+    low: 0.95
+    high: 1.00
+    label: ASSUMPTION
+    why: "MA plans commonly pay at or slightly below FFS rates for Part B drugs; MA claims are NOT in the FFS data (MA vs FFS caveat)."
+  coinsurance_collection_rate:
+    value: 0.90
+    low: 0.75
+    high: 1.00
+    label: ASSUMPTION
+    why: "Most Medicare FFS beneficiaries have Medigap/Medicaid/employer secondary; uncollected share is bad debt."
+  acquisition_spread_vs_asp:
+    value: 0.00
+    low: -0.05
+    high: 0.03
+    label: ASSUMPTION
+    why: "ASP is a volume-weighted average net price, so roughly half of purchasers pay more and half pay less; GPO members tend to be below."
+  rn_hourly_wage:
+    value: 47.94
+    low: 42.68
+    high: 55.00
+    source: "BLS OEWS May 2025, Columbus OH MSA, 'Healthcare practitioners and technical' mean hourly wage (Table A) used as RN proxy; low = RN-specific Columbus figure via secondary source (TrueNursePay citing OEWS May 2025)"
+  benefits_load:
+    value: 0.30
+    low: 0.25
+    high: 0.35
+    label: ASSUMPTION
+    why: "Employer benefits and payroll taxes on top of wages."
+  chairs_per_rn:
+    value: 4
+    low: 3
+    high: 5
+    label: ASSUMPTION
+    why: "Nurse-to-chair ratio for biologic infusions with observation; varies by acuity."
+  overhead_per_chair_hour:
+    value: 25.0
+    low: 15.0
+    high: 40.0
+    label: ASSUMPTION
+    why: "Rent, pumps, pharmacy prep, supplies, scheduling and prior-auth staff per occupied chair-hour; no public source."
+  white_bagging_share_commercial:
+    value: 0.00
+    low: 0.00
+    high: 0.25
+    label: ASSUMPTION
+    why: "Share of commercial infusions where the payer mandates specialty-pharmacy supply (practice keeps only the admin fee). 0 in base; stressed in the policy-shock scenario."
+
+scenarios:
+  biosimilar_push_target_share:
+    value: 0.80
+    label: ASSUMPTION
+    why: "Target biosimilar share for multi-source molecules (infliximab, rituximab, tocilizumab, natalizumab, ustekinumab) under an active conversion program."
+  policy_shock_white_bagging:
+    value: 0.15
+    label: ASSUMPTION
+    why: "Policy/payer shock: 15% of commercial infusions move to payer-mandated white bagging."
+  policy_shock_reference_asp_change:
+    value: -0.15
+    label: ASSUMPTION
+    why: "Faster reference-product ASP erosion in 2027 (e.g., competitor launches); flows through the 2-quarter lag."
+
+# Infusion time by molecule (admin hours billed; chair hours include observation). Source: FDA
+# prescribing information (DailyMed), section 2 "Dosage and Administration", maintenance dosing.
+infusion_time:
+  infliximab:     {admin_hours: 2.0, chair_hours: 2.5, source: "Remicade PI s.2: infuse over a period of not less than 2 hours"}
+  rituximab:      {admin_hours: 4.0, chair_hours: 4.5, source: "Rituxan PI s.2.1: subsequent infusions escalated to 400 mg/h; ~3-4 h for 1,000 mg"}
+  tocilizumab:    {admin_hours: 1.0, chair_hours: 1.5, source: "Actemra PI s.2: IV infusion over 60 minutes"}
+  natalizumab:    {admin_hours: 1.0, chair_hours: 2.0, source: "Tysabri PI s.2: infuse over ~1 hour; observe 1 hour after (first 12 infusions)"}
+  ustekinumab:    {admin_hours: 1.0, chair_hours: 1.5, source: "Stelara PI s.2: IV induction over at least 1 hour"}
+  eculizumab:     {admin_hours: 1.0, chair_hours: 1.5, source: "Soliris PI s.2: adults over 35 minutes; 1 h monitoring"}
+  abatacept:      {admin_hours: 0.5, chair_hours: 1.0, source: "Orencia PI s.2: IV over 30 minutes"}
+  golimumab:      {admin_hours: 0.5, chair_hours: 1.0, source: "Simponi Aria PI s.2: IV over 30 minutes"}
+  belimumab:      {admin_hours: 1.0, chair_hours: 1.5, source: "Benlysta PI s.2: IV over 1 hour"}
+  pegloticase:    {admin_hours: 2.0, chair_hours: 3.0, source: "Krystexxa PI s.2: no less than 120 minutes; observe ~1 hour"}
+  vedolizumab:    {admin_hours: 0.5, chair_hours: 1.0, source: "Entyvio PI s.2: IV over 30 minutes"}
+  risankizumab:   {admin_hours: 1.0, chair_hours: 1.5, source: "Skyrizi PI s.2: IV induction over at least 1 hour"}
+  mirikizumab:    {admin_hours: 0.5, chair_hours: 1.0, source: "Omvoh PI s.2: IV over at least 30 minutes"}
+  guselkumab:     {admin_hours: 1.0, chair_hours: 1.5, source: "Tremfya PI s.2: IV induction over at least 1 hour"}
+  ocrelizumab:    {admin_hours: 3.5, chair_hours: 4.5, source: "Ocrevus PI s.2: 600 mg over 3.5 h (or 2 h if no prior serious reaction); observe 1 h"}
+  ublituximab:    {admin_hours: 1.0, chair_hours: 2.0, source: "Briumvi PI s.2: 450 mg over 1 hour after the first dose; observe 1 h"}
+  alemtuzumab:    {admin_hours: 4.0, chair_hours: 6.0, source: "Lemtrada PI s.2: IV over 4 hours; observe 2 h"}
+  eptinezumab:    {admin_hours: 0.5, chair_hours: 1.0, source: "Vyepti PI s.2: IV over approximately 30 minutes"}
+  efgartigimod:   {admin_hours: 1.0, chair_hours: 1.5, source: "Vyvgart PI s.2: IV over 1 hour"}
+  ravulizumab:    {admin_hours: 2.0, chair_hours: 2.5, source: "Ultomiris PI s.2: maintenance infusion ~1.3-2.0 h by weight"}
+  inebilizumab:   {admin_hours: 1.5, chair_hours: 2.5, source: "Uplizna PI s.2: IV over 90 minutes; observe 1 h"}
+  immune_globulin: {admin_hours: 3.0, chair_hours: 3.5, source: "IVIG PIs: rate-escalated infusions typically 2-4 h"}
+  denosumab:      {admin_hours: 0.0, chair_hours: 0.5, source: "Prolia PI: single subcutaneous injection"}
+  romosozumab:    {admin_hours: 0.0, chair_hours: 0.5, source: "Evenity PI: two subcutaneous injections"}
+  certolizumab:   {admin_hours: 0.0, chair_hours: 0.5, source: "Cimzia PI: subcutaneous injection"}
+  onabotulinumtoxinA: {admin_hours: 0.0, chair_hours: 0.0, source: "Chemodenervation procedure (physician time, not chair)"}

@@ -1,0 +1,59 @@
+hcpcs,molecule,brand,product_type,reference_hcpcs,therapeutic_area,admin_family,formulary_listed,ipay2028_selected,first_quarter_note
+J1745,infliximab,Remicade / unbranded infliximab,reference,,rheum_gi,mab_infusion,Y,N,
+Q5103,infliximab,Inflectra (infliximab-dyyb),biosimilar,J1745,rheum_gi,mab_infusion,Y,N,
+Q5104,infliximab,Renflexis (infliximab-abda),biosimilar,J1745,rheum_gi,mab_infusion,N,N,
+Q5121,infliximab,Avsola (infliximab-axxq),biosimilar,J1745,rheum_gi,mab_infusion,N,N,
+J9312,rituximab,Rituxan,reference,,rheum_neuro,mab_infusion,Y,N,
+Q5115,rituximab,Truxima (rituximab-abbs),biosimilar,J9312,rheum_neuro,mab_infusion,Y,N,
+Q5119,rituximab,Ruxience (rituximab-pvvr),biosimilar,J9312,rheum_neuro,mab_infusion,N,N,
+Q5123,rituximab,Riabni (rituximab-arrx),biosimilar,J9312,rheum_neuro,mab_infusion,N,N,
+J3262,tocilizumab,Actemra IV,reference,,rheum,mab_infusion,N,N,
+Q5133,tocilizumab,Tofidence (tocilizumab-bavi),biosimilar,J3262,rheum,mab_infusion,N,N,
+Q5135,tocilizumab,Tyenne (tocilizumab-aazg),biosimilar,J3262,rheum,mab_infusion,N,N,
+Q5156,tocilizumab,Avtozma (tocilizumab-anoh),biosimilar,J3262,rheum,mab_infusion,N,N,
+J2323,natalizumab,Tysabri,reference,,neuro_gi,mab_infusion,Y,N,
+Q5134,natalizumab,Tyruko (natalizumab-sztn),biosimilar,J2323,neuro_gi,mab_infusion,N,N,
+J3358,ustekinumab,Stelara IV,reference,,gi,mab_infusion,N,N,
+Q5098,ustekinumab,ustekinumab-srlf,biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+Q5099,ustekinumab,ustekinumab-stba,biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+Q5100,ustekinumab,ustekinumab-kfce,biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+Q5138,ustekinumab,Wezlana IV (ustekinumab-auub),biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+Q9997,ustekinumab,ustekinumab-ttwe,biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+Q9998,ustekinumab,ustekinumab-aekn,biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+Q9999,ustekinumab,ustekinumab-aauz,biosimilar,AMBIGUOUS,gi,mab_infusion,N,N,"reference = Stelara J3357 (subq, retired 2025Q2) + J3358 (IV): blended reference ASP not public; excluded from implied-ASP math"
+J0897,denosumab,Prolia / Xgeva,reference,,bone,injection,Y,N,
+Q5136,denosumab,denosumab-bbdz,biosimilar,J0897,bone,injection,N,N,
+Q5157,denosumab,denosumab-bmwo,biosimilar,J0897,bone,injection,N,N,
+Q5158,denosumab,denosumab-bnht,biosimilar,J0897,bone,injection,N,N,
+Q5161,denosumab,denosumab-kyqq,biosimilar,J0897,bone,injection,N,N,
+Q5162,denosumab,denosumab-nxxp,biosimilar,J0897,bone,injection,N,N,
+Q5167,denosumab,denosumab-qbde,biosimilar,J0897,bone,injection,N,N,
+J1300,eculizumab,Soliris (10 mg code; retired),reference,,neuro,mab_infusion,N,N,succeeded by J1299 (2 mg units)
+J1299,eculizumab,Soliris,reference,,neuro,mab_infusion,N,N,successor of J1300
+Q5151,eculizumab,eculizumab-aagh,biosimilar,J1299,neuro,mab_infusion,N,N,
+Q5152,eculizumab,eculizumab-aeeb,biosimilar,J1299,neuro,mab_infusion,N,N,
+J0129,abatacept,Orencia IV,single_source,,rheum,iv_infusion,N,Y,
+J1602,golimumab,Simponi Aria,single_source,,rheum,mab_infusion,N,N,
+J0490,belimumab,Benlysta,single_source,,rheum,mab_infusion,Y,N,
+J2507,pegloticase,Krystexxa,single_source,,rheum,iv_infusion,N,N,
+J0717,certolizumab,Cimzia,single_source,,rheum_gi,injection,N,Y,
+J3380,vedolizumab,Entyvio IV,single_source,,gi,mab_infusion,N,Y,
+J2327,risankizumab,Skyrizi IV,single_source,,gi,mab_infusion,N,N,
+J2267,mirikizumab,Omvoh IV,single_source,,gi,mab_infusion,N,N,
+J1628,guselkumab,Tremfya IV,single_source,,gi,mab_infusion,N,N,
+J2350,ocrelizumab,Ocrevus,single_source,,neuro,mab_infusion,Y,N,
+J2351,ocrelizumab,Ocrevus Zunovo (subcutaneous),single_source,,neuro,injection,N,N,
+J2329,ublituximab,Briumvi,single_source,,neuro,mab_infusion,Y,N,
+J0202,alemtuzumab,Lemtrada,single_source,,neuro,mab_infusion,Y,N,
+J3032,eptinezumab,Vyepti,single_source,,neuro,mab_infusion,Y,N,
+J9332,efgartigimod,Vyvgart IV,single_source,,neuro,iv_infusion,N,N,
+J1303,ravulizumab,Ultomiris,single_source,,neuro,mab_infusion,N,N,
+J1823,inebilizumab,Uplizna,single_source,,neuro,mab_infusion,N,N,
+J0585,onabotulinumtoxinA,Botox,single_source,,neuro,procedure,N,Y,chemodenervation procedure codes (not an infusion chair); drug economics only
+J1459,immune_globulin,Privigen,single_source,,immunology,iv_infusion,N,N,
+J1557,immune_globulin,Gammaplex,single_source,,immunology,iv_infusion,N,N,
+J1561,immune_globulin,Gamunex-C / Gammaked,single_source,,immunology,iv_infusion,Y,N,
+J1566,immune_globulin,Gammagard S/D (powder),single_source,,immunology,iv_infusion,N,N,
+J1568,immune_globulin,Octagam,single_source,,immunology,iv_infusion,Y,N,
+J1569,immune_globulin,Gammagard Liquid,single_source,,immunology,iv_infusion,Y,N,
+J3111,romosozumab,Evenity,single_source,,bone,injection,Y,N,

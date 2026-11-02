@@ -22,7 +22,7 @@ test:
 	$(PY) -m pytest -q
 
 dbt-ci:           ## dbt build (models + data tests) on the committed fixture warehouse
-	$(DBT) build --target ci --quiet
+	cd dbt && SIFPA_RAW_DIR=../tests/fixtures/raw ../.venv/bin/dbt build --target ci --quiet
 
 verify:           ## the ONLY writer of feature_list.json state/evidence
 	$(PY) scripts/verify_features.py

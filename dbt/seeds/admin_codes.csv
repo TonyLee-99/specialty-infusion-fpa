@@ -1,0 +1,6 @@
+hcpcs,admin_family,role,unit_meaning
+96413,mab_infusion,initial,first hour (complex/biologic agent)
+96415,mab_infusion,addon,each additional hour
+96365,iv_infusion,initial,first hour (therapeutic infusion)
+96366,iv_infusion,addon,each additional hour
+96372,injection,initial,subcutaneous or intramuscular injection

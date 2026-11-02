@@ -1,0 +1,38 @@
+name: sifpa
+version: "1.0.0"
+config-version: 2
+profile: sifpa
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  asp_addon_pct: 0.06          # SSA 1847A: ASP + 6%
+  biosimilar_irapct: 0.08      # IRA s.11403 temporary add-on (8% of reference ASP)
+  min_cell_benes: 11           # CMS cell-suppression threshold
+
+models:
+  sifpa:
+    +persist_docs: {relation: true, columns: true}
+    staging:
+      +schema: staging
+      # tables, not views: views would embed the relative raw path and break readers in other cwds
+      +materialized: table
+    intermediate:
+      +schema: intermediate
+      +materialized: table
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  sifpa:
+    +schema: reference
+    drug_catalog: {+column_types: {hcpcs: varchar}}
+    admin_codes: {+column_types: {hcpcs: varchar}}
+    hcpcs_successors: {+column_types: {old_hcpcs: varchar, new_hcpcs: varchar}}
+    region_states: {+column_types: {state_fips: varchar}}

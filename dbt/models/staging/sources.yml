@@ -1,0 +1,31 @@
+version: 2
+sources:
+  - name: raw
+    description: Filtered public pulls written by `make ingest` (see data_manifest.json and ADR 0002).
+    meta:
+      external_location: "{{ env_var('SIFPA_RAW_DIR', '../data/raw') }}/{name}.parquet"
+    tables:
+      - name: asp_payment_limits
+        description: CMS quarterly ASP payment-limit files 2017Q1-2026Q4, J/Q codes only.
+      - name: provider_service
+        description: Medicare Physician & Other Practitioners by Provider and Service (drug codes 2019-2024, admin codes 2024).
+      - name: provider_2024
+        description: Medicare Physician & Other Practitioners by Provider, 2024, four specialties.
+      - name: geo_service
+        description: Medicare Physician & Other Practitioners by Geography and Service (national 2013-2024, region states 2024).
+      - name: partb_spending_annual
+        description: Medicare Part B Spending by Drug, 2020-2024 (all settings).
+      - name: partb_spending_quarterly
+        description: Medicare Quarterly Part B Spending by Drug (2025 Q1-Q4 and 2026 Q1).
+      - name: pfs_rvu
+        description: CY2026 PFS RVUs (RVU26D, non-QPP) for admin and E/M codes; descriptors dropped.
+      - name: pfs_gpci
+        description: CY2026 GPCIs by locality.
+      - name: places_county
+        description: CDC PLACES 2025 county estimates (arthritis prevalence), region states.
+      - name: census_pep_county
+        description: Census PEP vintage 2025 county population and 65+.
+      - name: zcta_county
+        description: Census 2020 ZCTA-to-county relationship file.
+      - name: medicare_enrollment_county
+        description: CMS Medicare Monthly Enrollment, county level, region states.

@@ -1,0 +1,12 @@
+sifpa:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('SIFPA_WAREHOUSE', '../data/warehouse.duckdb') }}"
+      threads: 4
+    ci:
+      # Offline CI: same models on the committed fixture slice (tests/fixtures/raw).
+      type: duckdb
+      path: "../tests/fixtures/ci_warehouse.duckdb"
+      threads: 4
