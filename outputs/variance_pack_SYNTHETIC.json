@@ -6,88 +6,88 @@
     "2027-03-01"
   ],
   "latest_month": "2027-03-01",
-  "budget_contribution_full_year": 5985794,
+  "budget_contribution_full_year": 5713104,
   "by_site_month": [
     {
       "site_id": "S1",
       "month_start": "2027-01-01",
-      "budget": 318095.84,
-      "actual": 303388.01,
-      "volume": -6650.53,
-      "mix": -7502.2,
-      "rate": -555.11,
-      "variance": -14707.84
+      "budget": 303134.69,
+      "actual": 289697.88,
+      "volume": -6254.66,
+      "mix": -6871.92,
+      "rate": -310.23,
+      "variance": -13436.81
     },
     {
       "site_id": "S1",
       "month_start": "2027-02-01",
-      "budget": 302948.42,
-      "actual": 284480.73,
-      "volume": -10912.52,
-      "mix": -7034.66,
-      "rate": -520.52,
-      "variance": -18467.69
+      "budget": 288699.7,
+      "actual": 271643.77,
+      "volume": -10321.37,
+      "mix": -6443.66,
+      "rate": -290.9,
+      "variance": -17055.93
     },
     {
       "site_id": "S1",
       "month_start": "2027-03-01",
-      "budget": 348390.69,
-      "actual": 308171.12,
-      "volume": -32035.22,
-      "mix": -7620.47,
-      "rate": -563.86,
-      "variance": -40219.56
+      "budget": 332004.66,
+      "actual": 294265.16,
+      "volume": -30444.12,
+      "mix": -6980.26,
+      "rate": -315.12,
+      "variance": -37739.5
     },
     {
       "site_id": "S2",
       "month_start": "2027-01-01",
-      "budget": 163519.76,
-      "actual": 128116.81,
-      "volume": -31504.11,
-      "mix": -3456.81,
-      "rate": -442.02,
-      "variance": -35402.95
+      "budget": 156540.34,
+      "actual": 122970.13,
+      "volume": -30124.9,
+      "mix": -3144.52,
+      "rate": -300.78,
+      "variance": -33570.21
     },
     {
       "site_id": "S2",
       "month_start": "2027-02-01",
-      "budget": 155733.1,
-      "actual": 161682.53,
-      "volume": 10869.73,
-      "mix": -4362.48,
-      "rate": -557.83,
-      "variance": 5949.43
+      "budget": 149086.04,
+      "actual": 155187.45,
+      "volume": 10449.37,
+      "mix": -3968.37,
+      "rate": -379.59,
+      "variance": 6101.42
     },
     {
       "site_id": "S2",
       "month_start": "2027-03-01",
-      "budget": 179093.07,
-      "actual": 162966.51,
-      "volume": -11167.18,
-      "mix": -4397.12,
-      "rate": -562.26,
-      "variance": -16126.56
+      "budget": 171448.94,
+      "actual": 156419.85,
+      "volume": -10646.61,
+      "mix": -3999.88,
+      "rate": -382.6,
+      "variance": -15029.09
     }
   ],
   "by_site_ytd": [
     {
       "site_id": "S1",
-      "budget": 969434.95,
-      "actual": 896039.86,
-      "volume": -49598.27,
-      "mix": -22157.33,
-      "rate": -1639.49,
-      "variance": -73395.09
+      "budget": 923839.05,
+      "actual": 855606.81,
+      "volume": -47020.15,
+      "mix": -20295.84,
+      "rate": -916.25,
+      "variance": -68232.24
     },
     {
       "site_id": "S2",
-      "budget": 498345.94,
-      "actual": 452765.85,
-      "volume": -31801.57,
-      "mix": -12216.41,
-      "rate": -1562.11,
-      "variance": -45580.08
+      "budget": 477075.32,
+      "actual": 434577.43,
+      "volume": -30322.14,
+      "mix": -11112.78,
+      "rate": -1062.97,
+      "variance": -42497.89
     }
   ],
-  "identity_max_abs_error": 9.458744898438454e-11
+  "identity_max_abs_error": 5.638867150992155e-11
 }

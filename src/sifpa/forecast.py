@@ -33,8 +33,9 @@ from sifpa.paths import OUTPUTS
 warnings.filterwarnings("ignore")  # statsmodels convergence chatter on short series
 
 H_Q, H_A = 6, 3
-Q_VALID_LAST_TARGET, Q_TEST_FIRST_ORIGIN = "2023Q4", "2024Q1"
-A_VALID_LAST_TARGET, A_TEST_FIRST_ORIGIN = 2020, 2021
+# Disjoint target windows: selection | decision | test (test = origins from, reporting only)
+Q_SEL_LAST, Q_DEC_LAST, Q_TEST_FIRST_ORIGIN = "2022Q4", "2023Q4", "2024Q1"
+A_SEL_LAST, A_DEC_LAST, A_TEST_FIRST_ORIGIN = 2019, 2020, 2021
 
 
 # ---------- models: history -> h point forecasts ----------
@@ -111,42 +112,67 @@ def _quantiles(errors: pd.DataFrame) -> pd.DataFrame:
     return errors.groupby("h")["log_err"].quantile([0.1, 0.9]).unstack().rename(columns={0.1: "q10", 0.9: "q90"})
 
 
-def evaluate(bt: pd.DataFrame, valid: pd.Series, test: pd.Series, select_on: str):
-    """Select per series on validation; score on test; DM of selected vs naive; then apply the decision
-    rule fixed in ADR 0004: keep the selected models only if they beat naive on test MAPE AND are not
-    significantly worse (DM p < 0.05) at any horizon, else use naive everywhere.
+def _matched(a: pd.DataFrame, b: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Keep only the (series, origin, h) forecasts present for BOTH models, so MAPEs are like for like."""
+    key = ["series", "origin", "h"]
+    k = a[key].merge(b[key], on=key)
+    return a.merge(k, on=key), b.merge(k, on=key)
+
+
+def evaluate(bt: pd.DataFrame, sel_mask: pd.Series, dec_mask: pd.Series, test_mask: pd.Series, select_on: str):
+    """Three disjoint target windows:
+      selection  -> best model per series;
+      decision   -> keep the selected models only if they beat naive on MATCHED forecasts here;
+      test       -> reporting only (never consulted for any choice).
+    Significance: Diebold-Mariano per series at h=1 (each series' own time order), counted, instead of a
+    pooled test that would stack products as if they were consecutive time points.
     Returns (summary, plan quantiles per horizon, final model per series)."""
-    v, t = bt[valid], bt[test]
-    sel = v.groupby(["series", "model"])[select_on].mean().reset_index()
+    s_w, d_w, t_w = bt[sel_mask], bt[dec_mask], bt[test_mask]
+    sel = s_w.groupby(["series", "model"])[select_on].mean().reset_index()
     chosen = sel.loc[sel.groupby("series")[select_on].idxmin()].set_index("series")["model"]
-    t_sel = t[t["model"] == t["series"].map(chosen)]
-    t_naive = t[t["model"] == "naive"]
-    dm = {}
-    for h, g in t_sel.groupby("h"):
-        base = t_naive[t_naive["h"] == h].set_index(["series", "origin"])["log_err"]
-        g2 = g.set_index(["series", "origin"])["log_err"]
-        idx = sorted(g2.index.intersection(base.index), key=lambda k: (k[1], k[0]))  # time order
-        dm[int(h)] = dm_test(g2.loc[idx].to_numpy(), base.loc[idx].to_numpy(), int(h))
-    worse = any(d["p_value"] is not None and d["p_value"] < 0.05 and d["dm"] > 0 for d in dm.values())
-    keep_selected = (t_sel["ape"].mean() < t_naive["ape"].mean()) and not worse
-    final = chosen if keep_selected else chosen.map(lambda _m: "naive")
-    v_fin = v[v["model"] == v["series"].map(final)]
-    t_fin = t[t["model"] == t["series"].map(final)]
-    cov = _coverage(t_fin, _quantiles(v_fin))  # honest: calibrated on validation, scored on test
-    q_plan = _quantiles(pd.concat([v_fin, t_fin]))  # the 2027 plan uses every past error
+    pick = lambda w, m: w[w["model"] == w["series"].map(m)]  # noqa: E731
+    naive_map = chosen.map(lambda _m: "naive")
+    d_sel, d_nai = _matched(pick(d_w, chosen), pick(d_w, naive_map))
+    keep_selected = bool(d_sel["ape"].mean() < d_nai["ape"].mean())
+    final = chosen if keep_selected else naive_map
+    t_sel, t_nai = _matched(pick(t_w, chosen), pick(t_w, naive_map))
+    dm_rows = []
+    for series, g in t_sel[t_sel["h"] == 1].groupby("series"):
+        b = t_nai[(t_nai["h"] == 1) & (t_nai["series"] == series)].set_index("origin")["log_err"]
+        g2 = g.set_index("origin")["log_err"].sort_index()
+        if (g["model"] == "naive").all():
+            continue  # naive was selected: nothing to test
+        r = dm_test(g2.to_numpy(), b.loc[g2.index].to_numpy(), 1)
+        dm_rows.append({"series": series, **r})
+    dm = pd.DataFrame(dm_rows)
+    tested = dm.dropna(subset=["p_value"]) if len(dm) else dm
+    v_fin = pick(pd.concat([s_w, d_w]), final)
+    t_fin = pick(t_w, final)
+    cov = _coverage(t_fin, _quantiles(v_fin))  # calibrated on selection+decision windows, scored on test
+    q_plan = _quantiles(pd.concat([v_fin, t_fin]))  # the plan's bands use every past error
     summary = {
-        "test_mape_by_model": t.groupby("model")["ape"].mean().round(4).to_dict(),
+        "test_matched_n": int(len(t_sel)),
+        "test_mape_by_model_all_forecasts": t_w.groupby("model")["ape"].mean().round(4).to_dict(),
         "test_mape_selected": round(float(t_sel["ape"].mean()), 4),
-        "test_mape_naive": round(float(t_naive["ape"].mean()), 4),
+        "test_mape_naive": round(float(t_nai["ape"].mean()), 4),
         "test_mape_by_horizon": {"selected": t_sel.groupby("h")["ape"].mean().round(4).to_dict(),
-                                 "naive": t_naive.groupby("h")["ape"].mean().round(4).to_dict()},
-        "validation_mape_by_model": v.groupby("model")["ape"].mean().round(4).to_dict(),
+                                 "naive": t_nai.groupby("h")["ape"].mean().round(4).to_dict()},
+        # mean log(actual / forecast): > 0 means the model under-forecasts (prices drift up past it)
+        "test_bias_naive": round(float(t_nai["log_err"].mean()), 4),
+        "test_bias_selected": round(float(t_sel["log_err"].mean()), 4),
+        "decision_matched_n": int(len(d_sel)),
+        "decision_mape_selected": round(float(d_sel["ape"].mean()), 4),
+        "decision_mape_naive": round(float(d_nai["ape"].mean()), 4),
+        "decision": "selected models (beat naive on the decision window)" if keep_selected
+        else "naive (selected models did not beat naive on the decision window)",
         "selected_model_counts": chosen.value_counts().to_dict(),
-        "dm_selected_vs_naive_by_h": dm,
-        "decision": "selected models" if keep_selected else "naive (selected models did not beat naive on test)",
+        "dm_per_series_h1": {
+            "n_series_tested": int(len(tested)),
+            "selected_significantly_better": int(((tested["p_value"] < 0.05) & (tested["dm"] < 0)).sum()) if len(tested) else 0,
+            "selected_significantly_worse": int(((tested["p_value"] < 0.05) & (tested["dm"] > 0)).sum()) if len(tested) else 0,
+            "note": "HLN-corrected DM per series at h=1; series with < 8 test origins are not tested"},
         "pi80_test_coverage_by_h": cov.groupby("h")["inside"].mean().round(4).to_dict(),
         "pi80_test_coverage_overall": round(float(cov["inside"].mean()), 4),
-        "n_test_errors": int(len(t_fin)),
     }
     return summary, q_plan, final
 
@@ -186,7 +212,9 @@ def run_quarterly(con) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
             bt = backtest(s, QUARTERLY_MODELS, H_Q, first_origin=11, season=4)
             bts.append(bt.assign(series=code))
     bt = pd.concat(bts, ignore_index=True)
-    summary, q, chosen = evaluate(bt, bt["target"] <= Q_VALID_LAST_TARGET, bt["origin"] >= Q_TEST_FIRST_ORIGIN, "ape")
+    summary, q, chosen = evaluate(bt, bt["target"] <= Q_SEL_LAST,
+                                  (bt["target"] > Q_SEL_LAST) & (bt["target"] <= Q_DEC_LAST),
+                                  bt["origin"] >= Q_TEST_FIRST_ORIGIN, "ape")
     lo_wide, hi_wide = np.exp(q["q10"].min()), np.exp(q["q90"].max())  # q = plan quantiles (all errors)
     for code in df["hcpcs"].unique():  # history too short to reach the validation window
         if code not in chosen.index:
@@ -209,7 +237,8 @@ def run_quarterly(con) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
             paths.append({"hcpcs": code, "basis_quarter": quarter_add(last, k + 1), "h": k + 1, "asp": pred[k],
                           "lo80": pred[k] * lo, "hi80": pred[k] * hi, "model": model, "guard": guards.get(code, "")})
     summary.update({"n_series_modelled": int(bt["series"].nunique()), "n_held": len(guards), "held": guards,
-                    "valid_last_target": Q_VALID_LAST_TARGET, "test_first_origin": Q_TEST_FIRST_ORIGIN})
+                    "selection_last_target": Q_SEL_LAST, "decision_last_target": Q_DEC_LAST,
+                    "test_first_origin": Q_TEST_FIRST_ORIGIN})
     return bt.assign(problem="quarterly_asp"), pd.DataFrame(paths), summary
 
 
@@ -240,7 +269,8 @@ def run_annual(con) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     summary, finals = {}, []
     for metric in ("administrations", "allowed"):
         b = bt[bt["metric"] == metric]
-        s, q, chosen = evaluate(b, b["target"] <= A_VALID_LAST_TARGET, b["origin"] >= A_TEST_FIRST_ORIGIN, "scaled_err")
+        s, q, chosen = evaluate(b, b["target"] <= A_SEL_LAST, (b["target"] > A_SEL_LAST) & (b["target"] <= A_DEC_LAST),
+                                b["origin"] >= A_TEST_FIRST_ORIGIN, "scaled_err")
         summary[metric] = s
         for series, model in chosen.items():
             mol = series.split("|")[0]
@@ -250,8 +280,8 @@ def run_annual(con) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
                 finals.append({"molecule": mol, "metric": metric, "year": yr, "model": model, "forecast": pred[k],
                                "lo80": pred[k] * np.exp(q.loc[k + 1, "q10"]),
                                "hi80": pred[k] * np.exp(q.loc[k + 1, "q90"])})
-    summary.update({"n_molecules": int(len(keep)), "valid_last_target": A_VALID_LAST_TARGET,
-                    "test_first_origin": A_TEST_FIRST_ORIGIN})
+    summary.update({"n_molecules": int(len(keep)), "selection_last_target": A_SEL_LAST,
+                    "decision_last_target": A_DEC_LAST, "test_first_origin": A_TEST_FIRST_ORIGIN})
     return bt.assign(problem="annual"), pd.DataFrame(finals), summary
 
 
@@ -297,12 +327,13 @@ def main() -> None:
                k: round(float((tot.loc[2024, k] / tot.loc[2019, k]) ** 0.2 - 1), 4) for k in tot.columns}}
     (OUTPUTS / "forecast.json").write_text(json.dumps(out, indent=2, default=float) + "\n")
     print(json.dumps({
-        "q": {k: sum_q[k] for k in ("test_mape_by_model", "test_mape_selected", "selected_model_counts",
-                                    "pi80_test_coverage_by_h", "dm_selected_vs_naive_by_h", "n_held")},
-        "a_vol": {k: sum_a["administrations"][k] for k in ("test_mape_by_model", "test_mape_selected",
-                                                            "pi80_test_coverage_by_h", "dm_selected_vs_naive_by_h")},
-        "a_spend": {k: sum_a["allowed"][k] for k in ("test_mape_by_model", "test_mape_selected",
-                                                      "pi80_test_coverage_overall")},
+        "q": {k: sum_q[k] for k in ("test_matched_n", "test_mape_selected", "test_mape_naive", "decision",
+                                    "decision_mape_selected", "decision_mape_naive", "dm_per_series_h1",
+                                    "pi80_test_coverage_by_h", "n_held")},
+        "a_vol": {k: sum_a["administrations"][k] for k in ("test_mape_selected", "test_mape_naive", "decision",
+                                                            "pi80_test_coverage_by_h")},
+        "a_spend": {k: sum_a["allowed"][k] for k in ("test_mape_selected", "test_mape_naive", "decision",
+                                                      "pi80_test_coverage_by_h")},
         "ext": ext, "nat": out["national_inoffice_admin_cagr_2019_2024"]}, indent=1, default=float))
 
 

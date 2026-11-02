@@ -33,6 +33,16 @@
       }
     },
     {
+      "check": "region_specialists_mapped_to_county",
+      "status": "pass",
+      "detail": {
+        "unmapped": 3,
+        "total": 7764,
+        "mapped_by_usps_city_state": 283,
+        "threshold_share": 0.005
+      }
+    },
+    {
       "check": "utilization_latest_year_2024",
       "status": "pass",
       "detail": {
@@ -198,5 +208,5 @@
   ],
   "n_fail": 0,
   "n_flag": 3,
-  "n_pass": 6
+  "n_pass": 7
 }

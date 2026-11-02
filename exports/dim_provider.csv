@@ -219,14 +219,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1013201623,Family Practice,IN,18073,,,,
 1013201870,Neurology,PA,42017,343,284279.35,10216.78,1.521
 1013203314,Family Practice,IL,17001,,,,
-1013203777,Gastroenterology,OH,,32,6132.61,0.0,2.496
+1013203777,Gastroenterology,OH,39035,32,6132.61,0.0,2.496
 1013205046,Allergy/ Immunology,IL,17031,123,23136.79,0.0,0.9863
 1013220060,Family Practice,WV,54033,,,,
 1013229095,Neurology,IL,17031,189,46551.32,0.0,1.3298
 1013229814,Allergy/ Immunology,OH,39049,390,129787.24,52096.07,0.8915
 1013231786,Nurse Practitioner,KY,21083,,,,
 1013231901,Neurology,PA,42003,79,19492.4,0.0,2.6977
-1013233600,Gastroenterology,OH,,53,11689.43,0.0,2.022
+1013233600,Gastroenterology,OH,39035,53,11689.43,0.0,2.022
 1013237627,Neurology,PA,42089,130,34239.37,0.0,1.4993
 1013237981,Neurology,PA,42101,145,45239.06,0.0,2.8818
 1013243401,Rheumatology,PA,42091,522,137640.21,2991.34,1.2593
@@ -236,23 +236,23 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1013273150,Gastroenterology,IL,17031,71,59057.08,,1.9667
 1013276997,Nurse Practitioner,IN,18097,,,,
 1013282243,Hematology-Oncology,IN,18097,,,,
-1013283506,Rheumatology,OH,,114,20858.6,0.0,1.906
+1013283506,Rheumatology,OH,39035,114,20858.6,0.0,1.906
 1013283845,Rheumatology,MI,26089,251,59755.81,0.0,1.3662
 1013290451,Gastroenterology,IL,17031,45,9141.05,0.0,1.9285
 1013297225,Rheumatology,OH,39035,332,800320.53,617058.85,1.5071
 1013321652,Nurse Practitioner,KY,21111,,,,
 1013334184,Internal Medicine,KY,21125,,,,
 1013335595,Gastroenterology,PA,42107,272,71935.36,,1.66
-1013335744,Neurology,OH,,271,45355.05,0.0,1.5554
+1013335744,Neurology,OH,39035,271,45355.05,0.0,1.5554
 1013342633,Neurology,PA,42101,127,73901.33,0.0,1.475
 1013344928,Nurse Practitioner,KY,21195,,,,
 1013345768,Nurse Practitioner,OH,39005,,,,
 1013350362,Pulmonary Disease,PA,42081,,,,
 1013362672,Nurse Practitioner,IN,18021,,,,
 1013366491,Urology,MI,26125,,,,
-1013369446,Neurology,OH,,164,46382.45,0.0,2.0092
+1013369446,Neurology,OH,39035,164,46382.45,0.0,2.0092
 1013379080,Physical Medicine and Rehabilitation,PA,42095,,,,
-1013379395,Gastroenterology,OH,,188,36637.9,0.0,1.4581
+1013379395,Gastroenterology,OH,39035,188,36637.9,0.0,1.4581
 1013382209,Nurse Practitioner,IL,17197,,,,
 1013389022,Nurse Practitioner,KY,21111,,,,
 1013390301,Neurology,OH,39101,47,8895.06,0.0,1.2625
@@ -262,7 +262,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1013409119,Neurology,PA,42043,137,27209.98,0.0,1.9124
 1013438068,Internal Medicine,MI,26163,,,,
 1013440312,Urology,PA,42101,,,,
-1013440775,Gastroenterology,PA,,13,2506.46,0.0,0.6768
+1013440775,Gastroenterology,PA,42077,13,2506.46,0.0,0.6768
 1013443597,Gastroenterology,PA,42101,42,9218.32,0.0,2.391
 1013447358,Neurology,PA,42071,237,41422.3,0.0,1.228
 1013448067,Family Practice,MI,26099,,,,
@@ -353,7 +353,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1023018488,Otolaryngology,PA,42079,,,,
 1023018942,Nurse Practitioner,OH,39107,,,,
 1023019262,Ophthalmology,OH,39061,,,,
-1023028750,Neurology,IL,,450,91886.48,,2.8958
+1023028750,Neurology,IL,17031,450,91886.48,,2.8958
 1023030855,Nurse Practitioner,PA,42133,,,,
 1023031986,Family Practice,PA,42095,,,,
 1023040953,Emergency Medicine,OH,39167,,,,
@@ -373,7 +373,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1023067477,Gastroenterology,IN,39049,379,100868.76,0.0,1.7376
 1023068152,Internal Medicine,IL,17043,,,,
 1023072329,Internal Medicine,PA,42049,,,,
-1023073533,Internal Medicine,PA,,,,,
+1023073533,Internal Medicine,PA,42079,,,,
 1023073699,Family Practice,IN,18083,,,,
 1023073806,Endocrinology,OH,39101,,,,
 1023073905,Rheumatology,OH,39061,295,247649.03,179263.51,1.6954
@@ -561,7 +561,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1033167846,Hematology-Oncology,IL,17163,,,,
 1033168273,General Surgery,IL,17031,,,,
 1033170022,Internal Medicine,MI,26125,,,,
-1033172879,Gastroenterology,OH,,226,34852.78,0.0,2.3031
+1033172879,Gastroenterology,OH,39035,226,34852.78,0.0,2.3031
 1033173794,Neurology,MI,26077,220,33994.12,0.0,1.545
 1033178777,Family Practice,KY,21081,,,,
 1033183983,Family Practice,PA,42077,,,,
@@ -583,7 +583,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1033210737,Gastroenterology,IN,18177,1102,231996.51,0.0,1.2804
 1033215520,Gastroenterology,KY,21111,548,112558.07,0.0,1.4072
 1033218664,Family Practice,IN,18005,,,,
-1033219340,Endocrinology,OH,,,,,
+1033219340,Endocrinology,OH,39035,,,,
 1033221635,Obstetrics & Gynecology,OH,39099,,,,
 1033223318,Urology,OH,39109,,,,
 1033229224,Rheumatology,IL,17201,412,57890.54,,1.4639
@@ -635,7 +635,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1033483755,Rheumatology,PA,42101,978,3055166.09,2698960.08,1.2468
 1033485313,Neurology,PA,42017,361,113102.07,0.0,1.3204
 1033485644,Gastroenterology,KY,21015,352,84584.06,0.0,1.8628
-1033487210,Nurse Practitioner,WV,,,,,
+1033487210,Nurse Practitioner,WV,54061,,,,
 1033499462,Neurology,PA,42043,187,51764.16,0.0,1.4447
 1033501481,Nurse Practitioner,MI,26145,,,,
 1033516935,Nurse Practitioner,IL,17159,,,,
@@ -645,7 +645,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1033525589,Family Practice,OH,39113,,,,
 1033526165,Internal Medicine,IL,17031,,,,
 1033529235,Neurology,WV,54039,65,9648.07,0.0,2.2993
-1033538699,Allergy/ Immunology,OH,,49,6812.26,0.0,1.3375
+1033538699,Allergy/ Immunology,OH,39035,49,6812.26,0.0,1.3375
 1033539689,Family Practice,PA,42017,,,,
 1033548383,Hematology-Oncology,IL,17031,,,,
 1033552088,Neurology,IL,17031,147,55490.78,0.0,2.5185
@@ -655,7 +655,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1033572318,Endocrinology,PA,42017,,,,
 1033572870,Neurology,PA,42101,201,120285.31,71535.58,1.634
 1033572904,Gastroenterology,IL,17097,308,114472.13,,2.2411
-1033573944,Neurology,OH,,153,29103.55,0.0,1.493
+1033573944,Neurology,OH,39035,153,29103.55,0.0,1.493
 1033584727,Nurse Practitioner,OH,39049,,,,
 1033590542,Family Practice,KY,21227,,,,
 1033596903,Allergy/ Immunology,MI,26163,121,51036.9,0.0,0.9523
@@ -676,7 +676,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1033762562,Nurse Practitioner,OH,39109,,,,
 1033786983,Nurse Practitioner,IN,18081,,,,
 1033792726,Nurse Practitioner,KY,21001,,,,
-1033805981,Gastroenterology,OH,,29,3531.39,0.0,1.3495
+1033805981,Gastroenterology,OH,39035,29,3531.39,0.0,1.3495
 1033817978,Nurse Practitioner,KY,21093,,,,
 1033857024,Physician Assistant,OH,39085,,,,
 1033867874,Nurse Practitioner,KY,21055,,,,
@@ -722,7 +722,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1043270861,Family Practice,OH,39161,,,,
 1043271729,Rheumatology,PA,42101,129,27842.09,0.0,1.707
 1043274525,Hematology-Oncology,OH,39151,,,,
-1043274681,Neurology,OH,,180,32219.6,0.0,1.368
+1043274681,Neurology,OH,39035,180,32219.6,0.0,1.368
 1043274830,Gastroenterology,WV,54039,474,117530.17,,1.4079
 1043275530,Nurse Practitioner,IN,18019,,,,
 1043277668,Family Practice,PA,42107,,,,
@@ -734,7 +734,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1043286909,Internal Medicine,IN,18003,,,,
 1043287501,Internal Medicine,OH,39151,,,,
 1043289903,Gastroenterology,PA,42089,678,193504.31,0.0,1.6117
-1043289945,Neurology,PA,,501,73242.16,0.0,1.3536
+1043289945,Neurology,PA,42079,501,73242.16,0.0,1.3536
 1043291917,Physical Medicine and Rehabilitation,OH,39003,,,,
 1043292923,Gastroenterology,OH,39057,399,222992.59,117871.52,1.1976
 1043294481,Neurology,OH,39049,196,96461.41,968.26,1.0337
@@ -825,7 +825,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1043663669,Nurse Practitioner,WV,54059,,,,
 1043665060,Gastroenterology,IL,17031,303,90022.76,0.0,1.688
 1043668239,Neurology,IL,17031,189,959224.54,903286.46,1.7439
-1043673486,Gastroenterology,OH,,154,29275.02,0.0,1.9664
+1043673486,Gastroenterology,OH,39035,154,29275.02,0.0,1.9664
 1043676109,Physician Assistant,IL,17113,,,,
 1043684335,Nurse Practitioner,OH,39061,,,,
 1043686371,Nurse Practitioner,KY,21093,,,,
@@ -835,7 +835,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1043698988,Gastroenterology,MI,26121,123,40969.77,98.93,0.9773
 1043701832,Internal Medicine,MI,26125,,,,
 1043709363,Family Practice,KY,21111,,,,
-1043715337,Rheumatology,OH,,107,20528.29,0.0,1.4985
+1043715337,Rheumatology,OH,39035,107,20528.29,0.0,1.4985
 1043716079,Dermatology,IN,18081,,,,
 1043716772,Pain Management,KY,21111,,,,
 1043724743,Nurse Practitioner,IN,18167,,,,
@@ -895,11 +895,11 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1053345934,Neurology,PA,42029,1157,507412.36,100342.99,1.3317
 1053347740,Internal Medicine,PA,42045,,,,
 1053347856,Internal Medicine,IN,18077,,,,
-1053347864,Rheumatology,OH,,535,106209.18,0.0,1.2494
+1053347864,Rheumatology,OH,39035,535,106209.18,0.0,1.2494
 1053349456,Family Practice,KY,21111,,,,
 1053349779,Gastroenterology,PA,42019,447,107759.26,,1.216
 1053349886,Rheumatology,IL,17031,86,19470.63,116.68,1.5774
-1053350983,Neurology,OH,,48,4466.46,0.0,1.9004
+1053350983,Neurology,OH,39035,48,4466.46,0.0,1.9004
 1053351247,Physical Medicine and Rehabilitation,MI,26049,,,,
 1053351494,Allergy/ Immunology,OH,39167,86,17621.56,0.0,1.3923
 1053351544,Medical Oncology,PA,42055,,,,
@@ -950,7 +950,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1053479154,Family Practice,MI,26163,,,,
 1053490920,Internal Medicine,IL,17031,,,,
 1053495077,Gastroenterology,MI,26161,267,49532.9,0.0,1.6083
-1053500470,Neurology,PA,,228,30326.14,0.0,1.9083
+1053500470,Neurology,PA,42079,228,30326.14,0.0,1.9083
 1053502260,Nurse Practitioner,KY,21009,,,,
 1053503748,Neurology,MI,26081,157,29968.99,0.0,1.8783
 1053512822,Urology,OH,39045,,,,
@@ -1161,7 +1161,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1063789014,Physician Assistant,MI,26099,,,,
 1063799351,Family Practice,PA,42101,,,,
 1063804193,Internal Medicine,PA,42101,,,,
-1063807204,Gastroenterology,OH,,157,29514.89,0.0,1.8272
+1063807204,Gastroenterology,OH,39035,157,29514.89,0.0,1.8272
 1063808137,Family Practice,KY,21111,,,,
 1063808731,Neurology,IL,17031,435,66414.94,0.0,1.5047
 1063815439,Nurse Practitioner,IN,18095,,,,
@@ -1195,7 +1195,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1063999662,Ambulatory Surgical Center,KY,21227,,,,
 1073008108,Neurology,MI,26161,163,37427.09,0.0,1.8039
 1073010823,Family Practice,PA,42027,,,,
-1073017968,Neurology,OH,,25,6571.11,0.0,1.3952
+1073017968,Neurology,OH,39035,25,6571.11,0.0,1.3952
 1073019519,Rheumatology,PA,42003,167,42142.16,137.5,1.3027
 1073021556,Nurse Practitioner,IN,18097,,,,
 1073024238,Nurse Practitioner,IN,18173,,,,
@@ -1249,7 +1249,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1073547048,Allergy/ Immunology,PA,42091,155,378667.52,324465.87,0.8961
 1073550380,Family Practice,PA,42091,,,,
 1073551248,Physician Assistant,IN,18005,,,,
-1073553541,Neurology,OH,,67,4751.58,0.0,2.2764
+1073553541,Neurology,OH,39035,67,4751.58,0.0,2.2764
 1073555488,Gastroenterology,IL,17143,537,230738.16,120941.45,1.038
 1073556155,Critical Care (Intensivists),IN,18089,,,,
 1073557310,Neurology,MI,26065,204,40338.71,0.0,1.7344
@@ -1262,7 +1262,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1073574737,Nurse Practitioner,OH,39013,,,,
 1073576922,Hematology-Oncology,IL,17143,,,,
 1073577045,Urology,IL,17097,,,,
-1073577110,Gastroenterology,OH,,241,34788.45,0.0,2.0198
+1073577110,Gastroenterology,OH,39035,241,34788.45,0.0,2.0198
 1073577383,Pulmonary Disease,PA,42081,,,,
 1073578985,Internal Medicine,KY,21111,,,,
 1073579512,Gastroenterology,MI,26065,349,116624.79,,1.5178
@@ -1343,7 +1343,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1073947917,Gastroenterology,OH,39049,290,56151.51,0.0,1.6699
 1073950390,Gastroenterology,IL,17031,156,40206.97,0.0,2.3375
 1073958872,Neurology,PA,42003,190,71658.96,,1.658
-1073959078,Gastroenterology,OH,,64,13856.94,0.0,2.1893
+1073959078,Gastroenterology,OH,39035,64,13856.94,0.0,2.1893
 1073964847,Neurology,OH,39061,323,711407.4,651020.33,1.7435
 1073967220,Internal Medicine,IN,18057,,,,
 1073969044,Nurse Practitioner,IL,17115,,,,
@@ -1423,7 +1423,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1083639272,Family Practice,KY,21213,,,,
 1083639306,Family Practice,PA,42119,,,,
 1083639819,Neurology,OH,39049,35,4884.96,0.0,1.4354
-1083640197,Neurology,OH,,104,16946.06,0.0,1.6967
+1083640197,Neurology,OH,39035,104,16946.06,0.0,1.6967
 1083643373,Rheumatology,PA,42133,,,,
 1083645758,Internal Medicine,WV,54039,,,,
 1083647408,Neurology,IL,17163,53,9563.72,0.0,1.8086
@@ -1604,7 +1604,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1093734980,Family Practice,MI,26099,,,,
 1093741829,Urology,PA,42045,,,,
 1093743163,Family Practice,IL,17043,,,,
-1093743718,Neurology,OH,,171,41006.12,0.0,1.6995
+1093743718,Neurology,OH,39035,171,41006.12,0.0,1.6995
 1093748683,Neurology,IL,17031,,,,
 1093749913,Family Practice,OH,39011,,,,
 1093754640,Internal Medicine,IN,18029,,,,
@@ -1612,7 +1612,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1093759409,Internal Medicine,PA,42101,,,,
 1093760415,Gastroenterology,IL,17031,486,133510.21,,1.003
 1093761801,Gastroenterology,PA,42007,161,26825.25,,1.4057
-1093762270,Neurology,PA,,255,43006.79,0.0,1.5517
+1093762270,Neurology,PA,42079,255,43006.79,0.0,1.5517
 1093762338,Family Practice,IL,17043,,,,
 1093763120,Internal Medicine,IL,17111,,,,
 1093763930,Rheumatology,OH,39095,261,125750.8,1134.53,1.4319
@@ -1621,7 +1621,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1093767733,Rheumatology,IL,17031,888,5308313.43,4485757.63,1.3398
 1093770745,Internal Medicine,IN,18077,,,,
 1093771701,Nurse Practitioner,PA,42121,,,,
-1093772154,Gastroenterology,OH,,344,32025.37,0.0,1.6804
+1093772154,Gastroenterology,OH,39035,344,32025.37,0.0,1.6804
 1093774705,Physician Assistant,IL,17143,,,,
 1093777690,Neurology,OH,39153,445,1735739.25,1609848.85,1.2976
 1093778821,Internal Medicine,IN,18037,,,,
@@ -1687,7 +1687,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1104007061,Hand Surgery,IL,17031,,,,
 1104007533,Neurology,IL,17031,385,104133.21,,1.6454
 1104009307,Neurology,IL,17089,421,115731.69,18323.64,1.6943
-1104014083,Neurology,OH,,117,68379.45,0.0,1.5244
+1104014083,Neurology,OH,39035,117,68379.45,0.0,1.5244
 1104016096,Endocrinology,PA,42003,,,,
 1104019231,Gastroenterology,MI,26163,199,42889.26,0.0,1.852
 1104021062,Neurology,IN,18067,128,28325.75,0.0,1.8928
@@ -1704,8 +1704,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1104082809,Hematology-Oncology,IN,18089,,,,
 1104082957,Allergy/ Immunology,OH,39063,107,54811.32,,1.0553
 1104085166,Neurology,PA,42051,112,19658.38,0.0,1.3231
-1104087865,Gastroenterology,OH,,249,61129.78,0.0,1.4969
-1104088939,Neurology,IL,,84,22446.37,0.0,2.2788
+1104087865,Gastroenterology,OH,39035,249,61129.78,0.0,1.4969
+1104088939,Neurology,IL,17167,84,22446.37,0.0,2.2788
 1104089119,Neurology,PA,42091,529,168859.14,,1.9018
 1104089457,Neurology,KY,21067,177,33828.07,0.0,2.2163
 1104089986,Urology,MI,26081,,,,
@@ -1723,7 +1723,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1104119387,Gastroenterology,IN,18097,196,38157.61,0.0,1.4544
 1104121227,Neurology,PA,42003,74,44705.02,0.0,1.1321
 1104126978,Nurse Practitioner,IN,18173,,,,
-1104132554,Rheumatology,OH,,171,73283.58,0.0,1.2697
+1104132554,Rheumatology,OH,39035,171,73283.58,0.0,1.2697
 1104137967,Neurology,MI,26163,1105,829363.82,2748.26,1.7049
 1104139401,Internal Medicine,MI,26125,,,,
 1104142389,Urology,OH,39025,,,,
@@ -1838,7 +1838,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1104864966,Gastroenterology,PA,42069,192,32410.81,0.0,1.2788
 1104866227,Psychiatry,MI,26089,,,,
 1104867068,General Surgery,IN,18073,,,,
-1104867118,Neurology,OH,,24,5057.08,0.0,1.7358
+1104867118,Neurology,OH,39035,24,5057.08,0.0,1.7358
 1104870146,Neurology,PA,42045,678,475585.56,,1.7936
 1104871300,Obstetrics & Gynecology,PA,42045,,,,
 1104876473,Family Practice,PA,42003,,,,
@@ -1895,7 +1895,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1114119997,Ophthalmology,MI,26065,,,,
 1114124278,Neurology,IL,17031,72,19993.41,0.0,1.8287
 1114134632,Hematology-Oncology,MI,26125,,,,
-1114142791,Gastroenterology,OH,,405,64825.34,0.0,1.5775
+1114142791,Gastroenterology,OH,39035,405,64825.34,0.0,1.5775
 1114146693,Rheumatology,OH,39093,526,77263.12,0.0,1.3152
 1114147097,Urology,WV,54079,,,,
 1114148376,Family Practice,OH,39109,,,,
@@ -1943,7 +1943,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1114361961,Rheumatology,WV,54039,90,15744.61,0.0,2.0723
 1114367299,Nurse Practitioner,PA,42027,,,,
 1114372141,Neurology,KY,21111,74,25330.17,0.0,1.8139
-1114376605,Allergy/ Immunology,OH,,69,10596.71,0.0,1.2904
+1114376605,Allergy/ Immunology,OH,39035,69,10596.71,0.0,1.2904
 1114378692,Neurology,MI,26081,115,32898.01,0.0,2.3354
 1114380318,Neurology,IL,17031,122,39068.5,0.0,2.2449
 1114389145,Neurology,KY,21111,344,86750.14,0.0,1.8081
@@ -1992,7 +1992,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1114912748,Neurology,PA,42077,271,58610.82,,1.4975
 1114913225,Urology,IL,17115,,,,
 1114914280,Internal Medicine,WV,54029,,,,
-1114915337,Gastroenterology,OH,,261,52832.14,0.0,0.9393
+1114915337,Gastroenterology,OH,39035,261,52832.14,0.0,0.9393
 1114915899,Internal Medicine,OH,39081,,,,
 1114916517,Hematology-Oncology,IL,17031,,,,
 1114916558,Family Practice,IL,17097,,,,
@@ -2026,7 +2026,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1114975299,Neurology,PA,42077,562,61753.82,0.0,2.093
 1114976685,Gastroenterology,IN,18097,271,54820.02,0.0,1.1451
 1114978087,Internal Medicine,IL,17089,,,,
-1114980059,Allergy/ Immunology,OH,,53,7623.05,0.0,1.3254
+1114980059,Allergy/ Immunology,OH,39035,53,7623.05,0.0,1.3254
 1114982154,Urology,IL,17049,,,,
 1114982477,Neurology,IL,17031,183,66342.45,0.0,1.4811
 1114983616,Internal Medicine,PA,42063,,,,
@@ -2037,7 +2037,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1114994001,Physician Assistant,KY,21059,,,,
 1114996121,Orthopedic Surgery,PA,42119,,,,
 1114997756,Internal Medicine,IN,18081,,,,
-1114998101,Neurology,PA,,32,6332.18,0.0,1.4857
+1114998101,Neurology,PA,42003,32,6332.18,0.0,1.4857
 1114999703,Family Practice,PA,42131,,,,
 1124001458,Family Practice,IN,18041,,,,
 1124004585,Neurology,IL,17031,478,88902.23,0.0,1.5797
@@ -2091,7 +2091,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1124076831,Internal Medicine,KY,21059,,,,
 1124077714,Hematology-Oncology,IL,17019,,,,
 1124080817,Family Practice,PA,42091,,,,
-1124082821,Allergy/ Immunology,OH,,116,15857.56,0.0,1.325
+1124082821,Allergy/ Immunology,OH,39035,116,15857.56,0.0,1.325
 1124085436,Allergy/ Immunology,MI,26125,37,12194.67,0.0,1.4816
 1124085758,Urology,IL,17011,,,,
 1124086087,Internal Medicine,IL,17043,,,,
@@ -2186,8 +2186,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1124469267,Internal Medicine,IL,17043,,,,
 1124471545,Nurse Practitioner,OH,39113,,,,
 1124474903,Family Practice,KY,21115,,,,
-1124477179,Rheumatology,OH,,132,24374.91,0.0,1.4152
-1124479985,Neurology,OH,,189,29499.96,0.0,1.9072
+1124477179,Rheumatology,OH,39035,132,24374.91,0.0,1.4152
+1124479985,Neurology,OH,39035,189,29499.96,0.0,1.9072
 1124482294,Internal Medicine,OH,39049,,,,
 1124510268,Family Practice,PA,42125,,,,
 1124511555,Gastroenterology,IL,17031,64,14519.21,0.0,1.2893
@@ -2255,7 +2255,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1134135973,Medical Oncology,IL,17019,,,,
 1134137144,Internal Medicine,KY,21227,,,,
 1134140551,Neurology,IL,17043,323,98014.77,0.0,2.1465
-1134140577,Gastroenterology,OH,,224,56691.48,0.0,2.2591
+1134140577,Gastroenterology,OH,39035,224,56691.48,0.0,2.2591
 1134142763,Neurology,PA,42101,240,51545.83,0.0,1.7102
 1134143019,Internal Medicine,IN,18089,,,,
 1134144660,Rheumatology,PA,42101,275,68254.8,0.0,2.0904
@@ -2346,14 +2346,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1134385941,Internal Medicine,MI,26091,,,,
 1134388119,Dermatology,IN,18005,,,,
 1134388598,Gastroenterology,IL,17031,187,40612.35,0.0,2.6275
-1134390032,Gastroenterology,OH,,249,70916.06,0.0,1.7882
+1134390032,Gastroenterology,OH,39035,249,70916.06,0.0,1.7882
 1134390750,Rheumatology,IL,17043,254,328241.17,206695.11,1.4083
 1134396484,Family Practice,WV,54033,,,,
 1134410285,Neurology,PA,42091,179,47180.98,0.0,1.3888
 1134417801,Internal Medicine,PA,42019,,,,
 1134451495,Physician Assistant,OH,39095,,,,
 1134452501,Family Practice,MI,26125,,,,
-1134458813,Neurology,OH,,204,38602.49,0.0,1.4805
+1134458813,Neurology,OH,39035,204,38602.49,0.0,1.4805
 1134469232,Cardiology,PA,42077,,,,
 1134469653,Physician Assistant,PA,42081,,,,
 1134471113,Nurse Practitioner,KY,21145,,,,
@@ -2361,7 +2361,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1134474091,Internal Medicine,IN,18127,,,,
 1134480957,Nurse Practitioner,MI,26161,,,,
 1134488638,Micrographic Dermatologic Surgery,PA,42017,,,,
-1134495013,Neurology,OH,,61,8256.81,0.0,1.9019
+1134495013,Neurology,OH,39035,61,8256.81,0.0,1.9019
 1134504152,Nurse Practitioner,KY,21059,,,,
 1134513559,Nurse Practitioner,KY,21027,,,,
 1134515232,Neurology,OH,39035,350,67397.06,0.0,1.8471
@@ -2370,7 +2370,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1134554751,Nurse Practitioner,PA,42081,,,,
 1134561616,Allergy/ Immunology,IL,17031,70,19720.34,,0.849
 1134562549,Gastroenterology,MI,26125,435,125907.46,0.0,1.8877
-1134571342,Gastroenterology,OH,,206,31043.97,0.0,1.2794
+1134571342,Gastroenterology,OH,39035,206,31043.97,0.0,1.2794
 1134576960,Endocrinology,OH,39061,,,,
 1134580145,Nurse Practitioner,KY,21067,,,,
 1134580863,Rheumatology,IN,18163,295,905227.95,809846.88,1.4072
@@ -2383,11 +2383,11 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1134633977,Nurse Practitioner,MI,26163,,,,
 1134640717,Family Practice,PA,42079,,,,
 1134650658,Neurology,IL,17113,125,25315.01,0.0,1.7261
-1134651839,Neurology,OH,,63,15392.58,0.0,1.691
-1134652449,Allergy/ Immunology,OH,,137,46294.56,0.0,1.0699
+1134651839,Neurology,OH,39035,63,15392.58,0.0,1.691
+1134652449,Allergy/ Immunology,OH,39035,137,46294.56,0.0,1.0699
 1134655491,Neurology,IN,18173,351,103185.24,0.0,1.4327
 1134657588,Physician Assistant,PA,42027,,,,
-1134675499,Neurology,OH,,198,30277.37,0.0,2.0127
+1134675499,Neurology,OH,39035,198,30277.37,0.0,2.0127
 1134680424,Neurology,OH,39057,385,244261.14,165554.01,1.6009
 1134689938,Family Practice,PA,42043,,,,
 1134779267,Nurse Practitioner,MI,26117,,,,
@@ -2480,7 +2480,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1144366931,Internal Medicine,PA,42133,,,,
 1144370990,Internal Medicine,IL,17043,,,,
 1144372004,Medical Oncology,MI,26099,,,,
-1144372152,Gastroenterology,OH,,332,64513.75,0.0,0.9753
+1144372152,Gastroenterology,OH,39035,332,64513.75,0.0,0.9753
 1144372194,Urology,IL,17031,,,,
 1144398934,Family Practice,MI,26093,,,,
 1144403288,Family Practice,KY,21133,,,,
@@ -2652,7 +2652,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1154499606,Gastroenterology,MI,26099,146,30462.93,0.0,2.6991
 1154513687,Neurology,MI,26081,43,27462.96,0.0,1.5663
 1154519239,Physician Assistant,OH,39057,,,,
-1154521136,Rheumatology,OH,,231,47699.91,0.0,1.814
+1154521136,Rheumatology,OH,39035,231,47699.91,0.0,1.814
 1154521177,Gastroenterology,MI,26161,392,163298.45,80233.85,1.2134
 1154524882,Gastroenterology,OH,39035,695,141490.41,0.0,1.7393
 1154526770,Gastroenterology,IL,17031,354,119427.7,,1.6669
@@ -2674,7 +2674,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1154585115,Rheumatology,OH,39095,345,113312.68,2191.61,2.0838
 1154585149,Family Practice,MI,26081,,,,
 1154585172,Hematology-Oncology,MI,26081,,,,
-1154591428,Gastroenterology,OH,,165,36784.86,3516.97,2.639
+1154591428,Gastroenterology,OH,39035,165,36784.86,3516.97,2.639
 1154597284,Gastroenterology,IL,17201,369,128825.51,,2.0022
 1154620458,Endocrinology,IL,17089,,,,
 1154626596,Neurology,OH,39035,315,45528.67,0.0,1.7002
@@ -2724,7 +2724,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1154850212,Neurology,PA,42101,229,66495.03,0.0,1.4789
 1154850618,Hematology,PA,42003,,,,
 1154851400,Neurology,MI,26161,76,34388.9,0.0,1.7732
-1154852051,Neurology,OH,,148,29877.13,0.0,1.6234
+1154852051,Neurology,OH,39035,148,29877.13,0.0,1.6234
 1154855443,Allergy/ Immunology,MI,26163,37,31593.31,0.0,0.8728
 1154856714,Gastroenterology,IL,17031,19,3569.57,0.0,0.8441
 1154871804,Nurse Practitioner,KY,21161,,,,
@@ -2793,7 +2793,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1164460622,Neurology,OH,39113,171,33554.89,0.0,2.4445
 1164462875,Family Practice,OH,39035,,,,
 1164463725,Gastroenterology,IN,18091,240,47828.28,0.0,0.8407
-1164463873,Neurology,OH,,263,42479.87,0.0,1.7734
+1164463873,Neurology,OH,39035,263,42479.87,0.0,1.7734
 1164468690,Family Practice,MI,26125,,,,
 1164469474,Neuropsychiatry,IN,18063,,,,
 1164470068,Psychiatry,MI,26065,,,,
@@ -2818,7 +2818,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1164496568,Rheumatology,KY,21067,394,86988.58,,1.3379
 1164497699,Gastroenterology,PA,42003,114,22831.79,0.0,1.6964
 1164498614,Neurology,IL,17031,503,108484.24,0.0,1.7356
-1164498747,Neurology,OH,,210,26040.75,0.0,1.5847
+1164498747,Neurology,OH,39035,210,26040.75,0.0,1.5847
 1164498879,Neurology,OH,39035,236,86919.83,,1.5524
 1164500153,Family Practice,IN,18035,,,,
 1164500500,Gastroenterology,PA,42027,281,55973.47,,1.2625
@@ -2881,7 +2881,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1164777926,Psychiatry,OH,39049,,,,
 1164782751,Allergy/ Immunology,KY,21015,112,95354.54,,1.1154
 1164785770,Neurology,IL,17097,241,49039.33,0.0,1.343
-1164786224,Gastroenterology,OH,,28,4839.91,0.0,1.4058
+1164786224,Gastroenterology,OH,39035,28,4839.91,0.0,1.4058
 1164786448,Neurology,IL,17031,391,151933.95,0.0,2.5543
 1164798146,Allergy/ Immunology,PA,42101,122,18193.75,0.0,1.6159
 1164804746,Rheumatology,OH,39017,182,47460.64,0.0,1.3723
@@ -3013,7 +3013,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1174584817,Gastroenterology,MI,26099,487,108252.01,0.0,1.3387
 1174588487,Urology,MI,26099,,,,
 1174588644,Neurology,PA,42133,459,93543.8,0.0,1.4449
-1174590707,Hematology-Oncology,OH,,,,,
+1174590707,Hematology-Oncology,OH,39035,,,,
 1174593958,Family Practice,PA,42101,,,,
 1174596209,Nurse Practitioner,KY,21227,,,,
 1174597538,Rheumatology,IN,18167,673,3279735.8,3050936.79,1.3562
@@ -3084,7 +3084,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1174883359,Physician Assistant,MI,26049,,,,
 1174886329,Nurse Practitioner,KY,21059,,,,
 1174900997,Gastroenterology,IL,17043,296,82148.14,0.0,1.9096
-1174902761,Gastroenterology,OH,,62,12490.36,0.0,2.0459
+1174902761,Gastroenterology,OH,39035,62,12490.36,0.0,2.0459
 1174902985,Family Practice,PA,42055,,,,
 1174918122,Neurology,PA,42101,58,14747.31,0.0,1.3644
 1174918551,Rheumatology,PA,42091,559,1026874.97,870691.56,1.2759
@@ -3104,7 +3104,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1174963458,Physical Medicine and Rehabilitation,IL,17199,,,,
 1174963888,Neurology,PA,42043,383,45023.97,0.0,1.7796
 1174968846,Gastroenterology,IL,17091,491,110144.43,0.0,1.655
-1174971410,Neurology,OH,,57,27471.62,0.0,1.8716
+1174971410,Neurology,OH,39035,57,27471.62,0.0,1.8716
 1174985162,Gastroenterology,IN,18097,240,57230.99,0.0,1.4734
 1174998314,Nurse Practitioner,KY,21015,,,,
 1184003501,Nurse Practitioner,IN,18163,,,,
@@ -3118,7 +3118,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1184016719,Internal Medicine,PA,42041,,,,
 1184018178,Gastroenterology,IL,17201,425,260534.29,169330.2,1.4694
 1184025132,Neurology,IL,17031,154,75807.7,27300.73,1.5842
-1184026940,Certified Clinical Nurse Specialist,IL,,,,,
+1184026940,Certified Clinical Nurse Specialist,IL,17143,,,,
 1184029100,Nurse Practitioner,KY,21061,,,,
 1184032559,Nurse Practitioner,IL,17043,,,,
 1184038648,Neurology,PA,42101,110,22261.34,0.0,2.0544
@@ -3158,7 +3158,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1184324956,Nurse Practitioner,IN,18089,,,,
 1184376626,Nurse Practitioner,KY,21111,,,,
 1184376758,Nurse Practitioner,OH,39095,,,,
-1184499683,Physician Assistant,MI,,,,,
+1184499683,Physician Assistant,MI,26163,,,,
 1184600512,Emergency Medicine,OH,39091,,,,
 1184601510,Family Practice,MI,26099,,,,
 1184601577,Internal Medicine,IL,17051,,,,
@@ -3280,7 +3280,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1194031435,Gastroenterology,IL,17031,417,85427.08,0.0,1.7812
 1194040626,Family Practice,MI,26125,,,,
 1194046094,Neurology,MI,26161,74,13274.63,0.0,1.7668
-1194064279,Neurology,IL,,246,55148.86,0.0,2.0632
+1194064279,Neurology,IL,17143,246,55148.86,0.0,2.0632
 1194078717,Obstetrics & Gynecology,OH,39093,,,,
 1194081968,Neurology,WV,54061,185,58718.94,0.0,1.5408
 1194082578,Gastroenterology,IN,18089,442,133506.63,0.0,1.887
@@ -3325,7 +3325,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1194266957,Nurse Practitioner,MI,26125,,,,
 1194267328,Nurse Practitioner,IN,18173,,,,
 1194269464,Nurse Practitioner,KY,21035,,,,
-1194280644,Nurse Practitioner,PA,,,,,
+1194280644,Nurse Practitioner,PA,42049,,,,
 1194285221,Rheumatology,OH,39049,78,13055.12,,2.1061
 1194286484,Family Practice,MI,26065,,,,
 1194287185,Rheumatology,IL,17031,63,13040.14,,1.5457
@@ -3360,12 +3360,12 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1194719922,Nurse Practitioner,IN,18093,,,,
 1194720425,Allergy/ Immunology,PA,42003,170,40641.1,,0.8546
 1194720870,Obstetrics & Gynecology,PA,42107,,,,
-1194722678,Nurse Practitioner,PA,,,,,
+1194722678,Nurse Practitioner,PA,42071,,,,
 1194722843,Neurology,IN,18097,180,258553.55,213215.61,1.411
 1194723460,Rheumatology,PA,42003,535,250673.24,149559.15,1.0709
 1194723585,Neurology,PA,42091,529,590723.17,250074.77,1.5671
 1194725291,Allergy/ Immunology,IL,17031,110,26562.08,0.0,1.3699
-1194725515,Gastroenterology,PA,,373,59146.78,0.0,1.6064
+1194725515,Gastroenterology,PA,42079,373,59146.78,0.0,1.6064
 1194726653,Family Practice,PA,42001,,,,
 1194730580,Internal Medicine,OH,39035,,,,
 1194734640,Hematology-Oncology,MI,26077,,,,
@@ -3653,7 +3653,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1215137161,Gastroenterology,MI,26161,161,38012.7,0.0,1.7464
 1215137500,Pain Management,KY,21227,,,,
 1215138920,Family Practice,IN,18163,,,,
-1215142674,Neurology,OH,,71,6227.32,0.0,1.6486
+1215142674,Neurology,OH,39035,71,6227.32,0.0,1.6486
 1215145628,Gastroenterology,OH,39035,366,83457.39,0.0,0.8734
 1215147343,Neurology,MI,26081,90,17921.66,0.0,1.647
 1215154562,Rheumatology,OH,39045,258,568660.74,495449.66,1.4096
@@ -3715,7 +3715,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1215460316,Rheumatology,IN,18097,333,65364.61,0.0,1.3044
 1215462411,Nurse Practitioner,PA,42077,,,,
 1215462874,Neurology,PA,42003,98,45664.47,0.0,1.6142
-1215465265,Neurology,OH,,230,38104.01,0.0,1.4507
+1215465265,Neurology,OH,39035,230,38104.01,0.0,1.4507
 1215467782,Nurse Practitioner,MI,26145,,,,
 1215469366,Neurology,OH,39049,81,144099.64,118606.05,1.7713
 1215487509,Gastroenterology,PA,42033,298,74865.94,0.0,1.4485
@@ -3729,7 +3729,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1215582150,Nurse Practitioner,OH,39035,,,,
 1215598248,Neurology,IN,18097,225,60021.47,0.0,1.8779
 1215599287,Rheumatology,OH,39153,82,15850.76,,1.2449
-1215616073,Neurology,OH,,51,9646.18,0.0,1.513
+1215616073,Neurology,OH,39035,51,9646.18,0.0,1.513
 1215630652,Physician Assistant,OH,39151,,,,
 1215712443,Gastroenterology,KY,21067,175,37843.77,0.0,2.1298
 1215900311,Hematology-Oncology,IN,18141,,,,
@@ -3837,7 +3837,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1225092349,Gastroenterology,KY,21111,48,7557.15,0.0,1.1497
 1225092752,Gastroenterology,IN,18097,99,20390.69,0.0,0.9071
 1225093222,Family Practice,KY,21111,,,,
-1225093925,Allergy/ Immunology,OH,,57,7698.62,0.0,1.3963
+1225093925,Allergy/ Immunology,OH,39035,57,7698.62,0.0,1.3963
 1225094212,Hematology-Oncology,PA,42101,,,,
 1225095516,Internal Medicine,IN,18089,,,,
 1225098031,Urology,IL,17043,,,,
@@ -3902,7 +3902,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1225353717,Urology,IL,17031,,,,
 1225355613,Internal Medicine,IN,18035,,,,
 1225390917,Endocrinology,IL,17043,,,,
-1225394703,Neurology,OH,,152,15537.19,0.0,1.9794
+1225394703,Neurology,OH,39035,152,15537.19,0.0,1.9794
 1225395742,Family Practice,KY,21179,,,,
 1225398431,Gastroenterology,MI,26099,383,290974.91,176352.0,1.5052
 1225415375,Neurology,PA,42049,289,139576.38,52547.11,1.4927
@@ -4003,7 +4003,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1235178856,Family Practice,IN,18141,,,,
 1235187063,Neurology,IL,17031,513,157355.38,0.0,1.1926
 1235188806,Internal Medicine,IL,17043,,,,
-1235192311,Rheumatology,OH,,826,66037.39,0.0,1.0754
+1235192311,Rheumatology,OH,39035,826,66037.39,0.0,1.0754
 1235193251,Family Practice,PA,42017,,,,
 1235194531,Internal Medicine,KY,21111,,,,
 1235195702,Rheumatology,IL,17031,312,51615.74,0.0,1.6944
@@ -4064,7 +4064,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1235390527,Allergy/ Immunology,MI,26099,48,16651.63,,1.0286
 1235391566,Family Practice,KY,21093,,,,
 1235392937,Neurology,PA,42055,495,133361.79,34733.0,1.5653
-1235394248,Gastroenterology,OH,,572,91602.48,0.0,1.5638
+1235394248,Gastroenterology,OH,39035,572,91602.48,0.0,1.5638
 1235395781,Allergy/ Immunology,KY,21111,135,80312.62,,0.8462
 1235396201,Family Practice,IL,17043,,,,
 1235396607,Neurology,MI,26163,148,39015.19,0.0,2.7013
@@ -4142,7 +4142,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1245214337,Internal Medicine,PA,42069,,,,
 1245215334,Rheumatology,MI,26125,519,647671.87,480952.39,1.3665
 1245215573,Internal Medicine,MI,26125,,,,
-1245217611,Medical Oncology,IL,,,,,
+1245217611,Medical Oncology,IL,17031,,,,
 1245218973,Family Practice,IN,18033,,,,
 1245219419,Internal Medicine,OH,39099,,,,
 1245219443,Family Practice,IL,17127,,,,
@@ -4267,9 +4267,9 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1245641273,Family Practice,KY,21157,,,,
 1245641430,Neurology,PA,42079,740,215554.84,34266.87,1.5816
 1245643006,Gastroenterology,KY,21111,190,47929.75,0.0,2.7218
-1245643618,Rheumatology,OH,,68,15541.17,0.0,1.7345
+1245643618,Rheumatology,OH,39035,68,15541.17,0.0,1.7345
 1245658202,Gastroenterology,MI,26163,380,91333.76,,1.6186
-1245658863,Gastroenterology,OH,,192,38849.16,0.0,1.4627
+1245658863,Gastroenterology,OH,39035,192,38849.16,0.0,1.4627
 1245671320,Rheumatology,IL,17031,133,51061.42,229.39,1.9576
 1245674753,Gastroenterology,MI,26163,186,51268.71,0.0,1.9265
 1245675099,Family Practice,IN,18035,,,,
@@ -4279,7 +4279,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1245691914,Nurse Practitioner,MI,26163,,,,
 1245692565,Neurology,KY,21067,185,33124.77,0.0,1.7747
 1245708130,Nurse Practitioner,IL,17197,,,,
-1245717776,Rheumatology,OH,,85,16560.99,0.0,1.6473
+1245717776,Rheumatology,OH,39035,85,16560.99,0.0,1.6473
 1245719806,Nurse Practitioner,OH,39029,,,,
 1245720705,Nurse Practitioner,IL,17019,,,,
 1245722842,Hematology-Oncology,PA,42043,,,,
@@ -4297,7 +4297,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1245769165,Gastroenterology,MI,26163,49,5880.28,0.0,2.4207
 1245775428,Nurse Practitioner,KY,21179,,,,
 1245782804,Nurse Practitioner,MI,26077,,,,
-1245791573,Neurology,OH,,13,2450.84,0.0,1.2872
+1245791573,Neurology,OH,39035,13,2450.84,0.0,1.2872
 1245792522,Nurse Practitioner,KY,21085,,,,
 1245795343,Physician Assistant,MI,26145,,,,
 1245837731,Nurse Practitioner,KY,21107,,,,
@@ -4383,7 +4383,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1255395794,Gastroenterology,IN,18105,226,48095.96,0.0,0.8934
 1255398079,Obstetrics & Gynecology,PA,42015,,,,
 1255398202,Endocrinology,IN,18105,,,,
-1255398210,Neurology,OH,,85,75484.21,0.0,1.7529
+1255398210,Neurology,OH,39035,85,75484.21,0.0,1.7529
 1255402673,Gastroenterology,IL,17031,104,16518.47,0.0,2.4328
 1255403747,Neurology,PA,42101,71,11412.72,0.0,2.0659
 1255405452,Gastroenterology,IL,17031,184,57021.98,0.0,1.3733
@@ -4410,9 +4410,9 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1255493185,Gastroenterology,OH,39061,446,251537.01,123054.38,1.4695
 1255497665,Urology,PA,42011,,,,
 1255499257,Internal Medicine,MI,26163,,,,
-1255518767,Allergy/ Immunology,OH,,149,22359.97,0.0,1.1477
+1255518767,Allergy/ Immunology,OH,39035,149,22359.97,0.0,1.1477
 1255519278,Rheumatology,PA,42003,15,4018.95,0.0,3.5899
-1255524419,Gastroenterology,IL,,512,120974.34,,1.6168
+1255524419,Gastroenterology,IL,17143,512,120974.34,,1.6168
 1255525770,Nurse Practitioner,IN,18093,,,,
 1255531596,Gastroenterology,PA,42129,348,73129.25,0.0,1.5396
 1255537882,Gastroenterology,PA,42095,376,84976.13,0.0,1.8029
@@ -4432,7 +4432,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1255630646,Gastroenterology,IL,17095,410,161920.35,0.0,1.3673
 1255646477,Certified Clinical Nurse Specialist,KY,21047,,,,
 1255648531,Nurse Practitioner,IN,18097,,,,
-1255648648,Gastroenterology,OH,,549,173807.18,0.0,1.2626
+1255648648,Gastroenterology,OH,39035,549,173807.18,0.0,1.2626
 1255656948,Hematology-Oncology,IL,17043,,,,
 1255674248,Neurology,PA,42077,266,52642.11,0.0,2.0915
 1255674966,Gastroenterology,OH,39057,281,144324.51,63603.21,1.7299
@@ -4444,7 +4444,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1255710398,Gastroenterology,PA,42101,140,28884.39,0.0,2.4711
 1255711149,Neurology,PA,42101,73,18340.49,,1.2778
 1255711537,Neurology,IN,18163,284,97429.15,33499.51,1.515
-1255712659,Geriatric Medicine,OH,,,,,
+1255712659,Geriatric Medicine,OH,39035,,,,
 1255712782,Neurology,IL,17031,69,26477.99,0.0,2.0422
 1255715090,Gastroenterology,PA,42045,361,93440.8,0.0,1.3478
 1255719696,Rheumatology,MI,26021,294,68214.59,479.44,1.5384
@@ -4457,7 +4457,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1255771697,Gastroenterology,PA,42069,125,55769.39,0.0,1.2727
 1255772166,Neurology,PA,42093,132,19586.96,0.0,1.7415
 1255772604,Internal Medicine,MI,26163,,,,
-1255774550,Allergy/ Immunology,OH,,85,12433.27,0.0,1.1962
+1255774550,Allergy/ Immunology,OH,39035,85,12433.27,0.0,1.1962
 1255775300,Rheumatology,MI,26099,225,65515.96,,1.4182
 1255776860,Rheumatology,IL,17043,282,106446.9,,1.3127
 1255777520,Rheumatology,MI,26161,52,11010.4,0.0,2.1273
@@ -4472,12 +4472,12 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1255828216,Neurology,PA,42095,152,24991.95,0.0,2.3079
 1255832630,Nurse Practitioner,KY,21019,,,,
 1255836409,Allergy/ Immunology,OH,39093,65,10245.77,0.0,1.0968
-1255836771,Neurology,OH,,29,5523.4,0.0,1.2931
+1255836771,Neurology,OH,39035,29,5523.4,0.0,1.2931
 1255837118,Neurology,PA,42101,168,43702.25,0.0,1.0786
 1255853859,Urology,IL,17037,,,,
 1255856027,Neurology,IL,17031,113,40935.19,0.0,1.7515
 1255857868,Nurse Practitioner,KY,21111,,,,
-1255860292,Neurology,OH,,303,69146.63,0.0,1.9807
+1255860292,Neurology,OH,39035,303,69146.63,0.0,1.9807
 1255861738,Physician Assistant,MI,26049,,,,
 1255866893,Neurology,OH,39049,90,20170.74,2881.6,1.281
 1255872685,Gastroenterology,OH,39035,195,29289.92,0.0,1.4915
@@ -4600,7 +4600,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1265649651,Gastroenterology,PA,42101,165,30911.27,0.0,3.2924
 1265652762,Rheumatology,IN,18097,441,1717221.56,1509802.75,1.4193
 1265656870,Gastroenterology,OH,39085,165,34075.45,0.0,1.0329
-1265660716,Nurse Practitioner,IL,,,,,
+1265660716,Nurse Practitioner,IL,17143,,,,
 1265662308,Internal Medicine,MI,26125,,,,
 1265666770,Gastroenterology,KY,21021,421,152406.13,0.0,1.6031
 1265669709,Gastroenterology,IN,18039,338,93237.9,0.0,1.0797
@@ -4839,9 +4839,9 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1285012476,Neurology,PA,42101,177,37036.07,0.0,2.111
 1285016303,Dermatology,MI,26145,,,,
 1285025957,Physician Assistant,OH,39113,,,,
-1285028100,Neurology,OH,,151,22246.44,0.0,1.2167
+1285028100,Neurology,OH,39035,151,22246.44,0.0,1.2167
 1285044727,Gastroenterology,MI,26163,178,37259.51,0.0,1.8882
-1285047977,Neurology,IL,,93,20726.48,0.0,1.8208
+1285047977,Neurology,IL,17143,93,20726.48,0.0,1.8208
 1285049213,Neurology,MI,26163,94,20413.8,0.0,3.1657
 1285053421,Urology,PA,42029,,,,
 1285054999,Neurology,OH,39049,35,8443.2,0.0,2.1081
@@ -4852,7 +4852,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1285096354,Internal Medicine,KY,21037,,,,
 1285097592,Internal Medicine,PA,42107,,,,
 1285098525,Gastroenterology,PA,42003,148,31792.42,0.0,1.646
-1285098608,Neurology,OH,,86,29623.65,0.0,2.3827
+1285098608,Neurology,OH,39035,86,29623.65,0.0,2.3827
 1285100115,Nurse Practitioner,OH,39035,,,,
 1285117978,Nurse Practitioner,KY,21035,,,,
 1285123679,Neurology,PA,42101,205,39102.51,0.0,1.5429
@@ -4868,8 +4868,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1285220095,Nurse Practitioner,MI,26099,,,,
 1285282913,Nurse Practitioner,PA,42089,,,,
 1285285924,Nurse Practitioner,OH,39017,,,,
-1285297952,Allergy/ Immunology,OH,,11,1664.39,0.0,1.0926
-1285306324,Nurse Practitioner,OH,,,,,
+1285297952,Allergy/ Immunology,OH,39035,11,1664.39,0.0,1.0926
+1285306324,Nurse Practitioner,OH,39035,,,,
 1285306332,Nurse Practitioner,IN,18157,,,,
 1285367656,Nurse Practitioner,IL,17197,,,,
 1285370296,Nurse Practitioner,OH,39017,,,,
@@ -4967,13 +4967,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1285757534,Rheumatology,PA,42077,449,243888.37,174281.8,1.4052
 1285762252,Nephrology,IL,17031,,,,
 1285777656,Internal Medicine,OH,39113,,,,
-1285780890,Gastroenterology,OH,,175,35552.93,0.0,1.5485
+1285780890,Gastroenterology,OH,39035,175,35552.93,0.0,1.5485
 1285785261,Neurology,IL,17031,14,1811.06,0.0,2.5819
 1285787739,Neurology,MI,26125,214,63916.74,,1.3836
 1285791467,Physician Assistant,OH,39135,,,,
 1285799379,Rheumatology,PA,42029,815,2081449.78,1826832.08,1.2839
 1285800938,Nurse Practitioner,KY,21125,,,,
-1285803494,Neurology,OH,,25,4238.89,0.0,1.5249
+1285803494,Neurology,OH,39035,25,4238.89,0.0,1.5249
 1285818591,Family Practice,IN,18091,,,,
 1285829556,Physician Assistant,KY,21209,,,,
 1285830778,Gastroenterology,OH,39049,371,80712.58,,2.575
@@ -5039,7 +5039,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1295050136,Gastroenterology,OH,39049,383,77855.22,,1.2552
 1295050433,Family Practice,MI,26093,,,,
 1295050672,Internal Medicine,KY,21093,,,,
-1295051613,Neurology,OH,,483,119632.63,0.0,1.2577
+1295051613,Neurology,OH,39035,483,119632.63,0.0,1.2577
 1295051860,Infectious Disease,IL,17031,,,,
 1295055291,Gastroenterology,IL,17031,406,99719.66,0.0,2.1866
 1295056182,Hematology-Oncology,PA,42027,,,,
@@ -5148,14 +5148,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1295755254,Rheumatology,PA,42017,,,,
 1295757631,Obstetrics & Gynecology,MI,26081,,,,
 1295758415,Internal Medicine,MI,26163,,,,
-1295763985,Neurology,OH,,198,40333.94,0.0,1.5407
+1295763985,Neurology,OH,39035,198,40333.94,0.0,1.5407
 1295764199,Family Practice,PA,42077,,,,
 1295764280,Family Practice,OH,39029,,,,
 1295767077,Gastroenterology,IN,18163,128,33239.9,0.0,1.7601
 1295767366,Family Practice,IL,17031,,,,
 1295773208,Family Practice,MI,26017,,,,
 1295774024,Family Practice,PA,42097,,,,
-1295774214,Neurology,OH,,19,3764.49,0.0,1.0968
+1295774214,Neurology,OH,39035,19,3764.49,0.0,1.0968
 1295775286,Internal Medicine,OH,39113,,,,
 1295779957,Internal Medicine,KY,21067,,,,
 1295780989,Dermatology,MI,26099,,,,
@@ -5183,7 +5183,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1295822799,Otolaryngology,IL,17031,,,,
 1295825172,Physician Assistant,KY,21043,,,,
 1295825594,Family Practice,IL,17179,,,,
-1295826493,Neurology,OH,,165,23583.86,0.0,1.6827
+1295826493,Neurology,OH,39035,165,23583.86,0.0,1.6827
 1295832012,Family Practice,PA,42095,,,,
 1295832079,Emergency Medicine,IL,17031,,,,
 1295832723,Neurology,PA,42091,673,717232.44,520059.69,1.5658
@@ -5315,7 +5315,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1306405188,Neurology,MI,26065,140,20723.39,0.0,1.883
 1306475173,Nurse Practitioner,KY,21107,,,,
 1306498571,Nurse Practitioner,IL,17031,,,,
-1306571260,Neurology,OH,,28,1601.0,0.0,2.5487
+1306571260,Neurology,OH,39035,28,1601.0,0.0,2.5487
 1306576871,Nurse Practitioner,MI,26049,,,,
 1306596861,Nurse Practitioner,OH,39171,,,,
 1306601992,Nurse Practitioner,KY,21009,,,,
@@ -5435,9 +5435,9 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1316180540,Rheumatology,PA,42101,345,306437.11,177106.15,1.2737
 1316203128,Neurology,PA,42101,215,45882.39,0.0,2.0405
 1316203367,Gastroenterology,IN,18089,812,209747.29,0.0,1.7411
-1316203813,Neurology,OH,,137,24328.68,0.0,1.8929
+1316203813,Neurology,OH,39035,137,24328.68,0.0,1.8929
 1316207889,Family Practice,OH,39113,,,,
-1316234115,Rheumatology,OH,,174,41296.7,0.0,1.4429
+1316234115,Rheumatology,OH,39035,174,41296.7,0.0,1.4429
 1316234867,Obstetrics & Gynecology,OH,39049,,,,
 1316235583,Nephrology,IL,17031,,,,
 1316238298,Rheumatology,PA,42079,780,4242518.95,3873115.3,1.265
@@ -5466,7 +5466,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1316407976,Neurology,OH,39061,74,17053.38,0.0,1.8447
 1316432032,Nurse Practitioner,MI,26075,,,,
 1316436348,Neurology,KY,21111,341,82317.45,0.0,1.5156
-1316438146,Neurology,OH,,87,17100.06,0.0,1.2782
+1316438146,Neurology,OH,39035,87,17100.06,0.0,1.2782
 1316438914,Neurology,PA,42101,144,25254.2,0.0,1.4682
 1316441090,Neurology,OH,39049,20,3229.82,0.0,2.3832
 1316458219,Physician Assistant,PA,42003,,,,
@@ -5555,7 +5555,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1316993496,Obstetrics & Gynecology,IL,17183,,,,
 1316994148,Hematology-Oncology,IN,18063,,,,
 1316995384,Neurology,MI,26099,398,199054.01,0.0,1.4767
-1316995582,Gastroenterology,OH,,234,42947.87,0.0,1.3321
+1316995582,Gastroenterology,OH,39035,234,42947.87,0.0,1.3321
 1316998545,Neurology,PA,42091,375,84842.58,0.0,1.5468
 1316999774,Nurse Practitioner,KY,21111,,,,
 1326000472,Allergy/ Immunology,OH,39049,554,232957.12,78795.9,0.9026
@@ -5606,7 +5606,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1326093352,Family Practice,PA,42045,,,,
 1326097312,Family Practice,OH,39095,,,,
 1326097403,Neurology,PA,42041,438,79905.62,,1.9611
-1326097916,Neurology,OH,,199,40338.65,0.0,1.4008
+1326097916,Neurology,OH,39035,199,40338.65,0.0,1.4008
 1326098013,Gastroenterology,IN,18039,420,104735.11,,1.1722
 1326100660,Neurology,MI,26161,89,19426.16,0.0,2.0983
 1326100884,Gastroenterology,PA,42043,221,52938.91,0.0,1.5812
@@ -5633,7 +5633,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1326156746,Urology,OH,39113,,,,
 1326163981,Hematopoietic Cell Transplantation and Cellular Therapy,OH,39061,,,,
 1326166257,Gastroenterology,MI,26163,52,14652.69,0.0,1.8374
-1326167958,Neurology,OH,,86,17740.64,0.0,1.5314
+1326167958,Neurology,OH,39035,86,17740.64,0.0,1.5314
 1326195215,Neurology,KY,21111,92,18561.14,0.0,1.613
 1326200536,Gastroenterology,IN,18163,814,170451.53,0.0,1.4806
 1326203365,Hematology-Oncology,IL,17031,,,,
@@ -5668,7 +5668,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1326352519,Nurse Practitioner,IN,18163,,,,
 1326356411,Gastroenterology,IN,18089,326,72882.58,0.0,2.2141
 1326360504,Nurse Practitioner,MI,26099,,,,
-1326363326,Gastroenterology,OH,,214,42017.87,0.0,1.7736
+1326363326,Gastroenterology,OH,39035,214,42017.87,0.0,1.7736
 1326366063,Family Practice,IN,18067,,,,
 1326367970,Physician Assistant,OH,39035,,,,
 1326368283,Gastroenterology,PA,42003,198,74886.09,,1.938
@@ -5719,7 +5719,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1326685066,Nurse Practitioner,KY,21145,,,,
 1326699844,Nurse Practitioner,MI,26125,,,,
 1326724881,Nurse Practitioner,IL,17031,,,,
-1326755331,Gastroenterology,OH,,224,53758.96,0.0,2.7328
+1326755331,Gastroenterology,OH,39035,224,53758.96,0.0,2.7328
 1326774902,Physician Assistant,PA,42077,,,,
 1326806316,Nurse Practitioner,OH,39099,,,,
 1336101443,Allergy/ Immunology,MI,26049,299,241764.0,156934.4,1.2129
@@ -5818,7 +5818,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1336304294,Hematology-Oncology,OH,39061,,,,
 1336308063,Family Practice,PA,42059,,,,
 1336313865,Neurology,OH,39049,274,74045.29,0.0,1.9347
-1336314855,Neurology,OH,,111,16105.99,0.0,1.5492
+1336314855,Neurology,OH,39035,111,16105.99,0.0,1.5492
 1336324367,Internal Medicine,IL,17093,,,,
 1336330224,Gastroenterology,MI,26125,297,75818.4,0.0,1.9223
 1336340082,Neurology,IL,17031,91,78051.29,0.0,1.6298
@@ -5874,7 +5874,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1336590660,Nurse Practitioner,OH,39171,,,,
 1336597707,Neurology,PA,42011,86,15623.55,0.0,1.3811
 1336599455,Family Practice,MI,26163,,,,
-1336600204,Neurology,OH,,98,14597.62,0.0,1.9749
+1336600204,Neurology,OH,39035,98,14597.62,0.0,1.9749
 1336608264,Neurology,OH,39035,156,31339.49,0.0,1.7733
 1336609205,Neurology,PA,42039,66,10510.58,0.0,1.0693
 1336614676,Nurse Practitioner,IL,17099,,,,
@@ -6054,7 +6054,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1346692811,Family Practice,PA,42095,,,,
 1346694056,Neurology,OH,39061,68,14565.58,0.0,1.6612
 1346694981,Hospitalist,IL,17043,,,,
-1346697273,Gastroenterology,OH,,171,35500.77,0.0,1.8758
+1346697273,Gastroenterology,OH,39035,171,35500.77,0.0,1.8758
 1346698941,Nurse Practitioner,MI,26023,,,,
 1346700903,Neurology,IL,17031,230,50261.71,,1.7958
 1346711157,Nurse Practitioner,PA,42107,,,,
@@ -6206,7 +6206,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1356732101,Physician Assistant,IL,17143,,,,
 1356750830,Internal Medicine,IL,17183,,,,
 1356751697,Gastroenterology,IN,18097,100,21313.57,0.0,1.8218
-1356755672,Rheumatology,OH,,129,48755.01,,1.4349
+1356755672,Rheumatology,OH,39035,129,48755.01,,1.4349
 1356769723,Rheumatology,OH,39049,140,32913.61,,1.5252
 1356781413,Rheumatology,PA,42071,31,4777.16,0.0,1.7185
 1356785141,Family Practice,KY,21227,,,,
@@ -6227,11 +6227,11 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1356873459,Gastroenterology,IL,17031,201,57691.65,0.0,1.0947
 1356874317,Urology,MI,26163,,,,
 1356878540,Nurse Practitioner,PA,42055,,,,
-1356888044,Neurology,OH,,101,66513.23,0.0,1.3944
+1356888044,Neurology,OH,39035,101,66513.23,0.0,1.3944
 1356935399,Nurse Practitioner,OH,39141,,,,
 1356952147,Nurse Practitioner,OH,39095,,,,
 1356958201,Nurse Practitioner,MI,26099,,,,
-1356962120,Physician Assistant,IL,,,,,
+1356962120,Physician Assistant,IL,17167,,,,
 1356966774,Neurology,MI,26161,19,3078.85,0.0,1.1932
 1356980247,Physician Assistant,MI,26125,,,,
 1356981906,Physician Assistant,MI,26065,,,,
@@ -6257,7 +6257,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1366405490,Neurology,MI,26077,174,24301.78,0.0,1.2769
 1366406258,Family Practice,KY,21047,,,,
 1366408627,Hematology-Oncology,OH,39169,,,,
-1366408767,Neurology,PA,,170,24386.81,0.0,1.5487
+1366408767,Neurology,PA,42079,170,24386.81,0.0,1.5487
 1366410706,Gastroenterology,IN,18003,197,36967.74,0.0,2.0957
 1366411878,Allergy/ Immunology,IN,18157,263,324385.18,237880.11,0.9996
 1366412272,Family Practice,MI,26125,,,,
@@ -6456,7 +6456,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1376531624,Family Practice,OH,39165,,,,
 1376533091,Allergy/ Immunology,KY,21195,37,9430.26,,1.2132
 1376533992,Family Practice,KY,21009,,,,
-1376536425,Neurology,OH,,77,16373.24,0.0,1.8806
+1376536425,Neurology,OH,39035,77,16373.24,0.0,1.8806
 1376536847,Family Practice,OH,39099,,,,
 1376537191,Family Practice,WV,54069,,,,
 1376539106,Rheumatology,IL,17031,278,1612226.65,1409868.02,1.2831
@@ -6474,7 +6474,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1376548289,Gastroenterology,IL,17043,335,78276.87,0.0,1.4907
 1376548594,Neurology,PA,42107,494,131529.9,0.0,1.4678
 1376549139,Family Practice,IL,17163,,,,
-1376550285,Gastroenterology,OH,,238,45262.9,0.0,2.0972
+1376550285,Gastroenterology,OH,39035,238,45262.9,0.0,2.0972
 1376551101,Internal Medicine,PA,42101,,,,
 1376553875,Family Practice,IL,17031,,,,
 1376558767,Internal Medicine,OH,39035,,,,
@@ -6536,7 +6536,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1376708487,Family Practice,PA,42035,,,,
 1376709022,Neurology,IL,17031,180,41894.32,0.0,1.8749
 1376717439,Physician Assistant,IL,17195,,,,
-1376719765,Neurology,OH,,178,29351.83,0.0,0.9432
+1376719765,Neurology,OH,39035,178,29351.83,0.0,0.9432
 1376728196,Neurology,IL,17031,591,177513.34,,1.3041
 1376730275,Dermatology,KY,21111,,,,
 1376732644,Neurology,IL,17031,103,28841.57,0.0,2.2409
@@ -6561,7 +6561,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1376819524,Allergy/ Immunology,OH,39049,73,21369.96,0.0,0.9368
 1376831859,Hematology-Oncology,PA,42017,,,,
 1376834804,Family Practice,IL,17043,,,,
-1376838326,Internal Medicine,IL,,,,,
+1376838326,Internal Medicine,IL,17143,,,,
 1376844969,Neurology,PA,42077,300,50831.59,0.0,2.1639
 1376884833,Internal Medicine,MI,26093,,,,
 1376896811,Physician Assistant,PA,42129,,,,
@@ -6586,7 +6586,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1386011344,Nurse Practitioner,OH,39061,,,,
 1386023679,Gastroenterology,IL,17031,273,69210.84,0.0,1.5897
 1386029213,Gastroenterology,WV,54061,107,16593.99,0.0,1.5353
-1386029981,Rheumatology,OH,,157,35962.47,0.0,1.4764
+1386029981,Rheumatology,OH,39035,157,35962.47,0.0,1.4764
 1386042984,Physician Assistant,WV,54039,,,,
 1386050821,Neurology,OH,39113,302,389346.99,329048.72,1.5841
 1386056794,Gastroenterology,PA,42101,263,76871.45,0.0,2.1029
@@ -6607,7 +6607,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1386150746,Physician Assistant,MI,26065,,,,
 1386164416,Neurology,IN,18057,315,74785.19,,1.5392
 1386171924,Nurse Practitioner,MI,26145,,,,
-1386172336,Neurology,OH,,227,60197.11,0.0,1.9529
+1386172336,Neurology,OH,39035,227,60197.11,0.0,1.9529
 1386175743,Neurology,KY,21117,297,77505.17,0.0,2.1309
 1386191393,Nurse Practitioner,IL,17081,,,,
 1386191773,Nurse Practitioner,IN,18163,,,,
@@ -6625,7 +6625,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1386386985,Nurse Practitioner,IN,18157,,,,
 1386604874,Internal Medicine,PA,42125,,,,
 1386606051,Family Practice,PA,42091,,,,
-1386607281,Neurology,OH,,439,117953.37,0.0,1.5306
+1386607281,Neurology,OH,39035,439,117953.37,0.0,1.5306
 1386610434,Neurology,OH,39153,15,1954.87,0.0,0.9743
 1386610459,Gastroenterology,PA,42003,11,1090.86,0.0,1.9027
 1386613909,Family Practice,IN,18011,,,,
@@ -6689,7 +6689,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1386677086,Internal Medicine,MI,26125,,,,
 1386679934,Family Practice,PA,42007,,,,
 1386681104,Family Practice,OH,39089,,,,
-1386684256,Neurology,OH,,277,62809.82,0.0,1.3269
+1386684256,Neurology,OH,39035,277,62809.82,0.0,1.3269
 1386687002,Dermatology,PA,42101,,,,
 1386688158,Family Practice,IL,17031,,,,
 1386689305,Allergy/ Immunology,PA,42003,171,71627.18,,0.8738
@@ -6720,14 +6720,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1386792430,Allergy/ Immunology,PA,42101,204,352270.19,258032.38,1.1097
 1386795367,Neurology,IL,17031,64,35104.86,0.0,2.3904
 1386796332,Ambulatory Surgical Center,OH,39095,,,,
-1386801389,Neurology,OH,,410,62699.56,0.0,1.3912
+1386801389,Neurology,OH,39035,410,62699.56,0.0,1.3912
 1386804151,Neurology,MI,26099,271,106963.01,,1.683
 1386805307,Hematology-Oncology,IN,18173,,,,
 1386806768,Gastroenterology,PA,42101,129,31690.78,0.0,1.5252
 1386807469,Neurology,KY,21067,134,32875.47,0.0,1.874
 1386807816,Allergy/ Immunology,IL,17031,43,10656.7,0.0,1.1316
 1386809796,Gastroenterology,OH,39049,307,58359.52,0.0,1.5151
-1386827715,Neurology,OH,,399,58360.74,0.0,1.4709
+1386827715,Neurology,OH,39035,399,58360.74,0.0,1.4709
 1386829802,Neurology,PA,42071,515,166275.92,30714.51,1.2104
 1386836328,Nurse Practitioner,IL,17157,,,,
 1386841260,Neurology,IL,17097,315,63287.31,0.0,1.5453
@@ -6759,11 +6759,11 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1386987741,Family Practice,OH,39049,,,,
 1386990356,Nurse Practitioner,KY,21185,,,,
 1386995538,Nurse Practitioner,KY,21085,,,,
-1386999639,Neurology,MI,,164,24813.65,0.0,1.6788
+1386999639,Neurology,MI,26111,164,24813.65,0.0,1.6788
 1396000733,Internal Medicine,PA,42101,,,,
 1396001541,Neurology,IL,17031,138,50593.58,,1.1544
 1396002820,Allergy/ Immunology,PA,42101,49,8684.26,0.0,1.3119
-1396008041,Neurology,OH,,75,16752.15,0.0,1.6459
+1396008041,Neurology,OH,39035,75,16752.15,0.0,1.6459
 1396011292,Internal Medicine,IN,18097,,,,
 1396026712,Nurse Practitioner,IN,18163,,,,
 1396032298,Neuropsychiatry,IL,17043,,,,
@@ -6788,14 +6788,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1396140604,Gastroenterology,OH,39149,340,113016.49,0.0,1.5482
 1396156626,Rheumatology,MI,26161,60,15578.52,0.0,1.4373
 1396160297,Nurse Practitioner,IL,17043,,,,
-1396163341,Gastroenterology,OH,,420,125980.94,0.0,2.3144
+1396163341,Gastroenterology,OH,39035,420,125980.94,0.0,2.3144
 1396164190,Neurology,WV,54011,235,69072.92,0.0,2.339
 1396168514,Nurse Practitioner,MI,26057,,,,
 1396172649,Physician Assistant,PA,42003,,,,
 1396183299,Gastroenterology,MI,26161,354,136564.71,43997.34,1.2997
 1396185823,Neurology,PA,42003,70,18707.92,0.0,1.6045
 1396195988,Neurology,IL,17167,460,129512.34,6319.34,1.2802
-1396198743,Neurology,OH,,180,59448.08,0.0,2.0622
+1396198743,Neurology,OH,39035,180,59448.08,0.0,2.0622
 1396221040,Rheumatology,PA,42003,185,275121.17,218775.67,1.2596
 1396230124,Nurse Practitioner,OH,39095,,,,
 1396238440,Physician Assistant,OH,39113,,,,
@@ -6803,7 +6803,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1396240065,Family Practice,OH,39151,,,,
 1396265906,Gastroenterology,PA,42093,200,54103.14,0.0,2.1063
 1396269668,Nurse Practitioner,IL,17167,,,,
-1396275236,Rheumatology,OH,,107,18107.45,0.0,1.7257
+1396275236,Rheumatology,OH,39035,107,18107.45,0.0,1.7257
 1396275517,Nurse Practitioner,MI,26073,,,,
 1396276853,Gastroenterology,IL,17031,62,15195.25,0.0,1.4387
 1396277059,Neurology,WV,54061,29,8007.12,0.0,1.7715
@@ -6831,7 +6831,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1396704268,Family Practice,IN,18073,,,,
 1396709234,Plastic and Reconstructive Surgery,IN,18137,,,,
 1396709523,Neurology,MI,26077,284,36130.92,0.0,1.5917
-1396709747,Allergy/ Immunology,OH,,61,9542.14,0.0,0.8053
+1396709747,Allergy/ Immunology,OH,39035,61,9542.14,0.0,0.8053
 1396710893,Gastroenterology,PA,42015,488,112531.24,0.0,1.3071
 1396711503,Dermatology,IL,17031,,,,
 1396713137,Rheumatology,WV,54039,205,166430.75,122088.37,1.3865
@@ -6902,7 +6902,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1396816922,Family Practice,IN,18107,,,,
 1396825071,Rheumatology,MI,26161,74,13717.25,0.0,1.9645
 1396825246,Allergy/ Immunology,OH,39099,164,175867.56,327.36,0.8362
-1396827069,Gastroenterology,OH,,326,55497.86,0.0,0.953
+1396827069,Gastroenterology,OH,39035,326,55497.86,0.0,0.953
 1396831269,Family Practice,IL,17031,,,,
 1396842126,Hematology-Oncology,PA,42029,,,,
 1396847406,Physician Assistant,PA,42025,,,,
@@ -6945,7 +6945,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1396989976,Neurology,IN,18141,60,12618.87,0.0,2.1757
 1396990909,Physician Assistant,WV,54031,,,,
 1407004773,Hematology-Oncology,IL,17019,,,,
-1407006653,Neurology,PA,,204,27285.87,0.0,1.554
+1407006653,Neurology,PA,42079,204,27285.87,0.0,1.554
 1407010754,Neurology,IN,18067,323,43653.11,0.0,1.5075
 1407012149,Gastroenterology,IL,17031,295,59136.29,0.0,1.7024
 1407012834,General Practice,MI,26163,,,,
@@ -7194,7 +7194,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1417310038,Hematology,PA,42045,,,,
 1417319690,Internal Medicine,IL,17031,,,,
 1417336215,Gastroenterology,PA,42101,89,18017.4,0.0,1.7167
-1417336694,Gastroenterology,OH,,47,8113.55,0.0,1.9837
+1417336694,Gastroenterology,OH,39035,47,8113.55,0.0,1.9837
 1417337247,Nurse Practitioner,IL,17043,,,,
 1417344474,Rheumatology,PA,42043,155,33552.21,0.0,1.4185
 1417346164,Urology,IL,17031,,,,
@@ -7239,7 +7239,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1417917493,Family Practice,PA,42099,,,,
 1417918624,Neurology,IL,17093,63,12205.74,0.0,1.501
 1417918863,Internal Medicine,MI,26125,,,,
-1417919143,Rheumatology,OH,,202,40390.71,0.0,1.0889
+1417919143,Rheumatology,OH,39035,202,40390.71,0.0,1.0889
 1417919481,Internal Medicine,IN,18039,,,,
 1417920232,Neurology,IL,17143,,,,
 1417920398,Family Practice,PA,42117,,,,
@@ -7352,14 +7352,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1427090638,Internal Medicine,PA,42017,,,,
 1427092485,Neurology,IL,17031,479,218505.18,48402.23,1.1426
 1427093376,Urology,IN,18097,,,,
-1427094002,Neurology,OH,,103,16869.89,0.0,1.5618
+1427094002,Neurology,OH,39035,103,16869.89,0.0,1.5618
 1427094192,Gastroenterology,IN,18005,462,106361.09,0.0,1.3526
 1427096304,Gastroenterology,PA,42091,375,225088.24,138576.37,1.4609
 1427097302,Family Practice,WV,54039,,,,
 1427097922,Internal Medicine,OH,39113,,,,
 1427097948,Pulmonary Disease,PA,42017,,,,
 1427098250,Family Practice,KY,21209,,,,
-1427099654,Gastroenterology,OH,,281,71215.83,0.0,1.0215
+1427099654,Gastroenterology,OH,39101,281,71215.83,0.0,1.0215
 1427105394,Allergy/ Immunology,KY,21209,122,138036.54,,1.0289
 1427109743,Neurology,IL,17031,43,27451.49,,1.4275
 1427112176,Neurology,OH,39049,198,38588.07,0.0,1.4973
@@ -7424,7 +7424,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1427390822,Gastroenterology,PA,42043,362,142563.66,,1.63
 1427391002,Neurology,PA,42041,182,48715.72,0.0,1.4274
 1427391135,Internal Medicine,MI,26125,,,,
-1427391887,Hematology-Oncology,PA,,,,,
+1427391887,Hematology-Oncology,PA,42079,,,,
 1427409663,Nurse Practitioner,OH,39153,,,,
 1427411537,Neurology,KY,21059,415,162167.07,31656.74,1.3166
 1427417708,Physician Assistant,MI,26089,,,,
@@ -7464,7 +7464,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1427584812,Internal Medicine,MI,26099,,,,
 1427593193,Nurse Practitioner,OH,39035,,,,
 1427599711,Internal Medicine,OH,39153,,,,
-1427613470,Physician Assistant,KY,,,,,
+1427613470,Physician Assistant,KY,21067,,,,
 1427615160,Physician Assistant,MI,26145,,,,
 1427654516,Nurse Practitioner,MI,26073,,,,
 1427656081,Nurse Practitioner,KY,21111,,,,
@@ -7652,7 +7652,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1437722584,Neurology,OH,39093,196,27771.71,0.0,1.4587
 1437774585,Neurology,MI,26163,87,14973.5,0.0,1.9237
 1437819711,Nurse Practitioner,OH,39041,,,,
-1437824208,Neurology,OH,,84,11420.34,0.0,1.6215
+1437824208,Neurology,OH,39035,84,11420.34,0.0,1.6215
 1437883253,Nurse Practitioner,MI,26163,,,,
 1447038971,Nurse Practitioner,OH,39153,,,,
 1447201314,Nurse Practitioner,IN,18109,,,,
@@ -7660,7 +7660,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1447203054,Hematology-Oncology,OH,39093,,,,
 1447205638,Hematology-Oncology,OH,39113,,,,
 1447205869,Internal Medicine,IL,17031,,,,
-1447206107,Neurology,PA,,331,74657.25,,1.5225
+1447206107,Neurology,PA,42079,331,74657.25,,1.5225
 1447210711,Internal Medicine,KY,21015,,,,
 1447214440,Physical Medicine and Rehabilitation,IN,18097,,,,
 1447214994,Gastroenterology,IN,18177,642,166547.55,0.0,1.4629
@@ -7751,7 +7751,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1447455209,Internal Medicine,PA,42077,,,,
 1447455720,Hematology-Oncology,OH,39049,,,,
 1447456306,Gastroenterology,PA,42093,296,64246.74,0.0,1.865
-1447456413,Allergy/ Immunology,OH,,54,9293.5,0.0,1.2196
+1447456413,Allergy/ Immunology,OH,39035,54,9293.5,0.0,1.2196
 1447457353,Neurology,KY,21111,403,89587.71,0.0,1.8721
 1447458096,Family Practice,IN,18039,,,,
 1447459946,Neurology,WV,54011,498,119714.31,0.0,1.394
@@ -7793,7 +7793,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1447651708,Nurse Practitioner,IL,17133,,,,
 1447660568,Rheumatology,KY,21111,126,27974.89,0.0,1.531
 1447662762,Internal Medicine,MI,26125,,,,
-1447663596,Rheumatology,PA,,84,43667.69,18600.76,1.2199
+1447663596,Rheumatology,PA,42003,84,43667.69,18600.76,1.2199
 1447694468,Family Practice,IN,18059,,,,
 1447695937,Neurology,PA,42041,150,55535.64,0.0,1.3829
 1447697164,Rheumatology,MI,26099,186,825240.68,710010.62,1.6106
@@ -7804,7 +7804,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1447726104,Nurse Practitioner,MI,26161,,,,
 1447749098,Neurology,IN,18097,135,36575.03,,2.0458
 1447754965,Neurology,IL,17031,94,17567.9,0.0,1.6813
-1447755525,Gastroenterology,OH,,87,24248.37,0.0,3.3623
+1447755525,Gastroenterology,OH,39035,87,24248.37,0.0,3.3623
 1447757406,Neurology,OH,39057,48,1872.27,0.0,0.7679
 1447770672,Dermatology,MI,26077,,,,
 1447779160,Nurse Practitioner,IN,18119,,,,
@@ -7871,13 +7871,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1457367898,Gastroenterology,KY,21121,68,15595.66,0.0,1.4534
 1457375610,Rheumatology,PA,42041,284,120679.57,55662.9,1.3598
 1457375685,Urology,IN,18057,,,,
-1457377004,Gastroenterology,OH,,72,16282.32,0.0,2.0469
+1457377004,Gastroenterology,OH,39035,72,16282.32,0.0,2.0469
 1457380941,Neurology,MI,26127,25,13918.12,0.0,1.0241
 1457381725,Neurology,PA,42133,469,113453.32,0.0,1.6555
 1457382038,Nephrology,IL,17031,,,,
 1457382939,Allergy/ Immunology,MI,26157,99,65913.48,0.0,1.3435
 1457383911,General Practice,MI,26163,,,,
-1457385031,Neurology,OH,,376,61168.94,0.0,1.512
+1457385031,Neurology,OH,39035,376,61168.94,0.0,1.512
 1457391534,Family Practice,PA,42003,,,,
 1457392292,Allergy/ Immunology,OH,39035,117,87334.94,525.24,0.8246
 1457392862,Internal Medicine,PA,42101,,,,
@@ -7974,14 +7974,14 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1457837270,Endocrinology,PA,42049,,,,
 1457837577,Neurology,IN,18163,183,45672.07,0.0,1.9498
 1457845877,Neurology,PA,42077,273,58559.3,0.0,1.3038
-1457849598,Neurology,OH,,28,2647.09,0.0,1.5747
+1457849598,Neurology,OH,39035,28,2647.09,0.0,1.5747
 1457849846,Neurology,OH,39061,35,10977.69,0.0,1.6566
 1457855561,Allergy/ Immunology,PA,42091,13,4900.41,0.0,0.5588
 1457858292,Nurse Practitioner,MI,26049,,,,
 1457858318,Rheumatology,IL,17097,245,391527.45,277514.47,1.2561
 1457866519,Endocrinology,PA,42133,,,,
 1457872376,Nurse Practitioner,WV,54049,,,,
-1457875346,Gastroenterology,OH,,150,33581.94,0.0,1.2573
+1457875346,Gastroenterology,OH,39035,150,33581.94,0.0,1.2573
 1457880908,Neurology,MI,26065,146,71712.45,,1.6313
 1457884272,Internal Medicine,IN,18097,,,,
 1457887770,Rheumatology,PA,42101,165,41312.21,0.0,1.5088
@@ -7994,7 +7994,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1457967978,Nurse Practitioner,IN,18029,,,,
 1467007989,Nurse Practitioner,MI,26099,,,,
 1467008045,Nurse Practitioner,KY,21183,,,,
-1467013052,Neurology,OH,,27,3409.97,0.0,1.3991
+1467013052,Neurology,OH,39035,27,3409.97,0.0,1.3991
 1467015271,Neurology,OH,39095,203,43068.7,0.0,2.2449
 1467039578,Physician Assistant,OH,39057,,,,
 1467076687,Nurse Practitioner,OH,39011,,,,
@@ -8017,11 +8017,11 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1467409656,Rheumatology,KY,21015,198,40286.46,0.0,1.5877
 1467410183,Rheumatology,IL,17089,163,46521.95,0.0,1.2371
 1467411132,Hematology-Oncology,PA,42029,,,,
-1467415265,Rheumatology,OH,,34,4061.9,0.0,1.628
+1467415265,Rheumatology,OH,39035,34,4061.9,0.0,1.628
 1467415315,Neurology,PA,42027,332,63287.52,,1.4687
 1467416628,Family Practice,KY,21015,,,,
 1467416990,Gastroenterology,IL,17111,125,32121.29,0.0,1.0817
-1467417261,Gastroenterology,OH,,246,41544.2,0.0,1.622
+1467417261,Gastroenterology,OH,39035,246,41544.2,0.0,1.622
 1467417733,Family Practice,PA,42075,,,,
 1467418293,Otolaryngology,PA,42045,,,,
 1467420760,Hematology-Oncology,IN,18043,,,,
@@ -8162,7 +8162,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1467951863,Internal Medicine,OH,39035,,,,
 1467958066,Neurology,PA,42101,40,15734.05,0.0,2.4847
 1467967406,Nurse Practitioner,OH,39025,,,,
-1467972836,Neurology,PA,,217,35387.2,0.0,1.2659
+1467972836,Neurology,PA,42049,217,35387.2,0.0,1.2659
 1467974139,Nurse Practitioner,PA,42075,,,,
 1467980011,Gastroenterology,IL,17143,153,46740.43,,1.323
 1467981118,Nurse Practitioner,OH,39011,,,,
@@ -8175,7 +8175,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1477010031,Nurse Practitioner,IL,17143,,,,
 1477044204,Family Practice,IL,17043,,,,
 1477048130,Gastroenterology,IL,17167,100,38695.43,0.0,1.7386
-1477048932,Neurology,OH,,38,14684.45,0.0,1.9912
+1477048932,Neurology,OH,39035,38,14684.45,0.0,1.9912
 1477055853,Nurse Practitioner,KY,21227,,,,
 1477058964,Neurology,MI,26125,77,76184.81,52652.27,1.0934
 1477076487,Nurse Practitioner,KY,21059,,,,
@@ -8305,7 +8305,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1477765832,Internal Medicine,MI,26099,,,,
 1477766897,Rheumatology,MI,26161,75,10197.71,,2.3667
 1477767101,Internal Medicine,IL,17163,,,,
-1477767432,Neurology,OH,,73,10342.45,0.0,1.6978
+1477767432,Neurology,OH,39035,73,10342.45,0.0,1.6978
 1477782522,Internal Medicine,IL,17019,,,,
 1477783207,Rheumatology,OH,39061,101,81726.8,58921.99,1.7617
 1477792489,Family Practice,KY,21117,,,,
@@ -8344,10 +8344,10 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1477937589,Family Practice,MI,26149,,,,
 1477940369,Neurology,OH,39061,75,17169.91,0.0,1.9819
 1477948529,Gastroenterology,IN,18063,164,45822.31,,1.2984
-1477950343,Neurology,OH,,313,67907.39,0.0,1.4939
+1477950343,Neurology,OH,39035,313,67907.39,0.0,1.4939
 1477963601,Neurology,MI,26163,121,19675.81,0.0,2.3697
 1477965135,Gastroenterology,WV,54061,375,120771.93,0.0,2.0001
-1477973535,Gastroenterology,OH,,396,108020.08,0.0,2.7982
+1477973535,Gastroenterology,OH,39035,396,108020.08,0.0,2.7982
 1477976355,Nurse Practitioner,KY,21227,,,,
 1477978302,Nurse Practitioner,PA,42075,,,,
 1477978773,Rheumatology,PA,42015,184,36170.71,0.0,1.2964
@@ -8356,7 +8356,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1477997674,Neurology,IL,17031,339,99964.61,,1.7555
 1487002119,Dermatology,MI,26163,,,,
 1487004339,Nurse Practitioner,MI,26163,,,,
-1487017489,Neurology,OH,,248,37852.1,0.0,1.5283
+1487017489,Neurology,OH,39035,248,37852.1,0.0,1.5283
 1487018131,Ophthalmology,OH,39035,,,,
 1487036265,Neurology,PA,42013,245,66189.42,,1.8169
 1487037586,Neurology,OH,39095,498,115892.74,0.0,1.6959
@@ -8443,7 +8443,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1487659561,Family Practice,WV,54025,,,,
 1487664215,Family Practice,OH,39153,,,,
 1487665600,Neurology,IL,17031,30,6158.41,0.0,0.9032
-1487666350,Neurology,OH,,561,95535.79,0.0,1.5498
+1487666350,Neurology,OH,39035,561,95535.79,0.0,1.5498
 1487668638,Family Practice,OH,39157,,,,
 1487668653,Family Practice,IL,17031,,,,
 1487671442,Gastroenterology,MI,26125,248,74312.75,0.0,3.0402
@@ -8487,7 +8487,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1487819769,Hematology-Oncology,PA,42045,,,,
 1487820353,Gastroenterology,OH,39095,591,247228.94,0.0,1.3841
 1487828653,Gastroenterology,IL,17031,206,94400.3,,1.7271
-1487828984,Neurology,OH,,125,17580.65,0.0,1.7562
+1487828984,Neurology,OH,39035,125,17580.65,0.0,1.7562
 1487831673,Radiation Oncology,PA,42069,,,,
 1487844148,Pulmonary Disease,PA,42101,,,,
 1487846945,Psychiatry,OH,39049,,,,
@@ -8588,7 +8588,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1497708333,Hematology-Oncology,IL,17031,,,,
 1497708556,Internal Medicine,IL,17097,,,,
 1497710180,Physician Assistant,KY,21073,,,,
-1497712814,Gastroenterology,OH,,199,91501.54,0.0,1.8523
+1497712814,Gastroenterology,OH,39035,199,91501.54,0.0,1.8523
 1497713861,Physical Medicine and Rehabilitation,PA,42011,,,,
 1497715056,Family Practice,IL,17049,,,,
 1497716849,Internal Medicine,PA,42045,,,,
@@ -8717,10 +8717,10 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1508203209,Internal Medicine,OH,39061,,,,
 1508205451,Nurse Practitioner,MI,26145,,,,
 1508212291,Rheumatology,MI,26161,96,23636.07,0.0,1.6161
-1508212564,Neurology,OH,,172,32354.55,0.0,2.2867
+1508212564,Neurology,OH,39035,172,32354.55,0.0,2.2867
 1508213786,Neurology,PA,42049,242,94969.36,0.0,1.0662
 1508228222,Neurology,IL,17043,525,185018.66,26234.05,1.2644
-1508229428,Neurology,OH,,204,63812.3,0.0,1.5113
+1508229428,Neurology,OH,39035,204,63812.3,0.0,1.5113
 1508232711,Gastroenterology,IN,18097,152,33922.54,0.0,1.7138
 1508235755,Nurse Practitioner,WV,54035,,,,
 1508240169,Nurse Practitioner,IN,18077,,,,
@@ -8749,7 +8749,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1508361601,Nurse Practitioner,KY,21125,,,,
 1508386970,Family Practice,PA,42087,,,,
 1508393711,Nurse Practitioner,MI,26017,,,,
-1508394412,Neurology,MI,,198,37422.58,0.0,1.9211
+1508394412,Neurology,MI,26111,198,37422.58,0.0,1.9211
 1508397043,Neurology,OH,39113,438,651113.6,549030.08,1.6101
 1508397241,Nurse Practitioner,PA,42093,,,,
 1508397332,Urology,IN,18057,,,,
@@ -8869,7 +8869,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1508962242,Allergy/ Immunology,OH,39049,100,18021.16,,1.7855
 1508962366,Internal Medicine,IL,17167,,,,
 1508967738,Emergency Medicine,IN,18037,,,,
-1508969445,Neurology,OH,,198,419862.98,352650.49,1.694
+1508969445,Neurology,OH,39113,198,419862.98,352650.49,1.694
 1508973926,Gastroenterology,IL,17043,587,180041.9,,1.063
 1508974841,Allergy/ Immunology,IN,18163,390,78775.49,,0.8461
 1508974999,Internal Medicine,MI,26125,,,,
@@ -9056,7 +9056,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1518987072,Emergency Medicine,MI,26099,,,,
 1518989334,Family Practice,KY,21081,,,,
 1518991991,Family Practice,IN,18079,,,,
-1518993922,Neurology,OH,,297,45349.6,0.0,1.4062
+1518993922,Neurology,OH,39035,297,45349.6,0.0,1.4062
 1528002706,Gastroenterology,PA,42003,529,101420.6,0.0,1.3485
 1528003548,Neurology,OH,39061,438,204520.9,81607.56,1.5479
 1528004686,Gastroenterology,IL,17043,323,81067.69,0.0,1.7609
@@ -9206,7 +9206,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1528459211,Physician Assistant,PA,42101,,,,
 1528471208,Nurse Practitioner,KY,21107,,,,
 1528473311,Dermatology,IL,17143,,,,
-1528475688,Neurology,OH,,126,60659.42,0.0,1.8938
+1528475688,Neurology,OH,39035,126,60659.42,0.0,1.8938
 1528480639,Physician Assistant,PA,42079,,,,
 1528485562,Gastroenterology,PA,42101,184,41297.11,0.0,2.5038
 1528485885,Rheumatology,PA,42101,,,,
@@ -9246,7 +9246,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1538117486,Allergy/ Immunology,PA,42003,340,81499.77,3167.2,0.9172
 1538120415,Nurse Practitioner,WV,54081,,,,
 1538122809,Family Practice,OH,39049,,,,
-1538123781,Neurology,OH,,69,26227.12,0.0,1.533
+1538123781,Neurology,OH,39035,69,26227.12,0.0,1.533
 1538125885,Family Practice,OH,39035,,,,
 1538125992,Hematology-Oncology,PA,42029,,,,
 1538126925,Gastroenterology,PA,42033,118,23960.79,0.0,1.1489
@@ -9315,7 +9315,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1538359534,Neurology,PA,42021,35,12169.37,0.0,1.9645
 1538361621,Nurse Practitioner,WV,54019,,,,
 1538366729,Gastroenterology,OH,39061,353,138642.39,,1.6592
-1538368956,Rheumatology,OH,,487,74723.54,0.0,1.1579
+1538368956,Rheumatology,OH,39035,487,74723.54,0.0,1.1579
 1538376603,Obstetrics & Gynecology,PA,42011,,,,
 1538377668,Family Practice,PA,42081,,,,
 1538378617,Gastroenterology,MI,26163,533,308142.16,0.0,2.8886
@@ -9361,10 +9361,10 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1538653282,Neurology,PA,42101,206,49097.83,0.0,2.4688
 1538654942,Rheumatology,PA,42101,120,29815.72,0.0,2.0246
 1538663331,Nurse Practitioner,IN,18083,,,,
-1538664073,Neurology,OH,,137,28278.01,0.0,2.0731
+1538664073,Neurology,OH,39035,137,28278.01,0.0,2.0731
 1538665286,Neurology,IL,17031,322,68470.8,0.0,1.7738
 1538680814,Gastroenterology,WV,54061,62,16069.04,0.0,1.8167
-1538689468,Neurology,OH,,196,38948.87,0.0,2.2126
+1538689468,Neurology,OH,39035,196,38948.87,0.0,2.2126
 1538694369,Neurology,PA,42093,74,19255.17,0.0,1.4311
 1538695523,Neurology,PA,42101,182,35506.03,0.0,2.0612
 1538695598,Internal Medicine,PA,42091,,,,
@@ -9373,7 +9373,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1538699723,Allergy/ Immunology,IL,17097,30,7238.72,,0.9977
 1538721337,Rheumatology,KY,21067,43,6252.17,0.0,1.4511
 1538721543,Neurology,MI,26121,117,26924.01,0.0,2.5307
-1538721576,Rheumatology,OH,,66,8855.22,0.0,1.4984
+1538721576,Rheumatology,OH,39035,66,8855.22,0.0,1.4984
 1538751151,Nurse Practitioner,MI,26125,,,,
 1538789664,Neurology,PA,42003,40,6771.36,0.0,1.7662
 1538790373,Nurse Practitioner,MI,26147,,,,
@@ -9393,7 +9393,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1548219439,Neurology,PA,42101,121,28569.35,0.0,1.7806
 1548221120,Family Practice,KY,21107,,,,
 1548222854,Neurology,PA,42003,209,48927.66,,1.3644
-1548224272,Rheumatology,OH,,93,15492.3,0.0,1.4791
+1548224272,Rheumatology,OH,39035,93,15492.3,0.0,1.4791
 1548224504,Family Practice,OH,39113,,,,
 1548225543,Rheumatology,PA,42079,352,57938.3,,1.4291
 1548226269,Family Practice,PA,42123,,,,
@@ -9497,7 +9497,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1548429137,Neurology,PA,42101,150,21188.73,0.0,1.7231
 1548432511,Internal Medicine,IN,18097,,,,
 1548433782,Neurology,OH,39061,58,12755.06,0.0,2.4607
-1548435423,Neurology,PA,,240,57050.37,0.0,2.0543
+1548435423,Neurology,PA,42079,240,57050.37,0.0,2.0543
 1548436389,Geriatric Medicine,PA,42049,,,,
 1548437411,Neurology,PA,42077,304,64906.69,,2.212
 1548440415,Gastroenterology,PA,42007,302,62538.85,0.0,1.5538
@@ -9517,13 +9517,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1548510324,Rheumatology,MI,26125,18,8122.5,0.0,0.6587
 1548512262,Physical Medicine and Rehabilitation,IL,17043,,,,
 1548521461,Gastroenterology,MI,26099,363,77446.18,0.0,1.7268
-1548521941,Gastroenterology,OH,,88,19606.39,0.0,1.943
+1548521941,Gastroenterology,OH,39035,88,19606.39,0.0,1.943
 1548523244,Rheumatology,OH,39099,228,57037.57,,1.4389
-1548524770,Medical Oncology,IL,,,,,
+1548524770,Medical Oncology,IL,17167,,,,
 1548538622,Nurse Practitioner,IL,17031,,,,
 1548541154,Endocrinology,IL,17161,,,,
 1548543069,Neurology,OH,39061,65,8194.5,0.0,1.9689
-1548550007,Rheumatology,OH,,101,18790.61,0.0,2.2384
+1548550007,Rheumatology,OH,39035,101,18790.61,0.0,2.2384
 1548552516,Family Practice,MI,26037,,,,
 1548556111,Family Practice,IN,18141,,,,
 1548556392,Gastroenterology,PA,42101,594,227960.39,,1.3771
@@ -9540,7 +9540,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1548599459,Nurse Practitioner,KY,21031,,,,
 1548600380,Critical Care (Intensivists),IL,17031,,,,
 1548600984,Urology,MI,26099,,,,
-1548624174,Neurology,OH,,47,14631.71,0.0,1.7996
+1548624174,Neurology,OH,39035,47,14631.71,0.0,1.7996
 1548639453,Physician Assistant,MI,26125,,,,
 1548645203,Nurse Practitioner,OH,39173,,,,
 1548648371,Gastroenterology,PA,42101,145,34986.11,0.0,2.5332
@@ -9566,7 +9566,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1548777832,Nurse Practitioner,OH,39005,,,,
 1548780117,Neurology,IL,17031,37,18911.66,0.0,1.6249
 1548781941,Nurse Practitioner,KY,21221,,,,
-1548786908,Neurology,OH,,62,18889.6,0.0,3.7259
+1548786908,Neurology,OH,39035,62,18889.6,0.0,3.7259
 1548789506,Family Practice,MI,26125,,,,
 1548792534,Nurse Practitioner,MI,26125,,,,
 1548794068,Neurology,PA,42101,39,12779.97,0.0,2.0226
@@ -9607,7 +9607,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1558322917,Gastroenterology,KY,21111,581,121984.49,,1.3091
 1558322974,Neurology,PA,42043,86,61274.85,,0.9916
 1558324814,Family Practice,PA,42085,,,,
-1558325209,Rheumatology,OH,,217,42820.18,0.0,1.471
+1558325209,Rheumatology,OH,39035,217,42820.18,0.0,1.471
 1558326207,Gastroenterology,PA,42093,242,40240.53,0.0,2.0182
 1558326926,Urology,MI,26125,,,,
 1558327486,Hematology-Oncology,IL,17031,,,,
@@ -9916,10 +9916,10 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1568844223,Gastroenterology,IL,17031,61,15978.92,0.0,2.0175
 1568849396,Rheumatology,IN,18091,220,67600.95,1110.74,1.6343
 1568850196,Nurse Practitioner,MI,26145,,,,
-1568857803,Neurology,OH,,70,17374.68,0.0,1.3765
+1568857803,Neurology,OH,39035,70,17374.68,0.0,1.3765
 1568859924,Rheumatology,PA,42101,286,55330.41,0.0,1.7564
 1568873503,Internal Medicine,OH,39099,,,,
-1568873834,Neurology,OH,,251,37515.39,0.0,1.5752
+1568873834,Neurology,OH,39035,251,37515.39,0.0,1.5752
 1568881167,Gastroenterology,OH,39085,147,26128.8,0.0,1.6474
 1568889483,Neurology,PA,42043,75,15343.82,0.0,1.7746
 1568890077,Nurse Practitioner,MI,26161,,,,
@@ -10045,7 +10045,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1578680195,Rheumatology,MI,26161,280,414093.53,264032.94,1.3852
 1578697348,Neurology,KY,21067,54,15089.13,0.0,2.3518
 1578699807,Family Practice,MI,26163,,,,
-1578708244,Neurology,OH,,111,16485.88,0.0,1.6558
+1578708244,Neurology,OH,39035,111,16485.88,0.0,1.6558
 1578715413,Physician Assistant,PA,42095,,,,
 1578719639,Neurology,OH,39049,163,42225.78,,1.68
 1578720983,Rheumatology,PA,42077,598,785354.48,689591.7,1.4456
@@ -10160,8 +10160,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1588624472,Hematology-Oncology,PA,42029,,,,
 1588625875,Hematology-Oncology,IL,17031,,,,
 1588628002,Gastroenterology,IN,18097,30,5589.82,0.0,1.1683
-1588628952,Rheumatology,OH,,48,11244.21,0.0,1.6562
-1588629554,Gastroenterology,OH,,105,22441.24,0.0,1.2231
+1588628952,Rheumatology,OH,39035,48,11244.21,0.0,1.6562
+1588629554,Gastroenterology,OH,39035,105,22441.24,0.0,1.2231
 1588630669,Gastroenterology,IL,17043,553,165521.46,0.0,1.0491
 1588630727,Neurology,IL,17031,417,101453.8,0.0,1.518
 1588632517,Internal Medicine,PA,42085,,,,
@@ -10275,7 +10275,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1588998652,Physician Assistant,MI,26057,,,,
 1598003915,Nurse Practitioner,MI,26125,,,,
 1598007841,Neurology,MI,26163,147,27355.46,0.0,2.0238
-1598007957,Neurology,OH,,151,27192.82,0.0,2.0168
+1598007957,Neurology,OH,39035,151,27192.82,0.0,2.0168
 1598008666,Rheumatology,PA,42091,158,45816.46,0.0,3.0348
 1598021438,Allergy/ Immunology,KY,21145,310,611912.94,534357.29,0.9628
 1598023665,Neurology,MI,26099,705,259746.91,,2.2218
@@ -10333,7 +10333,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1598326902,Rheumatology,PA,42101,56,11741.51,0.0,1.1528
 1598354987,Nurse Practitioner,OH,39013,,,,
 1598358087,Nurse Practitioner,PA,42017,,,,
-1598395113,Nurse Practitioner,OH,,,,,
+1598395113,Nurse Practitioner,OH,39035,,,,
 1598398034,Physician Assistant,IL,17031,,,,
 1598410102,Neurology,PA,42101,135,35852.61,0.0,2.207
 1598431595,Nurse Practitioner,IN,18005,,,,
@@ -10349,7 +10349,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1598720625,Nurse Practitioner,KY,21183,,,,
 1598728016,Orthopedic Surgery,MI,26121,,,,
 1598728149,Neurology,OH,39153,,,,
-1598728446,Rheumatology,OH,,550,67154.47,0.0,1.3426
+1598728446,Rheumatology,OH,39035,550,67154.47,0.0,1.3426
 1598729840,Urology,OH,39035,,,,
 1598731275,Neurology,OH,39035,285,34852.21,0.0,1.3457
 1598733693,Internal Medicine,MI,26125,,,,
@@ -10406,7 +10406,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1598788549,Endocrinology,PA,42045,,,,
 1598789034,Neurology,MI,26081,33,3736.96,0.0,1.0116
 1598791071,Pediatric Medicine,KY,21227,,,,
-1598791097,Rheumatology,OH,,455,53002.53,0.0,1.1137
+1598791097,Rheumatology,OH,39035,455,53002.53,0.0,1.1137
 1598791741,Family Practice,PA,42035,,,,
 1598798589,Hospitalist,IN,18085,,,,
 1598800344,Family Practice,KY,21107,,,,
@@ -10423,9 +10423,9 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1598841645,Obstetrics & Gynecology,WV,54029,,,,
 1598856841,Family Practice,MI,26125,,,,
 1598860850,Obstetrics & Gynecology,PA,42077,,,,
-1598863797,Neurology,OH,,18,2686.08,0.0,2.2365
+1598863797,Neurology,OH,39035,18,2686.08,0.0,2.2365
 1598865602,Infectious Disease,MI,26099,,,,
-1598865743,Rheumatology,OH,,331,46928.38,0.0,1.2569
+1598865743,Rheumatology,OH,39035,331,46928.38,0.0,1.2569
 1598870503,Internal Medicine,MI,26063,,,,
 1598870909,Family Practice,PA,42029,,,,
 1598873499,Rheumatology,IL,17167,643,1884084.43,1677292.21,1.2712
@@ -10618,7 +10618,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1609989193,Psychiatry,MI,26157,,,,
 1609994490,Gastroenterology,MI,26161,83,15937.52,0.0,2.0261
 1619005188,Rheumatology,IN,18137,,,,
-1619007168,Neurology,MI,,84,17027.51,0.0,3.1406
+1619007168,Neurology,MI,26125,84,17027.51,0.0,3.1406
 1619010444,Nurse Practitioner,KY,21157,,,,
 1619019304,Gastroenterology,IL,17115,217,58345.56,0.0,2.0571
 1619031192,Family Practice,KY,21085,,,,
@@ -10690,7 +10690,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1619315413,Endocrinology,IL,17031,,,,
 1619316924,Neurology,OH,39049,35,23729.51,0.0,3.2235
 1619319894,Family Practice,MI,26163,,,,
-1619321619,Dermatology,PA,,,,,
+1619321619,Dermatology,PA,42091,,,,
 1619325974,Neurology,IN,18003,262,39145.72,0.0,1.7913
 1619326402,Nurse Practitioner,IN,18037,,,,
 1619330891,Internal Medicine,MI,26163,,,,
@@ -10747,7 +10747,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1619915873,Family Practice,IL,17031,,,,
 1619917267,Endocrinology,PA,42101,,,,
 1619923133,Neurology,OH,39151,751,203897.11,39453.62,1.3823
-1619923455,Neurology,MI,,296,147901.97,68588.21,1.9868
+1619923455,Neurology,MI,26163,296,147901.97,68588.21,1.9868
 1619923976,Gastroenterology,MI,26025,113,22618.54,0.0,1.1594
 1619925146,Gastroenterology,MI,26065,259,73580.19,,1.6855
 1619925757,Rheumatology,IN,18097,467,1883065.85,1642997.1,1.3057
@@ -10863,7 +10863,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1629085212,Gastroenterology,IL,17019,117,70882.85,,1.3816
 1629087325,Internal Medicine,IL,17019,,,,
 1629087861,Internal Medicine,IL,17037,,,,
-1629090428,Gastroenterology,OH,,401,72723.92,0.0,1.2337
+1629090428,Gastroenterology,OH,39035,401,72723.92,0.0,1.2337
 1629090931,Internal Medicine,OH,39029,,,,
 1629091251,Urology,IL,17031,,,,
 1629094834,Neurology,IL,17089,541,245047.77,66590.9,1.4399
@@ -10971,7 +10971,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1629620794,Infectious Disease,MI,26099,,,,
 1629631205,Nurse Practitioner,MI,26087,,,,
 1629632401,Nurse Practitioner,KY,21205,,,,
-1629678859,Gastroenterology,OH,,204,31958.57,0.0,1.5558
+1629678859,Gastroenterology,OH,39035,204,31958.57,0.0,1.5558
 1629690037,Nurse Practitioner,WV,54039,,,,
 1629695770,Nurse Practitioner,KY,21035,,,,
 1629744180,Nurse Practitioner,IL,17089,,,,
@@ -11043,7 +11043,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1639213044,Obstetrics & Gynecology,KY,21227,,,,
 1639217391,Infectious Disease,KY,21067,,,,
 1639223308,Gastroenterology,OH,39151,382,86070.95,,0.8396
-1639225451,Rheumatology,OH,,316,54457.78,0.0,1.4008
+1639225451,Rheumatology,OH,39035,316,54457.78,0.0,1.4008
 1639230378,Physician Assistant,MI,26103,,,,
 1639240344,Family Practice,PA,42013,,,,
 1639243223,Rheumatology,OH,39035,56,7641.46,0.0,1.8876
@@ -11066,8 +11066,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1639325848,Rheumatology,IL,17031,,,,
 1639327018,Internal Medicine,KY,21111,,,,
 1639331622,Urology,OH,39109,,,,
-1639332265,Rheumatology,OH,,372,48094.64,0.0,1.3215
-1639339039,Gastroenterology,OH,,158,31241.23,0.0,2.1598
+1639332265,Rheumatology,OH,39035,372,48094.64,0.0,1.3215
+1639339039,Gastroenterology,OH,39035,158,31241.23,0.0,2.1598
 1639350978,Internal Medicine,IL,17043,,,,
 1639357841,Nephrology,PA,42013,,,,
 1639361413,Gastroenterology,IL,17063,257,64012.03,0.0,2.0659
@@ -11119,7 +11119,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1639598907,Psychiatry,MI,26065,,,,
 1639599293,Internal Medicine,PA,42045,,,,
 1639601289,Rheumatology,PA,42091,525,1804763.19,1670532.64,1.2386
-1639606411,Rheumatology,IL,,178,126467.28,87821.36,2.3435
+1639606411,Rheumatology,IL,17143,178,126467.28,87821.36,2.3435
 1639608011,Allergy/ Immunology,PA,42003,81,12417.43,0.0,1.3411
 1639617913,Nurse Practitioner,PA,42095,,,,
 1639638729,Neurology,MI,26089,111,27024.16,,1.2402
@@ -11227,7 +11227,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1649439118,Hematology-Oncology,IN,18145,,,,
 1649442476,Family Practice,PA,42071,,,,
 1649443722,Internal Medicine,IN,18057,,,,
-1649444142,Neurology,OH,,20,3744.84,0.0,2.3749
+1649444142,Neurology,OH,39035,20,3744.84,0.0,2.3749
 1649446444,Medical Oncology,IN,18141,,,,
 1649448218,Sports Medicine,PA,42003,,,,
 1649460544,Nurse Practitioner,KY,21009,,,,
@@ -11236,7 +11236,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1649472440,Rheumatology,IL,17031,176,42037.54,0.0,1.9299
 1649482936,Family Practice,OH,39093,,,,
 1649488925,Internal Medicine,IL,17143,,,,
-1649495003,Allergy/ Immunology,OH,,103,18991.77,0.0,2.396
+1649495003,Allergy/ Immunology,OH,39035,103,18991.77,0.0,2.396
 1649505413,Nurse Practitioner,PA,42049,,,,
 1649505637,Certified Clinical Nurse Specialist,IN,18141,,,,
 1649512567,Family Practice,IN,18011,,,,
@@ -11271,7 +11271,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1649655028,Neurology,OH,39167,205,30461.51,0.0,1.7081
 1649657651,Neurology,IL,17031,202,62176.34,0.0,1.7304
 1649657701,Gastroenterology,PA,42077,367,114900.99,,1.4433
-1649664608,Gastroenterology,OH,,128,28289.61,0.0,1.8557
+1649664608,Gastroenterology,OH,39035,128,28289.61,0.0,1.8557
 1649666256,Neurology,IL,17031,14,1647.85,0.0,2.194
 1649667023,Neurology,PA,42003,179,37201.57,0.0,2.035
 1649669664,Nurse Practitioner,OH,39165,,,,
@@ -11286,7 +11286,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1649708975,Gastroenterology,IL,17043,208,58731.52,12.14,1.3396
 1649726670,Nurse Practitioner,KY,21145,,,,
 1649729070,Physician Assistant,PA,42077,,,,
-1649729732,Gastroenterology,IL,,256,90307.3,0.0,2.0711
+1649729732,Gastroenterology,IL,17143,256,90307.3,0.0,2.0711
 1649739574,Nurse Practitioner,KY,21093,,,,
 1649776329,Allergy/ Immunology,PA,42003,47,8532.02,0.0,0.8335
 1649791187,Gastroenterology,PA,42003,183,36401.65,0.0,2.1299
@@ -11344,7 +11344,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1659353258,Anesthesiology,PA,42107,,,,
 1659353779,Gastroenterology,IL,17031,403,220560.4,110352.01,1.2382
 1659354215,Internal Medicine,IN,18177,,,,
-1659354462,Neurology,OH,,79,33850.17,0.0,1.4898
+1659354462,Neurology,OH,39035,79,33850.17,0.0,1.4898
 1659355774,Gastroenterology,KY,21111,316,262910.5,208806.23,1.4948
 1659356400,Internal Medicine,MI,26163,,,,
 1659358745,Internal Medicine,IN,18035,,,,
@@ -11380,7 +11380,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1659405231,Allergy/ Immunology,IL,17031,78,26010.7,,0.8623
 1659413656,Gastroenterology,IL,17031,217,52860.13,0.0,2.0058
 1659421915,Psychiatry,MI,26091,,,,
-1659428464,Neurology,IL,,536,67135.43,0.0,1.0106
+1659428464,Neurology,IL,17143,536,67135.43,0.0,1.0106
 1659430007,Neurology,IL,17031,618,116541.33,0.0,1.6545
 1659431104,Internal Medicine,PA,42019,,,,
 1659431179,Neurology,PA,42017,89,22269.06,0.0,1.2145
@@ -11465,7 +11465,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1659827418,Nurse Practitioner,IL,17119,,,,
 1659828846,Neurology,MI,26161,76,78182.78,0.0,1.4023
 1659829240,Nurse Practitioner,IN,18029,,,,
-1659831501,Neurology,IL,,226,51573.68,0.0,1.9299
+1659831501,Neurology,IL,17143,226,51573.68,0.0,1.9299
 1659832285,Rheumatology,PA,42095,100,30400.22,,1.4184
 1659836914,Nurse Practitioner,PA,42081,,,,
 1659840486,Nurse Practitioner,WV,54089,,,,
@@ -11480,7 +11480,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1659893337,Family Practice,KY,21107,,,,
 1659895282,Gastroenterology,PA,42041,175,53734.84,0.0,1.5952
 1659896025,Nurse Practitioner,PA,42029,,,,
-1659900983,Neurology,IL,,86,11952.86,0.0,1.2213
+1659900983,Neurology,IL,17143,86,11952.86,0.0,1.2213
 1659901106,Nurse Practitioner,IL,17161,,,,
 1659914182,Nurse Practitioner,MI,26057,,,,
 1659935716,Nurse Practitioner,MI,26121,,,,
@@ -11569,7 +11569,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1669481289,Nurse Practitioner,IL,17095,,,,
 1669482436,Gastroenterology,KY,21205,317,89749.69,0.0,1.6637
 1669482527,Family Practice,PA,42099,,,,
-1669482790,Neurology,OH,,261,41404.38,0.0,1.4862
+1669482790,Neurology,OH,39035,261,41404.38,0.0,1.4862
 1669486254,Internal Medicine,OH,39153,,,,
 1669488417,Neurology,IL,17031,17,10201.54,0.0,1.7376
 1669489803,Endocrinology,OH,39049,,,,
@@ -11589,7 +11589,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1669560215,Rheumatology,IN,18043,,,,
 1669571113,Neurology,IL,17167,700,1952762.34,1790020.56,1.3632
 1669571170,Internal Medicine,IL,17201,,,,
-1669571683,Rheumatology,OH,,330,42707.05,0.0,1.2061
+1669571683,Rheumatology,OH,39035,330,42707.05,0.0,1.2061
 1669582235,Allergy/ Immunology,WV,54069,101,346146.8,,0.8874
 1669582417,Family Practice,IL,17031,,,,
 1669584793,Urology,IN,18167,,,,
@@ -11633,7 +11633,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1669763058,Neurology,OH,39035,102,34203.15,0.0,1.8971
 1669764916,Gastroenterology,OH,39133,228,45639.12,0.0,1.3512
 1669766325,Allergy/ Immunology,MI,26081,59,11865.34,0.0,2.6661
-1669767885,Neurology,PA,,220,37287.35,0.0,2.0334
+1669767885,Neurology,PA,42079,220,37287.35,0.0,2.0334
 1669767992,Family Practice,PA,42077,,,,
 1669768230,Neurology,PA,42003,82,10881.64,0.0,1.2942
 1669771911,Neurology,MI,26163,105,34027.2,0.0,2.9522
@@ -11659,13 +11659,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1669844254,Nurse Practitioner,MI,26163,,,,
 1669866836,Neurology,IL,17031,507,143172.63,0.0,2.0414
 1669867669,Dermatology,IN,18105,,,,
-1669868907,Rheumatology,OH,,247,52346.84,0.0,1.3548
+1669868907,Rheumatology,OH,39035,247,52346.84,0.0,1.3548
 1669871943,Nurse Practitioner,OH,39095,,,,
 1669874483,Physician Assistant,PA,42019,,,,
 1669884532,Gastroenterology,PA,42045,184,32102.66,0.0,2.1593
 1669884607,Internal Medicine,PA,42079,,,,
 1669885653,Neurology,PA,42043,184,33671.98,0.0,1.6844
-1669886842,Neurology,OH,,144,20050.25,0.0,1.3146
+1669886842,Neurology,OH,39035,144,20050.25,0.0,1.3146
 1669887881,Nurse Practitioner,MI,26045,,,,
 1669899159,Internal Medicine,IL,17031,,,,
 1669902482,Gastroenterology,IL,17031,24,5675.82,0.0,1.3696
@@ -11685,8 +11685,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1679050108,Nurse Practitioner,MI,26133,,,,
 1679054597,Nurse Practitioner,OH,39113,,,,
 1679058630,Physician Assistant,MI,26049,,,,
-1679067300,Neurology,OH,,38,7018.48,0.0,1.6761
-1679077812,Rheumatology,OH,,32,5409.52,0.0,1.3985
+1679067300,Neurology,OH,39035,38,7018.48,0.0,1.6761
+1679077812,Rheumatology,OH,39035,32,5409.52,0.0,1.3985
 1679099626,Rheumatology,IL,17091,64,23368.02,,1.2311
 1679101075,Emergency Medicine,IN,18089,,,,
 1679110266,Nurse Practitioner,IN,18089,,,,
@@ -11709,7 +11709,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1679513667,Neurology,MI,26081,131,41267.87,0.0,1.3637
 1679513758,Family Practice,OH,39113,,,,
 1679515951,Neurology,IL,17031,22,2930.22,0.0,0.8004
-1679518286,Gastroenterology,OH,,221,50172.68,0.0,2.1359
+1679518286,Gastroenterology,OH,39035,221,50172.68,0.0,2.1359
 1679521272,Rheumatology,PA,42091,857,2381674.01,2091693.97,1.2232
 1679524219,Psychiatry,MI,26161,,,,
 1679524326,Neurology,OH,39049,38,17952.52,0.0,1.4449
@@ -11724,7 +11724,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1679538904,Urology,MI,26099,,,,
 1679539563,Internal Medicine,IL,17097,,,,
 1679542567,Pulmonary Disease,OH,39035,,,,
-1679542880,Neurology,OH,,32,2379.55,0.0,2.0152
+1679542880,Neurology,OH,39035,32,2379.55,0.0,2.0152
 1679543425,Internal Medicine,MI,26163,,,,
 1679543615,Obstetrics & Gynecology,PA,42125,,,,
 1679546121,Hematology-Oncology,IN,18173,,,,
@@ -11839,7 +11839,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1679962542,Rheumatology,IL,17031,65,14033.59,0.0,1.5561
 1679963607,Nurse Practitioner,KY,21111,,,,
 1679965289,Dermatology,OH,39103,,,,
-1679969059,Neurology,OH,,197,29273.73,0.0,2.0844
+1679969059,Neurology,OH,39035,197,29273.73,0.0,2.0844
 1679993216,Rheumatology,MI,26075,53,17504.39,23.03,1.3819
 1689008591,Nurse Practitioner,IL,17173,,,,
 1689011207,Neurology,PA,42003,174,26598.57,0.0,2.5394
@@ -11879,7 +11879,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1689236358,Neurology,MI,26081,66,10711.42,0.0,1.8045
 1689237604,Nurse Practitioner,PA,42003,,,,
 1689238792,Nurse Practitioner,KY,21161,,,,
-1689239980,Rheumatology,OH,,13,3031.43,0.0,1.3129
+1689239980,Rheumatology,OH,39035,13,3031.43,0.0,1.3129
 1689265993,Nurse Practitioner,IN,18027,,,,
 1689271090,Physician Assistant,OH,39035,,,,
 1689275026,Physician Assistant,MI,26099,,,,
@@ -11958,7 +11958,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1689756108,Gastroenterology,MI,26161,182,45885.69,0.0,2.1126
 1689762296,Gastroenterology,PA,42071,71,13516.11,0.0,0.9591
 1689776320,Internal Medicine,MI,26049,,,,
-1689781205,Rheumatology,WV,,356,48083.66,0.0,1.2853
+1689781205,Rheumatology,WV,54061,356,48083.66,0.0,1.2853
 1689785362,Neurology,IL,17031,65,10697.43,0.0,2.8464
 1689785495,Neurology,KY,21059,181,22443.86,0.0,1.5871
 1689787889,Gastroenterology,IL,17031,463,175985.15,,1.626
@@ -12009,7 +12009,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1689946857,Nurse Practitioner,KY,47125,,,,
 1689959835,Physician Assistant,PA,42075,,,,
 1689961799,Neurology,PA,42093,376,69734.6,0.0,1.6012
-1689962441,Neurology,PA,,202,22702.57,0.0,1.6827
+1689962441,Neurology,PA,42079,202,22702.57,0.0,1.6827
 1689973083,Neurology,PA,42077,148,43882.88,0.0,2.3378
 1689985871,Medical Oncology,OH,39049,,,,
 1689988099,Rheumatology,OH,39049,467,1417539.95,1237259.79,1.2083
@@ -12072,7 +12072,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1699261289,Neurology,PA,42101,177,31713.91,0.0,1.678
 1699262154,Gastroenterology,PA,42101,19,4408.44,0.0,1.5438
 1699267385,Internal Medicine,KY,21067,,,,
-1699272393,Rheumatology,OH,,17,3740.15,0.0,1.1248
+1699272393,Rheumatology,OH,39035,17,3740.15,0.0,1.1248
 1699283382,Nurse Practitioner,KY,21087,,,,
 1699287953,Physician Assistant,MI,26103,,,,
 1699293548,Nurse Practitioner,OH,39061,,,,
@@ -12188,7 +12188,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1699932608,Endocrinology,IL,17031,,,,
 1699932798,Gastroenterology,IL,17111,100,17428.43,0.0,1.4168
 1699934604,Neurology,MI,26155,103,19918.63,,1.4476
-1699937888,Neurology,IL,,119,23593.07,0.0,2.0217
+1699937888,Neurology,IL,17143,119,23593.07,0.0,2.0217
 1699939694,Neurology,IL,17019,172,209954.88,,1.4661
 1699977413,Gastroenterology,IL,17031,138,43283.12,0.0,1.5864
 1699978791,Allergy/ Immunology,IL,17031,18,5025.03,0.0,0.9412
@@ -12261,7 +12261,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1700312808,Neurology,IL,17043,64,14480.38,0.0,1.9856
 1700312881,Gastroenterology,PA,42101,13,2731.98,0.0,1.9144
 1700314846,Gastroenterology,MI,26161,348,126067.16,,1.6057
-1700317203,Neurology,KY,,299,55168.85,0.0,2.0379
+1700317203,Neurology,KY,21111,299,55168.85,0.0,2.0379
 1700317658,Orthopedic Surgery,IL,17031,,,,
 1700322245,Nurse Practitioner,MI,26081,,,,
 1700341294,Nurse Practitioner,OH,39113,,,,
@@ -12293,7 +12293,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1700809852,Internal Medicine,IN,18097,,,,
 1700812823,Gastroenterology,IN,18089,204,58007.33,0.0,1.7489
 1700813276,Gastroenterology,PA,42043,125,22657.1,0.0,1.3332
-1700815354,Neurology,OH,,333,39284.82,0.0,1.2458
+1700815354,Neurology,OH,39035,333,39284.82,0.0,1.2458
 1700815818,Neurology,IL,17031,86,16888.79,,1.7245
 1700817566,Family Practice,PA,42029,,,,
 1700819083,Rheumatology,PA,42007,128,66609.89,,1.2963
@@ -12310,7 +12310,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1700838745,Family Practice,IL,17031,,,,
 1700839040,Family Practice,KY,21219,,,,
 1700840535,Internal Medicine,KY,21111,,,,
-1700840956,Rheumatology,OH,,165,25617.78,0.0,1.5208
+1700840956,Rheumatology,OH,39035,165,25617.78,0.0,1.5208
 1700841897,Allergy/ Immunology,OH,39103,88,14042.67,0.0,1.3315
 1700842622,Family Practice,MI,26145,,,,
 1700845633,Gastroenterology,PA,42101,365,71611.6,0.0,1.492
@@ -12402,7 +12402,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1710144639,Family Practice,PA,42103,,,,
 1710144746,Internal Medicine,KY,21145,,,,
 1710148481,Rheumatology,IL,17167,22,2888.46,0.0,0.9762
-1710150438,Neurology,OH,,61,48869.19,0.0,1.7925
+1710150438,Neurology,OH,39035,61,48869.19,0.0,1.7925
 1710150933,Internal Medicine,OH,39017,,,,
 1710151105,Hematology-Oncology,IL,17043,,,,
 1710151527,Gastroenterology,PA,42079,497,113928.7,0.0,1.2869
@@ -12417,7 +12417,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1710181375,Allergy/ Immunology,OH,39141,119,12918.59,0.0,0.8857
 1710181532,Physician Assistant,OH,39085,,,,
 1710183066,Rheumatology,WV,54011,48,10912.07,0.0,1.2975
-1710188248,Neurology,OH,,165,29115.11,0.0,2.19
+1710188248,Neurology,OH,39035,165,29115.11,0.0,2.19
 1710188974,Gastroenterology,PA,42101,221,55423.71,0.0,1.3864
 1710190046,Family Practice,OH,39093,,,,
 1710192125,Endocrinology,IL,17097,,,,
@@ -12441,7 +12441,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1710330634,General Practice,MI,26017,,,,
 1710333802,Nurse Practitioner,OH,39061,,,,
 1710335716,Allergy/ Immunology,MI,26125,31,15817.96,,0.7693
-1710336631,Internal Medicine,IL,,,,,
+1710336631,Internal Medicine,IL,17143,,,,
 1710338835,Endocrinology,PA,42133,,,,
 1710342456,Nurse Practitioner,KY,21101,,,,
 1710347141,Physician Assistant,OH,39165,,,,
@@ -12460,7 +12460,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1710419817,Internal Medicine,KY,21117,,,,
 1710421961,Nurse Practitioner,OH,39049,,,,
 1710430632,Physician Assistant,IN,18167,,,,
-1710437249,Nurse Practitioner,IL,,,,,
+1710437249,Nurse Practitioner,IL,17143,,,,
 1710437520,Nurse Practitioner,IN,18085,,,,
 1710443510,Nurse Practitioner,OH,39003,,,,
 1710448170,Infectious Disease,IL,17031,,,,
@@ -12489,7 +12489,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1710911847,Hematology-Oncology,OH,39061,,,,
 1710913470,Endocrinology,IN,18097,,,,
 1710913553,Hospitalist,PA,42071,,,,
-1710915541,Neurology,OH,,42,6783.34,0.0,1.4579
+1710915541,Neurology,OH,39035,42,6783.34,0.0,1.4579
 1710916176,Dermatology,KY,21145,,,,
 1710917422,Rheumatology,IL,17019,298,336256.59,240862.34,1.3154
 1710919139,Sports Medicine,PA,42045,,,,
@@ -12507,7 +12507,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1710934799,Physician Assistant,OH,39113,,,,
 1710935309,Gastroenterology,IN,18105,728,168813.2,,1.2116
 1710935739,Gastroenterology,PA,42093,115,14339.42,,1.5875
-1710939178,Physician Assistant,PA,,,,,
+1710939178,Physician Assistant,PA,42079,,,,
 1710939384,Gastroenterology,OH,39049,108,19680.21,0.0,1.6342
 1710939558,Internal Medicine,KY,21047,,,,
 1710941273,Urology,MI,26163,,,,
@@ -12555,7 +12555,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1720011380,Family Practice,OH,39025,,,,
 1720015399,Rheumatology,PA,42069,978,2769350.46,2513096.48,1.2405
 1720016462,Urology,MI,26161,,,,
-1720016488,Neurology,OH,,325,93990.65,0.0,1.4758
+1720016488,Neurology,OH,39035,325,93990.65,0.0,1.4758
 1720016926,Neurology,IN,18141,255,119063.69,52529.12,1.3976
 1720022643,Internal Medicine,WV,54011,,,,
 1720023971,Internal Medicine,PA,42017,,,,
@@ -12668,13 +12668,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1720308323,Rheumatology,PA,42003,214,42459.42,,1.4329
 1720309024,Gastroenterology,PA,42011,556,172156.72,48154.72,1.4295
 1720315765,Ambulatory Surgical Center,PA,42077,,,,
-1720318355,Neurology,OH,,146,50127.82,,1.8471
+1720318355,Neurology,OH,39035,146,50127.82,,1.8471
 1720318538,Physician Assistant,IL,17167,,,,
 1720334113,Neurology,PA,42101,193,51121.16,0.0,1.9937
-1720341340,Neurology,OH,,129,20062.89,0.0,1.6469
+1720341340,Neurology,OH,39035,129,20062.89,0.0,1.6469
 1720344849,Gastroenterology,PA,42101,544,310790.67,189955.08,1.3988
 1720346042,Neurology,PA,42041,186,20200.24,0.0,2.2405
-1720376338,Neurology,KY,,107,14858.12,0.0,2.4155
+1720376338,Neurology,KY,21111,107,14858.12,0.0,2.4155
 1720377328,Neurology,IL,17043,504,103255.72,,1.4258
 1720388325,Neurology,PA,42077,145,105410.4,0.0,2.0263
 1720406325,Gastroenterology,OH,39049,198,45136.01,0.0,1.4952
@@ -12735,7 +12735,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1730116823,Nurse Practitioner,KY,21081,,,,
 1730121898,Family Practice,WV,54055,,,,
 1730123134,Internal Medicine,IL,17089,,,,
-1730123514,Gastroenterology,OH,,374,91467.79,0.0,1.2999
+1730123514,Gastroenterology,OH,39035,374,91467.79,0.0,1.2999
 1730126228,Urology,MI,26163,,,,
 1730126921,Allergy/ Immunology,IN,18057,81,30258.69,0.0,0.7661
 1730127978,Rheumatology,IL,17031,,,,
@@ -12843,7 +12843,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1730398694,Family Practice,KY,21117,,,,
 1730398959,Neurology,IL,17031,330,59966.66,0.0,2.7155
 1730407339,Family Practice,PA,42063,,,,
-1730408642,Rheumatology,OH,,408,74280.14,0.0,1.3118
+1730408642,Rheumatology,OH,39035,408,74280.14,0.0,1.3118
 1730425604,Nurse Practitioner,IN,18141,,,,
 1730431099,Nurse Practitioner,MI,26125,,,,
 1730440116,Neurology,IL,17031,532,237481.53,91651.4,1.3954
@@ -12870,12 +12870,12 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1730542424,Physician Assistant,PA,42045,,,,
 1730560061,Hematology-Oncology,PA,42101,,,,
 1730561564,Nurse Practitioner,MI,26163,,,,
-1730565870,Nurse Practitioner,IL,,,,,
+1730565870,Nurse Practitioner,IL,17167,,,,
 1730574328,Allergy/ Immunology,OH,39153,48,8067.95,0.0,0.9204
 1730575564,Gastroenterology,OH,39049,290,50592.92,0.0,2.3709
 1730588732,Neurology,OH,39099,114,60527.97,0.0,1.9016
 1730593146,Internal Medicine,MI,26125,,,,
-1730596388,Gastroenterology,OH,,60,10323.36,0.0,2.2331
+1730596388,Gastroenterology,OH,39035,60,10323.36,0.0,2.2331
 1730603937,Nurse Practitioner,IN,18089,,,,
 1730610668,Neurology,IL,17031,96,21309.46,0.0,2.3061
 1730611740,Neurology,IL,17031,142,30967.17,0.0,2.3119
@@ -12977,7 +12977,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1740406883,Neurology,OH,39049,261,83645.89,,1.869
 1740410844,Family Practice,OH,39035,,,,
 1740410968,Endocrinology,IL,17031,,,,
-1740414457,Neurology,OH,,130,24029.67,0.0,1.6165
+1740414457,Neurology,OH,39035,130,24029.67,0.0,1.6165
 1740424076,Neurology,OH,39053,550,115134.04,,1.3856
 1740438050,Physician Assistant,IL,17197,,,,
 1740439454,Physician Assistant,PA,42063,,,,
@@ -12989,9 +12989,9 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1740455161,Neurology,MI,26161,90,15944.79,0.0,2.0346
 1740457886,Neurology,OH,39049,182,202998.48,148366.73,1.7066
 1740459247,Nurse Practitioner,KY,21035,,,,
-1740459510,Neurology,OH,,847,242306.87,0.0,2.3722
+1740459510,Neurology,OH,39035,847,242306.87,0.0,2.3722
 1740462043,Nurse Practitioner,PA,42091,,,,
-1740485044,Rheumatology,OH,,319,48158.68,0.0,1.0085
+1740485044,Rheumatology,OH,39035,319,48158.68,0.0,1.0085
 1740496389,Neurology,IN,18097,71,15271.97,0.0,2.4676
 1740496512,Gastroenterology,IL,17031,249,68337.35,0.0,2.5237
 1740497908,Neurology,IN,18057,331,93615.67,0.0,1.4256
@@ -13012,7 +13012,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1740579572,Neurology,PA,42003,123,22845.95,0.0,2.4614
 1740589969,Gastroenterology,IL,17089,770,215223.28,0.0,2.3664
 1740589993,Allergy/ Immunology,PA,42045,106,79300.22,,0.7436
-1740595024,Neurology,IL,,12,1973.66,0.0,2.2739
+1740595024,Neurology,IL,17143,12,1973.66,0.0,2.2739
 1740600980,Neurology,PA,42101,181,27244.71,0.0,1.8632
 1740608538,Gastroenterology,PA,42049,351,111856.98,0.0,1.615
 1740619840,Physician Assistant,IL,17029,,,,
@@ -13027,7 +13027,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1740667641,Family Practice,PA,42029,,,,
 1740677558,Nurse Practitioner,IN,18043,,,,
 1740677582,Nurse Practitioner,IL,17111,,,,
-1740681790,Rheumatology,OH,,12,2476.48,0.0,1.7554
+1740681790,Rheumatology,OH,39035,12,2476.48,0.0,1.7554
 1740692193,Nurse Practitioner,KY,21179,,,,
 1740693654,Nurse Practitioner,OH,39049,,,,
 1740701473,Neurology,IL,17031,62,56529.4,0.0,2.6008
@@ -13072,7 +13072,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1750059788,Physician Assistant,OH,39033,,,,
 1750302386,Family Practice,IL,17031,,,,
 1750305538,Hospitalist,OH,39145,,,,
-1750306163,Emergency Medicine,IN,,,,,
+1750306163,Emergency Medicine,IN,18091,,,,
 1750319562,Internal Medicine,OH,39043,,,,
 1750321220,Family Practice,KY,21041,,,,
 1750323424,Gastroenterology,IL,17143,,,,
@@ -13156,7 +13156,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1750511929,Family Practice,KY,21015,,,,
 1750519229,Nurse Practitioner,IL,17031,,,,
 1750520433,Gastroenterology,PA,42101,432,163886.22,0.0,1.2304
-1750523783,Gastroenterology,OH,,438,91875.14,0.0,1.227
+1750523783,Gastroenterology,OH,39035,438,91875.14,0.0,1.227
 1750541983,Nurse Practitioner,IL,17079,,,,
 1750554069,Nurse Practitioner,KY,21155,,,,
 1750557179,Allergy/ Immunology,IL,17031,68,38462.64,503.91,1.4881
@@ -13170,7 +13170,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1750584058,General Surgery,IL,17201,,,,
 1750584991,Gastroenterology,OH,39095,363,99228.15,0.0,1.2046
 1750587754,Rheumatology,OH,39085,486,90869.0,1798.55,1.4555
-1750592531,Ambulatory Surgical Center,PA,,,,,
+1750592531,Ambulatory Surgical Center,PA,42071,,,,
 1750597076,Internal Medicine,PA,42003,,,,
 1750597381,Gastroenterology,PA,42101,363,73930.28,0.0,1.7412
 1750600797,Neurology,MI,26065,212,39196.18,,1.1256
@@ -13244,7 +13244,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1760423792,Neurology,PA,42091,388,114995.36,0.0,1.7611
 1760425755,Internal Medicine,PA,42029,,,,
 1760426308,Gastroenterology,IL,17143,654,263227.42,121936.22,1.0486
-1760426753,Neurology,OH,,113,25594.52,0.0,1.6047
+1760426753,Neurology,OH,39035,113,25594.52,0.0,1.6047
 1760428460,Urology,KY,21117,,,,
 1760431084,Gastroenterology,MI,26065,152,30096.11,0.0,1.0849
 1760431548,Rheumatology,PA,42101,484,1002307.28,846331.27,1.3801
@@ -13265,7 +13265,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1760454839,Psychiatry,IN,18005,,,,
 1760456214,Internal Medicine,PA,42015,,,,
 1760456305,Family Practice,IN,18027,,,,
-1760457121,Family Practice,PA,,,,,
+1760457121,Family Practice,PA,42079,,,,
 1760461065,Nurse Practitioner,KY,21093,,,,
 1760462063,Rheumatology,PA,42091,219,404782.8,339056.65,1.2646
 1760462220,Family Practice,MI,26163,,,,
@@ -13407,7 +13407,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1760914972,Neurology,PA,42101,102,17482.62,0.0,1.8686
 1760916217,Allergy/ Immunology,PA,42041,109,114799.83,95583.47,0.9227
 1760916902,Neurology,MI,26163,88,12566.39,0.0,1.6046
-1760917322,Allergy/ Immunology,OH,,82,10901.14,0.0,1.2916
+1760917322,Allergy/ Immunology,OH,39035,82,10901.14,0.0,1.2916
 1760918700,Internal Medicine,KY,21117,,,,
 1760923932,Neurology,OH,39049,97,47432.43,0.0,1.9352
 1760926273,Physician Assistant,KY,21111,,,,
@@ -13569,7 +13569,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1770842460,Family Practice,IN,18163,,,,
 1770842577,Family Practice,KY,21089,,,,
 1770842874,Neurology,PA,42101,104,24849.3,0.0,1.8915
-1770870131,Neurology,OH,,149,25059.22,0.0,1.7301
+1770870131,Neurology,OH,39035,149,25059.22,0.0,1.7301
 1770871071,Neurology,PA,42045,358,88533.7,0.0,1.8564
 1770875759,Neurology,OH,39049,110,28631.67,1548.54,1.0525
 1770882243,Gastroenterology,PA,42091,121,24503.27,0.0,1.6901
@@ -13590,8 +13590,8 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1770950867,Nurse Practitioner,OH,39095,,,,
 1770962987,Allergy/ Immunology,PA,42011,147,41762.82,0.0,1.0319
 1770964157,Nurse Practitioner,OH,39011,,,,
-1770965840,Neurology,OH,,40,4028.09,0.0,1.9441
-1770967606,Neurology,PA,,11,1640.99,0.0,1.883
+1770965840,Neurology,OH,39035,40,4028.09,0.0,1.9441
+1770967606,Neurology,PA,42079,11,1640.99,0.0,1.883
 1770975393,Nurse Practitioner,IL,17165,,,,
 1770990061,Nurse Practitioner,KY,21195,,,,
 1770992760,Gastroenterology,PA,42003,277,56409.36,0.0,1.8347
@@ -13754,16 +13754,16 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1780940999,Neurology,MI,26161,258,64033.89,0.0,1.7085
 1780944751,Neurology,PA,42101,95,18813.35,0.0,2.0697
 1780946160,Dermatology,KY,21213,,,,
-1780947655,Neurology,OH,,309,45684.21,0.0,2.0442
+1780947655,Neurology,OH,39035,309,45684.21,0.0,2.0442
 1780970418,Neurology,IL,17031,227,47647.52,,2.2342
 1780972372,Neurology,OH,39049,156,47713.54,,1.5322
 1780973438,Gastroenterology,PA,42003,81,20301.43,0.0,1.9898
 1780974022,Neurology,PA,42055,496,77603.55,,1.5401
-1780974667,Gastroenterology,OH,,153,36473.29,0.0,2.6513
+1780974667,Gastroenterology,OH,39035,153,36473.29,0.0,2.6513
 1780983205,Gastroenterology,PA,42013,383,253331.84,151147.79,1.3041
 1780991315,Neurology,OH,39153,156,20413.01,0.0,1.7794
 1780995001,Neurology,MI,26125,73,87267.61,0.0,1.846
-1790007607,Neurology,OH,,284,42269.43,0.0,1.8358
+1790007607,Neurology,OH,39035,284,42269.43,0.0,1.8358
 1790011724,Physician Assistant,OH,39113,,,,
 1790028082,Nurse Practitioner,WV,54019,,,,
 1790028389,Gastroenterology,OH,39035,135,25778.07,0.0,1.9907
@@ -13792,7 +13792,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1790118586,Nurse Practitioner,IL,17113,,,,
 1790121895,Neurology,OH,39095,441,89786.83,0.0,1.6672
 1790123891,Family Practice,IN,18107,,,,
-1790139939,Gastroenterology,OH,,176,31639.68,0.0,2.1746
+1790139939,Gastroenterology,OH,39035,176,31639.68,0.0,2.1746
 1790141950,Nurse Practitioner,KY,21015,,,,
 1790144384,Nurse Practitioner,OH,39035,,,,
 1790145191,Nurse Practitioner,KY,21019,,,,
@@ -13917,7 +13917,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1790876407,Allergy/ Immunology,KY,21227,92,33623.62,0.0,1.0698
 1790883502,Physician Assistant,IN,18003,,,,
 1790887966,Rheumatology,PA,42003,66,12291.22,0.0,1.524
-1790891406,Rheumatology,OH,,13,1351.54,0.0,1.8736
+1790891406,Rheumatology,OH,39035,13,1351.54,0.0,1.8736
 1790893881,Infectious Disease,IL,17031,,,,
 1790896769,Neurology,IN,18167,371,186249.77,85180.76,1.5026
 1790901940,Gastroenterology,IN,18089,1301,326097.64,0.0,1.4557
@@ -13941,7 +13941,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1790953255,Physician Assistant,OH,39135,,,,
 1790955219,Psychiatry,MI,26163,,,,
 1790955342,Nurse Practitioner,PA,42091,,,,
-1790959682,Rheumatology,OH,,366,57402.01,0.0,1.2009
+1790959682,Rheumatology,OH,39035,366,57402.01,0.0,1.2009
 1790970069,Hematology-Oncology,PA,42041,,,,
 1790973188,Internal Medicine,MI,26073,,,,
 1790978542,Gastroenterology,PA,42003,199,39255.27,0.0,1.7068
@@ -14103,7 +14103,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1801980644,Gastroenterology,KY,21239,104,22110.73,0.0,1.1568
 1801988027,Neurology,IN,18141,134,131316.07,107174.19,1.4785
 1801992615,Neurology,PA,42077,112,23340.24,0.0,1.971
-1801995220,Neurology,OH,,59,14367.26,0.0,1.2875
+1801995220,Neurology,OH,39035,59,14367.26,0.0,1.2875
 1811000227,Neurology,MI,26125,20,4104.02,0.0,2.1819
 1811000631,Internal Medicine,PA,42095,,,,
 1811001662,Allergy/ Immunology,MI,26081,166,117233.93,,0.8057
@@ -14123,7 +14123,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1811067200,Internal Medicine,MI,26125,,,,
 1811077720,Gastroenterology,IL,17031,175,37178.71,0.0,1.3405
 1811082324,Neurology,MI,26081,70,14182.1,0.0,2.0896
-1811087463,Gastroenterology,OH,,232,49398.33,0.0,2.134
+1811087463,Gastroenterology,OH,39035,232,49398.33,0.0,2.134
 1811090939,Dermatology,IN,18081,,,,
 1811092976,Neurology,KY,21067,31,7514.86,0.0,1.4722
 1811097348,Neurology,WV,54079,410,110152.18,0.0,1.4439
@@ -14237,7 +14237,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1811952591,Hematology-Oncology,MI,26049,,,,
 1811954142,Gastroenterology,OH,39003,535,187493.19,0.0,1.5917
 1811955636,Family Practice,IL,17111,,,,
-1811957939,Psychiatry,OH,,,,,
+1811957939,Psychiatry,OH,39035,,,,
 1811958291,Orthopedic Surgery,KY,21151,,,,
 1811958739,Neurology,PA,42069,196,25718.44,0.0,2.0487
 1811960081,Family Practice,MI,26163,,,,
@@ -14378,15 +14378,15 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1821341041,Nurse Practitioner,IL,17049,,,,
 1821350315,Urology,PA,42003,,,,
 1821350745,Dermatology,MI,26081,,,,
-1821354267,Gastroenterology,OH,,86,18023.42,0.0,0.9974
+1821354267,Gastroenterology,OH,39035,86,18023.42,0.0,0.9974
 1821354614,Nurse Practitioner,IN,18035,,,,
 1821354903,Gastroenterology,PA,42003,260,49916.99,0.0,1.692
 1821356957,Gastroenterology,PA,42101,38,8157.85,0.0,2.3564
 1821369794,Preventive Medicine,MI,26163,,,,
 1821379025,Physician Assistant,OH,39113,,,,
-1821381385,Neurology,PA,,97,41267.85,0.0,0.9497
+1821381385,Neurology,PA,42079,97,41267.85,0.0,0.9497
 1821385733,Family Practice,KY,21081,,,,
-1821389008,Rheumatology,OH,,215,29045.34,0.0,1.7601
+1821389008,Rheumatology,OH,39035,215,29045.34,0.0,1.7601
 1821401845,Neurology,KY,21111,102,19358.85,0.0,2.0937
 1821404781,Gastroenterology,IL,17031,337,100532.97,0.0,1.2717
 1821406547,Physician Assistant,PA,42081,,,,
@@ -14415,7 +14415,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1821566183,Nurse Practitioner,OH,39025,,,,
 1821591629,Rheumatology,IN,18097,147,62797.47,26441.34,1.5315
 1821592718,Allergy/ Immunology,OH,39041,133,155749.58,,1.0568
-1821593690,Neurology,OH,,268,41813.04,0.0,1.4407
+1821593690,Neurology,OH,39035,268,41813.04,0.0,1.4407
 1821595257,Gastroenterology,PA,42077,90,19687.42,0.0,1.5684
 1821612987,Neurology,PA,42049,86,25539.4,0.0,1.1727
 1821624339,Nurse Practitioner,KY,21145,,,,
@@ -14475,7 +14475,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1831182468,Ophthalmology,IL,17097,,,,
 1831183524,Neurology,MI,26163,14,3586.06,0.0,0.6803
 1831183896,Family Practice,OH,39003,,,,
-1831187467,Neurology,OH,,398,61191.8,0.0,1.4397
+1831187467,Neurology,OH,39035,398,61191.8,0.0,1.4397
 1831190206,Family Practice,WV,54069,,,,
 1831191089,Pain Management,PA,42091,,,,
 1831191444,Internal Medicine,OH,39077,,,,
@@ -14505,7 +14505,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1831291764,Internal Medicine,MI,26049,,,,
 1831299346,Neurology,KY,21195,384,125514.78,19002.1,1.5062
 1831300748,Urology,IL,17031,,,,
-1831307537,Neurology,MI,,281,52638.02,0.0,2.0771
+1831307537,Neurology,MI,26111,281,52638.02,0.0,2.0771
 1831311505,Infectious Disease,IL,17031,,,,
 1831315852,Gastroenterology,IL,17043,512,175241.05,0.0,1.1776
 1831316983,Rheumatology,IL,17031,684,70219.74,,1.4239
@@ -14548,7 +14548,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1831485028,Gastroenterology,OH,39035,330,62661.63,0.0,1.3173
 1831489756,Internal Medicine,IN,18057,,,,
 1831492123,Nurse Practitioner,MI,26049,,,,
-1831504844,Neurology,IL,,26,3422.78,0.0,1.9296
+1831504844,Neurology,IL,17143,26,3422.78,0.0,1.9296
 1831505379,Gastroenterology,OH,39107,199,25536.57,,1.0248
 1831514025,Dermatology,OH,39003,,,,
 1831516020,Neurology,IL,17031,241,51918.66,0.0,2.4994
@@ -14567,7 +14567,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1831571207,Orthopedic Surgery,WV,54039,,,,
 1831573070,Nurse Practitioner,WV,54039,,,,
 1831576693,Family Practice,IN,18127,,,,
-1831584754,Neurology,OH,,99,20720.56,0.0,1.4773
+1831584754,Neurology,OH,39035,99,20720.56,0.0,1.4773
 1831585322,Neurology,PA,42003,115,35574.12,0.0,1.9181
 1831594357,Neurology,PA,42133,204,40964.81,,1.7222
 1831600352,Nurse Practitioner,KY,21067,,,,
@@ -14620,7 +14620,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1841229267,Physician Assistant,PA,42011,,,,
 1841232790,Nurse Practitioner,WV,54011,,,,
 1841233673,Neurology,OH,39035,,,,
-1841236858,Neurology,OH,,51,18180.72,0.0,1.3755
+1841236858,Neurology,OH,39035,51,18180.72,0.0,1.3755
 1841238029,Family Practice,IL,17031,,,,
 1841238656,Gastroenterology,PA,42091,508,381499.46,248812.78,1.4826
 1841240660,Family Practice,PA,42007,,,,
@@ -14684,7 +14684,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1841390481,Family Practice,IL,17113,,,,
 1841391323,Gastroenterology,MI,26125,98,39676.02,0.0,2.7599
 1841392354,Family Practice,MI,26161,,,,
-1841396579,Gastroenterology,OH,,339,59910.85,0.0,1.5228
+1841396579,Gastroenterology,OH,39035,339,59910.85,0.0,1.5228
 1841398468,Nurse Practitioner,IL,17049,,,,
 1841400371,Gastroenterology,IN,18081,134,33277.67,0.0,1.3509
 1841401494,Rheumatology,KY,21145,133,30302.15,0.0,1.2664
@@ -14717,7 +14717,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1841498722,Physical Medicine and Rehabilitation,OH,39061,,,,
 1841499936,Physician Assistant,MI,26049,,,,
 1841502069,Neurology,OH,39113,125,147921.76,94156.26,1.3691
-1841509874,Gastroenterology,OH,,193,42870.14,0.0,1.5913
+1841509874,Gastroenterology,OH,39035,193,42870.14,0.0,1.5913
 1841514866,Family Practice,PA,42077,,,,
 1841516614,Nurse Practitioner,IL,17089,,,,
 1841524683,Gastroenterology,IN,18089,196,42056.5,0.0,1.1636
@@ -14749,7 +14749,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1841712999,Rheumatology,IN,18039,63,20480.53,,1.0446
 1841713450,Nurse Practitioner,IL,17019,,,,
 1841727237,Internal Medicine,PA,42091,,,,
-1841728573,Rheumatology,OH,,63,12651.84,0.0,1.4711
+1841728573,Rheumatology,OH,39035,63,12651.84,0.0,1.4711
 1841736659,Physician Assistant,PA,42071,,,,
 1841742277,Nurse Practitioner,KY,21145,,,,
 1841755329,Nurse Practitioner,OH,39095,,,,
@@ -14873,7 +14873,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1851568018,Neurology,OH,39113,99,41105.15,0.0,1.4509
 1851572937,Neurology,OH,39095,274,51786.9,0.0,1.859
 1851575039,Neurology,IL,17031,617,835887.13,616194.23,1.3119
-1851576193,Neurology,OH,,70,34528.0,0.0,1.3084
+1851576193,Neurology,OH,39035,70,34528.0,0.0,1.3084
 1851583108,Gastroenterology,PA,42003,189,36678.17,0.0,1.75
 1851585798,Rheumatology,IL,17031,278,90565.04,811.17,1.6824
 1851591721,Neurology,PA,42101,48,11333.7,0.0,1.4426
@@ -14899,7 +14899,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1851687958,Gastroenterology,PA,42017,476,163046.52,,1.3559
 1851688139,Family Practice,MI,26099,,,,
 1851702229,Family Practice,IN,18089,,,,
-1851703888,Neurology,OH,,224,43583.42,0.0,1.7156
+1851703888,Neurology,OH,39035,224,43583.42,0.0,1.7156
 1851708903,Nurse Practitioner,MI,26025,,,,
 1851730550,Family Practice,PA,42079,,,,
 1851734255,Neurology,PA,42101,183,48438.68,0.0,1.5263
@@ -14968,7 +14968,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1861425720,Allergy/ Immunology,MI,26163,716,540123.37,440506.7,0.933
 1861426173,Gastroenterology,PA,42013,335,158017.37,81170.22,1.3329
 1861433922,Gastroenterology,PA,42091,586,152352.16,,1.615
-1861436628,Neurology,OH,,181,27756.62,0.0,1.1831
+1861436628,Neurology,OH,39035,181,27756.62,0.0,1.1831
 1861438996,Neurology,IN,18057,77,11716.82,0.0,1.6959
 1861440562,Neurology,MI,26099,243,273314.23,0.0,1.4664
 1861440661,Hematology-Oncology,IL,17163,,,,
@@ -15124,7 +15124,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1871021147,Family Practice,MI,26111,,,,
 1871023556,Family Practice,IN,18173,,,,
 1871024422,Nurse Practitioner,PA,42123,,,,
-1871024562,Gastroenterology,MI,,89,14550.3,0.0,2.4862
+1871024562,Gastroenterology,MI,26163,89,14550.3,0.0,2.4862
 1871026104,Hematology-Oncology,IL,17031,,,,
 1871042648,Nurse Practitioner,IL,17077,,,,
 1871056283,Nurse Practitioner,IL,17031,,,,
@@ -15223,7 +15223,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1871671271,Gastroenterology,IL,17031,199,91352.45,,1.8098
 1871678144,Physician Assistant,IN,18089,,,,
 1871683979,Gastroenterology,IN,18097,483,206946.82,106491.15,1.4485
-1871684936,Gastroenterology,OH,,327,57293.81,0.0,1.4387
+1871684936,Gastroenterology,OH,39035,327,57293.81,0.0,1.4387
 1871687160,Gastroenterology,MI,26163,428,141906.06,0.0,1.0625
 1871689422,Gastroenterology,PA,42029,751,185927.79,0.0,1.3549
 1871690115,Family Practice,WV,54033,,,,
@@ -15247,12 +15247,12 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1871754085,Neurology,MI,26089,414,72921.56,0.0,1.4345
 1871759100,Gastroenterology,IN,18095,194,45300.66,0.0,1.3169
 1871768093,Neurology,PA,42101,27,19242.99,0.0,2.5095
-1871768697,Neurology,OH,,235,60029.62,0.0,2.294
+1871768697,Neurology,OH,39035,235,60029.62,0.0,2.294
 1871769125,Family Practice,PA,42079,,,,
 1871785667,Rheumatology,IL,17031,79,18796.81,0.0,2.0475
 1871791566,Endocrinology,IL,17031,,,,
 1871793216,Gastroenterology,MI,26081,244,55230.39,0.0,1.3202
-1871797217,Neurology,OH,,155,24608.6,0.0,1.7015
+1871797217,Neurology,OH,39035,155,24608.6,0.0,1.7015
 1871810291,Neurology,IL,17097,221,33407.09,0.0,1.4881
 1871811620,Infectious Disease,MI,26125,,,,
 1871813691,Neurology,OH,39089,519,159825.65,55068.28,1.9182
@@ -15295,7 +15295,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1881033140,Gastroenterology,PA,42101,33,7164.56,0.0,3.4714
 1881034841,Rheumatology,PA,42049,465,1870203.14,1708852.84,1.3657
 1881039147,Radiation Oncology,PA,42069,,,,
-1881057339,Neurology,OH,,219,53735.53,0.0,1.7253
+1881057339,Neurology,OH,39035,219,53735.53,0.0,1.7253
 1881061299,Nurse Practitioner,MI,26125,,,,
 1881062289,Nurse Practitioner,KY,21059,,,,
 1881078533,Rheumatology,OH,39095,198,48744.96,239.7,1.1278
@@ -15312,7 +15312,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1881123313,Psychiatry,MI,26161,,,,
 1881124782,Family Practice,KY,21037,,,,
 1881126902,Orthopedic Surgery,KY,21227,,,,
-1881131209,Nurse Practitioner,OH,,,,,
+1881131209,Nurse Practitioner,OH,39035,,,,
 1881134732,Rheumatology,MI,26163,202,35853.81,0.0,1.6295
 1881134765,Physician Assistant,IL,17163,,,,
 1881135135,Family Practice,OH,39017,,,,
@@ -15427,7 +15427,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1881904019,Nurse Practitioner,OH,39013,,,,
 1881907699,Neurology,IL,17031,454,645135.08,461159.09,1.3513
 1881911527,Neurology,KY,21111,339,75131.41,0.0,1.7509
-1881912236,Rheumatology,PA,,256,52203.35,0.0,1.3777
+1881912236,Rheumatology,PA,42079,256,52203.35,0.0,1.3777
 1881913481,Neurology,PA,42101,43,8098.97,0.0,1.8121
 1881915288,Family Practice,OH,39049,,,,
 1881918340,Neurology,PA,42101,205,49859.44,0.0,1.5587
@@ -15474,7 +15474,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1891113486,Neurology,KY,21111,542,107137.42,0.0,1.9327
 1891115648,Internal Medicine,OH,39119,,,,
 1891131959,Gastroenterology,MI,26121,167,43462.43,0.0,2.003
-1891132437,Neurology,OH,,79,121293.29,0.0,2.0125
+1891132437,Neurology,OH,39035,79,121293.29,0.0,2.0125
 1891133575,Family Practice,MI,26093,,,,
 1891134714,Gastroenterology,PA,42003,286,67635.93,,1.2004
 1891138079,Rheumatology,OH,39061,143,156535.2,128071.51,1.5607
@@ -15528,7 +15528,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1891732863,Family Practice,OH,39133,,,,
 1891734315,Physician Assistant,IL,17119,,,,
 1891737763,Gastroenterology,IN,18091,591,132555.64,0.0,1.2488
-1891738803,Neurology,OH,,157,16962.35,0.0,1.6771
+1891738803,Neurology,OH,39035,157,16962.35,0.0,1.6771
 1891740155,Internal Medicine,OH,39113,,,,
 1891741443,Psychiatry,MI,26049,,,,
 1891742763,Neurology,OH,39153,270,534183.62,470745.68,1.4407
@@ -15549,7 +15549,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1891757621,Gastroenterology,PA,42125,307,66743.0,0.0,1.4788
 1891758512,Endocrinology,IL,17043,,,,
 1891758843,Gastroenterology,PA,42091,433,97287.15,0.0,1.3389
-1891759346,Rheumatology,OH,,258,41111.91,0.0,1.6505
+1891759346,Rheumatology,OH,39035,258,41111.91,0.0,1.6505
 1891761532,Medical Oncology,IL,17031,,,,
 1891762563,Neurology,KY,21117,422,107786.66,,1.6655
 1891763355,Internal Medicine,OH,39099,,,,
@@ -15618,7 +15618,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1891889812,Psychiatry,IL,17031,,,,
 1891890737,Gastroenterology,IL,17031,13,1686.45,0.0,3.6646
 1891891651,Internal Medicine,OH,39035,,,,
-1891891958,Neurology,OH,,87,20399.64,0.0,1.2434
+1891891958,Neurology,OH,39035,87,20399.64,0.0,1.2434
 1891893525,Urology,IL,17183,,,,
 1891898771,Gastroenterology,OH,39035,712,123887.93,0.0,1.636
 1891899258,Neurology,IL,17043,72,9621.86,0.0,1.6036
@@ -15683,7 +15683,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1902172976,Nurse Practitioner,MI,26163,,,,
 1902178965,Physician Assistant,KY,47125,,,,
 1902184591,Neurology,IL,17031,301,69963.42,0.0,2.4203
-1902190143,Neurology,OH,,344,85537.02,0.0,2.0747
+1902190143,Neurology,OH,39035,344,85537.02,0.0,2.0747
 1902192677,Hematology-Oncology,IL,17031,,,,
 1902193006,Neurology,MI,26125,141,78408.52,0.0,2.2808
 1902194822,Neurology,IL,17031,24,1855.86,0.0,1.1496
@@ -15792,7 +15792,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1902990211,Rheumatology,KY,21067,61,7361.91,0.0,2.866
 1902996176,Gastroenterology,PA,42029,251,44361.32,0.0,1.1004
 1912000233,Neurology,IL,17031,18,2848.92,0.0,1.8097
-1912007428,Pulmonary Disease,OH,,,,,
+1912007428,Pulmonary Disease,OH,39035,,,,
 1912009580,Internal Medicine,MI,26049,,,,
 1912014549,Gastroenterology,PA,42129,356,74391.38,0.0,1.5734
 1912016809,Dermatology,IN,18063,,,,
@@ -15851,13 +15851,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1912274994,Neurology,OH,39113,332,229459.84,141567.96,2.069
 1912276866,Family Practice,IN,18077,,,,
 1912285255,Gastroenterology,IL,17031,442,102825.38,0.0,2.0548
-1912285644,Gastroenterology,OH,,362,79016.82,0.0,1.4669
+1912285644,Gastroenterology,OH,39035,362,79016.82,0.0,1.4669
 1912292582,Internal Medicine,IL,17161,,,,
 1912292590,Family Practice,OH,39029,,,,
 1912293978,Internal Medicine,MI,26125,,,,
 1912296708,Rheumatology,IL,17031,256,121462.41,20519.01,1.4141
 1912297904,Neurology,PA,42101,238,52180.14,0.0,2.1828
-1912299553,Gastroenterology,OH,,160,33493.04,0.0,1.8883
+1912299553,Gastroenterology,OH,39035,160,33493.04,0.0,1.8883
 1912308024,Rheumatology,OH,39089,225,42621.25,0.0,1.2457
 1912312455,Pain Management,MI,26125,,,,
 1912312489,Family Practice,MI,26049,,,,
@@ -15868,7 +15868,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1912340415,Neurology,PA,42101,64,19576.45,,1.2305
 1912347360,Gastroenterology,OH,39113,337,103302.42,0.0,1.717
 1912348988,Neurology,IL,17031,211,80865.71,0.0,2.4879
-1912352253,Neurology,OH,,329,79721.6,0.0,2.3257
+1912352253,Neurology,OH,39035,329,79721.6,0.0,2.3257
 1912355728,Rheumatology,PA,42029,257,716585.91,615060.74,1.0692
 1912357161,Neurology,IL,17167,279,91299.3,,1.7942
 1912359621,Rheumatology,IN,18167,340,76122.6,0.0,1.5027
@@ -15877,7 +15877,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1912369612,Family Practice,OH,39061,,,,
 1912388018,Family Practice,IN,18141,,,,
 1912389313,Neurology,IL,17031,360,118603.26,0.0,1.5469
-1912391327,Neurology,OH,,201,30676.97,0.0,1.303
+1912391327,Neurology,OH,39035,201,30676.97,0.0,1.303
 1912400136,Nurse Practitioner,MI,26099,,,,
 1912402462,Gastroenterology,IN,18089,164,39369.26,0.0,2.365
 1912430190,Neurology,OH,39061,253,80632.34,0.0,2.0024
@@ -16063,7 +16063,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1922258276,Family Practice,IL,17031,,,,
 1922260496,Family Practice,WV,54039,,,,
 1922263169,Gastroenterology,OH,39035,407,126534.03,0.0,2.1271
-1922263516,Gastroenterology,OH,,300,99042.86,0.0,2.1936
+1922263516,Gastroenterology,OH,39035,300,99042.86,0.0,2.1936
 1922268523,Family Practice,KY,21093,,,,
 1922270768,Neurology,MI,26103,141,20837.15,0.0,1.7019
 1922271204,Hematology-Oncology,PA,42129,,,,
@@ -16090,13 +16090,13 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1922416536,Nurse Practitioner,IN,18145,,,,
 1922426931,Neurology,IL,17031,312,74782.02,0.0,1.9617
 1922427004,Neurology,IN,18089,417,118257.01,,1.7916
-1922427285,Neurology,PA,,313,49114.27,0.0,1.5139
+1922427285,Neurology,PA,42079,313,49114.27,0.0,1.5139
 1922427426,Gastroenterology,PA,42101,286,85591.07,0.0,1.7961
 1922428382,Gastroenterology,MI,26145,364,95535.17,0.0,1.942
 1922441757,Family Practice,IN,18069,,,,
 1922445097,Rheumatology,IL,17031,265,651498.49,529429.76,1.2016
 1922445303,Family Practice,KY,21117,,,,
-1922448653,Neurology,PA,,237,44127.83,0.0,1.8986
+1922448653,Neurology,PA,42079,237,44127.83,0.0,1.8986
 1922450980,Family Practice,MI,26125,,,,
 1922451251,Internal Medicine,PA,42095,,,,
 1922460781,Nurse Practitioner,MI,26163,,,,
@@ -16232,7 +16232,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1932366945,Family Practice,PA,42129,,,,
 1932371713,Gastroenterology,MI,26161,211,37506.18,0.0,2.0686
 1932383254,Nurse Practitioner,IN,18003,,,,
-1932383932,Neurology,OH,,86,10867.55,0.0,1.6502
+1932383932,Neurology,OH,39035,86,10867.55,0.0,1.6502
 1932387081,Neurology,IL,17043,613,239338.11,46446.18,1.7034
 1932394087,Nurse Practitioner,IN,18019,,,,
 1932399144,Neurology,PA,42101,115,39710.72,0.0,2.5803
@@ -16285,7 +16285,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1932604279,Neurology,KY,21111,436,62339.34,0.0,1.6963
 1932604725,Nurse Practitioner,IN,18057,,,,
 1932629003,Hematology-Oncology,IL,17031,,,,
-1932630589,Neurology,OH,,31,8085.45,0.0,1.6917
+1932630589,Neurology,OH,39035,31,8085.45,0.0,1.6917
 1932632270,Gastroenterology,PA,42071,422,184124.46,98840.62,1.435
 1932640075,Gastroenterology,IN,18091,126,36439.82,0.0,1.742
 1932642238,Physician Assistant,IL,17031,,,,
@@ -16444,7 +16444,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1942607601,Nurse Practitioner,MI,26147,,,,
 1942611256,Neurology,MI,26161,278,45652.37,0.0,1.4609
 1942614953,Family Practice,MI,26049,,,,
-1942620026,Neurology,IN,,353,107481.86,0.0,1.912
+1942620026,Neurology,IN,18163,353,107481.86,0.0,1.912
 1942636832,Nurse Practitioner,MI,26149,,,,
 1942644281,Family Practice,WV,54061,,,,
 1942645577,Physician Assistant,IN,18037,,,,
@@ -16463,7 +16463,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1942697461,Neurology,OH,39049,114,16444.73,402.66,1.4847
 1942699764,Nurse Practitioner,KY,21059,,,,
 1942700711,Nurse Practitioner,MI,26049,,,,
-1942706767,Allergy/ Immunology,OH,,73,12729.65,0.0,1.1325
+1942706767,Allergy/ Immunology,OH,39035,73,12729.65,0.0,1.1325
 1942720487,Neurology,PA,42021,185,41324.05,0.0,2.2907
 1942741103,Gastroenterology,IL,17031,479,154916.65,,1.8315
 1942742978,Nurse Practitioner,OH,39017,,,,
@@ -16477,7 +16477,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1942820840,Neurology,MI,26089,65,13584.94,0.0,1.1269
 1942854930,Neurology,PA,42101,82,19032.71,0.0,1.9596
 1942857859,Physician Assistant,PA,42091,,,,
-1942865126,Neurology,OH,,16,2979.8,0.0,1.4752
+1942865126,Neurology,OH,39035,16,2979.8,0.0,1.4752
 1942867825,Neurology,IL,17031,57,8725.32,0.0,1.2044
 1942869367,Hematology-Oncology,OH,39025,,,,
 1942926084,Nurse Practitioner,OH,39029,,,,
@@ -16518,7 +16518,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1952361693,Neurology,MI,26099,219,96729.31,0.0,1.7693
 1952362477,Medical Oncology,IN,18163,,,,
 1952364044,Internal Medicine,PA,42003,,,,
-1952365165,Allergy/ Immunology,OH,,98,12538.1,0.0,1.5153
+1952365165,Allergy/ Immunology,OH,39035,98,12538.1,0.0,1.5153
 1952366643,Family Practice,IN,18163,,,,
 1952367401,Internal Medicine,PA,42063,,,,
 1952367641,Urology,OH,39049,,,,
@@ -16668,7 +16668,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1962426148,Neurology,PA,42003,55,11627.56,0.0,0.8805
 1962428094,Family Practice,PA,42007,,,,
 1962428433,Gastroenterology,PA,42101,584,133430.76,0.0,1.9116
-1962431585,Emergency Medicine,IL,,,,,
+1962431585,Emergency Medicine,IL,17143,,,,
 1962435925,Neurology,PA,42045,286,50453.49,0.0,2.2337
 1962439885,Family Practice,WV,54011,,,,
 1962441014,Internal Medicine,PA,42119,,,,
@@ -16678,7 +16678,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1962448118,Gastroenterology,PA,42003,49,9352.16,0.0,1.1461
 1962450049,Internal Medicine,IL,17111,,,,
 1962450221,Neurology,OH,39049,160,31439.14,0.0,2.1172
-1962452672,Gastroenterology,OH,,165,26586.97,0.0,2.1547
+1962452672,Gastroenterology,OH,39035,165,26586.97,0.0,2.1547
 1962452904,Internal Medicine,MI,26115,,,,
 1962453696,Family Practice,PA,42125,,,,
 1962454983,Orthopedic Surgery,IL,17179,,,,
@@ -16790,7 +16790,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1962877316,Nurse Practitioner,IL,17031,,,,
 1962881912,Nurse Practitioner,IN,18029,,,,
 1962883207,Family Practice,PA,42133,,,,
-1962886457,Neurology,OH,,137,27764.26,0.0,1.6196
+1962886457,Neurology,OH,39035,137,27764.26,0.0,1.6196
 1962892307,Nurse Practitioner,MI,26125,,,,
 1962897108,Neurology,IL,17031,275,116083.42,,1.7084
 1962897181,Dermatology,MI,26125,,,,
@@ -16969,7 +16969,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1972890028,Allergy/ Immunology,OH,39095,50,11957.83,0.0,1.3002
 1972891737,Gastroenterology,OH,39151,347,113163.36,0.0,1.2149
 1972896249,Neurology,KY,21125,296,72099.7,14860.33,1.5355
-1972898070,Neurology,MI,,491,175746.42,0.0,1.1924
+1972898070,Neurology,MI,26163,491,175746.42,0.0,1.1924
 1972911089,Gastroenterology,PA,42027,268,59506.53,0.0,1.2515
 1972913135,Gastroenterology,OH,39095,262,55087.23,0.0,1.6223
 1972915593,Neurology,PA,42049,136,39809.52,0.0,2.5463
@@ -17011,7 +17011,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1982054664,Gastroenterology,MI,26025,222,47747.51,0.0,1.1827
 1982055646,Internal Medicine,PA,42051,,,,
 1982064093,Nurse Practitioner,IL,17031,,,,
-1982068136,Neurology,OH,,23,9965.77,0.0,1.5388
+1982068136,Neurology,OH,39035,23,9965.77,0.0,1.5388
 1982068433,Internal Medicine,PA,42069,,,,
 1982099370,Gastroenterology,OH,39035,167,32815.0,0.0,1.6029
 1982099651,Neurology,IL,17031,52,30171.57,0.0,2.4983
@@ -17147,7 +17147,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1982947958,Allergy/ Immunology,KY,21067,212,75857.8,,0.8784
 1982958328,Cardiology,PA,42071,,,,
 1982961660,Preventive Medicine,KY,21015,,,,
-1982963468,Neurology,OH,,120,89243.82,0.0,2.6976
+1982963468,Neurology,OH,39035,120,89243.82,0.0,2.6976
 1982963740,Family Practice,IN,18019,,,,
 1982966065,Neurology,PA,42101,225,54394.69,,1.7995
 1982967824,Pain Management,KY,21067,,,,
@@ -17197,7 +17197,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1992169866,Neurology,MI,26163,47,7449.85,0.0,2.169
 1992173330,Nurse Practitioner,KY,21107,,,,
 1992187371,Urology,IN,18057,,,,
-1992187751,Gastroenterology,OH,,160,28203.36,0.0,2.223
+1992187751,Gastroenterology,OH,39035,160,28203.36,0.0,2.223
 1992188387,Family Practice,PA,42011,,,,
 1992188734,Family Practice,KY,21141,,,,
 1992191852,Neurology,OH,39095,223,36613.38,0.0,2.0699
@@ -17269,7 +17269,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1992760219,General Practice,PA,42017,,,,
 1992760540,Internal Medicine,KY,21111,,,,
 1992760979,Urology,MI,26125,,,,
-1992762124,Gastroenterology,OH,,190,28620.59,0.0,1.533
+1992762124,Gastroenterology,OH,39035,190,28620.59,0.0,1.533
 1992763155,Gastroenterology,OH,39043,317,65886.33,0.0,1.0728
 1992766224,Internal Medicine,IN,18127,,,,
 1992767230,Neurology,PA,42027,175,34055.25,,1.432
@@ -17308,7 +17308,7 @@ npi,provider_type,state_abbr,county_fips,total_benes_2024,total_allowed_2024,dru
 1992798961,Family Practice,MI,26125,,,,
 1992799167,Neurology,OH,39049,338,211078.19,134263.24,1.3933
 1992804363,Family Practice,OH,39035,,,,
-1992805238,Rheumatology,OH,,133,28286.58,0.0,1.4682
+1992805238,Rheumatology,OH,39035,133,28286.58,0.0,1.4682
 1992805519,Family Practice,PA,42107,,,,
 1992810311,Hematology-Oncology,PA,42101,,,,
 1992813992,Gastroenterology,KY,21019,687,214955.97,,1.6967

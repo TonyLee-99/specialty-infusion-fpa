@@ -9,7 +9,7 @@ from sifpa import memo
 ROOT = Path(__file__).resolve().parents[1]
 # numbers that are part of the framing, not model outputs (dates, plan years, statutory facts, page refs)
 ALLOWED = {"2026", "2027", "2028", "2019", "2024", "2025", "11", "02", "30", "09", "8", "6", "5", "10", "2", "3",
-           "2,000", "1", "100", "12", "25", "+8", "80"}  # plan year, "100 more patients", "per 100k", "+8%", "12 quarters", "25 points"
+           "2,000", "1", "100", "12", "25", "+8", "80", "70", "4"}  # "4" = list item number  # plan year, "100 more patients", "per 100k", "+8%", "12 quarters", "25 points"
 
 
 def test_memo_is_reproducible_from_outputs():

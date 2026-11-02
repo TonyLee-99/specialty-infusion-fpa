@@ -7,12 +7,12 @@
     "commercial": 0.9315,
     "medicaid": 0.97
   },
-  "medicare_drug_margin_pct_of_drug_revenue": 0.0135,
+  "medicare_drug_margin_pct_of_drug_revenue": 0.0158,
   "contribution_per_admin_by_payer": {
-    "medicare_ffs": 161.37,
-    "medicare_adv": 55.3,
-    "commercial": 952.64,
-    "medicaid": 127.05
+    "medicare_ffs": 172.1,
+    "medicare_adv": 67.62,
+    "commercial": 946.44,
+    "medicaid": 118.86
   },
   "ohio_admin_fee_96413_cf2027": 120.65,
   "underwater": {
@@ -35,16 +35,23 @@
     }
   },
   "median_lag_spread_pct_last8_reference_single_source": 0.051,
-  "lesser_of_premium_effect_full_formulary": -3963483,
+  "lesser_of_premium_effect_full_formulary": -4934475,
+  "full_formulary_operating_margin_base": 2960727,
+  "full_formulary_operating_margin_at_premium_high": -1973748,
+  "full_formulary_operating_margin_at_premium_5pct": 2608264,
+  "mfp_effect_full_formulary_at_premium_0": -43,
+  "mfp_effect_full_formulary_at_premium_5pct": 64186,
+  "mfp_effect_full_formulary_at_premium_high": 899173,
+  "lesser_of_premium_high": 0.7,
   "plan_mix_top": {
-    "J1745": 0.3618,
-    "J2323": 0.2118,
-    "J2350": 0.091,
-    "J3032": 0.0852,
-    "J1569": 0.0591,
-    "J1568": 0.0493,
-    "Q5103": 0.0446,
-    "Q5115": 0.0311
+    "J1745": 0.3809,
+    "J2323": 0.1729,
+    "J2350": 0.095,
+    "J3032": 0.0889,
+    "J1569": 0.0617,
+    "J1568": 0.0514,
+    "Q5103": 0.0469,
+    "Q5115": 0.0325
   },
   "contribution_per_chair_hour": [
     {
@@ -66,67 +73,67 @@
       "commercial_per_chair_hour": 652.89
     },
     {
-      "hcpcs": "J2350",
-      "molecule": "ocrelizumab",
-      "chair_hours": 4.5,
-      "contribution_medicare_ffs": 491.87,
-      "contribution_commercial": 3904.32,
-      "medicare_ffs_per_chair_hour": 109.31,
-      "commercial_per_chair_hour": 867.63
-    },
-    {
       "hcpcs": "Q5115",
       "molecule": "rituximab",
       "chair_hours": 4.5,
-      "contribution_medicare_ffs": 431.51,
+      "contribution_medicare_ffs": 422.63,
       "contribution_commercial": 511.14,
-      "medicare_ffs_per_chair_hour": 95.89,
+      "medicare_ffs_per_chair_hour": 93.92,
       "commercial_per_chair_hour": 113.59
     },
     {
-      "hcpcs": "J0490",
-      "molecule": "belimumab",
-      "chair_hours": 1.5,
-      "contribution_medicare_ffs": 125.66,
-      "contribution_commercial": 629.29,
-      "medicare_ffs_per_chair_hour": 83.77,
-      "commercial_per_chair_hour": 419.53
-    },
-    {
-      "hcpcs": "J2323",
-      "molecule": "natalizumab",
-      "chair_hours": 2.0,
-      "contribution_medicare_ffs": 152.08,
-      "contribution_commercial": 897.08,
-      "medicare_ffs_per_chair_hour": 76.04,
-      "commercial_per_chair_hour": 448.54
+      "hcpcs": "J2350",
+      "molecule": "ocrelizumab",
+      "chair_hours": 4.5,
+      "contribution_medicare_ffs": 378.65,
+      "contribution_commercial": 3806.28,
+      "medicare_ffs_per_chair_hour": 84.14,
+      "commercial_per_chair_hour": 845.84
     },
     {
       "hcpcs": "Q5103",
       "molecule": "infliximab",
       "chair_hours": 2.5,
-      "contribution_medicare_ffs": 143.54,
-      "contribution_commercial": 315.02,
-      "medicare_ffs_per_chair_hour": 57.41,
-      "commercial_per_chair_hour": 126.01
+      "contribution_medicare_ffs": 205.34,
+      "contribution_commercial": 367.35,
+      "medicare_ffs_per_chair_hour": 82.14,
+      "commercial_per_chair_hour": 146.94
     },
     {
       "hcpcs": "J9312",
       "molecule": "rituximab",
       "chair_hours": 4.5,
-      "contribution_medicare_ffs": 213.93,
-      "contribution_commercial": 868.94,
-      "medicare_ffs_per_chair_hour": 47.54,
-      "commercial_per_chair_hour": 193.1
+      "contribution_medicare_ffs": 313.83,
+      "contribution_commercial": 955.12,
+      "medicare_ffs_per_chair_hour": 69.74,
+      "commercial_per_chair_hour": 212.25
     },
     {
       "hcpcs": "J1745",
       "molecule": "infliximab",
       "chair_hours": 2.5,
-      "contribution_medicare_ffs": 117.4,
-      "contribution_commercial": 327.29,
-      "medicare_ffs_per_chair_hour": 46.96,
-      "commercial_per_chair_hour": 130.91
+      "contribution_medicare_ffs": 172.48,
+      "contribution_commercial": 376.43,
+      "medicare_ffs_per_chair_hour": 68.99,
+      "commercial_per_chair_hour": 150.57
+    },
+    {
+      "hcpcs": "J2323",
+      "molecule": "natalizumab",
+      "chair_hours": 2.0,
+      "contribution_medicare_ffs": 69.17,
+      "contribution_commercial": 825.2,
+      "medicare_ffs_per_chair_hour": 34.59,
+      "commercial_per_chair_hour": 412.6
+    },
+    {
+      "hcpcs": "J0490",
+      "molecule": "belimumab",
+      "chair_hours": 1.5,
+      "contribution_medicare_ffs": 50.97,
+      "contribution_commercial": 564.49,
+      "medicare_ffs_per_chair_hour": 33.98,
+      "commercial_per_chair_hour": 376.33
     },
     {
       "hcpcs": "J1569",
@@ -160,29 +167,29 @@
     {
       "molecule": "infliximab",
       "payer": "medicare_ffs",
-      "hcpcs": "Q5104",
-      "brand": "Renflexis (infliximab-abda)",
+      "hcpcs": "Q5103",
+      "brand": "Inflectra (infliximab-dyyb)",
       "decision_robust": false
     },
     {
       "molecule": "infliximab",
       "payer": "medicare_adv",
-      "hcpcs": "Q5104",
-      "brand": "Renflexis (infliximab-abda)",
+      "hcpcs": "Q5103",
+      "brand": "Inflectra (infliximab-dyyb)",
       "decision_robust": false
     },
     {
       "molecule": "infliximab",
       "payer": "commercial",
-      "hcpcs": "Q5121",
-      "brand": "Avsola (infliximab-axxq)",
+      "hcpcs": "J1745",
+      "brand": "Remicade / unbranded infliximab",
       "decision_robust": false
     },
     {
       "molecule": "infliximab",
       "payer": "medicaid",
-      "hcpcs": "Q5121",
-      "brand": "Avsola (infliximab-axxq)",
+      "hcpcs": "Q5103",
+      "brand": "Inflectra (infliximab-dyyb)",
       "decision_robust": false
     },
     {
@@ -218,14 +225,14 @@
       "payer": "medicare_ffs",
       "hcpcs": "Q5156",
       "brand": "Avtozma (tocilizumab-anoh)",
-      "decision_robust": true
+      "decision_robust": false
     },
     {
       "molecule": "tocilizumab",
       "payer": "medicare_adv",
       "hcpcs": "Q5156",
       "brand": "Avtozma (tocilizumab-anoh)",
-      "decision_robust": true
+      "decision_robust": false
     },
     {
       "molecule": "tocilizumab",
@@ -244,15 +251,15 @@
     {
       "molecule": "natalizumab",
       "payer": "medicare_ffs",
-      "hcpcs": "J2323",
-      "brand": "Tysabri",
+      "hcpcs": "Q5134",
+      "brand": "Tyruko (natalizumab-sztn)",
       "decision_robust": false
     },
     {
       "molecule": "natalizumab",
       "payer": "medicare_adv",
-      "hcpcs": "J2323",
-      "brand": "Tysabri",
+      "hcpcs": "Q5134",
+      "brand": "Tyruko (natalizumab-sztn)",
       "decision_robust": false
     },
     {
@@ -286,15 +293,15 @@
     {
       "molecule": "denosumab",
       "payer": "commercial",
-      "hcpcs": "J0897",
-      "brand": "Prolia / Xgeva",
+      "hcpcs": "Q5158",
+      "brand": "denosumab-bnht",
       "decision_robust": false
     },
     {
       "molecule": "denosumab",
       "payer": "medicaid",
-      "hcpcs": "J0897",
-      "brand": "Prolia / Xgeva",
+      "hcpcs": "Q5158",
+      "brand": "denosumab-bnht",
       "decision_robust": false
     }
   ],

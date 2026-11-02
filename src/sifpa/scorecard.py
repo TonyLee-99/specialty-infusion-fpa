@@ -172,10 +172,15 @@ def build() -> str:
     qa, av, al = fc["quarterly_asp"], fc["annual"]["administrations"], fc["annual"]["allowed"]
     models = ["naive", "seasonal_naive", "drift", "ets_damped"]
     p3 = (f'<h3>Quarterly ASP: test-window MAPE by model (origins from {qa["test_first_origin"]}, h = 1-6)</h3>'
-          + hbars([(mm.replace("_", " "), [qa["test_mape_by_model"][mm]]) for mm in models], [("MAPE", S1)], pct))
-    dm = pd.DataFrame([{"h": h, "n": d["n"], "DM (selected vs naive)": d["dm"], "p-value": d["p_value"],
-                        "80% coverage (naive band)": pct(qa["pi80_test_coverage_by_h"][h])} for h, d in qa["dm_selected_vs_naive_by_h"].items()])
-    p3 += f'<h3>Decision: {esc(qa["decision"])}</h3>' + table(dm)
+          + hbars([(mm.replace("_", " "), [qa["test_mape_by_model_all_forecasts"][mm]]) for mm in models], [("MAPE", S1)], pct))
+    dmq = qa["dm_per_series_h1"]
+    p3 += table(pd.DataFrame([{"matched test forecasts": qa["test_matched_n"], "naive MAPE": pct(qa["test_mape_naive"]),
+                               "selected MAPE": pct(qa["test_mape_selected"]), "series tested (DM, h=1)": dmq["n_series_tested"],
+                               "selected significantly better": dmq["selected_significantly_better"],
+                               "selected significantly worse": dmq["selected_significantly_worse"],
+                               "80% band coverage": pct(qa["pi80_test_coverage_overall"])}]))
+    p3 = p3.replace("<h3>Quarterly ASP: test-window MAPE by model", "<h3>Quarterly ASP: test-window MAPE by model (all forecasts)")
+    p3 += f'<p class="note">Decision ({esc(qa["decision"])}) was made on a separate decision window, never on the test window.</p>'
     p3 += ("<h3>Annual national in-office series, test-window MAPE: volume and spend scored separately</h3>"
            + hbars([("volume: naive", [av["test_mape_naive"]]), ("volume: selected", [av["test_mape_selected"]]),
                     ("spend: naive", [al["test_mape_naive"]]), ("spend: selected", [al["test_mape_selected"]])], [("MAPE", S1)], pct))

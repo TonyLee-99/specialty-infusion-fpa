@@ -95,7 +95,8 @@ def to_markets(counties: pd.DataFrame, site_fips: str) -> pd.DataFrame:
     m = g[SUMS + ["wlat", "wlon"]].sum()
     m["has_site"] = g["has_site"].any()
     m["n_counties"] = g.size()
-    # CBSAs that cross out of the 7-state region (e.g. St. Louis MO-IL) are scored on their in-region part
+    # partial_market: a CBSA with member counties missing from dim_county (should be none: cross-state
+    # metros are scored whole since round 1)
     m["partial_market"] = m["n_counties"] < g["market_counties_total"].first()
     m["states"] = g["state_abbr"].agg(lambda s: "/".join(sorted(set(s))))
     m["lat"], m["lon"] = m["wlat"] / m["population"], m["wlon"] / m["population"]

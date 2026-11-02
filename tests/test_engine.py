@@ -66,6 +66,13 @@ def test_fixed_costs_do_not_depend_on_volume():
     assert E.fixed_costs(13)["total"] > f["total"]
 
 
+def test_pnl_reconciles_including_pharmacy_margin():
+    r = E.build(rules_year=2028, white_bag=True, mfp=True)["pnl"]
+    lines = r["drug_revenue"] + r["admin_revenue"] + r["pharmacy_margin"] - r["drug_cost"] - r["variable_cost"]
+    assert lines == pytest.approx(r["contribution"], abs=1.0)
+    assert r["pharmacy_margin"] > 0
+
+
 def test_white_bag_tiers_target_expensive_drugs():
     econ = pd.DataFrame({"hcpcs": ["a", "b", "c"], "acquisition_cost": [500.0, 5000.0, 30000.0]})
     t = E.white_bag_tiers(econ)

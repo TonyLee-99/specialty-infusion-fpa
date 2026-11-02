@@ -10,89 +10,89 @@
         {
           "scenario": "base",
           "metric": "administrations",
-          "python": 7736.341020968999,
-          "excel": 7736.3411697091,
-          "rel_diff": 1.922615614823636e-08
+          "python": 7412.729499626887,
+          "excel": 7412.72965209684,
+          "rel_diff": 2.0568665404115544e-08
         },
         {
           "scenario": "base",
           "metric": "contribution",
-          "python": 3953476.9085892914,
-          "excel": 3953477.22302984,
-          "rel_diff": 7.953519286701825e-08
+          "python": 3767531.1371549754,
+          "excel": 3767531.27543475,
+          "rel_diff": 3.670302106549557e-08
         },
         {
           "scenario": "base",
           "metric": "operating_margin",
-          "python": 2920061.9085892914,
-          "excel": 2920062.22302984,
-          "rel_diff": 1.0768283627653001e-07
+          "python": 2734116.1371549754,
+          "excel": 2734116.27543475,
+          "rel_diff": 5.057567702145915e-08
         },
         {
           "scenario": "base",
           "metric": "utilization",
-          "python": 0.6901185290167787,
-          "excel": 0.690118556275107,
-          "rel_diff": 3.949803854717724e-08
+          "python": 0.6689052697535575,
+          "excel": 0.668905297273381,
+          "rel_diff": 4.1141585775287856e-08
         },
         {
           "scenario": "biosimilar_listed",
           "metric": "administrations",
-          "python": 7736.341020968999,
-          "excel": 7736.34121508644,
-          "rel_diff": 2.509163440294675e-08
+          "python": 7412.729499626888,
+          "excel": 7412.72969747418,
+          "rel_diff": 2.6690207964424397e-08
         },
         {
           "scenario": "biosimilar_listed",
           "metric": "contribution",
-          "python": 3971031.11923067,
-          "excel": 3971031.48177644,
-          "rel_diff": 9.129764014480054e-08
+          "python": 3787520.326081308,
+          "excel": 3787520.40610472,
+          "rel_diff": 2.1128180243944093e-08
         },
         {
           "scenario": "biosimilar_listed",
           "metric": "operating_margin",
-          "python": 2937616.11923067,
-          "excel": 2937616.48177644,
-          "rel_diff": 1.2341495805186182e-07
+          "python": 2754105.326081308,
+          "excel": 2754105.40610472,
+          "rel_diff": 2.90560463934433e-08
         },
         {
           "scenario": "biosimilar_listed",
           "metric": "utilization",
-          "python": 0.6901185290167787,
-          "excel": 0.690118563081708,
-          "rel_diff": 4.936098349702228e-08
+          "python": 0.6689052697535574,
+          "excel": 0.668905304079981,
+          "rel_diff": 5.131731673322685e-08
         },
         {
           "scenario": "policy_2028",
           "metric": "administrations",
-          "python": 7736.341020968999,
-          "excel": 7736.3411697091,
-          "rel_diff": 1.922615614823636e-08
+          "python": 7412.729499626887,
+          "excel": 7412.72965209684,
+          "rel_diff": 2.0568665404115544e-08
         },
         {
           "scenario": "policy_2028",
           "metric": "contribution",
-          "python": 3334836.778880124,
-          "excel": 3334837.00112665,
-          "rel_diff": 6.664389910075351e-08
+          "python": 3187835.7040073695,
+          "excel": 3187835.81127255,
+          "rel_diff": 3.364827751556994e-08
         },
         {
           "scenario": "policy_2028",
           "metric": "operating_margin",
-          "python": 2301421.778880124,
-          "excel": 2301422.00112665,
-          "rel_diff": 9.656922857370124e-08
+          "python": 2154420.7040073695,
+          "excel": 2154420.81127255,
+          "rel_diff": 4.97884095910152e-08
         },
         {
           "scenario": "policy_2028",
           "metric": "utilization",
-          "python": 0.6901185290167787,
-          "excel": 0.690118556275107,
-          "rel_diff": 3.949803854717724e-08
+          "python": 0.6689052697535575,
+          "excel": 0.668905297273381,
+          "rel_diff": 4.1141585775287856e-08
         }
       ],
-      "max_rel_diff": 1.2341495805186182e-07
+      "max_rel_diff": 5.131731673322685e-08
     },
     {
       "case": "stressed inputs",
@@ -109,91 +109,91 @@
         {
           "scenario": "base",
           "metric": "administrations",
-          "python": 9341.80228430116,
-          "excel": 9341.80209492524,
-          "rel_diff": 2.0271882681885504e-08
+          "python": 9234.901954499896,
+          "excel": 9234.901764511,
+          "rel_diff": 2.057291963281536e-08
         },
         {
           "scenario": "base",
           "metric": "contribution",
-          "python": -153459.43033138232,
-          "excel": -153459.483093429,
-          "rel_diff": 3.438175586552912e-07
+          "python": -143125.22904295422,
+          "excel": -143125.497846745,
+          "rel_diff": 1.8781020829883301e-06
         },
         {
           "scenario": "base",
           "metric": "operating_margin",
-          "python": -1072971.9303313824,
-          "excel": -1072971.98309343,
-          "rel_diff": 4.9173744558438617e-08
+          "python": -1062637.7290429543,
+          "excel": -1062637.99784674,
+          "rel_diff": 2.5295900798665284e-07
         },
         {
           "scenario": "base",
+          "metric": "utilization",
+          "python": 1.0000000000000002,
+          "excel": 1,
+          "rel_diff": 2.2204460492503126e-16
+        },
+        {
+          "scenario": "biosimilar_listed",
+          "metric": "administrations",
+          "python": 9234.901954499894,
+          "excel": 9234.90172707096,
+          "rel_diff": 2.4627108727613833e-08
+        },
+        {
+          "scenario": "biosimilar_listed",
+          "metric": "contribution",
+          "python": -66125.24229582609,
+          "excel": -66125.6011900691,
+          "rel_diff": 5.427492294112889e-06
+        },
+        {
+          "scenario": "biosimilar_listed",
+          "metric": "operating_margin",
+          "python": -985637.7422958261,
+          "excel": -985638.101190069,
+          "rel_diff": 3.6412388396279875e-07
+        },
+        {
+          "scenario": "biosimilar_listed",
           "metric": "utilization",
           "python": 1.0,
           "excel": 1,
           "rel_diff": 0.0
         },
         {
-          "scenario": "biosimilar_listed",
-          "metric": "administrations",
-          "python": 9341.80228430116,
-          "excel": 9341.80205758171,
-          "rel_diff": 2.4269347984317303e-08
-        },
-        {
-          "scenario": "biosimilar_listed",
-          "metric": "contribution",
-          "python": -86024.50534755277,
-          "excel": -86024.5226494398,
-          "rel_diff": 2.0112742243042842e-07
-        },
-        {
-          "scenario": "biosimilar_listed",
-          "metric": "operating_margin",
-          "python": -1005537.0053475527,
-          "excel": -1005537.02264944,
-          "rel_diff": 1.720661415917582e-08
-        },
-        {
-          "scenario": "biosimilar_listed",
-          "metric": "utilization",
-          "python": 0.9999999999999999,
-          "excel": 1,
-          "rel_diff": 1.1102230246251568e-16
-        },
-        {
           "scenario": "policy_2028",
           "metric": "administrations",
-          "python": 9341.80228430116,
-          "excel": 9341.80209492524,
-          "rel_diff": 2.0271882681885504e-08
+          "python": 9234.901954499896,
+          "excel": 9234.901764511,
+          "rel_diff": 2.057291963281536e-08
         },
         {
           "scenario": "policy_2028",
           "metric": "contribution",
-          "python": -124924.1827778666,
-          "excel": -124924.245344062,
-          "rel_diff": 5.008333375100722e-07
+          "python": -90639.65999122115,
+          "excel": -90639.8683024549,
+          "rel_diff": 2.2982349422146426e-06
         },
         {
           "scenario": "policy_2028",
           "metric": "operating_margin",
-          "python": -1044436.6827778666,
-          "excel": -1044436.74534406,
-          "rel_diff": 5.990424736551652e-08
+          "python": -1010152.1599912212,
+          "excel": -1010152.36830245,
+          "rel_diff": 2.0621767407625164e-07
         },
         {
           "scenario": "policy_2028",
           "metric": "utilization",
-          "python": 1.0,
+          "python": 1.0000000000000002,
           "excel": 1,
-          "rel_diff": 0.0
+          "rel_diff": 2.2204460492503126e-16
         }
       ],
-      "max_rel_diff": 5.008333375100722e-07
+      "max_rel_diff": 5.427492294112889e-06
     }
   ],
-  "max_rel_diff": 5.008333375100722e-07,
+  "max_rel_diff": 5.427492294112889e-06,
   "note": "LOCAL check generated by `make excel`; tests/test_excel.py repeats it live where LibreOffice exists (CI installs it)."
 }

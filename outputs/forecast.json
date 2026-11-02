@@ -1,87 +1,60 @@
 {
   "quarterly_asp": {
-    "test_mape_by_model": {
+    "test_matched_n": 978,
+    "test_mape_by_model_all_forecasts": {
       "drift": 0.0703,
       "ets_damped": 0.0692,
       "naive": 0.0661,
       "seasonal_naive": 0.0939
     },
-    "test_mape_selected": 0.0644,
-    "test_mape_naive": 0.0661,
+    "test_mape_selected": 0.052,
+    "test_mape_naive": 0.0476,
     "test_mape_by_horizon": {
       "selected": {
-        "1": 0.0335,
-        "2": 0.0485,
-        "3": 0.0644,
-        "4": 0.0799,
-        "5": 0.0931,
-        "6": 0.1074
+        "1": 0.0291,
+        "2": 0.0403,
+        "3": 0.0518,
+        "4": 0.0636,
+        "5": 0.0729,
+        "6": 0.0846
       },
       "naive": {
-        "1": 0.0325,
-        "2": 0.0494,
-        "3": 0.0657,
-        "4": 0.0848,
-        "5": 0.0988,
-        "6": 0.1108
+        "1": 0.027,
+        "2": 0.0374,
+        "3": 0.047,
+        "4": 0.0584,
+        "5": 0.0664,
+        "6": 0.0756
       }
     },
-    "validation_mape_by_model": {
-      "drift": 0.06,
-      "ets_damped": 0.0876,
-      "naive": 0.0752,
-      "seasonal_naive": 0.1099
-    },
+    "test_bias_naive": 0.0179,
+    "test_bias_selected": 0.0215,
+    "decision_matched_n": 603,
+    "decision_mape_selected": 0.0698,
+    "decision_mape_naive": 0.0921,
+    "decision": "selected models (beat naive on the decision window)",
     "selected_model_counts": {
-      "drift": 13,
-      "ets_damped": 9,
-      "naive": 6
+      "naive": 10,
+      "drift": 10,
+      "ets_damped": 6
     },
-    "dm_selected_vs_naive_by_h": {
-      "1": {
-        "n": 245,
-        "dm": 2.807,
-        "p_value": 0.0054
-      },
-      "2": {
-        "n": 217,
-        "dm": 2.598,
-        "p_value": 0.01
-      },
-      "3": {
-        "n": 189,
-        "dm": 2.914,
-        "p_value": 0.004
-      },
-      "4": {
-        "n": 162,
-        "dm": 2.482,
-        "p_value": 0.0141
-      },
-      "5": {
-        "n": 135,
-        "dm": 2.309,
-        "p_value": 0.0225
-      },
-      "6": {
-        "n": 108,
-        "dm": 2.408,
-        "p_value": 0.0178
-      }
+    "dm_per_series_h1": {
+      "n_series_tested": 16,
+      "selected_significantly_better": 1,
+      "selected_significantly_worse": 1,
+      "note": "HLN-corrected DM per series at h=1; series with < 8 test origins are not tested"
     },
-    "decision": "naive (selected models did not beat naive on test)",
     "pi80_test_coverage_by_h": {
-      "1": 0.7796,
-      "2": 0.8341,
-      "3": 0.8466,
-      "4": 0.821,
-      "5": 0.8741,
-      "6": 0.8889
+      "1": 0.7269,
+      "2": 0.7662,
+      "3": 0.8,
+      "4": 0.7933,
+      "5": 0.76,
+      "6": 0.81
     },
-    "pi80_test_coverage_overall": 0.8324,
-    "n_test_errors": 1056,
+    "pi80_test_coverage_overall": 0.771,
     "n_series_modelled": 33,
-    "n_held": 30,
+    "n_held": 32,
     "held": {
       "J1299": "held_short_history",
       "J1628": "held_short_history",
@@ -112,25 +85,29 @@
       "J2327": "held_no_validation_window",
       "J3032": "held_no_validation_window",
       "J9332": "held_no_validation_window",
+      "Q5115": "held_no_validation_window",
+      "Q5121": "held_no_validation_window",
       "Q5123": "held_no_validation_window"
     },
-    "valid_last_target": "2023Q4",
+    "selection_last_target": "2022Q4",
+    "decision_last_target": "2023Q4",
     "test_first_origin": "2024Q1"
   },
   "annual": {
     "administrations": {
-      "test_mape_by_model": {
+      "test_matched_n": 66,
+      "test_mape_by_model_all_forecasts": {
         "drift": 0.2244,
         "ets_damped": 0.184,
         "naive": 0.164
       },
-      "test_mape_selected": 0.1833,
+      "test_mape_selected": 0.1998,
       "test_mape_naive": 0.164,
       "test_mape_by_horizon": {
         "selected": {
-          "1": 0.0961,
-          "2": 0.2313,
-          "3": 0.3488
+          "1": 0.1046,
+          "2": 0.251,
+          "3": 0.3827
         },
         "naive": {
           "1": 0.0933,
@@ -138,55 +115,44 @@
           "3": 0.2915
         }
       },
-      "validation_mape_by_model": {
-        "drift": 0.1824,
-        "ets_damped": 0.1591,
-        "naive": 0.1925
-      },
+      "test_bias_naive": 0.0257,
+      "test_bias_selected": -0.0466,
+      "decision_matched_n": 33,
+      "decision_mape_selected": 0.1186,
+      "decision_mape_naive": 0.1821,
+      "decision": "selected models (beat naive on the decision window)",
       "selected_model_counts": {
-        "ets_damped": 7,
-        "drift": 2,
+        "ets_damped": 6,
+        "drift": 3,
         "naive": 2
       },
-      "dm_selected_vs_naive_by_h": {
-        "1": {
-          "n": 33,
-          "dm": -0.253,
-          "p_value": 0.8015
-        },
-        "2": {
-          "n": 22,
-          "dm": -0.353,
-          "p_value": 0.7273
-        },
-        "3": {
-          "n": 11,
-          "dm": -0.43,
-          "p_value": 0.6765
-        }
+      "dm_per_series_h1": {
+        "n_series_tested": 0,
+        "selected_significantly_better": 0,
+        "selected_significantly_worse": 0,
+        "note": "HLN-corrected DM per series at h=1; series with < 8 test origins are not tested"
       },
-      "decision": "naive (selected models did not beat naive on test)",
       "pi80_test_coverage_by_h": {
         "1": 0.7879,
-        "2": 0.7727,
+        "2": 0.7273,
         "3": 0.8182
       },
-      "pi80_test_coverage_overall": 0.7879,
-      "n_test_errors": 66
+      "pi80_test_coverage_overall": 0.7727
     },
     "allowed": {
-      "test_mape_by_model": {
+      "test_matched_n": 66,
+      "test_mape_by_model_all_forecasts": {
         "drift": 0.3704,
         "ets_damped": 0.259,
         "naive": 0.2022
       },
-      "test_mape_selected": 0.2875,
+      "test_mape_selected": 0.2794,
       "test_mape_naive": 0.2022,
       "test_mape_by_horizon": {
         "selected": {
-          "1": 0.1404,
-          "2": 0.3518,
-          "3": 0.6001
+          "1": 0.1355,
+          "2": 0.3467,
+          "3": 0.5764
         },
         "naive": {
           "1": 0.1163,
@@ -194,44 +160,33 @@
           "3": 0.3606
         }
       },
-      "validation_mape_by_model": {
-        "drift": 0.217,
-        "ets_damped": 0.1876,
-        "naive": 0.252
-      },
+      "test_bias_naive": -0.0129,
+      "test_bias_selected": -0.134,
+      "decision_matched_n": 33,
+      "decision_mape_selected": 0.1637,
+      "decision_mape_naive": 0.2608,
+      "decision": "selected models (beat naive on the decision window)",
       "selected_model_counts": {
-        "ets_damped": 5,
+        "ets_damped": 4,
         "naive": 4,
-        "drift": 2
+        "drift": 3
       },
-      "dm_selected_vs_naive_by_h": {
-        "1": {
-          "n": 33,
-          "dm": 0.736,
-          "p_value": 0.4669
-        },
-        "2": {
-          "n": 22,
-          "dm": 2.028,
-          "p_value": 0.0554
-        },
-        "3": {
-          "n": 11,
-          "dm": 0.584,
-          "p_value": 0.5719
-        }
+      "dm_per_series_h1": {
+        "n_series_tested": 0,
+        "selected_significantly_better": 0,
+        "selected_significantly_worse": 0,
+        "note": "HLN-corrected DM per series at h=1; series with < 8 test origins are not tested"
       },
-      "decision": "naive (selected models did not beat naive on test)",
       "pi80_test_coverage_by_h": {
-        "1": 0.6364,
-        "2": 0.6818,
-        "3": 0.6364
+        "1": 0.7879,
+        "2": 0.5909,
+        "3": 0.7273
       },
-      "pi80_test_coverage_overall": 0.6515,
-      "n_test_errors": 66
+      "pi80_test_coverage_overall": 0.7121
     },
     "n_molecules": 11,
-    "valid_last_target": 2020,
+    "selection_last_target": 2019,
+    "decision_last_target": 2020,
     "test_first_origin": 2021
   },
   "external_2025": {

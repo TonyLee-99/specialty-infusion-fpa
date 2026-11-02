@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import json
 
-import pandas as pd
+import pandas as pd  # noqa: I001
 
 from sifpa import assumptions as A
 from sifpa import engine as E
@@ -113,9 +113,39 @@ def run(con) -> dict:
     out["policy_2028_operating_margin_by_ivs_recapture"] = {
         str(r): round(E.build(con, rules_year=2028, mfp=True, white_bag=True,
                               overrides={"ivs_recapture_share": r})["pnl"]["operating_margin"]) for r in (0.0, 0.25, 0.5)}
-    # 'fill vs add': value of 100 more patients (if chairs are free) vs one more chair
+    # Growth arithmetic. Both are mechanical in this model (labelled as such in the memo): extra patients
+    # add their contribution linearly while chairs are free, and the panel was sized for ~70% utilization,
+    # so an extra chair adds only its fixed cost until demand exceeds capacity.
     more = E.build(con, panel=A.practice()["panel_patients"] + 100)
     out["value_of_100_more_patients"] = round(more["pnl"]["contribution"] - b)
+    out["growth_labels"] = {"value_of_100_more_patients": "linear: 100 x contribution per patient (chairs free)",
+                            "added_chair_value": "equals the chair's fixed cost while demand < capacity",
+                            "panel_sizing": "panel_patients set so the base runs near 70% utilization (assumption)"}
+
+    # Commercial markup at which suite operating margin is zero (operating margin is linear in the markup)
+    m0, m1 = 0.0, A.practice()["commercial_drug_markup_vs_asp"]
+    op0 = E.build(con, overrides={"commercial_drug_markup_vs_asp": m0})["pnl"]["operating_margin"]
+    op1 = base["pnl"]["operating_margin"]
+    be = m0 + (0 - op0) * (m1 - m0) / (op1 - op0)
+    check = E.build(con, overrides={"commercial_drug_markup_vs_asp": be})["pnl"]["operating_margin"]
+    out["breakeven_commercial_markup"] = round(be, 5)
+    out["breakeven_check_operating_margin"] = round(check, 2)
+
+    # Lag-drift scenario: instead of the forecast path, assume each drug's historical
+    # median lag spread (last 8 quarters) persists, i.e. today's purchase price sits PL/(1 + lag) and
+    # Medicare keeps paying on the older, lower ASP. Drugs with < 8 quarters of history keep the forecast path.
+    lag = pd.read_csv(OUTPUTS / "lag_spread_by_drug.csv", dtype={"hcpcs": str})
+    lag = lag[lag["quarters"] >= 8].set_index("hcpcs")["median_lag_pct_last8"].dropna()
+    ann = econ.set_index("hcpcs")
+    factor = {h: float(ann.at[h, "pl_2027"] / ann.at[h, "pay_asp_2027"] / (1 + lag[h])) for h in lag.index if h in ann.index}
+    drift = E.build(con, buy_over_pay=factor)
+    out["lag_drift_scenario"] = {
+        "operating_margin": round(drift["pnl"]["operating_margin"]),
+        "delta_vs_base": round(drift["pnl"]["operating_margin"] - base["pnl"]["operating_margin"]),
+        "delta_by_drug": {h: round(v) for h, v in (
+            (drift["pnl"]["detail"].groupby("hcpcs")["contribution"].sum()
+             - base["pnl"]["detail"].groupby("hcpcs")["contribution"].sum()).sort_values().head(5).items())},
+        "n_drugs_with_history": len(factor)}
     tbl = econ.merge(drugs[["hcpcs"]], on="hcpcs")[[
         "hcpcs", "molecule", "brand", "product_type", "reference_hcpcs", "admin_family", "formulary_listed",
         "ipay2028_selected", "flag_lesser_of", "flag_addon_8pct", "ira_existing", "asp_estimated", "units_per_admin",

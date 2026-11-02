@@ -113,7 +113,7 @@ def addon_for(row, quarter: str, rules_year: int) -> float:
 
 
 def plan_prices(drugs: pd.DataFrame, path: pd.DataFrame, rules_year: int = 2027,
-                asp_scale: dict[str, float] | None = None) -> pd.DataFrame:
+                asp_scale: dict[str, float] | None = None, buy_over_pay: dict[str, float] | None = None):
     """Quarterly 2027 payment limit (on lagged ASP) and acquisition ASP (current quarter) per HCPCS.
 
     asp_scale optionally rescales a code's whole ASP path (e.g. an MFP replaces ASP for Medicare).
@@ -130,6 +130,8 @@ def plan_prices(drugs: pd.DataFrame, path: pd.DataFrame, rules_year: int = 2027,
                 return np.nan if v is None else float(v)
 
             pay_asp, buy_asp = a(r.hcpcs, pay_q) * scale, a(r.hcpcs, buy_q) * scale
+            if buy_over_pay and r.hcpcs in buy_over_pay:  # lag-drift scenario: ASP(t) = ASP(t-2) x factor
+                buy_asp = pay_asp * buy_over_pay[r.hcpcs]
             addon = addon_for(r, q, rules_year)
             ref_pay = a(r.reference_hcpcs, pay_q) if isinstance(r.reference_hcpcs, str) and r.reference_hcpcs else np.nan
             if r.product_type == "biosimilar" and not r.asp_estimated and not np.isnan(ref_pay):
@@ -244,6 +246,7 @@ def per_admin(drugs: pd.DataFrame, prices: pd.DataFrame, fees: dict, d: Drivers)
     # White bagging: the payer's specialty pharmacy supplies the drug; the practice keeps the admin fee,
     # and the owned specialty pharmacy may recapture a dispensing margin on part of that volume.
     recapture = d.ivs_recapture_share * d.ivs_dispensing_margin
+    e["recapture_rate"] = recapture
     e["contribution_commercial_whitebag"] = e["admin_revenue_commercial"] - e["variable_cost"] + recapture * e["acquisition_cost"]
     return e
 
@@ -391,6 +394,8 @@ def suite_pnl(econ: pd.DataFrame, mix: pd.DataFrame, payers: dict[str, float], g
     acq = pd.Series([e.at[r.hcpcs, f"acquisition_cost_{r.payer}"] for r in m.itertuples()], index=m.index)
     m["drug_cost"] = m["admins"] * acq * (1 - wb_share)
     m["variable_cost"] = m["admins"] * m["hcpcs"].map(e["variable_cost"])
+    # Owned-pharmacy dispensing margin on white-bagged volume: its own P&L line so revenue - costs reconciles
+    m["pharmacy_margin"] = m["admins"] * acq * wb_share * m["hcpcs"].map(e["recapture_rate"])
     fixed = fixed_costs(chairs, overrides)
     admins = m["admins"].sum()
     contribution = m["contribution"].sum()
@@ -405,6 +410,7 @@ def suite_pnl(econ: pd.DataFrame, mix: pd.DataFrame, payers: dict[str, float], g
         "utilization": float(hours / capacity), "demand_served": float(served),
         "drug_revenue": float(m["drug_revenue"].sum()), "admin_revenue": float(m["admin_revenue"].sum()),
         "drug_cost": float(m["drug_cost"].sum()), "variable_cost": float(m["variable_cost"].sum()),
+        "pharmacy_margin": float(m["pharmacy_margin"].sum()),
         "contribution": float(contribution), "fixed_costs": fixed, "operating_margin": float(contribution - fixed["total"]),
         "contribution_per_admin": float(contribution / admins) if admins else 0.0,
         "contribution_per_chair_hour": float(contrib_per_hour),
@@ -427,7 +433,8 @@ def white_bag_tiers(econ: pd.DataFrame) -> dict[str, float]:
 
 def build(con=None, overrides: dict | None = None, rules_year: int = 2027, full_formulary: bool = False,
           mfp: bool = False, white_bag: bool = False, mix_override: pd.DataFrame | None = None,
-          chairs: float | None = None, panel: float | None = None, payer_override: dict | None = None) -> dict:
+          chairs: float | None = None, panel: float | None = None, payer_override: dict | None = None,
+          buy_over_pay: dict[str, float] | None = None) -> dict:
     """One call = one scenario: prices -> per-admin economics -> mix -> suite P&L."""
     con = con or connect()
     o = overrides or {}
@@ -438,12 +445,12 @@ def build(con=None, overrides: dict | None = None, rules_year: int = 2027, full_
     if mfp:  # Medicare pays 106% of MFP and the practice's net cost falls to MFP (effectuation refund)
         disc = A.value("policy", "mfp_discount_vs_asp")
         scale = {h: 1 - disc for h in drugs[drugs["ipay2028_selected"]]["hcpcs"]}
-    annual, quarterly = plan_prices(drugs, path, rules_year)
+    annual, quarterly = plan_prices(drugs, path, rules_year, buy_over_pay=buy_over_pay)
     fees = admin_fee_table(con, A.value("policy", "cf_2027_proposed"))
     d = Drivers.from_yaml(**o)
     econ = per_admin(drugs, annual, fees, d)
     if scale:  # MFP applies to Medicare FFS and MA only; commercial keeps ASP-based terms
-        annual_mfp, _ = plan_prices(drugs, path, rules_year, asp_scale=scale)
+        annual_mfp, _ = plan_prices(drugs, path, rules_year, asp_scale=scale, buy_over_pay=buy_over_pay)
         econ_mfp = per_admin(drugs, annual_mfp, fees, d)
         for payer in ("medicare_ffs", "medicare_adv"):
             for col in ("acquisition_cost", "drug_revenue", "drug_margin", "contribution"):

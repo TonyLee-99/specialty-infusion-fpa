@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-02T11:42:20Z",
+  "run_at": "2026-11-02T16:23:21Z",
   "offline": true,
   "all_ok": true,
   "automated_minutes_measured": 0.6,
@@ -17,7 +17,7 @@
     {
       "step": "dbt",
       "status": "ok",
-      "seconds": 3.3,
+      "seconds": 4.1,
       "manual_step": "Clean, join and validate source tables (HCPCS changes, biosimilar codes, reconciliations)",
       "manual_minutes_estimate": 90
     },
@@ -45,14 +45,14 @@
     {
       "step": "margin",
       "status": "ok",
-      "seconds": 3.4,
+      "seconds": 3.9,
       "manual_step": "Rebuild per-infusion margin by drug and payer; refresh lag spread",
       "manual_minutes_estimate": 60
     },
     {
       "step": "scenarios",
       "status": "ok",
-      "seconds": 1.4,
+      "seconds": 1.6,
       "manual_step": "Update base / biosimilar / policy scenarios for the plan",
       "manual_minutes_estimate": 45
     },
@@ -150,7 +150,7 @@
     {
       "step": "test",
       "status": "ok",
-      "seconds": 6.6,
+      "seconds": 6.8,
       "manual_step": "(no manual equivalent: regression suite)",
       "manual_minutes_estimate": 0
     }

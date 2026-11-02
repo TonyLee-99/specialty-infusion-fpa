@@ -36,6 +36,12 @@ def test_underwater_definitions_are_nested():
     assert u["after_sequestration_and_coinsurance"]["dollar_weighted_share"] is not None
 
 
+def test_insufficient_history_picks_are_never_robust():
+    dec = pd.read_csv(OUT / "biosimilar_decision.csv")
+    best = dec[dec["best_for_payer"]]
+    assert not (best["decision_robust"] & best["insufficient_price_history"]).any()
+
+
 def test_biosimilar_decision_table_is_product_by_payer():
     dec = pd.read_csv(OUT / "biosimilar_decision.csv")
     assert set(dec["payer"]) == set(E.PAYERS)

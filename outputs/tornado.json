@@ -1,229 +1,229 @@
 {
   "metric": "operating_margin",
-  "base": 2920062,
+  "base": 2734116,
   "bars": [
     {
       "driver": "commercial_drug_markup_vs_asp",
       "low_value": 0.08,
       "high_value": 0.35,
-      "at_low": 57141,
-      "at_high": 6498713,
-      "swing": 6441571
+      "at_low": 15469,
+      "at_high": 6132425,
+      "swing": 6116956
     },
     {
       "driver": "acquisition_spread_vs_asp",
       "low_value": -0.05,
       "high_value": 0.03,
-      "at_low": 5273457,
-      "at_high": 1508025,
-      "swing": 3765432
+      "at_low": 4974574,
+      "at_high": 1389841,
+      "swing": 3584733
     },
     {
       "driver": "panel_patients",
       "low_value": 1200,
       "high_value": 2200,
-      "at_low": 1757275,
-      "at_high": 4082849,
-      "swing": 2325575
+      "at_low": 1626019,
+      "at_high": 3842214,
+      "swing": 2216195
     },
     {
       "driver": "denial_writeoff_commercial",
       "low_value": 0.015,
       "high_value": 0.06,
-      "at_low": 3592982,
-      "at_high": 1574222,
-      "swing": 2018760
+      "at_low": 3374271,
+      "at_high": 1453806,
+      "swing": 1920466
     },
     {
       "driver": "commercial_patient_resp_share",
       "low_value": 0.05,
       "high_value": 0.2,
-      "at_low": 3373011,
-      "at_high": 2014163,
-      "swing": 1358848
+      "at_low": 3164290,
+      "at_high": 1873769,
+      "swing": 1290521
     },
     {
       "driver": "payer_mix_commercial",
       "low_value": 0.4,
       "high_value": 0.6,
-      "at_low": 2296889,
-      "at_high": 3543234,
-      "swing": 1246345
+      "at_low": 2159044,
+      "at_high": 3309188,
+      "swing": 1150144
     },
     {
       "driver": "patient_collection_rate",
       "low_value": 0.5,
       "high_value": 0.9,
-      "at_low": 2316129,
-      "at_high": 3523994,
-      "swing": 1207865
+      "at_low": 2160551,
+      "at_high": 3307681,
+      "swing": 1147130
     },
     {
       "driver": "coinsurance_collection_rate",
       "low_value": 0.75,
       "high_value": 1.0,
-      "at_low": 2364779,
-      "at_high": 3290250,
-      "swing": 925471
+      "at_low": 2202908,
+      "at_high": 3088255,
+      "swing": 885346
     },
     {
       "driver": "underpayment_commercial",
       "low_value": 0.0,
       "high_value": 0.03,
-      "at_low": 3215928,
-      "at_high": 2328330,
-      "swing": 887598
+      "at_low": 3015105,
+      "at_high": 2172138,
+      "swing": 842967
     },
     {
       "driver": "neuro_share_commercial",
       "low_value": 0.45,
       "high_value": 0.75,
-      "at_low": 2527360,
-      "at_high": 3312764,
-      "swing": 785403
+      "at_low": 2448754,
+      "at_high": 3019479,
+      "swing": 570725
     },
     {
       "driver": "ma_rate_vs_ffs",
       "low_value": 0.95,
       "high_value": 1.0,
-      "at_low": 2418675,
-      "at_high": 2920062,
-      "swing": 501387
+      "at_low": 2254467,
+      "at_high": 2734116,
+      "swing": 479649
     },
     {
       "driver": "chairs",
       "low_value": 8,
       "high_value": 16,
-      "at_low": 3013518,
-      "at_high": 2692257,
-      "swing": 321261
+      "at_low": 2949312,
+      "at_high": 2506311,
+      "swing": 443001
     },
     {
       "driver": "commercial_admin_multiple_of_medicare",
       "low_value": 1.15,
       "high_value": 1.8,
-      "at_low": 2801934,
-      "at_high": 3109067,
-      "swing": 307133
+      "at_low": 2621360,
+      "at_high": 2914525,
+      "swing": 293165
     },
     {
       "driver": "variable_cost_per_infusion",
       "low_value": 25.0,
       "high_value": 60.0,
-      "at_low": 3036107,
-      "at_high": 2765335,
-      "swing": 270772
+      "at_low": 2845307,
+      "at_high": 2585862,
+      "swing": 259446
     },
     {
       "driver": "site_fixed_staff_per_year",
       "low_value": 250000.0,
       "high_value": 500000.0,
-      "at_low": 3020062,
-      "at_high": 2770062,
+      "at_low": 2834116,
+      "at_high": 2584116,
       "swing": 250000
     },
     {
       "driver": "chairs_per_rn",
       "low_value": 3,
       "high_value": 5,
-      "at_low": 2764257,
-      "at_high": 3013545,
+      "at_low": 2578311,
+      "at_high": 2827599,
       "swing": 249288
     },
     {
       "driver": "medicaid_drug_markup_vs_asp",
       "low_value": 0.0,
       "high_value": 0.06,
-      "at_low": 2761060,
-      "at_high": 2999563,
-      "swing": 238502
+      "at_low": 2583127,
+      "at_high": 2809611,
+      "swing": 226483
     },
     {
       "driver": "rent_equipment_per_chair_year",
       "low_value": 12000.0,
       "high_value": 30000.0,
-      "at_low": 2992062,
-      "at_high": 2776062,
+      "at_low": 2806116,
+      "at_high": 2590116,
       "swing": 216000
     },
     {
       "driver": "denial_writeoff_medicare",
       "low_value": 0.005,
       "high_value": 0.03,
-      "at_low": 2959533,
-      "at_high": 2762176,
-      "swing": 197357
+      "at_low": 2771876,
+      "at_high": 2583076,
+      "swing": 188800
     },
     {
-      "driver": "immunology_share_of_non_neuro",
-      "low_value": 0.08,
-      "high_value": 0.25,
-      "at_low": 2869047,
-      "at_high": 2992940,
-      "swing": 123893
+      "driver": "neuro_share_medicare",
+      "low_value": 0.25,
+      "high_value": 0.55,
+      "at_low": 2819331,
+      "at_high": 2648901,
+      "swing": 170430
     },
     {
       "driver": "rn_hourly_wage",
       "low_value": 42.68,
       "high_value": 55.0,
-      "at_low": 2971347,
-      "at_high": 2851227,
+      "at_low": 2785401,
+      "at_high": 2665281,
       "swing": 120120
     },
     {
       "driver": "chair_hours_per_day",
       "low_value": 9,
       "high_value": 11,
-      "at_low": 2966803,
-      "at_high": 2873320,
+      "at_low": 2780858,
+      "at_high": 2687375,
       "swing": 93483
     },
     {
-      "driver": "neuro_share_medicare",
-      "low_value": 0.25,
-      "high_value": 0.55,
-      "at_low": 2954301,
-      "at_high": 2885823,
-      "swing": 68477
+      "driver": "immunology_share_of_non_neuro",
+      "low_value": 0.08,
+      "high_value": 0.25,
+      "at_low": 2698311,
+      "at_high": 2785267,
+      "swing": 86956
     },
     {
       "driver": "operating_days",
       "low_value": 240,
       "high_value": 260,
-      "at_low": 2938759,
-      "at_high": 2901365,
+      "at_low": 2752813,
+      "at_high": 2715420,
       "swing": 37393
     },
     {
       "driver": "benefits_load",
       "low_value": 0.25,
       "high_value": 0.35,
-      "at_low": 2938039,
-      "at_high": 2902084,
+      "at_low": 2752094,
+      "at_high": 2716139,
       "swing": 35955
     },
     {
       "driver": "medicaid_admin_multiple_of_medicare",
       "low_value": 0.65,
       "high_value": 1.0,
-      "at_low": 2908253,
-      "at_high": 2935807,
-      "swing": 27555
+      "at_low": 2722844,
+      "at_high": 2749146,
+      "swing": 26301
     },
     {
       "driver": "payer_mix_medicaid",
       "low_value": 0.04,
       "high_value": 0.12,
-      "at_low": 2915541,
-      "at_high": 2924583,
-      "swing": 9042
+      "at_low": 2736607,
+      "at_high": 2731625,
+      "swing": 4982
     },
     {
       "driver": "lesser_of_acquisition_premium",
       "low_value": 0.0,
       "high_value": 0.7,
-      "at_low": 2920062,
-      "at_high": 2920062,
+      "at_low": 2734116,
+      "at_high": 2734116,
       "swing": 0
     }
   ],

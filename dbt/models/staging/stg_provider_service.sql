@@ -6,6 +6,7 @@ select
     Rndrng_Prvdr_Ent_Cd                        as entity_code,
     Rndrng_Prvdr_State_Abrvtn                  as state_abbr,
     Rndrng_Prvdr_Zip5                          as zip5,
+    upper(trim(Rndrng_Prvdr_City))             as city,
     try_cast(Rndrng_Prvdr_RUCA as double)      as ruca,
     HCPCS_Cd                                   as hcpcs,
     Place_Of_Srvc                              as place_of_service,

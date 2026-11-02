@@ -57,3 +57,20 @@ pooled model-level MAPE/MASE in `outputs/forecast.json` is the unbiased comparis
   infusions (1.09M in 2024, +4.6%/yr since 2019) and injections.
 - The volume forecast is wired into the plan as a demand-growth factor per molecule. With naive chosen,
   the factor is 1.0.
+
+## Revision 2: three windows, matched comparisons, per-series DM
+The round-1 rule consulted the test window for the keep-or-naive decision, and it compared MAPEs on
+different forecast sets. The fix:
+- Three disjoint **target** windows. Selection (quarterly <= 2022Q4, annual <= 2019) picks a model per
+  series. Decision (2023 / 2020) keeps the selected models only if they beat naive on **matched**
+  forecasts (same series, origin, horizon). Test (origins from 2024Q1 / 2021) is reporting only.
+- The decision window kept the selected models: quarterly MAPE 7.0% vs naive 9.2%. On the untouched
+  test window, on the same 978 forecasts, naive is slightly better (4.8% vs 5.2%).
+- **Significance** is tested per series, with HLN-corrected DM at h=1 in each series' own time order. Of
+  16 testable series, 1 is significantly better and 1 significantly worse, so there is no systematic edge.
+  The pooled DM (which stacked products as consecutive time points) is no longer quoted.
+- Both naive and the selected models under-forecast on the test window (mean log error +1.8% naive,
+  +2.2% selected), because prices drift up.
+- Annual volume: 16.4% naive vs 20.0% selected on test; spend: 20.2% vs 27.9%. Three test origins per
+  series are too few for DM. Test coverage of the 80% bands: ASP 73-81% by horizon, volume 73-82%,
+  spend 59-79%.

@@ -24,7 +24,7 @@ def facts() -> dict[str, str]:
     man = json.loads((ROOT / "data_manifest.json").read_text())
     pack = J("monthly_pack_last.json") if (OUTPUTS / "monthly_pack_last.json").exists() else {}
     qa, av, asp_ = fc["quarterly_asp"], fc["annual"]["administrations"], fc["annual"]["allowed"]
-    dm = qa["dm_selected_vs_naive_by_h"]
+    dm = qa["dm_per_series_h1"]
     s1 = next(r for r in var["by_site_ytd"] if r["site_id"] == "S1")
     tables = len(list((ROOT / "powerbi/SpecialtyInfusionFPA.SemanticModel/definition/tables").glob("*.tmdl")))
     real = next(c for c in dq["checks"] if c["check"] == "allowed_vs_payment_limit_explained")["detail"]
@@ -38,8 +38,8 @@ def facts() -> dict[str, str]:
         "uw_seq": f"{m['underwater']['after_sequestration']['share_drug_quarters'] * 100:.1f}%",
         "n_drugs_priced": str(m["n_drugs_priced"]),
         "asp_series": str(qa["n_series_modelled"]), "asp_held": str(qa["n_held"]),
-        "dm_p_min": f"{min(d['p_value'] for d in dm.values() if d['p_value'] is not None):.3f}",
-        "dm_p_max": f"{max(d['p_value'] for d in dm.values() if d['p_value'] is not None):.3f}",
+        "dm_line": f"{dm['selected_significantly_better']} better / {dm['selected_significantly_worse']} worse of {dm['n_series_tested']}",
+        "asp_n_matched": f"{qa['test_matched_n']:,}",
         "vol_naive": f"{av['test_mape_naive'] * 100:.1f}%", "vol_sel": f"{av['test_mape_selected'] * 100:.1f}%",
         "spend_naive": f"{asp_['test_mape_naive'] * 100:.1f}%", "spend_sel": f"{asp_['test_mape_selected'] * 100:.1f}%",
         "vol_cov": f"{av['pi80_test_coverage_overall'] * 100:.0f}%", "spend_cov": f"{asp_['pi80_test_coverage_overall'] * 100:.0f}%",
@@ -77,7 +77,7 @@ regional inflammatory-disease practice. It uses public data only, and I have no 
 > assumed commercial contract contributes **{com}**, so commercial is {com_contrib} of contribution. The 2028
 > risk is white bagging ({wb}), not Medicare negotiation ({mfp} on the listed drugs). Grow by patients
 > (100 more add {plus100}), not chairs (one more costs {chair_fixed}/yr at {util} utilization). Next site:
-> **Northeast Ohio**: {oh1} (gap leader, needs recruited rheumatologists) or Cleveland (larger base).
+> {oh1} or {oh2} (Northeast Ohio gaps; recruiting needed). Cleveland is well served (#{cle_rank}). {top1} ranks first overall.
 
 | Problem | What I built | Key results (real numbers, reproducible) |
 |---|---|---|
@@ -156,7 +156,7 @@ and follow `docs/powerbi_build_guide.md` to build the report pages in Power BI D
 | Plan 2027 | contribution / operating margin / infusions / utilization | {base_contrib_exact} / {base_op_exact} / {admins} / {util} | `outputs/scenarios.json` |
 | Plan 2027 | contribution per infusion: Medicare FFS / MA / commercial | {med} / {ma} / {com} | `outputs/scenarios.json` |
 | Growth | added chair at current demand / 100 more patients / added-chair break-even utilization | {chair_value} / {plus100} / {chair_be} | `outputs/scenarios.json` |
-| Forecast | quarterly ASP, test window MAPE: naive / validation-selected ({asp_series} modelled, {asp_held} held flat) | {asp_naive} / {asp_sel}; DM p {dm_p_min}-{dm_p_max} (selected worse) | `outputs/forecast.json` |
+| Forecast | quarterly ASP, untouched test window, same {asp_n_matched} forecasts: naive / selected ({asp_series} modelled, {asp_held} held flat) | {asp_naive} / {asp_sel}; per-series DM at h=1: {dm_line} | `outputs/forecast.json` |
 | Forecast | annual volume MAPE naive / selected; spend MAPE naive / selected | {vol_naive} / {vol_sel}; {spend_naive} / {spend_sel} | `outputs/forecast.json` |
 | Forecast | 80% interval coverage on the test window: ASP / volume / spend | {asp_cov} / {vol_cov} / {spend_cov} | `outputs/forecast.json` |
 | Excel | live formulas / max rel. diff vs Python (default + stressed inputs, LibreOffice recalc) | {xl_formulas} / {xl_diff} | `outputs/excel_recalc_check.json` |
@@ -187,9 +187,14 @@ and follow `docs/powerbi_build_guide.md` to build the report pages in Power BI D
 - **Drug mix**: national in-office Medicare billing by neurologists and rheumatologists, restricted to
   the operator's published drugs, with Ohio biosimilar shares on the listed products. Hospital-administered
   MS infusion is not in physician data.
-- **Prices are held flat for 2027** because no model beat naive on the test window. The lag mechanics are
-  built in, but they produce no spread on a flat path. Acquisition is proxied by ASP; for WAC-priced
-  ("lesser of") codes the proxy is a lower bound, and a range is shown.
+- **2027 prices** follow the models chosen on a decision window. The untouched test window shows no
+  systematic edge over naive (naive slightly better on matched forecasts), and both under-forecast rising
+  prices. The lag-drift scenario (historical lag spreads persist) is the price-risk sensitivity. Acquisition
+  is proxied by ASP; for WAC-priced ("lesser of") codes the base buys at WAC. The 70% stress bound is not a
+  credible purchase price and is shown only as a bound.
+- **ZIP to county**: Census ZCTAs first; unique and campus ZIPs (e.g. 44195, Cleveland Clinic) fall back to
+  the county most providers in the same USPS city and state map to. `make dq` fails if more than 0.5% of
+  region specialists stay unmapped.
 - **Allowed vs payment limit**: physician-PUF allowed per unit is {real_puf} of the payment limit, and Part B
   Spending per unit is {real_spend}, including for flat-price codes. That makes it a systematic or
   definitional effect, not a practice risk, so it is excluded from the plan (`make dq` keeps it under watch).

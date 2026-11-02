@@ -43,6 +43,15 @@ def test_weight_sensitivity_reported_with_honest_name():
     assert all("share_of_weightings_in_top10" in r for r in s["market_top10"])
 
 
+def test_campus_zips_are_mapped_and_cleveland_is_not_a_gap():
+    dq = json.loads((ROOT / "outputs/dq_report.json").read_text())
+    chk = next(c for c in dq["checks"] if c["check"] == "region_specialists_mapped_to_county")
+    assert chk["status"] == "pass" and chk["detail"]["mapped_by_usps_city_state"] > 200
+    m = pd.read_csv(ROOT / "exports/dim_market.csv")
+    cle = m[m["market_name"].str.startswith("Cleveland")].iloc[0]
+    assert cle["rheumatologists"] >= 70  # Cleveland Clinic (ZIP 44195) specialists counted
+
+
 def test_existing_site_market_is_flagged():
     m = pd.read_csv(ROOT / "exports/dim_market.csv")
     assert m[m["market_name"].str.startswith("Columbus, OH")]["cannibalization_flag"].all()

@@ -26,3 +26,15 @@ Northeast Ohio leads among Ohio markets outside the Columbus catchment: Canton-M
 top 10 under 76% of weightings; no Medicare-billing rheumatologists, so a site there means recruiting),
 Youngstown (#3), Cleveland (#6, larger base). Detroit ranks #1. The mean top-10 overlap is 51%, so the
 ranking is moderately stable, and referral data should outweigh it.
+
+## Revision 2: the Cleveland ZIP hole
+286 region specialists had no county because their ZIP has no Census ZCTA. 238 of them sat at 44195, the
+Cleveland Clinic campus ZIP, including 41 rheumatologists, so Cleveland looked under-supplied. Unique and
+campus ZIPs now fall back to the county most providers in the same USPS city + state map to (a USPS
+city/state crosswalk built from the providers' own addresses; HUD's ZIP-county file needs a login).
+`county_method` records the step used. `make dq` fails if more than 0.5% of region specialists stay
+unmapped; 3 of 7,764 region specialists do (283 placed by city + state).
+
+Re-ranked: Cleveland falls from #6 to #21 (23.5 relevant specialists per 100k, 78 rheumatologists), so it
+is a well-served market, not "the larger base". Detroit stays #1. The Ohio gap markets are
+Canton-Massillon (#2) and Youngstown-Warren (#3).

@@ -77,3 +77,16 @@ commercial contract rates (assumption only), and MA plan rates (assumed equal to
   ustekinumab and vedolizumab be billed with 96365-96368, not chemotherapy codes (CGS "Drug
   Administration Coding" article, 2016; may be dated). Other monoclonal antibodies use 96413/96415,
   labelled as an assumption.
+
+## Revision 2: Orencia band and the P&L lines
+- **Orencia acquisition band.** The defensible band is WAC +-5%; the general -5%..+3% acquisition spread
+  already covers it. The 0.70 premium stays in the tornado only as a **stress bound** (J0129's pre-2021Q3
+  ASP trend projected forward). It is not a credible purchase price. In the full-formulary variant:
+  - at WAC+5%, operating margin falls from $2.96M to $2.61M;
+  - at the stress bound it falls to -$1.97M (a decline of $4.93M, not "a loss of $4.93M").
+- **MFP depends on the acquisition basis.** The MFP effect on a full formulary is -$43 when buying at
+  WAC, +$64K at WAC+5%, and +$899K at the stress bound, because the refund would then rescue an
+  underwater drug. The memo says so.
+- **Pharmacy recapture** (Owned-pharmacy margin on white-bagged drug) is now its own P&L line, so drug
+  revenue + admin revenue + pharmacy margin - drug cost - variable cost = contribution
+  (`tests/test_engine.py`).

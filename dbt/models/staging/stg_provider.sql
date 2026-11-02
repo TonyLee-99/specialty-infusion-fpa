@@ -6,6 +6,7 @@ select
     Rndrng_Prvdr_Ent_Cd                            as entity_code,
     Rndrng_Prvdr_State_Abrvtn                      as state_abbr,
     Rndrng_Prvdr_Zip5                              as zip5,
+    upper(trim(Rndrng_Prvdr_City))                 as city,
     cast(Tot_Benes as int)                         as benes,
     cast(Tot_Srvcs as double)                      as services,
     cast(Tot_Mdcr_Alowd_Amt as double)             as allowed_amt,

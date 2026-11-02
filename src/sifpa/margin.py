@@ -98,7 +98,10 @@ def biosimilar_decision(base: dict, lag: pd.DataFrame) -> pd.DataFrame:
                              "drug_margin_if_price_rises_p90": round(m_hi, 2) if not np.isnan(m_hi) else None})
             best = max(margins, key=lambda h: margins[h][0])
             ends_ok = all(not np.isnan(v[1]) and not np.isnan(v[2]) for v in margins.values())
-            robust = ends_ok and best == max(margins, key=lambda h: margins[h][1]) == max(margins, key=lambda h: margins[h][2])
+            # a pick with < 4 quarters of price history cannot be called robust, whatever the ends say
+            best_history_ok = int(lagi["quarters"].get(best, 0)) >= 4
+            robust = (ends_ok and best_history_ok and best == max(margins, key=lambda h: margins[h][1])
+                      == max(margins, key=lambda h: margins[h][2]))
             for row in rows:
                 if row["molecule"] == mol and row["payer"] == payer:
                     row["best_for_payer"] = row["hcpcs"] == best
@@ -157,8 +160,13 @@ def main() -> None:
     med_drug_margin = (med["admins"] * med["hcpcs"].map(econ.set_index("hcpcs")["drug_margin_medicare_ffs"])).sum()
     drv = E.Drivers.from_yaml()
     ff = E.build(con, full_formulary=True)
-    ff_hi = E.build(con, full_formulary=True, overrides={"lesser_of_acquisition_premium":
-                                                          A.load()["practice"]["lesser_of_acquisition_premium"]["high"]})
+    prem_hi = A.load()["practice"]["lesser_of_acquisition_premium"]["high"]
+    ff_hi = E.build(con, full_formulary=True, overrides={"lesser_of_acquisition_premium": prem_hi})
+    ff_mfp = E.build(con, full_formulary=True, mfp=True)
+    ff_hi_mfp = E.build(con, full_formulary=True, mfp=True, overrides={"lesser_of_acquisition_premium": prem_hi})
+    ff_5 = E.build(con, full_formulary=True, overrides={"lesser_of_acquisition_premium": 0.05})
+    ff_5_mfp = E.build(con, full_formulary=True, mfp=True, overrides={"lesser_of_acquisition_premium": 0.05})
+    om = lambda r: r["pnl"]["operating_margin"]  # noqa: E731
     summary = {
         "price_basis": "2027 average (payment on ASP t-2, purchase at ASP t)",
         "net_addon_after_sequestration_full_collection": round(M.net_addon_after_sequestration(), 5),
@@ -170,7 +178,14 @@ def main() -> None:
         "underwater": underwater(hist),
         "median_lag_spread_pct_last8_reference_single_source": round(float(
             lag[lag["product_type"] != "biosimilar"]["median_lag_pct_last8"].median()), 4),
-        "lesser_of_premium_effect_full_formulary": round(ff_hi["pnl"]["operating_margin"] - ff["pnl"]["operating_margin"]),
+        "lesser_of_premium_effect_full_formulary": round(om(ff_hi) - om(ff)),
+        "full_formulary_operating_margin_base": round(om(ff)),
+        "full_formulary_operating_margin_at_premium_high": round(om(ff_hi)),
+        "full_formulary_operating_margin_at_premium_5pct": round(om(ff_5)),
+        "mfp_effect_full_formulary_at_premium_0": round(om(ff_mfp) - om(ff)),
+        "mfp_effect_full_formulary_at_premium_5pct": round(om(ff_5_mfp) - om(ff_5)),
+        "mfp_effect_full_formulary_at_premium_high": round(om(ff_hi_mfp) - om(ff_hi)),
+        "lesser_of_premium_high": prem_hi,
         "plan_mix_top": d.groupby("hcpcs")["admins"].sum().div(d["admins"].sum()).sort_values(ascending=False)
         .head(8).round(4).to_dict(),
         "contribution_per_chair_hour": per_chair_hour(base),

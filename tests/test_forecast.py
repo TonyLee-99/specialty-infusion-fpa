@@ -26,14 +26,21 @@ def test_dm_test_detects_a_clearly_better_model():
     assert r["dm"] < 0 and r["p_value"] < 0.01
 
 
-def test_validation_and_test_windows_do_not_overlap_and_decision_is_recorded():
+def test_windows_are_disjoint_and_the_decision_never_uses_the_test_window():
     f = json.loads((OUT / "forecast.json").read_text())
     q = f["quarterly_asp"]
-    assert q["valid_last_target"] < q["test_first_origin"]
-    assert "decision" in q and "dm_selected_vs_naive_by_h" in q
+    assert q["selection_last_target"] < q["decision_last_target"] < q["test_first_origin"]
+    assert "decision window" in q["decision"]
+    assert q["dm_per_series_h1"]["n_series_tested"] > 0  # per-series DM, not a pooled stack
     for metric in ("administrations", "allowed"):
-        assert "decision" in f["annual"][metric]
-        assert "test_mape_naive" in f["annual"][metric]
+        assert "decision window" in f["annual"][metric]["decision"]
+
+
+def test_selected_vs_naive_is_compared_on_matched_forecasts():
+    a = pd.DataFrame({"series": ["a", "a", "b"], "origin": [1, 2, 1], "h": [1, 1, 1], "ape": [0.1, 0.2, 0.3]})
+    b = pd.DataFrame({"series": ["a", "b", "c"], "origin": [1, 1, 1], "h": [1, 1, 1], "ape": [0.0, 0.0, 0.0]})
+    x, y = F._matched(a, b)
+    assert len(x) == len(y) == 2 and set(x["series"]) == {"a", "b"}
 
 
 def test_interval_coverage_is_reported_per_horizon():

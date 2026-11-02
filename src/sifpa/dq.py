@@ -41,6 +41,14 @@ def run() -> dict:
     add("county_coverage_607_region_plus_crossing_metros", cov == (607, 607, 607, 607) and extra[0] == extra[1] == extra[2],
         {"region_counts": cov, "cross_region_metro_counties": extra})
 
+    # every region specialist must land in a county (ZCTA first, then USPS city+state;
+    # 238 specialists at the Cleveland Clinic campus ZIP 44195 had silently dropped out of supply counts)
+    um = con.sql(f"""select count(*) filter (where county_method = 'unmapped'), count(*),
+                            count(*) filter (where county_method = 'usps_city_state')
+                     from marts.dim_provider where in_region and provider_type in {E.SPECIALTIES}""").fetchall()[0]
+    add("region_specialists_mapped_to_county", um[0] / um[1] <= 0.005,
+        {"unmapped": um[0], "total": um[1], "mapped_by_usps_city_state": um[2], "threshold_share": 0.005})
+
     nat = con.sql("select max(year) from marts.fct_national_drug_year").fetchall()[0][0]
     add("utilization_latest_year_2024", nat >= 2024, {"latest_year": nat})
 

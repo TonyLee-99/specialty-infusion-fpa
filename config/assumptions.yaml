@@ -179,7 +179,7 @@ practice:
     low: 0.00
     high: 0.70
     label: ASSUMPTION
-    why: "For 'lesser of' (WAC-priced) codes (abatacept J0129 since 2021Q3, certolizumab J0717) PL/1.06 = WAC is a LOWER bound on ASP. Base: a buy-and-bill practice buys IV vials against WAC. High: acquisition tracks the pre-2021Q3 ASP trend of J0129 (+1.37%/qtr -> +70% over today's WAC-based limit; computed in margin.py, ADR 0003)."
+    why: "For 'lesser of' (WAC-priced) codes (abatacept J0129 since 2021Q3, certolizumab J0717) PL/1.06 = WAC is a LOWER bound on ASP. Base: a buy-and-bill practice buys IV vials against WAC. Defensible band: WAC +-5% (distributor terms; the general acquisition-spread driver already spans -5%..+3%). The 0.70 'high' is NOT a plausible purchase price (nobody buys 70% above list): it is a stress bound equal to J0129's pre-2021Q3 ASP trend (+1.37%/qtr) projected to today, kept to show how much the WAC basis matters (ADR 0003)."
   # ---- costs: fixed vs variable ----
   rn_hourly_wage:
     value: 47.94

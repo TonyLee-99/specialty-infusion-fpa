@@ -32,6 +32,17 @@ def test_volume_is_demand_driven_and_capacity_is_a_check(sc):
     assert sc["value_of_100_more_patients"] > 0
 
 
+def test_breakeven_markup_zeroes_operating_margin(sc):
+    assert 0 < sc["breakeven_commercial_markup"] < 0.20
+    assert abs(sc["breakeven_check_operating_margin"]) < 1.0
+
+
+def test_lag_drift_scenario_and_growth_labels(sc):
+    assert sc["lag_drift_scenario"]["n_drugs_with_history"] >= 10
+    assert "linear" in sc["growth_labels"]["value_of_100_more_patients"]
+    assert "fixed cost" in sc["growth_labels"]["added_chair_value"]
+
+
 def test_policy_2028_bridge_and_labels(sc):
     br = sc["policy_2028_bridge"]
     assert br["white_bagging_net_of_ivs"] < 0 and br["ira_addon_expiry"] <= 0
