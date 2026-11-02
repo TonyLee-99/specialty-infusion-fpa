@@ -1,8 +1,8 @@
 {
-  "run_at": "2026-11-02T10:28:57Z",
+  "run_at": "2026-11-02T10:29:23Z",
   "offline": true,
   "all_ok": true,
-  "automated_minutes_measured": 0.5,
+  "automated_minutes_measured": 0.4,
   "manual_steps_replaced": 17,
   "manual_hours_estimate": 10.5,
   "manual_estimate_label": "ESTIMATE (analyst minutes per step, not measured)",
@@ -17,49 +17,49 @@
     {
       "step": "dbt",
       "status": "ok",
-      "seconds": 3.4,
+      "seconds": 3.2,
       "manual_step": "Clean, join and validate source tables (HCPCS changes, biosimilar codes, reconciliations)",
       "manual_minutes_estimate": 90
     },
     {
       "step": "fixtures",
       "status": "ok",
-      "seconds": 1.1,
+      "seconds": 0.8,
       "manual_step": "(no manual equivalent: keeps the offline CI slice in sync)",
       "manual_minutes_estimate": 0
     },
     {
       "step": "margin",
       "status": "ok",
-      "seconds": 1.2,
+      "seconds": 1.1,
       "manual_step": "Rebuild per-infusion margin by drug and payer; refresh lag spread",
       "manual_minutes_estimate": 60
     },
     {
       "step": "forecast",
       "status": "ok",
-      "seconds": 4.1,
+      "seconds": 3.8,
       "manual_step": "Re-forecast ASP and volume; re-score against last quarter",
       "manual_minutes_estimate": 60
     },
     {
       "step": "scenarios",
       "status": "ok",
-      "seconds": 0.9,
+      "seconds": 0.8,
       "manual_step": "Update base / biosimilar / policy scenarios for the plan",
       "manual_minutes_estimate": 45
     },
     {
       "step": "benchmark",
       "status": "ok",
-      "seconds": 1.8,
+      "seconds": 1.6,
       "manual_step": "Refresh provider scorecards and peer percentiles",
       "manual_minutes_estimate": 45
     },
     {
       "step": "market",
       "status": "ok",
-      "seconds": 0.9,
+      "seconds": 0.8,
       "manual_step": "Refresh market white-space ranking",
       "manual_minutes_estimate": 30
     },
@@ -73,7 +73,7 @@
     {
       "step": "exports",
       "status": "ok",
-      "seconds": 0.9,
+      "seconds": 0.8,
       "manual_step": "Export star-schema extracts for the Power BI model",
       "manual_minutes_estimate": 20
     },
@@ -94,7 +94,7 @@
     {
       "step": "excel",
       "status": "ok",
-      "seconds": 2.0,
+      "seconds": 1.8,
       "manual_step": "Roll the Excel scenario workbook forward",
       "manual_minutes_estimate": 30
     },
@@ -129,14 +129,14 @@
     {
       "step": "dq",
       "status": "ok",
-      "seconds": 0.8,
+      "seconds": 0.7,
       "manual_step": "Eyeball anomalies (price jumps, coverage gaps, realization)",
       "manual_minutes_estimate": 30
     },
     {
       "step": "test",
       "status": "ok",
-      "seconds": 3.6,
+      "seconds": 3.8,
       "manual_step": "(no manual equivalent: regression suite)",
       "manual_minutes_estimate": 0
     }

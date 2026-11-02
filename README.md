@@ -161,7 +161,7 @@ open `powerbi/SpecialtyInfusionFPA.pbip` after setting the `RepoPath` parameter.
 | Market | eligible markets / Cleveland, OH rank, P(top 10) / mean top-10 overlap | 83 / 5, 77% / 65% | `outputs/market.json` |
 | Power BI | TMDL tables / DAX measures, each with a SQL twin equal to `kpis.json` | 18 / 22 | `tests/test_tmdl.py` |
 | RCM (**SYNTHETIC**) | clean-claim / denial / days in AR / net collection | 81.9% / 11.2% / 57.0 / 91.0% | `outputs/rcm_kpis_SYNTHETIC.json` |
-| Automation | DQ checks pass / flag / fail; manual steps replaced (estimated hours) / measured run | 5 / 3 / 0; 17 (10.5 h est.) / 0.5 min | `outputs/dq_report.json`, `outputs/monthly_pack_last.json` |
+| Automation | DQ checks pass / flag / fail; manual steps replaced (estimated hours) / measured run | 5 / 3 / 0; 17 (10.5 h est.) / 0.4 min | `outputs/dq_report.json`, `outputs/monthly_pack_last.json` |
 
 ## How this maps to the job
 
