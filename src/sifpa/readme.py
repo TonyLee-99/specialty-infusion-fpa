@@ -184,7 +184,8 @@ open `powerbi/SpecialtyInfusionFPA.pbip` after setting the `RepoPath` parameter.
 - **CMS cell suppression (< 11)** censors provider-level biosimilar rates ({censored} of provider-molecule
   pairs). Adoption is therefore benchmarked at geography level, and provider ranks carry intervals.
 - **Market analysis**: arthritis prevalence (all types) is a weak proxy for inflammatory disease. There is no
-  public county MS prevalence. ZIP does not equal ZCTA. Supply counts are Medicare billers only. Some CBSAs cross
+  public county MS prevalence. ZIP does not equal ZCTA. Supply counts are Medicare FFS billers only, and an infusion biller only
+  counts where CMS shows a row (11 or more beneficiaries for a code), so supply is undercounted in small markets. Some CBSAs cross
   the region (flagged).
 - **Forecasts**: the annual series are short (2013-2024), and per-series model choice is optimistic (ADR 0004).
 - **Power BI: the PBIP has not been opened in Power BI Desktop** (built on macOS). The TMDL is validated

@@ -103,7 +103,7 @@ flowchart LR
     E[CDC PLACES, Census PEP, ZCTA, Gazetteer, OMB CBSA]:::src
   end
   A & B & C & D & E -->|make ingest: filtered API pulls + manifest| R[(data/raw Parquet 44.2 MB)]
-  R -->|dbt build: 25 models, 35 tests| W[(DuckDB star schema)]
+  R -->|dbt build: 25 models, 36 tests| W[(DuckDB star schema)]
   W --> M[margin engine] --> S[2027 scenarios] --> X[Excel workbook<br/>live formulas]
   W --> F[backtested forecasts] --> S
   W --> BM[benchmark] & MK[white space]
@@ -144,7 +144,7 @@ open `powerbi/SpecialtyInfusionFPA.pbip` after setting the `RepoPath` parameter.
 | Area | Metric | Value | Source |
 |---|---|---|---|
 | Data | raw sources / size / ASP quarters | 14 / 44.2 MB / 40 | `data_manifest.json` |
-| Data model | dbt models / tests / business-rule tests (all pass) | 25 / 35 / 9 | `outputs/dbt_summary.json` |
+| Data model | dbt models / tests / business-rule tests (all pass) | 25 / 36 / 10 | `outputs/dbt_summary.json` |
 | Mechanics | ASP+6% after sequestration (full coinsurance collection) | ASP + 4.3% | `outputs/margin.json` |
 | Mechanics | Ohio CY2026 non-facility 96413 / chair cost per hour | $122.71 / $40.58 | `outputs/margin.json` |
 | Pricing | median lag spread (ref/single-source, last 8 qtrs) / underwater drug-quarters | 5.3% / 5.5% | `outputs/lag_spread_by_drug.csv` |
@@ -188,7 +188,8 @@ open `powerbi/SpecialtyInfusionFPA.pbip` after setting the `RepoPath` parameter.
 - **CMS cell suppression (< 11)** censors provider-level biosimilar rates (99.5% of provider-molecule
   pairs). Adoption is therefore benchmarked at geography level, and provider ranks carry intervals.
 - **Market analysis**: arthritis prevalence (all types) is a weak proxy for inflammatory disease. There is no
-  public county MS prevalence. ZIP does not equal ZCTA. Supply counts are Medicare billers only. Some CBSAs cross
+  public county MS prevalence. ZIP does not equal ZCTA. Supply counts are Medicare FFS billers only, and an infusion biller only
+  counts where CMS shows a row (11 or more beneficiaries for a code), so supply is undercounted in small markets. Some CBSAs cross
   the region (flagged).
 - **Forecasts**: the annual series are short (2013-2024), and per-series model choice is optimistic (ADR 0004).
 - **Power BI: the PBIP has not been opened in Power BI Desktop** (built on macOS). The TMDL is validated

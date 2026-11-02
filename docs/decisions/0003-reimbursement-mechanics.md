@@ -41,3 +41,16 @@ leaves out.
 GPO and 340B pricing, manufacturer rebates, discarded-drug (JW/JZ) refunds, inflation-rebate coinsurance
 adjustments (provider total payment is unchanged), bad debt beyond the coinsurance assumption,
 commercial contract rates (assumption only), and MA plan rates (assumed equal to FFS, labelled).
+
+## Validation results (build, 2026-11-02)
+- **Parsing is exact.** The mean of our four parsed 2024 quarterly PLs equals CMS's own `Avg_DY24_ASP_Price`
+  (Part B Spending by Drug, an independent CMS product) for all 36 catalog codes present in both (dbt test
+  `assert_asp_parse_matches_cms_dy24`, tolerance 0.1%; observed difference 0).
+- **Qualifying-biosimilar rule holds**: every row flagged `8% of reference add-on applied` has implied
+  ASP <= reference ASP, once ustekinumab biosimilars (ambiguous reference) are excluded.
+- **Realization gap (open question).** National in-office allowed per billed unit in 2024 was 96.8% of the
+  year's mean PL (allowed-weighted, 36 codes). Alemtuzumab, Gammaplex and ublituximab sit below 90% (`make dq`
+  flags them). Candidate causes: unit-billing artifacts, MSP/secondary-payer lines, and allowed reduced to a
+  lower submitted charge. The gap is **not** assumed away. It is a downside bar in the tornado and a memo risk.
+- CMS PUF `Avg_Mdcr_Pymt_Amt` is **before sequestration** (payment/allowed ~0.79 nationally, not 0.784), so
+  the dbt payment rule tests the [0.75, 0.81] band.

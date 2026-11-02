@@ -26,3 +26,10 @@ and costs. None of these are public. Faking them would break the repo's one hard
 ## Consequences
 The memo separates "what the public data says" from "what depends on your contracts", and asks the EVP
 for the 3 internal numbers that would most change the answer.
+
+## Practice drug mix (build)
+The chair mix is the 2024 in-office Medicare FFS administrations billed by rheumatology / neurology /
+GI / allergy-immunology clinicians in the 7-state region, infusions only. It is rheum-heavy: abatacept 36%,
+golimumab IV 22%, infliximab 20%, tocilizumab 13%. MS infusions (ocrelizumab, natalizumab) are mostly billed in
+facility settings or under other provider types, so they are under-represented relative to an MS-heavy site
+like Columbus. The per-drug "contribution per chair-hour" table lets the reader re-weight for their own mix.

@@ -1,22 +1,23 @@
 # Acceptance criteria
 
-These criteria were written **before** building (commit 1). Each one ends PASS or FAIL with evidence:
-the command, plus an output excerpt. A target that is missed is reported with its real number.
+These criteria were written **before** building (commit `8553a3e`). Each one ends PASS or FAIL with
+evidence: the command, plus an output excerpt. A target that is missed is reported with its real number.
+Status as of 2026-11-02.
 
-| # | Criterion (measurable) | Target | Status | Evidence |
+| # | Criterion (measurable) | Target | Status | Evidence (command -> excerpt) |
 |---|---|---|---|---|
-| A1 | Every source in ADR 0002 is pulled via filtered API or small file, with url/rows/sha256 in `data_manifest.json` | all sources rows > 0; raw total < 3 GB (aim < 500 MB) | TBD | |
-| A2 | dbt models + data tests pass on the full warehouse and on CI fixtures | >= 25 tests, >= 4 business-rule tests, 0 failures | TBD | |
-| A3 | Suppression-aware reconciliation: provider-level in-office sums never exceed the national total per HCPCS-year; coverage ratio reported | 0 violations | TBD | |
-| A4 | Payment mechanics are correct: ASP+6% after sequestration = ASP x 1.04304; published biosimilar PLs are reproduced from implied ASPs | unit tests pass; median abs reproduction error < $0.01 on reproducible rows | TBD | |
-| A5 | Per-infusion Medicare economics computed from real ASP + PFS + utilization | >= 15 drugs; tornado covers 100% of ranged assumptions | TBD | |
-| A6 | Forecast backtests: rolling origin, baselines, intervals | >= 5 origins; best-model vs naive reported per series; 80% PI empirical coverage on backtest within 65-95%; 2025 out-of-sample error reported | TBD | |
-| A7 | Excel scenario workbook with live formulas | Inputs/Calc/Outputs tabs; >= 100 formulas; no hard-coded numbers in Calc/Outputs; LibreOffice-recalculated outputs match Python within 0.1% | TBD | |
-| A8 | Provider benchmarking is statistically honest | >= 300 regional providers scored; 0 exported cells < 11 beneficiaries; EB shrinkage applied with intervals | TBD | |
-| A9 | White-space ranking with weight sensitivity | every county in 7 states scored; top-10 stability over >= 1,000 random weight draws reported | TBD | |
-| A10 | SYNTHETIC RCM layer is labelled and its SQL and DAX agree | 100% of synthetic files/exports labelled; 4 KPIs in SQL and DAX | TBD | |
-| A11 | PBIP/TMDL semantic model validated | parses; >= 15 measures; 100% have description, display folder, SQL twin; SQL twin = published KPI (abs diff < 1e-6) | TBD | |
-| A12 | HTML scorecard renders and is screenshotted | >= 3 screenshots; 0 console errors | TBD | |
-| A13 | Executive memo | <= 2 pages (<= 1,000 words); has recommendation, risks, what-would-change-it; every number comes from outputs JSON (test) | TBD | |
-| A14 | Automation | `make monthly-pack` runs end to end and logs the manual steps it replaces; `make check` < 3 min offline | TBD | |
-| A15 | README headline numbers match committed outputs | drift test passes | TBD | |
+| A1 | Every source in ADR 0002 is pulled via filtered API or small file, with url/rows/sha256 in `data_manifest.json` | all sources rows > 0; raw total < 3 GB (aim < 500 MB) | **PASS** | `pytest tests/test_manifest.py` -> 4 passed. 14 sources, `_total_raw_mb` = 44.2 |
+| A2 | dbt models + data tests pass on the full warehouse and on CI fixtures | >= 25 tests, >= 4 business-rule tests, 0 failures | **PASS** | `make dbt` -> `outputs/dbt_summary.json`: 25 models, 36 tests, 10 business-rule tests, all pass. `make dbt-ci` exits 0 on the fixtures |
+| A3 | Suppression-aware reconciliation: provider-level in-office sums never exceed the national total per HCPCS-year; coverage ratio reported | 0 violations | **PASS** (coverage ratio: partial) | dbt test `assert_provider_le_national` passes with 0 rows. Coverage is reported indirectly (99.5% of provider-molecule biosimilar rates censored, `outputs/benchmark.json`), not as a per-HCPCS ratio table |
+| A4 | Payment mechanics are correct: ASP+6% after sequestration = ASP x 1.04304; published biosimilar PLs are reproduced from implied ASPs | unit tests pass; median abs reproduction error < $0.01 on reproducible rows | **PASS** | `pytest tests/test_mechanics.py` -> 13 passed (1.04304, CPT add-on rule, Ohio 96413 = $122.71 by hand). Biosimilar PL reproduction from implied ASP is an identity by construction, so the non-circular evidence is: dbt `assert_asp_parse_matches_cms_dy24` (our 2024 PLs = CMS `Avg_DY24_ASP_Price` for 36 codes, diff 0) and `assert_qualifying_biosimilar_le_reference` (0 violations) |
+| A5 | Per-infusion Medicare economics computed from real ASP + PFS + utilization | >= 15 drugs; tornado covers 100% of ranged assumptions | **PASS** | `pytest tests/test_margin.py` -> 7 passed. 57 drugs priced (`outputs/margin.json`); tornado covers all 18 ranged practice assumptions + measured realization |
+| A6 | Forecast backtests: rolling origin, baselines, intervals | >= 5 origins; best-model vs naive reported per series; 80% PI empirical coverage on backtest within 65-95%; 2025 out-of-sample error reported | **PASS** | `pytest tests/test_forecast.py` -> 6 passed. Annual: 7 origins (2017-2023). Quarterly: 2021Q4-2026Q3. Held-out PI coverage 67.3%-85.2% (lowest: annual damped ETS 67.3%, inside the band but near its floor). 2025 MAPE: ETS 13.1% vs naive 17.1% |
+| A7 | Excel scenario workbook with live formulas | Inputs/Calc/Outputs tabs; >= 100 formulas; no hard-coded numbers in Calc/Outputs; LibreOffice-recalculated outputs match Python within 0.1% | **PASS** | `pytest tests/test_excel.py` -> 4 passed. 1,635 formulas; max relative diff 1.6e-5 after headless LibreOffice recalculation (`outputs/excel_recalc_check.json`) |
+| A8 | Provider benchmarking is statistically honest | >= 300 regional providers scored; 0 exported cells < 11 beneficiaries; EB shrinkage applied with intervals | **PASS** | `pytest tests/test_benchmark.py` -> 8 passed. 7,649 clinicians scored; all exported counts are 0 or >= 11; beta-binomial EB with censoring-aware 90% intervals |
+| A9 | White-space ranking with weight sensitivity | every county in 7 states scored; top-10 stability over >= 1,000 random weight draws reported | **PASS** | `pytest tests/test_market.py` -> 7 passed. 607 counties, 83 eligible markets, 2,000 Dirichlet draws, mean top-10 overlap 65.2% |
+| A10 | SYNTHETIC RCM layer is labelled and its SQL and DAX agree | 100% of synthetic files/exports labelled; 4 KPIs in SQL and DAX | **PASS** | `pytest tests/test_rcm.py` -> 4 passed. 4 DAX measures in folder `RCM (SYNTHETIC)` with SQL twins equal to `kpis.json` (`tests/test_tmdl.py`) |
+| A11 | PBIP/TMDL semantic model validated | parses; >= 15 measures; 100% have description, display folder, SQL twin; SQL twin = published KPI (abs diff < 1e-6) | **PASS** (structural only) | `pytest tests/test_tmdl.py` -> 11 passed. 18 tables, 12 relationships, 22 measures. **Not opened in Power BI Desktop**, so DAX evaluation itself is unverified |
+| A12 | HTML scorecard renders and is screenshotted | >= 3 screenshots; 0 console errors | **PASS** | `make screenshots` -> 5 PNGs in `docs/img/`, `console_errors: []` |
+| A13 | Executive memo | <= 2 pages (<= 1,000 words); has recommendation, risks, what-would-change-it; every number comes from outputs JSON (test) | **PASS** | `pytest tests/test_memo.py` -> 4 passed. 750 words |
+| A14 | Automation | `make monthly-pack` runs end to end and logs the manual steps it replaces; `make check` < 3 min offline | **PASS** | `make monthly-pack OFFLINE=1` -> OK, 17 manual steps replaced (~10.5 h, labelled estimate). `make check` ~22 s. The network refresh (`make ingest`) takes ~3.5 min and is run separately |
+| A15 | README headline numbers match committed outputs | drift test passes | **PASS** | `pytest tests/test_readme_numbers.py` -> 3 passed (README is re-rendered and diffed) |

@@ -24,8 +24,15 @@ than 11 beneficiaries, which censors the data in a biased direction.
 5. **We do not publish any derived cell built from fewer than 11 beneficiaries**, mirroring CMS policy.
    A test enforces this on the exported scorecard.
 6. **No names**. Exports carry NPI, specialty, state and county only. The HTML scorecard shows
-   distributions and an anonymised sample.
+   aggregate counts only.
 
 ## Consequences
 Ranks come with intervals. The scorecard labels a provider "above peer" only when its 90% interval
 clears the peer median.
+
+## Outcome (build)
+99.5% of provider x molecule biosimilar rates are censored: almost every provider shows only one product
+row. Only 4 providers clear the "above peer" bar, and 35 the "below peer" bar. Biosimilar adoption is
+therefore benchmarked where it is measurable, at **state and national geography level** (infliximab:
+Ohio 11.0% vs US 14.1% of in-office administrations, 2024). The provider view is kept, with intervals, as
+the method. This is a data limit stated in the README, not a defect to hide.

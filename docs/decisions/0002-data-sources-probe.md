@@ -22,6 +22,16 @@ Date: 2026-11-02. Status: accepted. I probed every endpoint by hand before desig
 | CMS IPAY 2028 selected drugs | `cms.gov/files/document/factsheet-medicare-negotiation-selected-drug-list-ipay-2028.pdf` | Jan 27 2026 | 1 PDF | Part B drugs selected: **Orencia (J0129), Entyvio (J3380), Cimzia (J0717), Botox (J0585)**. MFPs due by Nov 30 2026 (**not yet published**) and effective Jan 1 2028 |
 | CMS biosimilar FAQ (IRA s.11403) | `cms.gov/files/document/biosimilar-faqs.pdf` | | | Qualifying biosimilars are paid ASP + **8% of reference ASP** for 5 years. Biosimilars already on ASP before 2022-09-30 started 2022-10-01, so **their +8% ends 2027-09-30** |
 
+Added during the build (same probe discipline):
+
+| Census Gazetteer 2025 counties | `www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_counties_national.zip` | 2025 | 0.1 MB | **Pipe-delimited** in 2025 (earlier years were tab-delimited). County internal points are used for distance to the Columbus site |
+| OMB CBSA delineation 2023 | `www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx` | 2023 | 0.1 MB | County to metro/micro. Markets are scored at this grain (ADR 0005 / market module) |
+
+Build-time findings: PLACES 2025 has **null arthritis estimates for KY and PA**, so the 2024 release
+(`d3i6-k6z5`) fills those two states (`places_release` column). CMS spells the specialty
+**"Allergy/ Immunology"** (with a space); the first pull missed it until this was fixed. Final raw footprint:
+see `_total_raw_mb` in `data_manifest.json` (about 44 MB).
+
 Not used: Medicaid SDUD (Medicaid, not Medicare; the NDC mapping adds work without changing the
 decision) and Transparency-in-Coverage PUF (optional; dropped to keep depth on the core question).
 
