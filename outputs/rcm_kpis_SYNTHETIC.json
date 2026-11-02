@@ -1,0 +1,16 @@
+{
+  "data_label": "SYNTHETIC",
+  "note": "Method demo on invented data; no business conclusion.",
+  "clean_claim_rate": 0.818636,
+  "days_in_ar": 56.962487,
+  "denial_rate": 0.112273,
+  "denial_rate_by_carc_group": {
+    "Authorization / precertification": 0.036818,
+    "Eligibility / coverage": 0.024091,
+    "Coding / bundling": 0.021591,
+    "Medical necessity": 0.013182,
+    "Missing information": 0.008409,
+    "Timely filing / duplicate": 0.008182
+  },
+  "net_collection_rate": 0.91025
+}
