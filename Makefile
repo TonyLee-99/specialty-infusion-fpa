@@ -12,7 +12,7 @@ export DBT_PROFILES_DIR := $(CURDIR)/dbt
 init:             ## fresh clone -> working env (venv, pinned deps, browser for screenshots)
 	bash scripts/init.sh
 
-check: lint test dbt-ci   ## lint + unit/output tests + dbt on fixtures + feature regression check
+check: lint dbt-ci test   ## lint + dbt on fixtures + tests (incl. regeneration on fixtures) + strict feature gate
 	$(PY) scripts/verify_features.py --check-only
 
 lint:
