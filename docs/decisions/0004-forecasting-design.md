@@ -39,3 +39,21 @@ reported as measured.
 Picking the best model per series on the same backtest that reports its error flatters the winner. The
 pooled model-level MAPE/MASE in `outputs/forecast.json` is the unbiased comparison. The per-series
 "best beats naive" share is an upper bound.
+
+## Revision 1: validation / test split and the decision rule
+- Model choice per series uses a **validation window** (targets up to 2023Q4 for quarterly ASP, up to
+  2020 for annual volume/spend). Accuracy is reported on a **test window** (origins from 2024Q1 / 2021)
+  whose targets never touch validation.
+- **Decision rule (fixed before looking at test results):** keep the selected models only if they beat
+  naive on test MAPE AND are not significantly worse (Diebold-Mariano with HLN correction, p < 0.05) at
+  any horizon; otherwise use naive everywhere. Result: quarterly ASP test MAPE is 6.6% naive vs 6.4%
+  selected, but DM shows the selected models significantly worse on absolute log error at every horizon
+  (p 0.004-0.023). Annual volume: 16.4% naive vs 18.3% selected. Spend: 20.2% vs 28.8%. **The plan uses
+  naive everywhere**, so 2027 prices and volumes are held at the latest actuals.
+- **Intervals** are conformal: 10/90% quantiles of validation log errors per horizon. Test-window
+  coverage of the naive bands is 78-89% for quarterly ASP (h = 1-6), 77-82% for volume, and 64-68% for
+  spend. The spend miss is reported, not tuned away. The 2027 plan intervals use all past errors.
+- Volume (11 molecules) and spend are scored separately. National in-office volume is split into chair
+  infusions (1.09M in 2024, +4.6%/yr since 2019) and injections.
+- The volume forecast is wired into the plan as a demand-growth factor per molecule. With naive chosen,
+  the factor is 1.0.

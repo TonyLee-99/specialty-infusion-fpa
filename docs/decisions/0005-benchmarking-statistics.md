@@ -36,3 +36,13 @@ row. Only 4 providers clear the "above peer" bar, and 35 the "below peer" bar. B
 therefore benchmarked where it is measurable, at **state and national geography level** (infliximab:
 Ohio 11.0% vs US 14.1% of in-office administrations, 2024). The provider view is kept, with intervals, as
 the method. This is a data limit stated in the README, not a defect to hide.
+
+## Revision 1 (supersedes the shrinkage design above)
+Empirical-Bayes shrinkage is removed. With almost no fully observed provider-molecule pair, a prior
+cannot be estimated, and the first version silently used a weak fallback prior for every molecule.
+Intervals are now built per HCPCS: each eligible code (one with national in-office use that year) that is
+missing from a provider's rows hides 0-10 beneficiaries. Codes with no national use are structural zeros
+(no denosumab or natalizumab biosimilar existed in 2024). The share is of beneficiary-code pairs, not
+de-duplicated patients. Labels are vs the provider's state share, and "insufficient data" applies when the
+interval is wider than 0.40. Result: 0% of 284 pairs fully observed; 2 providers above state, 0 below.
+The provider view is a method demo, and state-level adoption is the finding.

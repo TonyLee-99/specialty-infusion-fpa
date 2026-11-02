@@ -54,3 +54,26 @@ commercial contract rates (assumption only), and MA plan rates (assumed equal to
   lower submitted charge. The gap is **not** assumed away. It is a downside bar in the tornado and a memo risk.
 - CMS PUF `Avg_Mdcr_Pymt_Amt` is **before sequestration** (payment/allowed ~0.79 nationally, not 0.784), so
   the dbt payment rule tests the [0.75, 0.81] band.
+
+## Revision 1 (2026-11-02)
+- **The lag is now in the plan, not just in history.** For each 2027 quarter q the engine pays on the ASP
+  path at basis quarter q-2 (+6%, or + k x reference ASP for a biosimilar) and costs the purchase at ASP(q)
+  (`engine.plan_prices`). The earlier version costed purchases at the lagged basis, so the lag never moved
+  the plan. Because the backtests pick naive for 2027 (ADR 0004), the base path is flat and the spread is 0.
+  A declining or rising path flows through without code changes (`tests/test_engine.py`).
+- **"Lesser of" codes.** Since 2021Q3, J0129 abatacept (and J0717 certolizumab) are paid at 106% of WAC
+  because WAC < ASP. PL/1.06 is therefore a LOWER bound on ASP, and calling the old fallback
+  "conservative" was wrong. The base buys IV vials at WAC (PL/1.06), a buy-and-bill practice's reference
+  price. The tornado range goes up to +70%: J0129's pre-2021Q3 ASP trend (+1.37%/quarter) projected to
+  2026Q4 is 70% above today's WAC-based limit. Abatacept is not on the operator's published list, so this
+  only bites in the full-formulary variant (up to -$3.96M a year at the extreme).
+- **Underwater** now has three nested definitions, each also dollar-weighted: raw PL < ASP;
+  0.984 x PL < ASP (sequestration); 0.964 x PL < ASP (plus 90% coinsurance collection). The figures are
+  6.2% / 12.0% / 29.8% of drug-quarters (35.9% dollar-weighted).
+- **Net collection for every payer**: Medicare FFS 0.8 x 0.98 + 0.2 x coinsurance
+  collection, times (1 - denial write-off). MA uses FFS terms x MA rate x (1 - MA denials). Commercial
+  nets out patient-responsibility bad debt, denials and underpayment. Medicaid nets out denials.
+- **Administration coding.** CGS (Ohio's MAC, J15) instructs that IV abatacept, golimumab, tocilizumab,
+  ustekinumab and vedolizumab be billed with 96365-96368, not chemotherapy codes (CGS "Drug
+  Administration Coding" article, 2016; may be dated). Other monoclonal antibodies use 96413/96415,
+  labelled as an assumption.

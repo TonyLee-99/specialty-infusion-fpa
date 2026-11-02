@@ -54,9 +54,18 @@ def pull_provider_service() -> pd.DataFrame:
     jobs = [(y, c) for y in PROVIDER_SERVICE_YEARS for c in _drug_codes()]
     jobs += [(2024, c) for c in ADMIN_CODES]
 
+    cache = RAW / "_cache" / "provider_service"
+    cache.mkdir(parents=True, exist_ok=True)
+
     def one(job):
+        # resumable: each (year, code) pull is cached, so a run stopped by HTTP 429 resumes where it left off
         year, code = job
-        df = cms_api.fetch(uuids[year], {"HCPCS_Cd": code})
+        f = cache / f"{year}_{code}.parquet"
+        if f.exists():
+            df = pd.read_parquet(f)
+        else:
+            df = cms_api.fetch(uuids[year], {"HCPCS_Cd": code})
+            df.astype(str).to_parquet(f, index=False)
         return df.assign(year=year) if len(df) else None
 
     return _parallel(one, jobs)

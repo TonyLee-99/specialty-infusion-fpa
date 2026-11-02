@@ -33,3 +33,18 @@ GI / allergy-immunology clinicians in the 7-state region, infusions only. It is 
 golimumab IV 22%, infliximab 20%, tocilizumab 13%. MS infusions (ocrelizumab, natalizumab) are mostly billed in
 facility settings or under other provider types, so they are under-represented relative to an MS-heavy site
 like Columbus. The per-drug "contribution per chair-hour" table lets the reader re-weight for their own mix.
+
+## Revision 1: Formulary-relevant mix, demand-driven volume, fixed vs variable
+- **Formulary = the operator's published list.** Within each service line, molecule shares come from what
+  that line's specialty bills in office nationally (neurologists for neuro, rheumatologists for rheum, four
+  specialties for IVIG). Inside a multi-source molecule, the product split is Ohio's 2024 biosimilar share
+  (infliximab 11.0%, rituximab 57.4%), placed on the listed biosimilar (Inflectra, Truxima).
+- **Payer-specific mix**: the neurology line weight is 40% for Medicare and 60% for commercial and
+  Medicaid (assumptions, documented ranges), because MS skews to working age.
+- **Volume is demand-driven**: patients x payer share x line weight x within-line share x observed
+  administrations per patient-year x demand growth. Chair capacity is only a check; demand above it is
+  capped and reported as unmet.
+- **Costs**: nurses are fixed (staffed for open hours), as are rent/equipment per chair and site staff.
+  Supplies are variable per infusion. This yields the added-chair break-even and the fill-vs-add values.
+- The full-formulary variant (adds Orencia, Simponi Aria, Actemra, ...) is kept to size MFP and
+  "lesser of" exposure.
