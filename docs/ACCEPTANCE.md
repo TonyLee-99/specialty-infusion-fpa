@@ -7,7 +7,7 @@ fixes).
 
 | # | Criterion (measurable) | Target | Status | Evidence (command -> excerpt) |
 |---|---|---|---|---|
-| A1 | Every source pulled via filtered API or small file, manifest with url/rows/sha256 | rows > 0; raw < 3 GB | **PASS** | `pytest tests/test_manifest.py` -> 4 passed. 15 sources, 44.3 MB. A same-day re-pull reproduced 14/15 files byte for byte; `provider_service` was throttled (HTTP 429) |
+| A1 | Every source pulled via filtered API or small file, manifest with url/rows/sha256 | rows > 0; raw < 3 GB | **PASS** | `pytest tests/test_manifest.py` -> 4 passed. 15 sources, 44.3 MB. `make reproduce` from fresh network pulls passes end to end (log: `logs/reproduce.log`, 1m23s with the resumable provider_service cache); all 15 re-pulled files are byte-identical to the first pull (sha256) |
 | A2 | dbt models + data tests pass on full warehouse and CI fixtures | >= 25 tests, >= 4 business rules, 0 failures | **PASS** | `outputs/dbt_summary.json`: 26 models, 36 tests, 10 business rules, all pass. `make dbt-ci` exits 0 |
 | A3 | Provider sums never exceed national totals; coverage reported | 0 violations | **PASS** (coverage indirect) | `assert_provider_le_national` 0 rows. Coverage reported as "0% of 284 provider-molecule pairs fully observed" (`outputs/benchmark.json`) |
 | A4 | Payment mechanics correct | unit tests; reproduction error < $0.01 | **PASS** | `tests/test_mechanics.py` (13) and `tests/test_engine.py` (lag, reference-ASP add-on, IRA 2027Q4 expiry, MA scales revenue). External: parsed 2024 PLs = CMS `Avg_DY24_ASP_Price` for 36 codes, diff 0 |

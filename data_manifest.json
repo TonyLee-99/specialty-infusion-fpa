@@ -6,7 +6,7 @@
     "columns": 8,
     "bytes": 184011,
     "sha256": "bc1961984bb7b251ed62d285b6a518c536b2be366a98ca938fd5604c54e21869",
-    "pulled_at": "2026-11-02T09:43:14Z"
+    "pulled_at": "2026-11-02T15:49:41Z"
   },
   "pfs_rvu": {
     "file": "data/raw/pfs_rvu.parquet",
@@ -15,7 +15,7 @@
     "columns": 8,
     "bytes": 5143,
     "sha256": "95da93dbe59961ca5acabc7266a52bafe0aac7d221bc5e6ae06807091d3625d9",
-    "pulled_at": "2026-11-02T09:43:14Z"
+    "pulled_at": "2026-11-02T15:49:42Z"
   },
   "pfs_gpci": {
     "file": "data/raw/pfs_gpci.parquet",
@@ -24,16 +24,16 @@
     "columns": 7,
     "bytes": 6836,
     "sha256": "0f35dd0715d52c816d48f99e8d8b04c11417d21aa82604c165c4a747e885a3fb",
-    "pulled_at": "2026-11-02T09:43:14Z"
+    "pulled_at": "2026-11-02T15:49:42Z"
   },
   "places_county": {
     "file": "data/raw/places_county.parquet",
-    "source_url": "https://data.cdc.gov/resource/i46a-9kgh.json (+2024 fallback https://data.cdc.gov/resource/d3i6-k6z5.json)",
+    "source_url": "https://data.cdc.gov/resource/i46a-9kgh.json",
     "rows": 2340,
     "columns": 10,
     "bytes": 57520,
     "sha256": "3e0713d74c58715c528ee32f164434c3ff3425b09b5a1dbd5bec83a279b7fdd5",
-    "pulled_at": "2026-11-02T11:14:07Z"
+    "pulled_at": "2026-11-02T15:49:44Z"
   },
   "census_pep_county": {
     "file": "data/raw/census_pep_county.parquet",
@@ -42,7 +42,7 @@
     "columns": 8,
     "bytes": 67591,
     "sha256": "1141115af4ef38218d6ec2c1e8dee885a67ea2246e946c07135958c747f8007a",
-    "pulled_at": "2026-11-02T09:43:15Z"
+    "pulled_at": "2026-11-02T15:49:44Z"
   },
   "zcta_county": {
     "file": "data/raw/zcta_county.parquet",
@@ -51,7 +51,7 @@
     "columns": 4,
     "bytes": 603787,
     "sha256": "c285739369f6ef65adb5af37b87a8729b14dc70deb288262f0503ffd9336e4c2",
-    "pulled_at": "2026-11-02T09:43:16Z"
+    "pulled_at": "2026-11-02T15:49:45Z"
   },
   "medicare_enrollment_county": {
     "file": "data/raw/medicare_enrollment_county.parquet",
@@ -60,7 +60,7 @@
     "columns": 9,
     "bytes": 1192367,
     "sha256": "f9f32ad26a10b7a4ef65bdd579ec0bd9030daf1327c09da67936121e921f1806",
-    "pulled_at": "2026-11-02T09:43:26Z"
+    "pulled_at": "2026-11-02T15:49:54Z"
   },
   "partb_spending_annual": {
     "file": "data/raw/partb_spending_annual.parquet",
@@ -69,7 +69,7 @@
     "columns": 47,
     "bytes": 220028,
     "sha256": "89eda871a9a60a8e4c941d7eac3a052605999dee0cf6b8a2aa8edffcf89cbc3e",
-    "pulled_at": "2026-11-02T09:43:26Z"
+    "pulled_at": "2026-11-02T15:49:55Z"
   },
   "partb_spending_quarterly": {
     "file": "data/raw/partb_spending_quarterly.parquet",
@@ -78,7 +78,7 @@
     "columns": 10,
     "bytes": 92155,
     "sha256": "4057a09c9155a0e623daa42da6f688e3e07a19f0721c9838c5e6e86d3ec4a4e1",
-    "pulled_at": "2026-11-02T09:43:26Z"
+    "pulled_at": "2026-11-02T15:49:55Z"
   },
   "geo_service": {
     "file": "data/raw/geo_service.parquet",
@@ -87,7 +87,7 @@
     "columns": 16,
     "bytes": 8916330,
     "sha256": "128e2a5f6a73b5b601621bbcff679074aaabf0539c970f25f282780f88426bd4",
-    "pulled_at": "2026-11-02T09:43:29Z"
+    "pulled_at": "2026-11-02T15:49:59Z"
   },
   "provider_2024": {
     "file": "data/raw/provider_2024.parquet",
@@ -96,7 +96,7 @@
     "columns": 82,
     "bytes": 5055326,
     "sha256": "564e194577e032b3323dfe5f71d9c9c478120ae49434bbab1ee84623c1a429fe",
-    "pulled_at": "2026-11-02T10:03:17Z"
+    "pulled_at": "2026-11-02T15:50:19Z"
   },
   "provider_service": {
     "file": "data/raw/provider_service.parquet",
@@ -105,7 +105,7 @@
     "columns": 29,
     "bytes": 9646830,
     "sha256": "56ceeff71c5da520b2f49060a7b46fff28faa8afd915a3c79b2555b45e762f53",
-    "pulled_at": "2026-11-02T09:46:41Z"
+    "pulled_at": "2026-11-02T15:50:21Z"
   },
   "_total_raw_mb": 44.3,
   "county_gazetteer": {
@@ -115,7 +115,7 @@
     "columns": 6,
     "bytes": 88685,
     "sha256": "e04bc0cd8ea69127e5958343fa8634a9acdc9c1e20a55ffbb7c9296605438b35",
-    "pulled_at": "2026-11-02T10:05:11Z"
+    "pulled_at": "2026-11-02T15:49:45Z"
   },
   "cbsa_county": {
     "file": "data/raw/cbsa_county.parquet",
@@ -124,7 +124,7 @@
     "columns": 5,
     "bytes": 26308,
     "sha256": "ebf2f9d7c43be5e00a38ae9e338c912331f19305b412dc08c7242b7a968e2683",
-    "pulled_at": "2026-11-02T10:06:34Z"
+    "pulled_at": "2026-11-02T15:49:45Z"
   },
   "hospitals": {
     "file": "data/raw/hospitals.parquet",
@@ -133,6 +133,6 @@
     "columns": 6,
     "bytes": 127455,
     "sha256": "4a87428e5601d2d61cabdc25be1fd02766b55b09d55b9c05edfffa38642158eb",
-    "pulled_at": "2026-11-02T11:24:10Z"
+    "pulled_at": "2026-11-02T15:49:45Z"
   }
 }

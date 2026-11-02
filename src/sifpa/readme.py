@@ -140,8 +140,9 @@ make check         # lint + dbt on fixtures + pytest ({n_tests} test functions, 
 make reproduce     # full rebuild from public pulls
 make monthly-pack  # month-end pack: refresh, DQ, budget vs actual bridge, memo, scorecard (OFFLINE=1 skips the pull)
 ```
-data.cms.gov rate-limits repeated full pulls (HTTP 429); `make ingest` backs off and writes the manifest after
-each source. Open `excel/infusion_plan_2027_scenarios.xlsx` (blue cells are inputs), `docs/scorecard.html`,
+data.cms.gov rate-limits repeated full pulls (HTTP 429); `make ingest` backs off, writes the manifest after each
+source and caches the ~360 provider-service calls, so a throttled run resumes. A fresh `make reproduce`
+re-pulled all 15 sources byte-identical (sha256) to the first pull. Open `excel/infusion_plan_2027_scenarios.xlsx` (blue cells are inputs), `docs/scorecard.html`,
 and follow `docs/powerbi_build_guide.md` to build the report pages in Power BI Desktop.
 
 ## Results (every value is produced by the command / file shown)
