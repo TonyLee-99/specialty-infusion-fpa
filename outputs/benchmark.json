@@ -7,60 +7,40 @@
     "Rheumatology": 975,
     "Allergy/ Immunology": 637
   },
-  "n_providers_with_biosimilar_rate": 380,
-  "n_provider_molecule_rates": 597,
-  "share_provider_molecule_censored": 0.995,
-  "region_biosimilar_rate_by_molecule": {
-    "denosumab": 0.0,
-    "infliximab": 0.0131,
-    "natalizumab": 0.0,
-    "rituximab": 0.0888,
-    "tocilizumab": 0.0
-  },
-  "small_n_raw_rate_sd": null,
-  "small_n_shrunk_rate_sd": null,
-  "n_small_n_uncensored": 0,
-  "biosimilar_vs_peer_counts": {
-    "no_rate": 7269,
-    "not_distinguishable": 341,
-    "below_peer": 35,
-    "above_peer": 4
-  },
-  "naive_top_quartile_biosimilar": 96,
-  "median_by_specialty": {
-    "Allergy/ Immunology": {
-      "allowed_per_bene": 401.5663,
-      "allowed_per_bene_risk_adj": 409.4953,
-      "services_per_bene": 23.0968,
-      "drug_share": 0.0,
-      "infusion_share": 0.0
+  "biosimilar_molecules_assessed": [
+    "infliximab",
+    "rituximab",
+    "tocilizumab"
+  ],
+  "molecules_with_no_2024_biosimilar": [
+    "denosumab",
+    "natalizumab"
+  ],
+  "n_provider_molecule_pairs": 284,
+  "share_pairs_fully_observed": 0.0,
+  "share_pairs_with_suppressed_codes": 1.0,
+  "vs_state_counts_by_molecule": {
+    "infliximab": {
+      "insufficient_data": 151,
+      "not_distinguishable": 21,
+      "above_state": 1
     },
-    "Gastroenterology": {
-      "allowed_per_bene": 244.5469,
-      "allowed_per_bene_risk_adj": 166.2715,
-      "services_per_bene": 1.9765,
-      "drug_share": 0.0,
-      "infusion_share": 0.0
+    "rituximab": {
+      "insufficient_data": 23,
+      "above_state": 1
     },
-    "Neurology": {
-      "allowed_per_bene": 226.1905,
-      "allowed_per_bene_risk_adj": 136.534,
-      "services_per_bene": 2.2093,
-      "drug_share": 0.0,
-      "infusion_share": 0.0
-    },
-    "Rheumatology": {
-      "allowed_per_bene": 307.6076,
-      "allowed_per_bene_risk_adj": 216.1368,
-      "services_per_bene": 5.384,
-      "drug_share": 0.0028,
-      "infusion_share": 0.0
+    "tocilizumab": {
+      "not_distinguishable": 58,
+      "insufficient_data": 29
     }
   },
-  "infusing_providers": 793,
-  "infusing_median_drug_share": 0.7374,
-  "infusing_median_infusion_share": 0.0265,
-  "rheum_infusing_median_drug_share": 0.8404,
+  "provider_level_flags": {
+    "no_multisource_infusions": 7458,
+    "insufficient_data": 124,
+    "not_distinguishable": 65,
+    "above_state": 2
+  },
+  "empirical_bayes": "not used: too few fully observed provider-molecule pairs to estimate a prior",
   "market_biosimilar_share_2024": {
     "denosumab": {
       "IL": 0.0,
@@ -110,5 +90,38 @@
       "US": 0.0018,
       "WV": 0.0
     }
-  }
+  },
+  "median_by_specialty": {
+    "Allergy/ Immunology": {
+      "allowed_per_bene": 401.5663,
+      "allowed_per_bene_risk_adj": 409.4953,
+      "services_per_bene": 23.0968,
+      "drug_share": 0.0,
+      "infusion_share": 0.0
+    },
+    "Gastroenterology": {
+      "allowed_per_bene": 244.5469,
+      "allowed_per_bene_risk_adj": 166.2715,
+      "services_per_bene": 1.9765,
+      "drug_share": 0.0,
+      "infusion_share": 0.0
+    },
+    "Neurology": {
+      "allowed_per_bene": 226.1905,
+      "allowed_per_bene_risk_adj": 136.534,
+      "services_per_bene": 2.2093,
+      "drug_share": 0.0,
+      "infusion_share": 0.0
+    },
+    "Rheumatology": {
+      "allowed_per_bene": 307.6076,
+      "allowed_per_bene_risk_adj": 216.1368,
+      "services_per_bene": 5.384,
+      "drug_share": 0.0028,
+      "infusion_share": 0.0
+    }
+  },
+  "infusing_providers": 793,
+  "infusing_median_drug_share": 0.7374,
+  "rheum_infusing_median_drug_share": 0.8404
 }
