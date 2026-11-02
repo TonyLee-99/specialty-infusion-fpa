@@ -1,0 +1,144 @@
+{
+  "run_at": "2026-11-02T10:22:26Z",
+  "offline": true,
+  "all_ok": true,
+  "automated_minutes_measured": 0.4,
+  "manual_steps_replaced": 17,
+  "manual_hours_estimate": 10.5,
+  "manual_estimate_label": "ESTIMATE (analyst minutes per step, not measured)",
+  "steps": [
+    {
+      "step": "ingest",
+      "status": "skipped (offline)",
+      "seconds": 0,
+      "manual_step": "Download the new ASP quarter, PFS/GPCI, CMS utilization, PLACES/Census files; check row counts",
+      "manual_minutes_estimate": 60
+    },
+    {
+      "step": "dbt",
+      "status": "ok",
+      "seconds": 3.3,
+      "manual_step": "Clean, join and validate source tables (HCPCS changes, biosimilar codes, reconciliations)",
+      "manual_minutes_estimate": 90
+    },
+    {
+      "step": "fixtures",
+      "status": "ok",
+      "seconds": 0.9,
+      "manual_step": "(no manual equivalent: keeps the offline CI slice in sync)",
+      "manual_minutes_estimate": 0
+    },
+    {
+      "step": "margin",
+      "status": "ok",
+      "seconds": 0.9,
+      "manual_step": "Rebuild per-infusion margin by drug and payer; refresh lag spread",
+      "manual_minutes_estimate": 60
+    },
+    {
+      "step": "forecast",
+      "status": "ok",
+      "seconds": 3.8,
+      "manual_step": "Re-forecast ASP and volume; re-score against last quarter",
+      "manual_minutes_estimate": 60
+    },
+    {
+      "step": "scenarios",
+      "status": "ok",
+      "seconds": 0.8,
+      "manual_step": "Update base / biosimilar / policy scenarios for the plan",
+      "manual_minutes_estimate": 45
+    },
+    {
+      "step": "benchmark",
+      "status": "ok",
+      "seconds": 1.7,
+      "manual_step": "Refresh provider scorecards and peer percentiles",
+      "manual_minutes_estimate": 45
+    },
+    {
+      "step": "market",
+      "status": "ok",
+      "seconds": 0.9,
+      "manual_step": "Refresh market white-space ranking",
+      "manual_minutes_estimate": 30
+    },
+    {
+      "step": "rcm",
+      "status": "ok",
+      "seconds": 1.1,
+      "manual_step": "Refresh RCM KPI layer (SYNTHETIC demo here)",
+      "manual_minutes_estimate": 20
+    },
+    {
+      "step": "exports",
+      "status": "ok",
+      "seconds": 0.9,
+      "manual_step": "Export star-schema extracts for the Power BI model",
+      "manual_minutes_estimate": 20
+    },
+    {
+      "step": "pbi",
+      "status": "ok",
+      "seconds": 0.7,
+      "manual_step": "Update semantic-model tables/measures",
+      "manual_minutes_estimate": 15
+    },
+    {
+      "step": "kpis",
+      "status": "ok",
+      "seconds": 0.9,
+      "manual_step": "Tie out dashboard KPIs to the SQL numbers",
+      "manual_minutes_estimate": 30
+    },
+    {
+      "step": "excel",
+      "status": "ok",
+      "seconds": 1.8,
+      "manual_step": "Roll the Excel scenario workbook forward",
+      "manual_minutes_estimate": 30
+    },
+    {
+      "step": "memo",
+      "status": "ok",
+      "seconds": 0.7,
+      "manual_step": "Re-write the executive memo numbers",
+      "manual_minutes_estimate": 45
+    },
+    {
+      "step": "scorecard",
+      "status": "ok",
+      "seconds": 0.6,
+      "manual_step": "Rebuild scorecard pages",
+      "manual_minutes_estimate": 30
+    },
+    {
+      "step": "screenshots",
+      "status": "ok",
+      "seconds": 1.1,
+      "manual_step": "Screenshot pages for the deck",
+      "manual_minutes_estimate": 10
+    },
+    {
+      "step": "readme",
+      "status": "ok",
+      "seconds": 0.7,
+      "manual_step": "Update documentation numbers",
+      "manual_minutes_estimate": 10
+    },
+    {
+      "step": "dq",
+      "status": "ok",
+      "seconds": 0.8,
+      "manual_step": "Eyeball anomalies (price jumps, coverage gaps, realization)",
+      "manual_minutes_estimate": 30
+    },
+    {
+      "step": "test",
+      "status": "ok",
+      "seconds": 3.7,
+      "manual_step": "(no manual equivalent: regression suite)",
+      "manual_minutes_estimate": 0
+    }
+  ]
+}

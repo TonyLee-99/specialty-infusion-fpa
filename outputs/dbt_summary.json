@@ -1,0 +1,11 @@
+{
+  "models": 25,
+  "seeds": 4,
+  "tests": 35,
+  "business_rule_tests": 9,
+  "statuses": {
+    "success": 29,
+    "pass": 35
+  },
+  "all_passed": true
+}

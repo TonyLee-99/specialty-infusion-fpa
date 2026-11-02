@@ -34,8 +34,9 @@ reproduce: ingest dbt fixtures analyses exports pbi kpis excel memo scorecard sc
 ingest:           ## filtered CMS / CDC / Census pulls -> data/raw/*.parquet + data_manifest.json
 	$(PY) -m sifpa.ingest.run
 
-dbt:              ## dbt build on the full warehouse (data/warehouse.duckdb)
+dbt:              ## dbt build on the full warehouse (data/warehouse.duckdb) -> outputs/dbt_summary.json
 	$(DBT) build --target dev --quiet
+	$(PY) -m sifpa.dbt_summary
 
 fixtures:         ## small slice of raw data for offline CI dbt runs (tests/fixtures/raw)
 	$(PY) -m sifpa.fixtures
@@ -75,8 +76,8 @@ readme:           ## refresh generated README result blocks from outputs/*.json
 dq:               ## data-quality checks; non-zero exit on a hard failure
 	$(PY) -m sifpa.dq
 
-monthly-pack:     ## the recurring job: refresh -> test -> rebuild extracts -> scorecard + memo
-	$(PY) -m sifpa.monthly_pack
+monthly-pack:     ## the recurring job: refresh -> test -> rebuild extracts -> scorecard + memo (OFFLINE=1 skips the pull)
+	$(PY) -m sifpa.monthly_pack $(if $(OFFLINE),--offline,)
 
 clean:
 	rm -rf dbt/target dbt/logs logs/verify data/warehouse.duckdb

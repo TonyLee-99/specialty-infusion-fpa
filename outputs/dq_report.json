@@ -1,0 +1,171 @@
+{
+  "checks": [
+    {
+      "check": "asp_quarters_complete",
+      "status": "pass",
+      "detail": {
+        "quarters": 40,
+        "latest": "2026Q4"
+      }
+    },
+    {
+      "check": "every_active_catalog_code_priced_latest_quarter",
+      "status": "pass",
+      "detail": {
+        "unpriced": []
+      }
+    },
+    {
+      "check": "county_coverage_607",
+      "status": "pass",
+      "detail": {
+        "counts": [
+          607,
+          607,
+          607,
+          607
+        ]
+      }
+    },
+    {
+      "check": "utilization_latest_year_2024",
+      "status": "pass",
+      "detail": {
+        "latest_year": 2024
+      }
+    },
+    {
+      "check": "payment_limit_jumps_since_2025",
+      "status": "flag",
+      "detail": [
+        {
+          "hcpcs": "Q9997",
+          "payment_quarter": "2026Q3",
+          "prev": 4.531,
+          "payment_limit": 8.552,
+          "change": 0.8874
+        },
+        {
+          "hcpcs": "Q5100",
+          "payment_quarter": "2026Q2",
+          "prev": 24.684,
+          "payment_limit": 3.214,
+          "change": -0.8698
+        },
+        {
+          "hcpcs": "Q9998",
+          "payment_quarter": "2026Q2",
+          "prev": 43.201,
+          "payment_limit": 11.138,
+          "change": -0.7422
+        },
+        {
+          "hcpcs": "Q5099",
+          "payment_quarter": "2026Q2",
+          "prev": 11.853,
+          "payment_limit": 3.074,
+          "change": -0.7407
+        },
+        {
+          "hcpcs": "Q5119",
+          "payment_quarter": "2026Q4",
+          "prev": 16.16,
+          "payment_limit": 5.792,
+          "change": -0.6416
+        },
+        {
+          "hcpcs": "Q5138",
+          "payment_quarter": "2026Q2",
+          "prev": 11.642,
+          "payment_limit": 4.544,
+          "change": -0.6097
+        },
+        {
+          "hcpcs": "Q9999",
+          "payment_quarter": "2026Q2",
+          "prev": 32.957,
+          "payment_limit": 13.293,
+          "change": -0.5967
+        },
+        {
+          "hcpcs": "Q5119",
+          "payment_quarter": "2026Q1",
+          "prev": 27.845,
+          "payment_limit": 13.27,
+          "change": -0.5234
+        },
+        {
+          "hcpcs": "Q5138",
+          "payment_quarter": "2026Q3",
+          "prev": 4.544,
+          "payment_limit": 2.354,
+          "change": -0.482
+        },
+        {
+          "hcpcs": "Q9997",
+          "payment_quarter": "2026Q2",
+          "prev": 8.268,
+          "payment_limit": 4.531,
+          "change": -0.452
+        },
+        {
+          "hcpcs": "Q5103",
+          "payment_quarter": "2025Q2",
+          "prev": 11.55,
+          "payment_limit": 15.912,
+          "change": 0.3777
+        },
+        {
+          "hcpcs": "Q5156",
+          "payment_quarter": "2026Q4",
+          "prev": 4.692,
+          "payment_limit": 3.098,
+          "change": -0.3397
+        }
+      ]
+    },
+    {
+      "check": "allowed_below_90pct_of_payment_limit_2024",
+      "status": "flag",
+      "detail": [
+        {
+          "hcpcs": "J0202",
+          "ratio": 0.6232,
+          "allowed_amt": 1079022.49
+        },
+        {
+          "hcpcs": "J1557",
+          "ratio": 0.8362,
+          "allowed_amt": 515464.66
+        },
+        {
+          "hcpcs": "J2329",
+          "ratio": 0.8941,
+          "allowed_amt": 14562785.7001
+        }
+      ]
+    },
+    {
+      "check": "billing_provider_drop_over_20pct_2024",
+      "status": "flag",
+      "detail": [
+        {
+          "molecule": "alemtuzumab",
+          "prov_2023": 38.0,
+          "prov_2024": 21.0,
+          "change": -0.4474
+        }
+      ]
+    },
+    {
+      "check": "no_empty_raw_pull",
+      "status": "pass",
+      "detail": {
+        "empty": []
+      }
+    }
+  ],
+  "n_fail": 0,
+  "n_flag": 3,
+  "n_pass": 5
+}
