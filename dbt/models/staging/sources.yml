@@ -33,3 +33,5 @@ sources:
         description: Census Gazetteer 2025 county internal points (lat/long) and land area.
       - name: cbsa_county
         description: OMB 2023 CBSA delineation (county -> metro/micro area).
+      - name: hospitals
+        description: CMS Hospital General Information (hospital type, ZIP) for market context.

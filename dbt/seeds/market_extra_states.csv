@@ -1,0 +1,10 @@
+state_abbr,state_fips,reason
+DE,10,Philadelphia CBSA crosses into region (PA)
+NJ,34,Philadelphia / Allentown CBSAs cross into region (PA)
+WI,55,Marinette / Iron Mountain CBSAs cross into region (MI)
+DC,11,Washington CBSA crosses into region (WV)
+VA,51,Washington / Winchester / Bluefield CBSAs cross into region (WV)
+MD,24,Philadelphia / Cumberland / Washington / Hagerstown CBSAs cross into region
+IA,19,Davenport / Burlington CBSAs cross into region (IL)
+TN,47,Clarksville CBSA crosses into region (KY)
+MO,29,St. Louis / Cape Girardeau / Quincy CBSAs cross into region (IL)

@@ -29,11 +29,11 @@
   "places_county": {
     "file": "data/raw/places_county.parquet",
     "source_url": "https://data.cdc.gov/resource/i46a-9kgh.json (+2024 fallback https://data.cdc.gov/resource/d3i6-k6z5.json)",
-    "rows": 1214,
+    "rows": 2340,
     "columns": 10,
-    "bytes": 32466,
-    "sha256": "2e40b5c4e69997f62c78e7a1c5339d04115a530a63a0c11867bcd1343d0e6698",
-    "pulled_at": "2026-11-02T09:50:05Z"
+    "bytes": 57520,
+    "sha256": "3e0713d74c58715c528ee32f164434c3ff3425b09b5a1dbd5bec83a279b7fdd5",
+    "pulled_at": "2026-11-02T11:14:07Z"
   },
   "census_pep_county": {
     "file": "data/raw/census_pep_county.parquet",
@@ -107,7 +107,7 @@
     "sha256": "56ceeff71c5da520b2f49060a7b46fff28faa8afd915a3c79b2555b45e762f53",
     "pulled_at": "2026-11-02T09:46:41Z"
   },
-  "_total_raw_mb": 44.2,
+  "_total_raw_mb": 44.3,
   "county_gazetteer": {
     "file": "data/raw/county_gazetteer.parquet",
     "source_url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_counties_national.zip",
@@ -125,5 +125,14 @@
     "bytes": 26308,
     "sha256": "ebf2f9d7c43be5e00a38ae9e338c912331f19305b412dc08c7242b7a968e2683",
     "pulled_at": "2026-11-02T10:06:34Z"
+  },
+  "hospitals": {
+    "file": "data/raw/hospitals.parquet",
+    "source_url": "https://data.cms.gov/provider-data/sites/default/files/resources/893c372430d9d71a1c52737d01239d47_1785189955/Hospital_General_Information.csv",
+    "rows": 5419,
+    "columns": 6,
+    "bytes": 127455,
+    "sha256": "4a87428e5601d2d61cabdc25be1fd02766b55b09d55b9c05edfffa38642158eb",
+    "pulled_at": "2026-11-02T11:24:10Z"
   }
 }

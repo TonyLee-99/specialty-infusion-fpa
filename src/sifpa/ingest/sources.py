@@ -17,6 +17,8 @@ PLACES_FALLBACK_URL = "https://data.cdc.gov/resource/d3i6-k6z5.json"
 PEP_URL = "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/counties/asrh/cc-est2025-agesex-all.csv"
 GAZ_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_counties_national.zip"
 CBSA_URL = "https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx"
+HOSPITALS_URL = ("https://data.cms.gov/provider-data/sites/default/files/resources/"
+                 "893c372430d9d71a1c52737d01239d47_1785189955/Hospital_General_Information.csv")
 ZCTA_URL = "https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt"
 
 # Admin + E/M codes whose RVUs we need. CPT descriptors are intentionally dropped (AMA copyright).
@@ -90,3 +92,10 @@ def pull_cbsa() -> pd.DataFrame:
                             "Metropolitan/Micropolitan Statistical Area": "cbsa_type",
                             "Central/Outlying County": "central_outlying"})
     return df[["county_fips", "cbsa_code", "cbsa_title", "cbsa_type", "central_outlying"]]
+
+
+def pull_hospitals() -> pd.DataFrame:
+    """CMS Hospital General Information: hospital type and ZIP (market context: hospital-heavy markets)."""
+    # provider-data.cms.gov rejects our descriptive User-Agent (HTTP 403); send a generic one
+    df = pd.read_csv(io.BytesIO(get(HOSPITALS_URL, timeout=300, headers={"User-Agent": "curl/8.7.1"}).content), dtype=str)
+    return df[["Facility ID", "Facility Name", "State", "ZIP Code", "County/Parish", "Hospital Type"]]

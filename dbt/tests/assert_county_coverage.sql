@@ -1,3 +1,5 @@
--- Every county in the 7 region states has population, arthritis prevalence and Medicare enrollment.
+-- Every county in scope has population, arthritis prevalence and a location; region counties also have
+-- Medicare enrollment (enrollment was pulled for the 7 region states only).
 select county_fips from {{ ref('dim_county') }}
-where population is null or arthritis_prev is null or medicare_benes is null or lat is null
+where population is null or arthritis_prev is null or lat is null
+   or (in_region and medicare_benes is null)

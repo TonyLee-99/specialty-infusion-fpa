@@ -26,7 +26,7 @@ from sifpa import assumptions as A
 from sifpa import engine as E
 from sifpa.paths import EXPORTS, OUTPUTS
 
-COMPONENTS = ["market_size", "medicare_ffs", "specialist_gap", "infusion_gap"]
+COMPONENTS = ["market_size", "specialist_gap", "infusion_gap"]
 N_DRAWS = 2000
 
 
@@ -49,8 +49,8 @@ def county_frame(con) -> pd.DataFrame:
             where f.year = 2024 and f.place_of_service = 'O' and d.admin_family in ('mab_infusion', 'iv_infusion')
             group by 1
         )
-        select c.county_fips, c.county_name, c.state_abbr, c.market_id, c.market_name, c.market_type,
-               c.market_counties_total, c.population, c.pop_18plus, c.pop_65plus,
+        select c.county_fips, c.county_name, c.state_abbr, c.in_region, c.market_id, c.market_name, c.market_type,
+               c.market_counties_total, c.acute_hospitals, c.population, c.pop_18plus, c.pop_65plus,
                c.arthritis_prev, c.arthritis_prev * c.pop_18plus as arthritis_adults,
                c.medicare_benes, c.original_medicare_benes as ffs_benes, c.ffs_share, c.lat, c.lon,
                coalesce(s.specialists, 0) as specialists, coalesce(s.rheumatologists, 0) as rheumatologists,
@@ -78,14 +78,13 @@ def components(df: pd.DataFrame) -> pd.DataFrame:
     """Higher = more attractive for every component (gaps are signed so that less supply scores higher)."""
     c = pd.DataFrame(index=df.index)
     c["market_size"] = zscore(np.log(df["arthritis_adults"]))
-    c["medicare_ffs"] = zscore(np.log(df["ffs_benes"]))
     c["specialist_gap"] = zscore(np.log(df["arthritis_adults"] / (df["specialists"] + 1)))
     c["infusion_gap"] = -zscore(df["infusion_billers"] / df["population"] * 1e5)
     return c
 
 
 SUMS = ["population", "pop_18plus", "pop_65plus", "arthritis_adults", "medicare_benes", "ffs_benes",
-        "specialists", "rheumatologists", "neurologists", "infusion_billers", "infusion_admins"]
+        "specialists", "rheumatologists", "neurologists", "infusion_billers", "infusion_admins", "acute_hospitals"]
 
 
 def to_markets(counties: pd.DataFrame, site_fips: str) -> pd.DataFrame:
@@ -109,8 +108,9 @@ def score(df: pd.DataFrame, cfg: dict, site_lat: float, site_lon: float, rng) ->
     df["miles_to_columbus_site"] = haversine_miles(df["lat"], df["lon"], site_lat, site_lon)
     df["specialists_per_100k"] = df["specialists"] / df["population"] * 1e5
     df["infusion_billers_per_100k"] = df["infusion_billers"] / df["population"] * 1e5
-    df["infusion_admins_per_1k_ffs"] = df["infusion_admins"] / df["ffs_benes"] * 1e3
-    df["eligible"] = df["population"] >= cfg["min_population"]["value"]
+    df["acute_hospitals_per_100k"] = df["acute_hospitals"] / df["population"] * 1e5
+    df["eligible"] = (df["population"] >= cfg["min_population"]["value"]) & (
+        df["rheumatologists"] + df["neurologists"] >= cfg["min_rheum_neuro_clinicians"]["value"])
     df["cannibalization_flag"] = (df["miles_to_columbus_site"] < cfg["cannibalization_miles"]["value"]) | df["has_site"]
     el = df[df["eligible"]].copy()
     comp = components(el)
@@ -121,14 +121,17 @@ def score(df: pd.DataFrame, cfg: dict, site_lat: float, site_lon: float, rng) ->
     el["rank"] = el["score"].rank(ascending=False, method="first").astype(int)
     draws = rng.dirichlet(np.ones(len(COMPONENTS)), size=N_DRAWS)
     ranks = (-(comp[COMPONENTS].to_numpy() @ draws.T)).argsort(axis=0).argsort(axis=0) + 1
-    el["p_top10"] = (ranks <= 10).mean(axis=1)
+    el["share_of_weightings_in_top10"] = (ranks <= 10).mean(axis=1)
     el["median_rank_random_weights"] = np.median(ranks, axis=1)
     base_top10 = set(el.index[el["rank"] <= 10])
     idx = el.index.to_numpy()
     overlap = float(np.mean([len(base_top10 & set(idx[ranks[:, j] <= 10])) / 10 for j in range(N_DRAWS)]))
-    cols = ["score", "rank", "p_top10", "median_rank_random_weights"] + [f"z_{k}" for k in COMPONENTS]
+    # hospital-heavy flag (context, not scored): HOPD infusion volume is not public at market level
+    el["hospital_heavy"] = el["acute_hospitals_per_100k"] >= el["acute_hospitals_per_100k"].quantile(0.75)
+    cols = ["score", "rank", "share_of_weightings_in_top10", "median_rank_random_weights", "hospital_heavy"] + [f"z_{k}" for k in COMPONENTS]
     return df.join(el[cols]), {"n_eligible": int(len(el)), "mean_top10_overlap_random_weights": round(overlap, 4),
-                               "n_p_top10_over_half": int((el["p_top10"] > 0.5).sum())}
+                               "n_top10_share_over_half": int((el["share_of_weightings_in_top10"] > 0.5).sum()),
+        "component_correlation": comp[COMPONENTS].corr().round(3).to_dict()}
 
 
 def main() -> None:
@@ -152,9 +155,10 @@ def main() -> None:
     mk_out = mk[~mk["cannibalization_flag"]]
     top_m = lambda d, n: [  # noqa: E731
         {"market": r.market_name, "market_id": r.market_id, "states": r.states, "rank": int(r.rank),
-         "score": round(float(r.score), 3), "p_top10": round(float(r.p_top10), 3),
-         "median_rank_random_weights": float(r.median_rank_random_weights),
-         "population": int(r.population), "arthritis_adults": int(r.arthritis_adults), "ffs_benes": int(r.ffs_benes),
+         "score": round(float(r.score), 3), "share_of_weightings_in_top10": round(float(r.share_of_weightings_in_top10), 3),
+         "median_rank_random_weights": float(r.median_rank_random_weights), "hospital_heavy": bool(r.hospital_heavy),
+         "acute_hospitals_per_100k": round(float(r.acute_hospitals_per_100k), 2),
+         "population": int(r.population), "arthritis_adults": int(r.arthritis_adults),
          "specialists_per_100k": round(float(r.specialists_per_100k), 1),
          "rheumatologists": int(r.rheumatologists),
          "infusion_billers_per_100k": round(float(r.infusion_billers_per_100k), 2),
@@ -163,9 +167,9 @@ def main() -> None:
         for r in d.head(n).itertuples()]
     top = lambda d, n: [  # noqa: E731
         {"county": f"{r.county_name}, {r.state_abbr}", "fips": r.county_fips, "rank": int(r.rank),
-         "score": round(float(r.score), 3), "p_top10": round(float(r.p_top10), 3),
+         "score": round(float(r.score), 3), "share_of_weightings_in_top10": round(float(r.share_of_weightings_in_top10), 3),
          "population": int(r.population), "arthritis_adults": int(r.arthritis_adults),
-         "ffs_benes": int(r.ffs_benes), "specialists_per_100k": round(float(r.specialists_per_100k), 1),
+         "specialists_per_100k": round(float(r.specialists_per_100k), 1),
          "infusion_billers_per_100k": round(float(r.infusion_billers_per_100k), 2),
          "miles_to_columbus_site": round(float(r.miles_to_columbus_site)), "cannibalization_flag": bool(r.cannibalization_flag)}
         for r in d.head(n).itertuples()]
@@ -186,7 +190,7 @@ def main() -> None:
     print(json.dumps(summary["markets"], indent=1))
     for r in summary["market_top10"]:
         print(r)
-    print("ohio:", [(r["market"], r["rank"], r["p_top10"]) for r in summary["market_top3_ohio_outside_radius"]])
+    print("ohio:", [(r["market"], r["rank"], r["share_of_weightings_in_top10"]) for r in summary["market_top3_ohio_outside_radius"]])
 
 
 if __name__ == "__main__":

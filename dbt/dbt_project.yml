@@ -36,3 +36,4 @@ seeds:
     admin_codes: {+column_types: {hcpcs: varchar}}
     hcpcs_successors: {+column_types: {old_hcpcs: varchar, new_hcpcs: varchar}}
     region_states: {+column_types: {state_fips: varchar}}
+    market_extra_states: {+column_types: {state_fips: varchar}}

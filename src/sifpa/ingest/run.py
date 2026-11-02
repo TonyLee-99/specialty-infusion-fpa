@@ -36,6 +36,12 @@ def _states() -> pd.DataFrame:
     return pd.read_csv(SEEDS / "region_states.csv", dtype=str)
 
 
+def _market_states() -> list[str]:
+    """Region states plus the out-of-region states of CBSAs that cross into the region (St. Louis MO-IL...)."""
+    extra = pd.read_csv(SEEDS / "market_extra_states.csv", dtype=str)["state_abbr"].tolist()
+    return _states()["state_abbr"].tolist() + extra
+
+
 def _parallel(fn, jobs: list, workers: int = 3) -> pd.DataFrame:  # 3: stay under the CMS API rate limit
     with ThreadPoolExecutor(workers) as pool:
         frames = [f for f in pool.map(fn, jobs) if f is not None and len(f)]
@@ -113,17 +119,17 @@ def main() -> None:
         raise SystemExit(f"Only {free_gb:.1f} GB free; stopping below 8 GB.")
     manifest: dict = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
     cms = "https://data.cms.gov/data-api/v1/dataset/<uuid per year from data.json>/data"
-    states = _states()["state_abbr"].tolist()
 
     asp_df, asp_urls = asp.pull()
     _write("asp_payment_limits", asp_df, asp.PAGE_URL + f" ({len(asp_urls)} quarterly zips)", manifest)
     for name, df in sources.pull_pfs().items():
         _write(name, df, sources.RVU_ZIP, manifest)
-    _write("places_county", sources.pull_places(states), sources.PLACES_URL, manifest)
+    _write("places_county", sources.pull_places(_market_states()), sources.PLACES_URL, manifest)
     _write("census_pep_county", sources.pull_pep(), sources.PEP_URL, manifest)
     _write("zcta_county", sources.pull_zcta(), sources.ZCTA_URL, manifest)
     _write("county_gazetteer", sources.pull_gazetteer(), sources.GAZ_URL, manifest)
     _write("cbsa_county", sources.pull_cbsa(), sources.CBSA_URL, manifest)
+    _write("hospitals", sources.pull_hospitals(), sources.HOSPITALS_URL, manifest)
     _write("medicare_enrollment_county", pull_enrollment(), cms + f" [{ENROLLMENT}]", manifest)
     for name, df in pull_spending().items():
         _write(name, df, cms + " [Part B Spending by Drug]", manifest)
