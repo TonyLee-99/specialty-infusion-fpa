@@ -1,11 +1,16 @@
 """F14-F17: the plan engine's timing, net revenue, demand-driven volume and cost structure."""
 
+from pathlib import Path
+
+import duckdb
 import numpy as np
 import pandas as pd
 import pytest
 
 from sifpa import engine as E
 from sifpa import mechanics as M
+
+CI_WH = Path(__file__).resolve().parents[1] / "tests/fixtures/ci_warehouse.duckdb"
 
 
 def _drug(**kw):
@@ -66,8 +71,10 @@ def test_fixed_costs_do_not_depend_on_volume():
     assert E.fixed_costs(13)["total"] > f["total"]
 
 
+@pytest.mark.skipif(not CI_WH.exists(), reason="run `make dbt-ci` first (make check does)")
 def test_pnl_reconciles_including_pharmacy_margin():
-    r = E.build(rules_year=2028, white_bag=True, mfp=True)["pnl"]
+    con = duckdb.connect(str(CI_WH), read_only=True)  # fixture warehouse, so CI runs it without data/
+    r = E.build(con, rules_year=2028, white_bag=True, mfp=True)["pnl"]
     lines = r["drug_revenue"] + r["admin_revenue"] + r["pharmacy_margin"] - r["drug_cost"] - r["variable_cost"]
     assert lines == pytest.approx(r["contribution"], abs=1.0)
     assert r["pharmacy_margin"] > 0

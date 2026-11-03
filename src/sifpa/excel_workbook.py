@@ -244,7 +244,7 @@ def build_monthly(wb, cells):
                                      "price steps (incl. the 2027Q4 IRA change) are in outputs/plan_prices_quarterly.csv.")
 
 
-def drug_inputs() -> pd.DataFrame:
+def drug_inputs(con=None) -> pd.DataFrame:
     t = pd.read_csv(OUTPUTS / "scenario_drug_inputs.csv", dtype={"hcpcs": str})
     mix = pd.read_csv(OUTPUTS / "scenario_mix.csv", dtype={"hcpcs": str})
     # within-line share = payer share / payer line weight; identical across payers by construction
@@ -257,13 +257,13 @@ def drug_inputs() -> pd.DataFrame:
     t = t.merge(ffs[["hcpcs", "line", "ws_base", "ws_listed"]], on="hcpcs", how="left")
     t["line"] = t["line"].fillna("none")
     t[["ws_base", "ws_listed"]] = t[["ws_base", "ws_listed"]].fillna(0.0)
-    growth = E.demand_growth(t)
+    growth = E.demand_growth(t, con)
     t["growth"] = t["hcpcs"].map(growth).fillna(1.0)
     return t
 
 
 def write_workbook(con, path: Path, overrides: dict) -> dict[str, str]:
-    t = drug_inputs()
+    t = drug_inputs(con)
     wb = Workbook()
     wb.remove(wb.active)
     build_inputs(wb, con, overrides)
@@ -299,14 +299,20 @@ def recalc(src: Path) -> Path | None:
 
 
 def python_expectation(con, overrides: dict) -> dict:
-    """Independent computation of the same Outputs through engine.build() with the same inputs."""
-    from sifpa import scenarios as S
+    """Independent computation of the same Outputs through engine.build() with the same inputs.
+
+    The workbook's patient mix comes from outputs/scenario_mix.csv, so the engine gets that same mix here.
+    The mix itself is checked elsewhere (test_regeneration), and this keeps the check valid on the CI
+    fixture warehouse, whose provider slice is Ohio-only."""
     o = dict(overrides)
     chairs, panel = o.pop("chairs", None), o.pop("panel_patients", None)
-    base = E.build(con, overrides=o, chairs=chairs, panel=panel)
-    listed = E.build(con, overrides=o, chairs=chairs, panel=panel,
-                     mix_override=S.push_listed_mix(base["mix"], base["drugs"]))
-    p28 = E.build(con, overrides=o, chairs=chairs, panel=panel, rules_year=2028, mfp=True, white_bag=True)
+    m = pd.read_csv(OUTPUTS / "scenario_mix.csv", dtype={"hcpcs": str})
+    mix = {k: m[m[c] > 0].rename(columns={c: "patient_share"})[["payer", "line", "hcpcs", "patient_share"]]
+           .reset_index(drop=True) for k, c in (("base", "share_base"), ("listed", "share_listed"))}
+    base = E.build(con, overrides=o, chairs=chairs, panel=panel, mix_override=mix["base"])
+    listed = E.build(con, overrides=o, chairs=chairs, panel=panel, mix_override=mix["listed"])
+    p28 = E.build(con, overrides=o, chairs=chairs, panel=panel, rules_year=2028, mfp=True, white_bag=True,
+                  mix_override=mix["base"])
     return {name: {"administrations": r["pnl"]["administrations"], "contribution": r["pnl"]["contribution"],
                    "operating_margin": r["pnl"]["operating_margin"], "utilization": r["pnl"]["utilization"]}
             for name, r in (("base", base), ("biosimilar_listed", listed), ("policy_2028", p28))}

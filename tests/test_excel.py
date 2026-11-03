@@ -10,8 +10,11 @@ import re
 import shutil
 from pathlib import Path
 
+import duckdb
 import pytest
 from openpyxl import load_workbook
+
+CI_WH = Path(__file__).resolve().parents[1] / "tests/fixtures/ci_warehouse.duckdb"
 
 ROOT = Path(__file__).resolve().parents[1]
 XLSX = ROOT / "excel" / "infusion_plan_2027_scenarios.xlsx"
@@ -54,8 +57,9 @@ def test_committed_recalc_check_covers_default_and_stressed_inputs():
 
 
 @pytest.mark.skipif(not (shutil.which("soffice") or shutil.which("libreoffice")), reason="LibreOffice not installed")
+@pytest.mark.skipif(not CI_WH.exists(), reason="run `make dbt-ci` first (make check does)")
 def test_live_recalculation_matches_python_under_stressed_inputs():
-    from sifpa import engine as E
     from sifpa import excel_workbook as X
-    res = X.compare(E.connect(), X.STRESS, "stressed (live)")
+    con = duckdb.connect(str(CI_WH), read_only=True)  # fixture warehouse, so CI runs it without data/
+    res = X.compare(con, X.STRESS, "stressed (live)")
     assert res["libreoffice_recalc"] and res["max_rel_diff"] < 1e-4

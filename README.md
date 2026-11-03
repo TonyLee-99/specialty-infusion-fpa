@@ -165,7 +165,7 @@ and follow `docs/powerbi_build_guide.md` to build the report pages in Power BI D
 | Forecast | quarterly ASP, untouched test window, same 978 forecasts: naive / selected (33 modelled, 32 held flat) | 4.8% / 5.2%; per-series DM at h=1: 1 better / 1 worse of 16 | `outputs/forecast.json` |
 | Forecast | annual volume MAPE naive / selected; spend MAPE naive / selected | 16.4% / 20.0%; 20.2% / 27.9% | `outputs/forecast.json` |
 | Forecast | 80% interval coverage on the test window: ASP / volume / spend | 77% / 77% / 71% | `outputs/forecast.json` |
-| Excel | live formulas / max rel. diff vs Python (default + stressed inputs, LibreOffice recalc) | 1,757 / 5.4e-06 | `outputs/excel_recalc_check.json` |
+| Excel | live formulas / max rel. diff vs Python (default + stressed inputs, LibreOffice recalc) | 1,757 / 5.2e-06 | `outputs/excel_recalc_check.json` |
 | Benchmark | clinicians scored / provider-molecule pairs fully observed / above vs below state | 7,649 / 0% of 284 / 2 vs 0 | `outputs/benchmark.json` |
 | Market | eligible markets / Canton-Massillon, OH rank, share of weightings in top 10 / mean top-10 overlap | 74 / 2, 76% / 50% | `outputs/market.json` |
 | Power BI | TMDL tables / DAX measures (each mapped to a SQL twin; several checked independently in pandas) | 23 / 25 | `tests/test_tmdl.py` |

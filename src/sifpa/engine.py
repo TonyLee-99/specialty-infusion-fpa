@@ -331,12 +331,12 @@ def mix_by_payer(con, drugs: pd.DataFrame, overrides: dict | None = None, full_f
     return pd.concat(out, ignore_index=True)[["payer", "line", "hcpcs", "patient_share"]]
 
 
-def demand_growth(drugs: pd.DataFrame) -> pd.Series:
+def demand_growth(drugs: pd.DataFrame, con=None) -> pd.Series:
     """2027 / 2024 national in-office volume per molecule from the backtested volume forecast
     (the forecast decision rule currently picks naive, so this is 1.0 unless the data change)."""
     f = pd.read_csv(OUTPUTS / "forecasts_annual_volume.csv")
     f = f[(f["metric"] == "administrations") & (f["year"] == 2027)].set_index("molecule")["forecast"]
-    hist = _annual_2024()
+    hist = _annual_2024(con)
     g = (f / hist.reindex(f.index)).replace([np.inf, -np.inf], np.nan)
     return drugs["molecule"].map(g).fillna(1.0).set_axis(drugs["hcpcs"])
 
@@ -458,7 +458,7 @@ def build(con=None, overrides: dict | None = None, rules_year: int = 2027, full_
             # contribution here already nets the MFP acquisition cost through econ_mfp
     payers = payer_override or payer_shares(con, p.get("payer_mix_commercial"), p.get("payer_mix_medicaid"))
     mix = mix_override if mix_override is not None else mix_by_payer(con, drugs, o, full_formulary)
-    growth = demand_growth(drugs)
+    growth = demand_growth(drugs, con)
     wb = white_bag_tiers(econ) if white_bag else None
     pnl = suite_pnl(econ, mix, payers, growth, panel or p["panel_patients"], chairs or p["chairs"], wb, o)
     return {"drugs": drugs, "econ": econ, "mix": mix, "payers": payers, "pnl": pnl, "quarterly_prices": quarterly,
