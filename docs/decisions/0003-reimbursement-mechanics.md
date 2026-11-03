@@ -87,6 +87,6 @@ commercial contract rates (assumption only), and MA plan rates (assumed equal to
 - **MFP depends on the acquisition basis.** The MFP effect on a full formulary is -$43 when buying at
   WAC, +$64K at WAC+5%, and +$899K at the stress bound, because the refund would then rescue an
   underwater drug. The memo says so.
-- **Pharmacy recapture** (Owned-pharmacy margin on white-bagged drug) is now its own P&L line, so drug
+- **Pharmacy recapture** (owned-pharmacy margin on white-bagged drug) is now its own P&L line, so drug
   revenue + admin revenue + pharmacy margin - drug cost - variable cost = contribution
   (`tests/test_engine.py`).

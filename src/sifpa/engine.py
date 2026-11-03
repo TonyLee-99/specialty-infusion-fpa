@@ -1,5 +1,5 @@
 """The plan engine: 2027 prices with the real 2-quarter ASP lag, per-infusion economics by drug and
-payer (with net-revenue haircuts for every payer), a Formulary-relevant drug mix by payer, and a
+payer (with net-revenue haircuts for every payer), a formulary-relevant drug mix by payer, and a
 demand-driven suite P&L with fixed and variable costs.
 
 margin.py, scenarios.py, the Excel workbook and the Power BI budget table all call this module, so one
@@ -270,7 +270,7 @@ def within_line_shares(con, drugs: pd.DataFrame, full_formulary: bool = False) -
     Molecule shares: national 2024 in-office Medicare beneficiaries billed by the line's specialty
     (rheumatologists for the rheum line, neurologists for neuro). Product split inside a multi-source
     molecule: Ohio's 2024 biosimilar share of in-office administrations (unsuppressed geography rows),
-    placed on the biosimilar the formulary lists (Inflectra, Truxima). Listed molecules only, unless
+    placed on the biosimilars on the formulary (Inflectra, Truxima). Listed molecules only, unless
     full_formulary (adds non-listed chair molecules: Orencia, Simponi Aria, Actemra, ...).
     """
     rows = []
