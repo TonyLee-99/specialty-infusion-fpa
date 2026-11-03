@@ -4,7 +4,7 @@ Date: 2026-11-02. Status: accepted.
 
 ## Context
 A real FP&A pack is budget vs actual, refreshed monthly. Scalar DAX constants and an empty report do not
-show that skill. The report pages are built by hand in Power BI Desktop; visual JSON will not be authored blind.
+show that skill. The report pages are built by hand in Power BI Desktop; visual JSON is not authored blind.
 
 ## Decision
 1. **Budget** = the 2027 plan engine run per site (two illustrative sites in `config/assumptions.yaml`),
@@ -23,5 +23,5 @@ show that skill. The report pages are built by hand in Power BI Desktop; visual 
    KPIs, Excel, memo, scorecard, README and tests.
 
 ## Consequences
-The PBIP is still unopened in Power BI Desktop. The first Windows session should follow the guide and
+The PBIP is still unopened in Power BI Desktop. The first build on Windows should follow the guide and
 compare the numbers; a mismatch points at a relationship, a filter context or the DAX.

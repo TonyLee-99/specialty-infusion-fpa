@@ -1,4 +1,4 @@
-"""F02: every raw source in ADR 0002 was pulled, is non-empty, and the raw total respects the disk budget."""
+"""Every raw source in ADR 0002 was pulled, is non-empty, and the raw total respects the disk budget."""
 
 import json
 from pathlib import Path
@@ -23,7 +23,7 @@ def test_manifest_lists_every_source_with_rows_and_hash():
 
 def test_raw_total_under_budget():
     manifest = json.loads((ROOT / "data_manifest.json").read_text())
-    assert manifest["_total_raw_mb"] < 3000  # raw-data disk budget is 3 GB per project
+    assert manifest["_total_raw_mb"] < 3000  # raw-data disk budget is 3 GB
 
 
 def test_asp_history_is_40_quarters():

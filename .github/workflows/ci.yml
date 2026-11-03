@@ -1,5 +1,5 @@
-# Offline gate: lint, tests on committed outputs/fixtures, dbt on the fixture warehouse,
-# feature regression check. No network pulls in CI (make reproduce is run locally / monthly).
+# Offline gate: lint, dbt on the fixture warehouse, tests on committed outputs/fixtures (incl.
+# regeneration of the price path, economics and P&L from fixtures). No network pulls in CI (make reproduce is run locally / monthly).
 name: ci
 on:
   push:

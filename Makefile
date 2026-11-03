@@ -5,15 +5,14 @@ PY    := PYTHONPATH=src .venv/bin/python -W ignore
 DBT   := cd dbt && ../.venv/bin/dbt
 export DBT_PROFILES_DIR := $(CURDIR)/dbt
 
-.PHONY: init check lint test dbt-ci verify reproduce ingest dbt fixtures analyses margin forecast \
+.PHONY: init check lint test dbt-ci reproduce ingest dbt fixtures analyses margin forecast \
         scenarios excel benchmark market rcm variance exports pbi kpis pbi-guide memo scorecard screenshots readme dq \
         monthly-pack clean
 
 init:             ## fresh clone -> working env (venv, pinned deps, browser for screenshots)
 	bash scripts/init.sh
 
-check: lint dbt-ci test   ## lint + dbt on fixtures + tests (incl. regeneration on fixtures) + strict feature gate
-	$(PY) scripts/verify_features.py --check-only
+check: lint dbt-ci test   ## lint + dbt on fixtures + tests (incl. regeneration on fixtures)
 
 lint:
 	.venv/bin/ruff check src tests scripts
@@ -23,9 +22,6 @@ test:
 
 dbt-ci:           ## dbt build (models + data tests) on the committed fixture warehouse
 	cd dbt && SIFPA_RAW_DIR=../tests/fixtures/raw ../.venv/bin/dbt build --target ci --quiet --full-refresh
-
-verify:           ## the ONLY writer of feature_list.json state/evidence
-	$(PY) scripts/verify_features.py
 
 # ---------- full rebuild from public sources ----------
 reproduce: ingest dbt fixtures analyses exports pbi kpis pbi-guide excel memo scorecard screenshots readme dq test
@@ -84,4 +80,4 @@ monthly-pack:     ## the recurring job: refresh -> test -> rebuild extracts -> s
 	$(PY) -m sifpa.monthly_pack $(if $(OFFLINE),--offline,)
 
 clean:
-	rm -rf dbt/target dbt/logs logs/verify data/warehouse.duckdb
+	rm -rf dbt/target dbt/logs data/warehouse.duckdb

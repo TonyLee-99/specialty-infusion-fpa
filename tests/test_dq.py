@@ -1,4 +1,4 @@
-"""F13: data-quality checks run with no hard failure, and the monthly pack ran end to end."""
+"""Data-quality checks run with no hard failure, and the monthly pack ran end to end."""
 
 import json
 from pathlib import Path

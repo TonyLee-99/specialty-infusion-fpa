@@ -1,4 +1,4 @@
-"""F05/F22: validation-selected models scored on an untouched test window, DM tests, decision rule,
+"""Validation-selected models scored on an untouched test window, DM tests, decision rule,
 conformal coverage measured out of sample, volume and spend scored separately."""
 
 import json

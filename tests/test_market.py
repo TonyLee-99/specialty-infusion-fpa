@@ -1,4 +1,4 @@
-"""F08/F20: market-grain ranking without double counting, with a prescriber floor and whole metros."""
+"""Market-grain ranking without double counting, with a prescriber floor and whole metros."""
 
 import json
 from pathlib import Path

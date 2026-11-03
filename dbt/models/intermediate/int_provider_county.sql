@@ -1,5 +1,5 @@
 -- Provider ZIP -> county. Step 1: Census ZCTA relationship file (ZIP != ZCTA caveat, ADR 0002).
--- Step 2 (review round 2): unique / campus ZIPs have no ZCTA (e.g. 44195, the Cleveland Clinic campus,
+-- Step 2: unique / campus ZIPs have no ZCTA (e.g. 44195, the Cleveland Clinic campus,
 -- 238 region specialists). They take the county that most providers in the same USPS city + state map to
 -- through step 1. county_method records which step placed the provider; dq.py fails if too many stay unmapped.
 with npis as (

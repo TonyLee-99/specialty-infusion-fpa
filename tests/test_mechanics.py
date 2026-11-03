@@ -1,4 +1,4 @@
-"""F04: Medicare buy-and-bill payment mechanics (ADR 0003)."""
+"""Medicare buy-and-bill payment mechanics (ADR 0003)."""
 
 import math
 

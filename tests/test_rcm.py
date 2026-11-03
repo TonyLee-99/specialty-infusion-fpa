@@ -1,4 +1,4 @@
-"""F09: SYNTHETIC RCM layer is labelled everywhere, reproducible, and its KPIs are coherent."""
+"""SYNTHETIC RCM layer is labelled everywhere, reproducible, and its KPIs are coherent."""
 
 import json
 from pathlib import Path

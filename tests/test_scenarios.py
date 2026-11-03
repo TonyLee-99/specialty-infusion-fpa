@@ -1,4 +1,4 @@
-"""F06/F15-F19: 2027 plan scenarios are demand-driven, labelled and internally consistent."""
+"""2027 plan scenarios are demand-driven, labelled and internally consistent."""
 
 import json
 from pathlib import Path

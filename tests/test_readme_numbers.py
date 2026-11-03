@@ -1,4 +1,4 @@
-"""F12: README headline numbers match the committed outputs and cannot drift."""
+"""README headline numbers match the committed outputs and cannot drift."""
 
 import json
 from pathlib import Path

@@ -1,4 +1,4 @@
-"""F14-F17: the plan engine's timing, net revenue, demand-driven volume and cost structure."""
+"""The plan engine's timing, net revenue, demand-driven volume and cost structure."""
 
 from pathlib import Path
 

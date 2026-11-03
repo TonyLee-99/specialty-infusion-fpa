@@ -1,4 +1,4 @@
-"""F24: CI regenerates the price path, per-infusion economics and the suite P&L from the committed
+"""CI regenerates the price path, per-infusion economics and the suite P&L from the committed
 fixture warehouse (built by `make dbt-ci`) and compares them with the committed outputs, so code changes
 whose outputs were not regenerated fail the gate.
 

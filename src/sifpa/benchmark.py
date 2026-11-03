@@ -1,4 +1,4 @@
-"""Module 4: provider benchmarking in the 7-state region (ADR 0005, revised after review).
+"""Module 4: provider benchmarking in the 7-state region (ADR 0005, revision 1).
 
 Unit = rendering NPI (no names), peers = same specialty in the region, 2024 Medicare FFS.
 KPIs: allowed per beneficiary (raw and per unit of HCC risk), services per beneficiary, drug share of

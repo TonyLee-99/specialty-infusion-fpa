@@ -1,4 +1,4 @@
-"""F11: the static HTML scorecard exists, is self-contained, and was screenshotted without console errors."""
+"""The static HTML scorecard exists, is self-contained, and was screenshotted without console errors."""
 
 import json
 from pathlib import Path

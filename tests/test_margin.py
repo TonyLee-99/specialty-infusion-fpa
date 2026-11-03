@@ -1,4 +1,4 @@
-"""F04/F14: 2027 per-infusion economics, underwater definitions, biosimilar decision table, tornado."""
+"""2027 per-infusion economics, underwater definitions, biosimilar decision table, tornado."""
 
 import json
 from pathlib import Path

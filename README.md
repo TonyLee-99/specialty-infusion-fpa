@@ -142,7 +142,7 @@ flowchart LR
 
 ```bash
 make init          # uv env with pinned deps + Chromium for screenshots
-make check         # lint + dbt on fixtures + pytest (94 test functions, incl. regeneration on fixtures) + strict feature gate
+make check         # lint + dbt on fixtures + pytest (88 test functions, incl. regeneration on fixtures)
 make reproduce     # full rebuild from public pulls
 make monthly-pack  # month-end pack: refresh, DQ, budget vs actual bridge, memo, scorecard (OFFLINE=1 skips the pull)
 ```

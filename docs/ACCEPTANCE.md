@@ -1,9 +1,8 @@
 # Acceptance criteria
 
 A1-A15 were written **before** building (commit `8553a3e`). A16-A24 were added in a second iteration,
-before the fixes were built. Each criterion ends PASS or FAIL with evidence: the command, plus an output
-excerpt. A target that is missed is reported with its real number. Status as of 2026-11-02 (round 2
-fixes).
+before those changes were built. Each criterion ends PASS or FAIL with evidence: the command, plus an output
+excerpt. A target that is missed is reported with its real number. Status as of 2026-11-02.
 
 | # | Criterion (measurable) | Target | Status | Evidence (command -> excerpt) |
 |---|---|---|---|---|
@@ -30,3 +29,4 @@ fixes).
 | A21 | 2028 run-rate consistent, white bagging tiered with IVS recapture | bridge components; recapture monotone | **PASS** | -$580K = white bagging -$566K + IRA -$13K + MFP $0; recapture 0 / 25 / 50% monotone |
 | A22 | Forecast selection on validation, scoring on untouched test, DM, decision rule | windows disjoint; decision recorded | **PASS** | Decision window keeps the selected models (7.0% vs 9.2%); test window on 978 matched forecasts: naive 4.8% vs selected 5.2%; per-series DM 1 better / 1 worse of 16 |
 | A23 | Sliceable Power BI + budget vs actual with exact bridge + build guide | volume + mix + rate = variance at all grains; guide numbers = kpis | **PASS** | `tests/test_variance.py` 4 passed; pandas re-derivation equals SQL twins |
+| A24 | CI regenerates the price path, per-infusion economics and the suite P&L from fixtures | tests pass | **PASS** | `tests/test_regeneration.py` 3 passed (price path and per-infusion economics equal committed outputs exactly) |

@@ -1,4 +1,4 @@
-"""F23: budget-vs-actual pack. Budget = plan by site/month; actuals SYNTHETIC; bridge adds up exactly."""
+"""Budget-vs-actual pack. Budget = plan by site/month; actuals SYNTHETIC; bridge adds up exactly."""
 
 import json
 from pathlib import Path

@@ -59,7 +59,7 @@ pooled model-level MAPE/MASE in `outputs/forecast.json` is the unbiased comparis
   the factor is 1.0.
 
 ## Revision 2: three windows, matched comparisons, per-series DM
-The round-1 rule consulted the test window for the keep-or-naive decision, and it compared MAPEs on
+The revision-1 rule consulted the test window for the keep-or-naive decision, and it compared MAPEs on
 different forecast sets. The fix:
 - Three disjoint **target** windows. Selection (quarterly <= 2022Q4, annual <= 2019) picks a model per
   series. Decision (2023 / 2020) keeps the selected models only if they beat naive on **matched**

@@ -1,4 +1,4 @@
-"""F12: the decision memo is deterministic, short, complete, and every number in it comes from outputs."""
+"""The decision memo is deterministic, short, complete, and every number in it comes from outputs."""
 
 import json
 import re

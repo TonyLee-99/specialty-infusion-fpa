@@ -1,4 +1,4 @@
-"""F10/F23: PBIP/TMDL structure, measure-to-SQL mapping, and independent pandas checks of the SQL twins.
+"""PBIP/TMDL structure, measure-to-SQL mapping, and independent pandas checks of the SQL twins.
 The DAX itself has never been executed (no Power BI Desktop on this Mac)."""
 
 import json

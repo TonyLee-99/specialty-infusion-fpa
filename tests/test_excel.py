@@ -1,4 +1,4 @@
-"""F06: the Excel plan is formula-driven and agrees with the Python engine under default AND stressed inputs.
+"""The Excel plan is formula-driven and agrees with the Python engine under default AND stressed inputs.
 
 Live: where LibreOffice is installed (local, Docker, CI installs it) the workbook is rebuilt with stressed
 inputs, recalculated headless and compared with engine.build() now. Otherwise the committed local check

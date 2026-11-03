@@ -3,7 +3,7 @@
 Date: 2026-11-02. Status: accepted.
 
 ## Context
-Round 1 put the 2-quarter lag into the engine but held prices flat, which cancelled it. Round 2 removed
+The first revision put the 2-quarter lag into the engine but held prices flat, which cancelled it. The second removed
 the test window from the model decision (ADR 0004), and the decision window now keeps the selected
 models (mostly drift and damped ETS). The base path therefore rises gently, and the lag shows up in the
 base.

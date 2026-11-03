@@ -1,4 +1,4 @@
-"""F07/F21: suppression-aware biosimilar intervals at code grain, structural zeros, no EB, no names."""
+"""Suppression-aware biosimilar intervals at code grain, structural zeros, no EB, no names."""
 
 import json
 from pathlib import Path
